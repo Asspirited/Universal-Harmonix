@@ -282,6 +282,78 @@ export async function checkStarlink(isoDatetime, lat, lng, fetcher = fetch) {
   }
 }
 
+// ── Geomagnetic Kp index (NOAA SWPC) ─────────────────────────────────────────
+// Kp is global — lat/lng kept for API signature consistency only.
+
+export const KP_ELEVATED_THRESHOLD = 4;   // POSSIBLE MATCH
+export const KP_STORM_THRESHOLD    = 5;   // POSSIBLE MATCH — stronger flag
+export const KP_MAX_AGE_HOURS      = 72;  // NOAA feed only covers recent activity
+
+export async function checkKp(isoDatetime, lat, lng, fetcher = fetch) {
+  const dt       = new Date(isoDatetime);
+  const ageHours = (Date.now() - dt.getTime()) / 3_600_000;
+
+  if (ageHours > KP_MAX_AGE_HOURS) {
+    return {
+      status: 'unverified',
+      detail: 'Sighting >72 hours ago — NOAA Kp data only covers recent activity',
+    };
+  }
+
+  const url = 'https://services.swpc.noaa.gov/json/planetary_k_index_1m.json';
+
+  try {
+    const res = await fetcher(url, { signal: AbortSignal.timeout(8000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+
+    if (!Array.isArray(data) || data.length === 0) {
+      return { status: 'unverified', detail: 'No Kp data available from NOAA' };
+    }
+
+    // Entries are either [time_tag, kp, source] arrays or { time_tag, kp_index, source } objects
+    const targetMs = dt.getTime();
+    let best = null, bestDiff = Infinity;
+
+    for (const entry of data) {
+      const timeTag = Array.isArray(entry) ? entry[0] : entry.time_tag;
+      const kpVal   = Array.isArray(entry) ? entry[1] : entry.kp_index;
+      if (!timeTag || kpVal == null) continue;
+      const entryMs = new Date(String(timeTag).replace(' ', 'T') + 'Z').getTime();
+      if (isNaN(entryMs)) continue;
+      const diff = Math.abs(entryMs - targetMs);
+      if (diff < bestDiff) { bestDiff = diff; best = { kp: kpVal }; }
+    }
+
+    if (!best || bestDiff > 3_600_000) {
+      return { status: 'unverified', detail: 'No Kp reading found within 1 hour of sighting time' };
+    }
+
+    const kp = best.kp;
+    if (kp >= KP_STORM_THRESHOLD) {
+      return {
+        status: 'possible_match',
+        detail: `Storm-level geomagnetic activity: Kp ${kp.toFixed(1)} (Kp ≥ ${KP_STORM_THRESHOLD} = G1 storm)`,
+        kp,
+      };
+    }
+    if (kp >= KP_ELEVATED_THRESHOLD) {
+      return {
+        status: 'possible_match',
+        detail: `Elevated geomagnetic activity: Kp ${kp.toFixed(1)} (Kp ≥ ${KP_ELEVATED_THRESHOLD} = elevated)`,
+        kp,
+      };
+    }
+    return {
+      status: 'no_match',
+      detail: `Geomagnetic activity normal: Kp ${kp.toFixed(1)}`,
+      kp,
+    };
+  } catch (err) {
+    return { status: 'unverified', detail: `Kp check unavailable: ${err.message}` };
+  }
+}
+
 // ── Verdict ────────────────────────────────────────────────────────────────────
 
 export function computeVerdict(results) {
@@ -302,6 +374,7 @@ export const VERIFICATION_SOURCES = [
   { key: 'starlink',   run: (dt, lat, lng, f) => checkStarlink(dt, lat, lng, f) },
   { key: 'weather',    run: (dt, lat, lng, f) => checkWeather(dt, lat, lng, f) },
   { key: 'radiosonde', run: (dt, lat, lng)    => Promise.resolve(checkRadiosonde(dt, lat, lng)) },
+  { key: 'kp',         run: (dt, lat, lng, f) => checkKp(dt, lat, lng, f) },
 ];
 
 // ── Main entry point ───────────────────────────────────────────────────────────

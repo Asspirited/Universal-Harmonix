@@ -10,11 +10,13 @@ import { verifySighting } from '../../app/js/domain.js';
 
 // Helper: build a mock response that supports both .json() and .text()
 function mockRes(url) {
+  const nowTag = new Date().toISOString().replace('T', ' ').replace('Z', '');
   const bodies = {
     opensky:     { json: { states: [] } },
     wheretheiss: { json: [{ latitude: 0, longitude: 0, altitude: 408 }] },
     'open-meteo':{ json: { hourly: { cloud_cover: new Array(24).fill(5), visibility: new Array(24).fill(30000), wind_speed_10m: new Array(24).fill(3) } } },
-    celestrak:   { text: '' },  // empty TLE response → no_match
+    celestrak:   { text: '' },  // empty TLE → no_match
+    'swpc.noaa': { json: [[nowTag, 2.0, 'estimated']] },  // Kp 2 → no_match
   };
   const key = Object.keys(bodies).find(k => url.includes(k));
   const body = bodies[key] || { json: {} };
@@ -61,10 +63,11 @@ describe('Feature: Sighting log and verification', () => {
     assert.ok(result.starlink,   'verification panel must include starlink result');
     assert.ok(result.weather,    'verification panel must include weather result');
     assert.ok(result.radiosonde, 'verification panel must include radiosonde result');
+    assert.ok(result.kp,         'verification panel must include kp result');
 
     // And: each source shows a valid status
     const validStatuses = ['match', 'no_match', 'possible_match', 'unverified'];
-    for (const [source, res] of Object.entries({ aircraft: result.aircraft, iss: result.iss, starlink: result.starlink, weather: result.weather, radiosonde: result.radiosonde })) {
+    for (const [source, res] of Object.entries({ aircraft: result.aircraft, iss: result.iss, starlink: result.starlink, weather: result.weather, radiosonde: result.radiosonde, kp: result.kp })) {
       assert.ok(validStatuses.includes(res.status), `${source} has invalid status: ${res.status}`);
       assert.ok(res.detail, `${source} must include a human-readable detail string`);
     }
@@ -87,6 +90,7 @@ describe('Feature: Sighting log and verification', () => {
     assert.strictEqual(result.iss.status,      'unverified', 'failed ISS API must show unverified');
     assert.strictEqual(result.starlink.status, 'unverified', 'failed starlink API must show unverified');
     assert.strictEqual(result.weather.status,  'unverified', 'failed weather API must show unverified');
+    assert.strictEqual(result.kp.status,       'unverified', 'failed kp API must show unverified');
 
     // And: radiosonde (static logic) still returns a result
     assert.ok(['no_match', 'possible_match'].includes(result.radiosonde.status),
@@ -125,6 +129,29 @@ describe('Feature: Sighting log and verification', () => {
       `Expected UNEXPLAINED or PARTIAL MATCH when all sources clear, got: ${result.verdict}`
     );
     assert.notStrictEqual(result.verdict, 'LIKELY EXPLAINED', 'should not be LIKELY EXPLAINED with no matches');
+  });
+
+  it('Scenario: Geomagnetic storm detected — sighting returns PARTIAL MATCH', async () => {
+    // Given: a recent sighting during a storm-level Kp event (Kp ≥ 5)
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const nowTag = new Date().toISOString().replace('T', ' ').replace('Z', '');
+
+    const kpStormFetcher = async (url) => {
+      if (url.includes('swpc.noaa')) {
+        return { ok: true, json: async () => [[nowTag, 5.67, 'estimated']], text: async () => '' };
+      }
+      return mockRes(url);
+    };
+
+    // When: verification detects storm-level Kp, all other sources clear
+    const result = await verifySighting({ datetime: recentTime, lat: 52.48, lng: -1.89 }, kpStormFetcher);
+
+    // Then: Kp shows possible_match with storm flag
+    assert.strictEqual(result.kp.status, 'possible_match', 'storm Kp must produce possible_match');
+    assert.ok(result.kp.detail.toLowerCase().includes('storm'), 'detail must mention storm');
+
+    // And: verdict is PARTIAL MATCH (possible_match but no full match)
+    assert.strictEqual(result.verdict, 'PARTIAL MATCH', 'storm Kp alone must produce PARTIAL MATCH');
   });
 
 });

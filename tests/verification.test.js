@@ -11,10 +11,14 @@ import {
   checkWeather,
   checkStarlink,
   findVisibleStarlinks,
+  checkKp,
   computeVerdict,
   verifySighting,
   VERIFICATION_SOURCES,
   STARLINK_MAX_AGE_DAYS,
+  KP_ELEVATED_THRESHOLD,
+  KP_STORM_THRESHOLD,
+  KP_MAX_AGE_HOURS,
 } from '../app/js/domain.js';
 
 // ── haversineKm ────────────────────────────────────────────────────────────────
@@ -128,7 +132,7 @@ describe('VERIFICATION_SOURCES', () => {
   it('contains exactly the expected source keys in order', () => {
     assert.deepEqual(
       VERIFICATION_SOURCES.map(s => s.key),
-      ['aircraft', 'iss', 'starlink', 'weather', 'radiosonde']
+      ['aircraft', 'iss', 'starlink', 'weather', 'radiosonde', 'kp']
     );
   });
 
@@ -313,6 +317,94 @@ describe('verifySighting', () => {
     assert.strictEqual(result.iss.status,      'unverified');
     assert.strictEqual(result.weather.status,  'unverified');
     assert.strictEqual(result.starlink.status, 'unverified');
+    assert.strictEqual(result.kp.status,       'unverified');
+  });
+});
+
+// ── checkKp ────────────────────────────────────────────────────────────────────
+
+describe('checkKp', () => {
+  it('returns unverified for sightings older than KP_MAX_AGE_HOURS', async () => {
+    const oldTime = new Date(Date.now() - (KP_MAX_AGE_HOURS + 1) * 3_600_000).toISOString();
+    const result  = await checkKp(oldTime, 52.48, -1.89, async () => { throw new Error('Should not call'); });
+    assert.strictEqual(result.status, 'unverified');
+    assert.ok(result.detail.includes('72 hours'));
+  });
+
+  it('returns unverified when NOAA API fails', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkKp(recentTime, 52.48, -1.89, async () => { throw new Error('timeout'); });
+    assert.strictEqual(result.status, 'unverified');
+    assert.ok(result.detail.includes('timeout'));
+  });
+
+  it('returns unverified when NOAA returns non-OK status', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkKp(recentTime, 52.48, -1.89, async () => ({ ok: false, status: 503 }));
+    assert.strictEqual(result.status, 'unverified');
+  });
+
+  it('returns unverified when NOAA returns empty array', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkKp(recentTime, 52.48, -1.89, async () => ({ ok: true, json: async () => [] }));
+    assert.strictEqual(result.status, 'unverified');
+  });
+
+  it('returns unverified when no entry is within 1 hour of sighting', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    // Return entry 5 hours in the future — beyond the 1h window
+    const farFuture = new Date(Date.now() + 5 * 3_600_000).toISOString().replace('T', ' ').replace('Z', '');
+    const result = await checkKp(recentTime, 52.48, -1.89,
+      async () => ({ ok: true, json: async () => [[farFuture, 2.33, 'estimated']] }));
+    assert.strictEqual(result.status, 'unverified');
+  });
+
+  it('returns no_match when Kp < 4', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const tag = new Date(Date.now() - 30_000).toISOString().replace('T', ' ').replace('Z', '');
+    const result = await checkKp(recentTime, 52.48, -1.89,
+      async () => ({ ok: true, json: async () => [[tag, 2.67, 'estimated']] }));
+    assert.strictEqual(result.status, 'no_match');
+    assert.ok(result.detail.includes('2.7'));
+    assert.ok(typeof result.kp === 'number');
+  });
+
+  it('returns possible_match when Kp >= KP_ELEVATED_THRESHOLD', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const tag = new Date(Date.now() - 30_000).toISOString().replace('T', ' ').replace('Z', '');
+    const result = await checkKp(recentTime, 52.48, -1.89,
+      async () => ({ ok: true, json: async () => [[tag, 4.33, 'estimated']] }));
+    assert.strictEqual(result.status, 'possible_match');
+    assert.ok(result.detail.toLowerCase().includes('elevated'));
+  });
+
+  it('returns possible_match with storm flag when Kp >= KP_STORM_THRESHOLD', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const tag = new Date(Date.now() - 30_000).toISOString().replace('T', ' ').replace('Z', '');
+    const result = await checkKp(recentTime, 52.48, -1.89,
+      async () => ({ ok: true, json: async () => [[tag, 6.0, 'estimated']] }));
+    assert.strictEqual(result.status, 'possible_match');
+    assert.ok(result.detail.toLowerCase().includes('storm'));
+    assert.strictEqual(result.kp, 6.0);
+  });
+
+  it('handles object-format entries (time_tag / kp_index fields)', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const tag = new Date(Date.now() - 30_000).toISOString().replace('T', ' ').replace('Z', '');
+    const result = await checkKp(recentTime, 52.48, -1.89,
+      async () => ({ ok: true, json: async () => [{ time_tag: tag, kp_index: 3.0, source: 'estimated' }] }));
+    assert.strictEqual(result.status, 'no_match');
+  });
+
+  it('picks the entry closest in time', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const close = new Date(Date.now() - 90_000).toISOString().replace('T', ' ').replace('Z', '');
+    const far   = new Date(Date.now() - 3_600_000).toISOString().replace('T', ' ').replace('Z', '');
+    // close entry has Kp 6 (storm), far entry has Kp 1 — should pick close
+    const result = await checkKp(recentTime, 52.48, -1.89,
+      async () => ({ ok: true, json: async () => [[far, 1.0, 'estimated'], [close, 6.0, 'estimated']] }));
+    assert.strictEqual(result.status, 'possible_match');
+    assert.ok(result.detail.toLowerCase().includes('storm'));
   });
 });
 

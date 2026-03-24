@@ -38,6 +38,7 @@ export const SOURCES = [
   { key: 'starlink',   icon: '🔗',  name: 'Starlink Train (Celestrak)',    shortName: 'Starlink' },
   { key: 'weather',    icon: '☁️', name: 'Weather Conditions',             shortName: 'Weather' },
   { key: 'radiosonde', icon: '🎈', name: 'Weather Balloon (Radiosonde)',   shortName: 'Radiosonde' },
+  { key: 'kp',         icon: '🌍', name: 'Geomagnetic Activity (NOAA Kp)', shortName: 'Kp Index' },
 ];
 
 export const SOURCES_SHORT = SOURCES.map(({ key, icon, shortName }) => ({ key, icon, name: shortName }));

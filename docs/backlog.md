@@ -255,10 +255,11 @@ Feature: Starlink train verification
 
 ## UH-011 — Geomagnetic Kp index check
 
-**Status:** Open
+**Status:** Done
 **Priority:** Critical
 **Loop:** HDD (directly relevant to Universal Harmonix frequency hypothesis)
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### User Story
 As a UAP investigator using the Universal Harmonix framework,

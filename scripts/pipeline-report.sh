@@ -88,7 +88,8 @@ CONTRACT_OUT=$(node --test \
   tests/contract/opensky.contract.test.js \
   tests/contract/iss.contract.test.js \
   tests/contract/weather.contract.test.js \
-  tests/contract/starlink.contract.test.js 2>&1)
+  tests/contract/starlink.contract.test.js \
+  tests/contract/kp.contract.test.js 2>&1)
 CONTRACT_EXIT=$?
 CONTRACT_END=$(date +%s)
 CONTRACT_STATS=$(parse_test_stats "$CONTRACT_OUT")
@@ -161,7 +162,10 @@ ping_api "Open-Meteo" \
   "https://api.open-meteo.com/v1/forecast?latitude=52.48&longitude=-1.89&hourly=cloud_cover&start_date=2026-01-01&end_date=2026-01-01&timezone=UTC" \
   "200"
 ping_api "Celestrak (Starlink TLE)" \
-  "https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=json" \
+  "https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=TLE" \
+  "200"
+ping_api "NOAA SWPC (Kp index)" \
+  "https://services.swpc.noaa.gov/json/planetary_k_index_1m.json" \
   "200"
 
 OAT_END=$(date +%s)
