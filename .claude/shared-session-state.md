@@ -6,56 +6,61 @@
 
 ## What happened this session
 
-First session. Full v0.1 built from scratch and pushed to GitHub.
+Session 5 (previous session 4 had hung — this session picked up where it left off).
 
-- Repo: github.com/Asspirited/Universal-Harmonix
-- Live URL (pending James enabling Pages): https://asspirited.github.io/Universal-Harmonix/
-- Session protocol files created (.claude/)
-- Domain logic: app/js/domain.js — aircraft, ISS, weather, radiosonde, verdict engine
-- Storage: app/js/storage.js — localStorage wrapper
-- UI: app/index.html — dark theme, GPS, photo upload, verification panel, records tab
-- Pipeline: 5-layer (check-auth.sh + pipeline-report.sh), matching YGW structure
-- Tests: 29 unit + 4 Gherkin acceptance — all green
-- Docs: backlog (UH-001–007), watchlist (WL-001–006), ADRs (001–003), inception SWOT, open questions, research notes
-- UH- prefix registered in leanspirited-standards
-- BL/WL split enforced in canonical session-startup.md
-- SSH auth fixed for all repos
+- WL-006 closed: Open-Meteo historical dates now route to archive endpoint (archive-api.open-meteo.com/v1/archive) for dates >7 days old. Forecast endpoint used for recent/future.
+- UH-008 closed: GitHub Pages confirmed live — HTTP 200 at https://asspirited.github.io/Universal-Harmonix/
+- UH-013 done: Enhanced location capture
+  - GPS auto-triggers on page load (no button tap required)
+  - Reverse geocode via Nominatim — shows town/county address below coordinates
+  - Postcode input via postcodes.io — resolves to lat/lng + address
+  - Lat/lng blur → reverse geocode
+  - GPS retry button remains for manual refresh
+- UH-015 raised: Photo as sighting background (from Downloads idea file)
+- CD3 prioritisation run: UH-013 (done) → UH-014 (score 5) → UH-015 (score 4)
+
+## Pipeline status (end of session)
+
+ALL GREEN:
+- 81 unit | 36 contract | 13 Gherkin
+- 7 verification APIs reachable (OAT): OpenSky, wheretheiss.at, Open-Meteo, Celestrak, NOAA SWPC, Nominatim, postcodes.io
+- Branch pushed: main — commit 849c36c
 
 ## Backlog status
 
-- UH-001 Core log + verify: Done
-- UH-002 Records list: Done
-- UH-003 GPS capture: Done
-- UH-004 Cloud sync: Open (phase 2)
-- UH-005 Photo persistence: Open
-- UH-006 Export for BUFOG: Open
-- UH-007 UH- prefix registration: Done
-
-## ADRs written this session
-
-- ADR-001: Vanilla JS SPA
-- ADR-002: Verification-first architecture
-- ADR-003: localStorage v1
+- UH-001–009: Done
+- UH-010 Starlink: Done
+- UH-011 Kp index: Done
+- UH-012 Mobile/PWA: Done
+- UH-013 Enhanced location: Done (this session)
+- UH-014 Sky Activity panel: Open (next)
+- UH-015 Photo background: Open
 
 ## HDD-001 status
 
 ```
 HDD-001: Verification step delivers signal-to-noise improvement for investigators
 Status:   OPEN
-Evidence: Domain logic built and tested. App deployed. James has not yet submitted a real sighting.
-Next:     James opens https://asspirited.github.io/Universal-Harmonix/ and tests a real sighting
+Evidence: App deployed and improved (UH-013 removes field-use friction).
+          James has not yet submitted a real sighting.
+Next:     James opens https://asspirited.github.io/Universal-Harmonix/ and submits a real sighting
 Owner:    James
 ```
 
+## Key decisions this session
+
+- Nominatim requires User-Agent header — added UniversalHarmonix/0.1 identifier
+- Open-Meteo: >7 days old → archive endpoint; ≤7 days → forecast endpoint
+
 ## Open questions — no changes
 
-UH-Q001–Q010 all still open. Critical: Q001 (does UH theory change verification logic), Q003 (phone or desktop?).
+UH-Q001–Q010 all still open.
 
 ## Top 3 for next session
 
-1. Confirm UH-008 — verify https://asspirited.github.io/Universal-Harmonix/ is live (run #3 should have deployed it)
-2. James tests a real sighting — HDD-001 validation event
-3. WL-006 — test Open-Meteo with a past date; may need archive endpoint
+1. James tests a real sighting — HDD-001 validation (owner: James, no deadline set)
+2. UH-014 — Sky Activity panel (pre-submission sky context)
+3. UH-015 — Photo as sighting background
 
 ## Session goal for next session
 
@@ -63,5 +68,5 @@ James submits at least one real sighting and we learn whether the verification p
 
 ## Blockers before next session
 
-- Confirm Pages deploy run #3 completed green (Actions tab)
-- James needs N2YO key for satellite data: n2yo.com/login/?action=register
+- James needs to open the live app on his phone and test it
+- James still needs N2YO key for satellite data: n2yo.com/login/?action=register
