@@ -10,29 +10,34 @@ import { emptyTagSet }   from './lib/taxonomy.js';
 
 // ── Core (exported for testing) ───────────────────────────────────────────────
 
-export async function tagSightings(records, client, { sample } = {}) {
+async function tagOne(record, client) {
+  const comment = record.comments?.trim() ?? '';
+  if (!comment) return { ...record, tags: emptyTagSet('unknown') };
+  let responseText;
+  try {
+    responseText = await client(buildPrompt(comment));
+  } catch {
+    return { ...record, tags: emptyTagSet('error') };
+  }
+  return { ...record, tags: parseTags(responseText) };
+}
+
+export async function tagSightings(records, client, { sample, batchSize = 5, delayMs = 1000 } = {}) {
   const subset = sample ? records.slice(0, sample) : records;
+  const results = [];
 
-  const tagged = await Promise.all(subset.map(async (record) => {
-    const comment = record.comments?.trim() ?? '';
+  for (let i = 0; i < subset.length; i += batchSize) {
+    const batch = subset.slice(i, i + batchSize);
+    const batchResults = await Promise.all(batch.map(r => tagOne(r, client)));
+    results.push(...batchResults);
 
-    // Empty comment → all-unknown tags, no API call
-    if (!comment) {
-      return { ...record, tags: emptyTagSet('unknown') };
-    }
+    const done = Math.min(i + batchSize, subset.length);
+    process.stdout.write(`\rTagged ${done}/${subset.length} records…`);
 
-    let responseText;
-    try {
-      const prompt = buildPrompt(comment);
-      responseText = await client(prompt);
-    } catch {
-      return { ...record, tags: emptyTagSet('error') };
-    }
-
-    return { ...record, tags: parseTags(responseText) };
-  }));
-
-  return tagged;
+    if (done < subset.length) await new Promise(r => setTimeout(r, delayMs));
+  }
+  process.stdout.write('\n');
+  return results;
 }
 
 // ── CLI entry point ───────────────────────────────────────────────────────────
