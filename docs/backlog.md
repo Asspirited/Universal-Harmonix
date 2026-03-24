@@ -750,7 +750,8 @@ So that I can test whether correlations exist (e.g. high Kp × unexplained verdi
 
 ## UH-039 — Mobile: background image right-aligned, wordmark on dark background
 
-**Status:** In Progress
+**Status:** Done
+**Closed:** 2026-03-24
 **Priority:** High
 **Loop:** BDD
 **Raised:** 2026-03-24
