@@ -77,3 +77,20 @@ Open-Meteo provides historical data via the archive endpoint (different URL from
 The current implementation uses the forecast endpoint, which may not return data for past dates.
 
 Action: Test with a past date. If data is missing, update checkWeather to use the archive endpoint.
+
+---
+
+## WL-007 — wheretheiss.at API outage / reliability
+
+**Status:** Open — active issue
+**Raised:** 2026-03-24
+**Severity:** Medium
+
+wheretheiss.at returned HTTP 000 (timeout) during pipeline run 2026-03-24.
+The app handles this gracefully (returns `unverified` for ISS check).
+The pipeline canary was blocking all work due to this external outage.
+
+Actions:
+1. Canary downgraded: wheretheiss.at is now WARN not RED (external free API — transient outage is acceptable).
+2. Identify a backup ISS position API (e.g. Open Notify: open-notify.org/ISS-Location-Now.html — no historical data; n2yo.com — requires key but already tracked in WL-003).
+3. Long term: consider n2yo.com as the ISS source since it requires the same key as WL-003 satellite data.

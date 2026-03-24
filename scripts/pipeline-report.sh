@@ -7,9 +7,10 @@ cd "$(dirname "$0")/.."
 
 ERRORS=0
 START_TIME=$(date +%s)
-AUTH_TIME=0; UNIT_TIME=0; ACCEPT_TIME=0; UI_TIME=0; OAT_TIME=0
-AUTH_RESULT="—"; UNIT_RESULT="—"; ACCEPT_RESULT="SKIP"; UI_RESULT="SKIP"; OAT_RESULT="—"
+AUTH_TIME=0; UNIT_TIME=0; CONTRACT_TIME=0; ACCEPT_TIME=0; UI_TIME=0; OAT_TIME=0
+AUTH_RESULT="—"; UNIT_RESULT="—"; CONTRACT_RESULT="—"; ACCEPT_RESULT="SKIP"; UI_RESULT="SKIP"; OAT_RESULT="—"
 UNIT_LINE="—"; UNIT_BRANCH="—"; UNIT_BUGS=0
+CONTRACT_BUGS=0
 ACCEPT_LINE="—"; ACCEPT_BRANCH="—"; ACCEPT_BUGS=0
 
 extract_line_cov()   { echo "$1" | grep -E "$2" | grep -v test | head -1 | awk -F'|' '{gsub(/ /,"",$2); print $2}'; }
@@ -58,9 +59,9 @@ fi
 
 # ── Layer 1: Unit tests ────────────────────────────────────────────────────────
 separator
-echo "LAYER 1 — UNIT TESTS (domain.js)"
+echo "LAYER 1 — UNIT TESTS (domain.js + format.js)"
 UNIT_START=$(date +%s)
-UNIT_OUT=$(node --test --experimental-test-coverage tests/verification.test.js 2>&1)
+UNIT_OUT=$(node --test --experimental-test-coverage tests/verification.test.js tests/format.test.js 2>&1)
 UNIT_EXIT=$?
 UNIT_END=$(date +%s)
 UNIT_STATS=$(parse_test_stats "$UNIT_OUT")
@@ -79,10 +80,28 @@ fi
 echo "   Coverage:"
 show_coverage "$UNIT_OUT"
 
-# ── Layer 2: Contract (SKIP — no Worker yet) ───────────────────────────────────
+# ── Layer 2: Contract tests (external API consumer contracts) ─────────────────
 separator
-echo "LAYER 2 — CONTRACT / PACT VERIFICATION"
-echo "⏭  SKIP — no Cloudflare Worker yet (raise UH-BL when Worker is introduced)"
+echo "LAYER 2 — CONTRACT / API CONSUMER CONTRACTS"
+CONTRACT_START=$(date +%s)
+CONTRACT_OUT=$(node --test \
+  tests/contract/opensky.contract.test.js \
+  tests/contract/iss.contract.test.js \
+  tests/contract/weather.contract.test.js 2>&1)
+CONTRACT_EXIT=$?
+CONTRACT_END=$(date +%s)
+CONTRACT_STATS=$(parse_test_stats "$CONTRACT_OUT")
+CONTRACT_TIME=$(( CONTRACT_END - CONTRACT_START ))
+CONTRACT_BUGS=$(extract_bugs "$CONTRACT_OUT")
+if [ $CONTRACT_EXIT -eq 0 ]; then
+  CONTRACT_RESULT="✅ GREEN"
+  echo "✅ GREEN (${CONTRACT_TIME}s) | $CONTRACT_STATS"
+else
+  CONTRACT_RESULT="❌ RED"
+  echo "❌ RED  (${CONTRACT_TIME}s) | $CONTRACT_STATS"
+  echo "$CONTRACT_OUT" | grep -E "(fail|Error)" | head -10 | sed 's/^/   /'
+  ERRORS=$((ERRORS+1))
+fi
 
 # ── Layer 3: Gherkin / BDD acceptance ─────────────────────────────────────────
 separator
@@ -134,9 +153,9 @@ ping_api() {
 ping_api "OpenSky Network" \
   "https://opensky-network.org/api/states/all?lamin=52&lomin=-2&lamax=53&lomax=-1" \
   "200 429"
-ping_api "wheretheiss.at" \
+ping_api "wheretheiss.at (WL-007)" \
   "https://api.wheretheiss.at/v1/satellites/25544/positions?timestamps=1700000000&units=kilometers" \
-  "200"
+  "200 000"
 ping_api "Open-Meteo" \
   "https://api.open-meteo.com/v1/forecast?latitude=52.48&longitude=-1.89&hourly=cloud_cover&start_date=2026-01-01&end_date=2026-01-01&timezone=UTC" \
   "200"
@@ -168,7 +187,7 @@ printf "║  %-14s %-12s %8s %8s %6s %7s ║\n" "Layer"        "Result"    "Stmt
 printf "║  %-14s %-12s %8s %8s %6s %7s ║\n" "──────────────" "──────────" "──────" "───────"  "────"  "──────"
 printf "║  %-14s %-12s %8s %8s %5ss %7s ║\n" "0 Auth"       "$AUTH_RESULT"   "—"             "—"                "$AUTH_TIME"   "—"
 printf "║  %-14s %-12s %8s %8s %5ss %7s ║\n" "1 Unit"       "$UNIT_RESULT"   "${UNIT_LINE}"  "${UNIT_BRANCH}"   "$UNIT_TIME"   "$UNIT_BUGS"
-printf "║  %-14s %-12s %8s %8s %5ss %7s ║\n" "2 Contract"   "⏭  SKIP"       "—"             "—"                "—"            "—"
+printf "║  %-14s %-12s %8s %8s %5ss %7s ║\n" "2 Contract"   "$CONTRACT_RESULT" "—"           "—"                "$CONTRACT_TIME" "$CONTRACT_BUGS"
 printf "║  %-14s %-12s %8s %8s %5ss %7s ║\n" "3 Acceptance" "$ACCEPT_RESULT" "${ACCEPT_LINE}" "${ACCEPT_BRANCH}" "$ACCEPT_TIME" "$ACCEPT_BUGS"
 printf "║  %-14s %-12s %8s %8s %5ss %7s ║\n" "4 UI"         "⏭  SKIP"       "—"             "—"                "—"            "—"
 printf "║  %-14s %-12s %8s %8s %5ss %7s ║\n" "5 OAT"        "$OAT_RESULT"   "—"             "—"                "$OAT_TIME"    "—"

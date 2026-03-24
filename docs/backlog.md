@@ -119,42 +119,48 @@ Feature: GPS location capture
 
 ---
 
-## UH-004 — Cloud sync (future)
+## UH-004 — Backup and restore
 
-**Status:** Open
+**Status:** Done
 **Priority:** Low
-**Loop:** HDD (phase 2)
+**Loop:** HDD
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### Notes
-Depends on HDD-001 confirmation. Not before the verification step proves its value.
-Requires backend infrastructure decision (ADR).
+v1: file-based JSON backup/restore in the Data tab. James and Rod each manage their own
+backup files. Deduplicates by ID on import. Includes photos.
+Phase 2: cloud sync (Cloudflare D1 + Worker) when multi-device or shared access is needed.
 
 ---
 
-## UH-005 — Photo persistence (future)
+## UH-005 — Photo persistence
 
-**Status:** Open
+**Status:** Done
 **Priority:** Medium
 **Loop:** BDD
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### Notes
-v0.1: photo upload is UI-only (not persisted).
-Future: store as base64 in localStorage (small images only) or upload to cloud storage.
+Photos resized client-side (Canvas, max 800px, JPEG 0.7) and stored as base64
+in localStorage alongside the sighting record. Max 3 photos per sighting.
+Thumbnails shown in Records tab when a sighting is expanded.
 
 ---
 
 ## UH-006 — Export for BUFOG reports
 
-**Status:** Open
+**Status:** Done
 **Priority:** Medium
 **Loop:** BDD
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### Notes
-Depends on UH-Q009 (what format does BUFOG use?).
-Likely: PDF or structured JSON export of a sighting with full verification panel.
+Export report (PDF): opens print-ready BUFOG-branded report in new tab, auto-triggers browser print dialog.
+Download JSON: downloads full sighting record including verification and photos.
+UH-Q009 still open — when James confirms BUFOG's preferred format, adjust accordingly.
 
 ---
 

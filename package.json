@@ -4,12 +4,13 @@
   "description": "UAP investigation and verification app — Universal Harmonix theory by James Brodie",
   "type": "module",
   "scripts": {
-    "test": "node --test tests/verification.test.js",
+    "test": "node --test tests/verification.test.js tests/format.test.js",
+    "test:contract": "node --test tests/contract/opensky.contract.test.js tests/contract/iss.contract.test.js tests/contract/weather.contract.test.js",
     "test:acceptance": "node --test tests/acceptance/sighting-log.test.js",
-    "test:all": "node --test tests/verification.test.js tests/acceptance/sighting-log.test.js",
-    "test:coverage": "node --test --experimental-test-coverage tests/verification.test.js",
+    "test:all": "node --test tests/verification.test.js tests/format.test.js tests/acceptance/sighting-log.test.js",
+    "test:coverage": "node --test --experimental-test-coverage tests/verification.test.js tests/format.test.js",
     "pipeline": "bash scripts/pipeline-report.sh",
-    "check": "node --check app/js/domain.js app/js/storage.js"
+    "check": "node --check app/js/domain.js app/js/storage.js app/js/format.js"
   },
   "engines": {
     "node": ">=20.0.0"

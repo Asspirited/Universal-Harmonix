@@ -486,8 +486,11 @@
 </main>
 
 <script type="module">
-  import { verifySighting } from './js/domain.js';
+  import { verifySighting }                          from './js/domain.js';
   import { saveSighting, loadSightings, mergeSightings } from './js/storage.js';
+  import { resizeToBase64, MAX_PHOTOS }              from './js/photo.js';
+  import { renderVerificationPanel, renderRecords }  from './js/render.js';
+  import { triggerPdfExport, downloadSightingJson, downloadBackup } from './js/export.js';
 
   // ── Tab switching ──────────────────────────────────────────────────────────
   document.querySelectorAll('.tab').forEach(tab => {
@@ -496,7 +499,7 @@
       document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
       tab.classList.add('active');
       document.getElementById(`panel-${tab.dataset.tab}`).classList.add('active');
-      if (tab.dataset.tab === 'records') renderRecords();
+      if (tab.dataset.tab === 'records') renderRecords(loadSightings(), document.getElementById('records-container'));
     });
   });
 
@@ -526,42 +529,16 @@
   });
 
   // ── Photo handling ─────────────────────────────────────────────────────────
-  let pendingPhotos = []; // base64 strings, max 3
-
-  function resizeToBase64(file) {
-    return new Promise(resolve => {
-      const reader = new FileReader();
-      reader.onload = ev => {
-        const image = new Image();
-        image.onload = () => {
-          const MAX = 800;
-          let { width, height } = image;
-          if (width > MAX || height > MAX) {
-            if (width > height) { height = Math.round(height * MAX / width); width = MAX; }
-            else                { width  = Math.round(width  * MAX / height); height = MAX; }
-          }
-          const canvas = document.createElement('canvas');
-          canvas.width = width; canvas.height = height;
-          canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-          resolve(canvas.toDataURL('image/jpeg', 0.7));
-        };
-        image.src = ev.target.result;
-      };
-      reader.readAsDataURL(file);
-    });
-  }
+  let pendingPhotos = [];
 
   document.getElementById('photos').addEventListener('change', async e => {
     const preview = document.getElementById('photo-preview');
     const label   = document.getElementById('photo-label');
     preview.innerHTML = '';
     pendingPhotos = [];
-    const files = Array.from(e.target.files).slice(0, 3);
-    if (files.length === 0) {
-      label.textContent = '📷 Tap to attach photos';
-      return;
-    }
-    label.textContent = `Processing…`;
+    const files = Array.from(e.target.files).slice(0, MAX_PHOTOS);
+    if (files.length === 0) { label.textContent = '📷 Tap to attach photos'; return; }
+    label.textContent = 'Processing…';
     pendingPhotos = await Promise.all(files.map(resizeToBase64));
     label.textContent = `${pendingPhotos.length} photo${pendingPhotos.length > 1 ? 's' : ''} attached`;
     pendingPhotos.forEach(b64 => {
@@ -572,14 +549,13 @@
   });
 
   // ── Form submit ────────────────────────────────────────────────────────────
-  const form        = document.getElementById('sighting-form');
-  const submitBtn   = document.getElementById('submit-btn');
-  const verifyBanner= document.getElementById('verifying-banner');
-  const verifyPanel = document.getElementById('verification-panel');
+  const form         = document.getElementById('sighting-form');
+  const submitBtn    = document.getElementById('submit-btn');
+  const verifyBanner = document.getElementById('verifying-banner');
+  const verifyPanel  = document.getElementById('verification-panel');
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
-
     const datetime    = document.getElementById('datetime').value;
     const lat         = parseFloat(document.getElementById('lat').value);
     const lng         = parseFloat(document.getElementById('lng').value);
@@ -592,7 +568,6 @@
       return;
     }
 
-    // Show spinner
     form.style.display = 'none';
     verifyBanner.style.display = 'block';
     verifyPanel.classList.remove('visible');
@@ -601,7 +576,7 @@
     let verification;
     try {
       verification = await verifySighting({ datetime, lat, lng });
-    } catch (err) {
+    } catch {
       verification = {
         aircraft:   { status: 'unverified', detail: 'Check failed' },
         iss:        { status: 'unverified', detail: 'Check failed' },
@@ -611,16 +586,10 @@
       };
     }
 
-    const sightingRecord = {
-      datetime, lat, lng, type, duration, description,
-      verification,
-      photos: pendingPhotos,
-    };
-
-    saveSighting(sightingRecord);
+    saveSighting({ datetime, lat, lng, type, duration, description, verification, photos: pendingPhotos });
 
     verifyBanner.style.display = 'none';
-    renderVerificationPanel(verification);
+    renderVerificationPanel(verification, document.getElementById('verdict-badge'), document.getElementById('source-list'));
     verifyPanel.classList.add('visible');
     submitBtn.disabled = false;
   });
@@ -635,136 +604,7 @@
     document.getElementById('gps-btn').innerHTML = '<span>📍</span> Use my location';
   });
 
-  // ── Verification panel renderer ────────────────────────────────────────────
-  function renderVerificationPanel(v) {
-    const verdictEl = document.getElementById('verdict-badge');
-    const sourcesEl = document.getElementById('source-list');
-
-    const verdictLabel = v.verdict;
-    const verdictClass = verdictLabel === 'LIKELY EXPLAINED' ? 'EXPLAINED'
-                       : verdictLabel === 'PARTIAL MATCH'    ? 'PARTIAL'
-                       : verdictLabel;
-
-    const verdictEmoji = {
-      UNEXPLAINED:      '🔵',
-      'PARTIAL MATCH':  '🟡',
-      'LIKELY EXPLAINED':'🔴',
-      UNVERIFIED:        '⚪',
-    }[verdictLabel] || '⚪';
-
-    verdictEl.innerHTML = `<div class="verdict-badge verdict-${verdictClass}">${verdictEmoji} ${verdictLabel}</div>`;
-
-    const sources = [
-      { key: 'aircraft',   icon: '✈️',  name: 'Aircraft (OpenSky ADS-B)' },
-      { key: 'iss',        icon: '🛰️', name: 'ISS Position' },
-      { key: 'weather',    icon: '☁️', name: 'Weather Conditions' },
-      { key: 'radiosonde', icon: '🎈', name: 'Weather Balloon (Radiosonde)' },
-    ];
-
-    sourcesEl.innerHTML = sources.map(({ key, icon, name }) => {
-      const res = v[key];
-      const tag = tagFor(res.status);
-      let extra = '';
-      if (key === 'aircraft' && res.aircraft?.length) {
-        extra = `<div class="aircraft-list">${res.aircraft.slice(0, 5).map(a =>
-          `<span>${a.callsign} · ${a.altitudeM != null ? a.altitudeM + 'm' : '?m'} · ${a.speedMs != null ? a.speedMs + 'm/s' : '?'}</span>`
-        ).join('')}</div>`;
-      }
-      return `<div class="source-card">
-        <div class="source-icon">${icon}</div>
-        <div class="source-body">
-          <div class="source-name">${name}</div>
-          <div class="source-tag ${tag.cls}">${tag.label}</div>
-          <div class="source-detail">${res.detail || ''}</div>
-          ${extra}
-        </div>
-      </div>`;
-    }).join('');
-  }
-
-  function tagFor(status) {
-    return {
-      match:          { cls: 'tag-match',      label: 'MATCH' },
-      possible_match: { cls: 'tag-possible',   label: 'POSSIBLE MATCH' },
-      no_match:       { cls: 'tag-no-match',   label: 'NO MATCH' },
-      unverified:     { cls: 'tag-unverified', label: 'COULD NOT VERIFY' },
-    }[status] || { cls: 'tag-unverified', label: status };
-  }
-
-  // ── Records renderer ───────────────────────────────────────────────────────
-  function renderRecords() {
-    const container = document.getElementById('records-container');
-    const sightings = loadSightings();
-
-    if (sightings.length === 0) {
-      container.innerHTML = `<div class="records-empty">No sightings logged yet.<br>Use the Log Sighting tab to record your first observation.</div>`;
-      return;
-    }
-
-    container.innerHTML = sightings.map((s, i) => {
-      const v = s.verification;
-      const verdictClass = !v ? 'UNVERIFIED'
-                         : v.verdict === 'LIKELY EXPLAINED' ? 'EXPLAINED'
-                         : v.verdict === 'PARTIAL MATCH'    ? 'PARTIAL'
-                         : v.verdict || 'UNVERIFIED';
-      const dt = s.datetime ? new Date(s.datetime).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) : '—';
-      const short = s.description ? s.description.slice(0, 80) + (s.description.length > 80 ? '…' : '') : '';
-
-      let sourcesHtml = '';
-      if (v) {
-        const sources = [
-          { key: 'aircraft',   icon: '✈️',  name: 'Aircraft' },
-          { key: 'iss',        icon: '🛰️', name: 'ISS' },
-          { key: 'weather',    icon: '☁️', name: 'Weather' },
-          { key: 'radiosonde', icon: '🎈', name: 'Radiosonde' },
-        ];
-        sourcesHtml = `<div class="source-list" style="margin-top:8px;">` +
-          sources.map(({ key, icon, name }) => {
-            const res = v[key];
-            if (!res) return '';
-            const tag = tagFor(res.status);
-            return `<div class="source-card">
-              <div class="source-icon">${icon}</div>
-              <div class="source-body">
-                <div class="source-name">${name}</div>
-                <div class="source-tag ${tag.cls}">${tag.label}</div>
-                <div class="source-detail">${res.detail || ''}</div>
-              </div>
-            </div>`;
-          }).join('') + `</div>`;
-      }
-
-      return `<div class="record-card">
-        <div class="record-header" onclick="toggleRecord(${i})">
-          <div class="record-verdict-dot dot-${verdictClass}"></div>
-          <div class="record-meta">
-            <div class="record-title">${s.type ? s.type.charAt(0).toUpperCase() + s.type.slice(1) : 'Sighting'} · ${dt}</div>
-            <div class="record-sub">${s.lat?.toFixed(4) ?? '—'}, ${s.lng?.toFixed(4) ?? '—'} · ${v?.verdict || 'UNVERIFIED'}</div>
-          </div>
-          <div class="record-chevron" id="chevron-${i}">›</div>
-        </div>
-        <div class="record-body" id="record-body-${i}">
-          ${s.description ? `<div class="record-description">"${s.description}"</div>` : ''}
-          ${s.duration ? `<div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Duration: ${s.duration}</div>` : ''}
-          ${s.photos?.length ? `<div class="photo-preview" style="margin-bottom:12px;">${s.photos.map(b64 => `<img src="${b64}">`).join('')}</div>` : ''}
-          ${sourcesHtml}
-          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
-            <button type="button" onclick="exportPdf(${i})"
-              style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);
-                     color:var(--text-muted);font-size:13px;padding:8px 14px;cursor:pointer;">
-              ↓ Export report (PDF)
-            </button>
-            <button type="button" onclick="exportJson(${i})"
-              style="background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);
-                     color:var(--text-muted);font-size:13px;padding:8px 14px;cursor:pointer;">
-              ↓ Download JSON
-            </button>
-          </div>
-        </div>
-      </div>`;
-    }).join('');
-  }
-
+  // ── Records — toggle expand and export (global for onclick in rendered HTML) ──
   window.toggleRecord = function(i) {
     const body    = document.getElementById(`record-body-${i}`);
     const chevron = document.getElementById(`chevron-${i}`);
@@ -772,15 +612,19 @@
     chevron.style.transform = isOpen ? 'rotate(90deg)' : '';
   };
 
+  window.exportPdf = function(i) {
+    const s = loadSightings()[i];
+    if (s) triggerPdfExport(s);
+  };
+
+  window.exportJson = function(i) {
+    const s = loadSightings()[i];
+    if (s) downloadSightingJson(s);
+  };
+
   // ── Data tab — backup / restore ────────────────────────────────────────────
   document.getElementById('backup-btn').addEventListener('click', () => {
-    const sightings = loadSightings();
-    const blob = new Blob([JSON.stringify(sightings, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    a.download = `uh-backup-${new Date().toISOString().slice(0, 10)}.json`;
-    a.click();
-    URL.revokeObjectURL(a.href);
+    downloadBackup(loadSightings());
   });
 
   document.getElementById('restore-input').addEventListener('change', e => {
@@ -804,106 +648,6 @@
     };
     reader.readAsText(file);
   });
-
-  // ── Export helpers ─────────────────────────────────────────────────────────
-
-  function sourceRow(icon, name, res) {
-    if (!res) return '';
-    const tagLabels = { match: 'MATCH', possible_match: 'POSSIBLE MATCH', no_match: 'NO MATCH', unverified: 'COULD NOT VERIFY' };
-    const tagColors = { match: '#e05555', possible_match: '#f0a040', no_match: '#4caf84', unverified: '#6b7399' };
-    const label = tagLabels[res.status] || res.status;
-    const color = tagColors[res.status] || '#6b7399';
-    return `<tr>
-      <td style="padding:8px 12px;font-size:13px;">${icon} ${name}</td>
-      <td style="padding:8px 12px;"><span style="font-size:11px;font-weight:700;color:${color};letter-spacing:0.05em;">${label}</span></td>
-      <td style="padding:8px 12px;font-size:13px;color:#555;">${res.detail || ''}</td>
-    </tr>`;
-  }
-
-  window.exportPdf = function(i) {
-    const sightings = loadSightings();
-    const s = sightings[i];
-    if (!s) return;
-    const v = s.verification || {};
-    const dt = s.datetime ? new Date(s.datetime).toLocaleString('en-GB', { dateStyle: 'long', timeStyle: 'short' }) : '—';
-    const verdict = v.verdict || 'UNVERIFIED';
-    const verdictColors = { 'UNEXPLAINED': '#9c6cf7', 'PARTIAL MATCH': '#f0a040', 'LIKELY EXPLAINED': '#e05555', 'UNVERIFIED': '#6b7399' };
-    const verdictColor = verdictColors[verdict] || '#6b7399';
-
-    const photosHtml = s.photos?.length
-      ? `<div style="margin:16px 0;display:flex;gap:8px;flex-wrap:wrap;">${s.photos.map(b64 =>
-          `<img src="${b64}" style="width:120px;height:120px;object-fit:cover;border-radius:4px;border:1px solid #ddd;">`
-        ).join('')}</div>` : '';
-
-    const w = window.open('', '_blank');
-    w.document.write(`<!DOCTYPE html><html><head><meta charset="UTF-8">
-      <title>UH Sighting Report — ${dt}</title>
-      <style>
-        body { font-family: system-ui, sans-serif; max-width: 720px; margin: 40px auto; color: #1a1a2e; padding: 0 20px; }
-        h1 { font-size: 18px; font-weight: 700; margin: 0 0 4px; }
-        .sub { font-size: 13px; color: #666; margin-bottom: 24px; }
-        .verdict { display: inline-block; font-size: 14px; font-weight: 700; letter-spacing: 0.08em;
-                   color: ${verdictColor}; border: 1px solid ${verdictColor}; border-radius: 100px;
-                   padding: 6px 16px; margin-bottom: 24px; }
-        .section-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-                         color: #888; margin: 20px 0 8px; }
-        .field { margin-bottom: 10px; font-size: 14px; }
-        .field strong { display: inline-block; min-width: 110px; color: #444; font-size: 13px; }
-        .description { background: #f7f7fa; border-left: 3px solid #ccc; padding: 10px 14px;
-                       font-style: italic; font-size: 14px; color: #333; border-radius: 0 4px 4px 0; }
-        table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        tr { border-bottom: 1px solid #eee; }
-        th { text-align: left; padding: 8px 12px; font-size: 11px; letter-spacing: 0.08em;
-             text-transform: uppercase; color: #888; background: #f7f7fa; }
-        .footer { margin-top: 40px; font-size: 11px; color: #aaa; border-top: 1px solid #eee; padding-top: 12px; }
-        @media print { body { margin: 20px; } }
-      </style>
-    </head><body>
-      <h1>Universal Harmonix — Sighting Report</h1>
-      <div class="sub">BUFOG Investigation · Generated ${new Date().toLocaleString('en-GB')}</div>
-
-      <div class="section-title">Observation</div>
-      <div class="field"><strong>Date / Time</strong>${dt}</div>
-      <div class="field"><strong>Location</strong>${s.lat?.toFixed(6) ?? '—'}, ${s.lng?.toFixed(6) ?? '—'}</div>
-      <div class="field"><strong>Type</strong>${s.type ? s.type.charAt(0).toUpperCase() + s.type.slice(1) : '—'}</div>
-      ${s.duration ? `<div class="field"><strong>Duration</strong>${s.duration}</div>` : ''}
-      <div class="description">${s.description || ''}</div>
-
-      ${photosHtml}
-
-      <div class="section-title">Verdict</div>
-      <div class="verdict">${verdict}</div>
-
-      <div class="section-title">Verification Sources</div>
-      <table>
-        <thead><tr><th>Source</th><th>Result</th><th>Detail</th></tr></thead>
-        <tbody>
-          ${sourceRow('✈', 'Aircraft (OpenSky ADS-B)', v.aircraft)}
-          ${sourceRow('🛰', 'ISS Position', v.iss)}
-          ${sourceRow('☁', 'Weather Conditions', v.weather)}
-          ${sourceRow('🎈', 'Weather Balloon (Radiosonde)', v.radiosonde)}
-        </tbody>
-      </table>
-
-      <div class="footer">Universal Harmonix · universalharmonix.app · Report ID: ${s.id || '—'}</div>
-    </body></html>`);
-    w.document.close();
-    w.focus();
-    setTimeout(() => w.print(), 400);
-  };
-
-  window.exportJson = function(i) {
-    const sightings = loadSightings();
-    const s = sightings[i];
-    if (!s) return;
-    const blob = new Blob([JSON.stringify(s, null, 2)], { type: 'application/json' });
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
-    const dt = s.datetime ? s.datetime.replace(/[T:]/g, '-').slice(0, 16) : 'sighting';
-    a.download = `uh-sighting-${dt}.json`;
-    a.click();
-    URL.revokeObjectURL(a.href);
-  };
 
   // ── Set default datetime to now ────────────────────────────────────────────
   const now = new Date();
