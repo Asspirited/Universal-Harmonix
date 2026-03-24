@@ -6,7 +6,7 @@
 
 ## UH-001 — Core log and verify
 
-**Status:** In Progress
+**Status:** Done
 **Priority:** Critical
 **Loop:** HDD (validates HDD-001)
 **Raised:** 2026-03-24
@@ -55,7 +55,7 @@ Feature: Sighting log and verification
 
 ## UH-002 — Sighting records list
 
-**Status:** In Progress
+**Status:** Done
 **Priority:** High
 **Loop:** BDD
 **Raised:** 2026-03-24
@@ -90,7 +90,7 @@ Feature: Sighting records
 
 ## UH-003 — GPS location capture
 
-**Status:** In Progress (part of UH-001)
+**Status:** Done
 **Priority:** High
 **Loop:** BDD
 **Raised:** 2026-03-24
@@ -160,7 +160,7 @@ Likely: PDF or structured JSON export of a sighting with full verification panel
 
 ## UH-007 — Register UH- prefix in leanspirited-standards
 
-**Status:** In Progress
+**Status:** Done
 **Priority:** Critical
 **Loop:** Process
 **Raised:** 2026-03-24

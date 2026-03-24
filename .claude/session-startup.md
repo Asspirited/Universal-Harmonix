@@ -37,7 +37,8 @@ Read `.claude/shared-session-state.md` — carries what was done last session,
 what James has tested, what's open.
 
 ### Step 4: Backlog review
-Read `docs/backlog.md`. Identify:
+Read `docs/backlog.md` (BL — features/bugs). Read `docs/watchlist.md` (WL — auth/API/platform risks).
+Identify:
 - Any items marked Critical or In Progress
 - Top 3 by priority
 
