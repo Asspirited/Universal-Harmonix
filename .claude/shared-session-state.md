@@ -53,9 +53,9 @@ UH-Q001–Q010 all still open. Critical: Q001 (does UH theory change verificatio
 
 ## Top 3 for next session
 
-1. James tests a real sighting — HDD-001 validation event
-2. WL-006 — test Open-Meteo with past date; may need archive endpoint
-3. UH-Q003 — ask James about primary device (informs mobile UX urgency)
+1. Confirm UH-008 — verify https://asspirited.github.io/Universal-Harmonix/ is live (run #3 should have deployed it)
+2. James tests a real sighting — HDD-001 validation event
+3. WL-006 — test Open-Meteo with a past date; may need archive endpoint
 
 ## Session goal for next session
 
@@ -63,5 +63,5 @@ James submits at least one real sighting and we learn whether the verification p
 
 ## Blockers before next session
 
-- James needs to enable GitHub Pages: github.com/Asspirited/Universal-Harmonix → Settings → Pages → Source: GitHub Actions
+- Confirm Pages deploy run #3 completed green (Actions tab)
 - James needs N2YO key for satellite data: n2yo.com/login/?action=register

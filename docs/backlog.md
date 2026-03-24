@@ -1,6 +1,6 @@
 # Universal Harmonix — Backlog
 # Prefix: UH-
-# Last updated: 2026-03-24
+# Last updated: 2026-03-24 (session 2)
 
 ---
 
@@ -167,3 +167,16 @@ Likely: PDF or structured JSON export of a sighting with full verification panel
 
 ### Notes
 Add `UH-` row to prefix registry in `/home/rodent/leanspirited-standards/standards/backlog-format.md`.
+
+---
+
+## UH-008 — GitHub Pages deployment confirmed live
+
+**Status:** In Progress
+**Priority:** Critical
+**Loop:** Process
+**Raised:** 2026-03-24
+
+### Notes
+Pages configured (Source: GitHub Actions). Deploy workflow run #3 triggered via empty commit.
+Confirm live at https://asspirited.github.io/Universal-Harmonix/ before next session.
