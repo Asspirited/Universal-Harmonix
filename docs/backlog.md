@@ -660,15 +660,17 @@ So that I can explore patterns without leaving the tool.
 
 ## UH-033 — Enrich historical records with Category I (UH layer)
 
-**Status:** Open
+**Status:** Done
 **Priority:** High
 **Loop:** Data
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### Notes
 - For each tagged sighting auto-populate: NOAA Kp (historical, back to 1994), Open-Meteo weather, moon phase (calculated)
 - Same API pattern as verifySighting() — run against historical datetime + lat/lng
 - Store enriched data in `/data/nuforc-uk-enriched.json`
+- Coverage: Kp 97.5%, cloud 97.5%, moon 99.9% — 2,048/2,050 enriched
 
 ---
 
