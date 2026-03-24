@@ -11,12 +11,17 @@ import { verifySighting } from '../../app/js/domain.js';
 // Helper: build a mock response that supports both .json() and .text()
 function mockRes(url) {
   const nowTag = new Date().toISOString().replace('T', ' ').replace('Z', '');
+  // Order matters: more-specific patterns checked before 'swpc.noaa'
   const bodies = {
-    opensky:     { json: { states: [] } },
-    wheretheiss: { json: [{ latitude: 0, longitude: 0, altitude: 408 }] },
-    'open-meteo':{ json: { hourly: { cloud_cover: new Array(24).fill(5), visibility: new Array(24).fill(30000), wind_speed_10m: new Array(24).fill(3) } } },
-    celestrak:   { text: '' },  // empty TLE → no_match
-    'swpc.noaa': { json: [[nowTag, 2.0, 'estimated']] },  // Kp 2 → no_match
+    opensky:           { json: { states: [] } },
+    wheretheiss:       { json: [{ latitude: 0, longitude: 0, altitude: 408 }] },
+    // Open-Meteo: cloud/visibility/wind for checkWeather; cape for checkSprites
+    'open-meteo':      { json: { hourly: { cloud_cover: new Array(24).fill(5), visibility: new Array(24).fill(30000), wind_speed_10m: new Array(24).fill(3), cape: new Array(24).fill(50) } } },
+    celestrak:         { text: '' },  // empty TLE → no_match for starlink + bright_satellites
+    // Solar wind endpoints — must come before 'swpc.noaa'
+    'solar-wind/mag':  { json: [['time_tag','bx','by','bz'], [nowTag, '0.5', '-1.2', '2.0']] },  // Bz +2 → no_match
+    'solar-wind/plasma':{ json: [['time_tag','density','speed'], [nowTag, '5.0', '420']] },
+    'swpc.noaa':       { json: [[nowTag, 2.0, 'estimated']] },  // Kp 2 → no_match (kp + aurora)
   };
   const key = Object.keys(bodies).find(k => url.includes(k));
   const body = bodies[key] || { json: {} };
@@ -57,19 +62,19 @@ describe('Feature: Sighting log and verification', () => {
     // When: the sighting is submitted for verification
     const result = await verifySighting(sighting, cleanSkyFetcher);
 
-    // Then: verification panel includes results from all data sources
-    assert.ok(result.aircraft,   'verification panel must include aircraft result');
-    assert.ok(result.iss,        'verification panel must include ISS result');
-    assert.ok(result.starlink,   'verification panel must include starlink result');
-    assert.ok(result.weather,    'verification panel must include weather result');
-    assert.ok(result.radiosonde, 'verification panel must include radiosonde result');
-    assert.ok(result.kp,         'verification panel must include kp result');
+    // Then: verification panel includes results from all 13 data sources
+    const expectedSources = ['aircraft', 'iss', 'starlink', 'bright_satellites', 'weather',
+      'radiosonde', 'kp', 'solar_wind', 'aurora', 'sprites', 'meteor_shower', 'moon', 'nlc'];
+    for (const src of expectedSources) {
+      assert.ok(result[src], `verification panel must include ${src} result`);
+    }
 
     // And: each source shows a valid status
     const validStatuses = ['match', 'no_match', 'possible_match', 'unverified'];
-    for (const [source, res] of Object.entries({ aircraft: result.aircraft, iss: result.iss, starlink: result.starlink, weather: result.weather, radiosonde: result.radiosonde, kp: result.kp })) {
-      assert.ok(validStatuses.includes(res.status), `${source} has invalid status: ${res.status}`);
-      assert.ok(res.detail, `${source} must include a human-readable detail string`);
+    for (const src of expectedSources) {
+      const res = result[src];
+      assert.ok(validStatuses.includes(res.status), `${src} has invalid status: ${res.status}`);
+      assert.ok(res.detail, `${src} must include a human-readable detail string`);
     }
 
     // And: the sighting is assigned one of the four valid verdicts
@@ -85,12 +90,12 @@ describe('Feature: Sighting log and verification', () => {
     // When: all external APIs are unavailable
     const result = await verifySighting(sighting, failingFetcher);
 
-    // Then: external sources show "unverified"
-    assert.strictEqual(result.aircraft.status, 'unverified', 'failed aircraft API must show unverified');
-    assert.strictEqual(result.iss.status,      'unverified', 'failed ISS API must show unverified');
-    assert.strictEqual(result.starlink.status, 'unverified', 'failed starlink API must show unverified');
-    assert.strictEqual(result.weather.status,  'unverified', 'failed weather API must show unverified');
-    assert.strictEqual(result.kp.status,       'unverified', 'failed kp API must show unverified');
+    // Then: all API-dependent sources show "unverified"
+    const apiSources = ['aircraft', 'iss', 'starlink', 'bright_satellites',
+      'weather', 'kp', 'solar_wind', 'aurora', 'sprites'];
+    for (const src of apiSources) {
+      assert.strictEqual(result[src].status, 'unverified', `failed ${src} API must show unverified`);
+    }
 
     // And: radiosonde (static logic) still returns a result
     assert.ok(['no_match', 'possible_match'].includes(result.radiosonde.status),

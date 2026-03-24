@@ -90,6 +90,7 @@ CONTRACT_OUT=$(node --test \
   tests/contract/weather.contract.test.js \
   tests/contract/starlink.contract.test.js \
   tests/contract/kp.contract.test.js \
+  tests/contract/solar-wind.contract.test.js \
   tests/contract/nominatim.contract.test.js \
   tests/contract/postcodes.contract.test.js 2>&1)
 CONTRACT_EXIT=$?

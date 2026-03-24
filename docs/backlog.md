@@ -444,6 +444,76 @@ Feature: Sky Activity panel
 
 ---
 
+## UH-015 — Extended verification suite (v0.2 — 14-point engine)
+
+**Status:** In Progress
+**Priority:** Critical
+**Loop:** HDD (directly validates HDD-001 — more checks = better signal-to-noise)
+**Raised:** 2026-03-24
+
+### User Story
+As a UAP investigator,
+I want to cross-check my sighting against a comprehensive suite of atmospheric, astronomical, and space weather phenomena,
+So that I can be confident that anything unexplained has genuinely survived thorough scrutiny.
+
+### Acceptance Criteria
+
+```gherkin
+Feature: Extended verification suite
+
+  Scenario: Bright satellite pass detected
+    Given I submit a sighting
+    When a top-100 naked-eye satellite was passing overhead at that time
+    Then the verification panel shows a Bright Satellites card with MATCH status
+
+  Scenario: Meteor shower active at sighting time
+    Given I submit a sighting during an active meteor shower window
+    Then the verification panel shows a Meteor Showers card
+    And the card status is POSSIBLE MATCH
+    And the detail names the shower and its peak rate
+
+  Scenario: Full moon at sighting time
+    Given I submit a sighting when moon illumination is ≥ 85%
+    Then the Lunar card status is POSSIBLE MATCH
+    And the detail includes moon phase name and illumination percentage
+
+  Scenario: Aurora visible at sighting latitude
+    Given I submit a sighting during a geomagnetic storm (Kp ≥ 6)
+    And my latitude is ≥ 50°N
+    Then the Aurora card status is POSSIBLE MATCH
+    And the detail explains why aurora may have been visible
+
+  Scenario: Sprite conditions detected
+    Given I submit a sighting during a severe thunderstorm (CAPE ≥ 1000 J/kg)
+    Then the Sprites card status is POSSIBLE MATCH
+    And the detail flags the storm-level CAPE value
+
+  Scenario: Noctilucent cloud conditions met
+    Given I submit a sighting in May–August at latitude ≥ 48°N
+    And the time is within 2 hours of sunset or sunrise
+    Then the Noctilucent Clouds card status is POSSIBLE MATCH
+
+  Scenario: Verification sources grouped by category
+    Given I submit any sighting
+    Then the verification panel shows sources in labelled groups:
+    Sky Objects / Weather / Space Weather / Atmospheric / Astronomical
+```
+
+### Notes
+New sources:
+- `checkBrightSatellites`: Celestrak visual group (top 100), same SGP4 as Starlink
+- `checkMeteorShower`: from sky.js activeMeteorShowers — move into verification
+- `checkMoon`: from sky.js moonPhase — illumination ≥ 85% = POSSIBLE MATCH
+- `checkSolarWind`: NOAA SWPC mag-1-day.json — Bz southward component
+- `checkAurora`: NOAA Kp + latitude threshold — UK-relevant from Kp ≈ 6
+- `checkSprites`: Open-Meteo CAPE index — CAPE ≥ 1000 = storm-level
+- `checkNLC`: static rule — May–Aug, lat ≥ 48°N, twilight hours
+CORS: Celestrak needs Workers proxy (same as YGW pattern). NOAA SWPC is CORS-permissive.
+UI: group sources in 5 labelled sections. Space weather chips (Kp/wind/Bz) as colour-coded tags.
+Gherkin gate applies to all new code paths.
+
+---
+
 ## UH-015 — Photo as sighting background
 
 **Status:** Open

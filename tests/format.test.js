@@ -94,8 +94,8 @@ describe('VERDICT_COLORS', () => {
 // ── SOURCES / SOURCES_SHORT ───────────────────────────────────────────────────
 
 describe('SOURCES', () => {
-  it('contains exactly 6 sources', () => {
-    assert.equal(SOURCES.length, 6);
+  it('contains exactly 13 sources', () => {
+    assert.equal(SOURCES.length, 13);
   });
 
   it('each source has key, icon, name', () => {

@@ -32,13 +32,28 @@ export const VERDICT_COLORS = {
 
 // Single source of truth for all display metadata.
 // Add new sources here — render.js, export.js, and the PDF report pick them up automatically.
+export const SOURCE_GROUPS = [
+  { id: 'sky_objects',   label: 'Sky Objects' },
+  { id: 'weather',       label: 'Weather' },
+  { id: 'space_weather', label: 'Space Weather' },
+  { id: 'atmospheric',   label: 'Atmospheric' },
+  { id: 'astronomical',  label: 'Astronomical' },
+];
+
 export const SOURCES = [
-  { key: 'aircraft',   icon: '✈️',  name: 'Aircraft (OpenSky ADS-B)',      shortName: 'Aircraft' },
-  { key: 'iss',        icon: '🛰️', name: 'ISS Position',                  shortName: 'ISS' },
-  { key: 'starlink',   icon: '🔗',  name: 'Starlink Train (Celestrak)',    shortName: 'Starlink' },
-  { key: 'weather',    icon: '☁️', name: 'Weather Conditions',             shortName: 'Weather' },
-  { key: 'radiosonde', icon: '🎈', name: 'Weather Balloon (Radiosonde)',   shortName: 'Radiosonde' },
-  { key: 'kp',         icon: '🌍', name: 'Geomagnetic Activity (NOAA Kp)', shortName: 'Kp Index' },
+  { key: 'aircraft',          group: 'sky_objects',   icon: '✈️',  name: 'Aircraft (OpenSky ADS-B)',        shortName: 'Aircraft' },
+  { key: 'iss',               group: 'sky_objects',   icon: '🛰️', name: 'ISS Position',                    shortName: 'ISS' },
+  { key: 'starlink',          group: 'sky_objects',   icon: '🔗',  name: 'Starlink Train (Celestrak)',      shortName: 'Starlink' },
+  { key: 'bright_satellites', group: 'sky_objects',   icon: '⭐',  name: 'Bright Satellites (Celestrak)',   shortName: 'Bright Sats' },
+  { key: 'weather',           group: 'weather',       icon: '☁️', name: 'Weather Conditions',               shortName: 'Weather' },
+  { key: 'radiosonde',        group: 'weather',       icon: '🎈', name: 'Weather Balloon (Radiosonde)',     shortName: 'Radiosonde' },
+  { key: 'sprites',           group: 'weather',       icon: '⚡',  name: 'Sprites / Elves (CAPE)',          shortName: 'Sprites' },
+  { key: 'kp',                group: 'space_weather', icon: '🌍', name: 'Geomagnetic Activity (NOAA Kp)',   shortName: 'Kp Index' },
+  { key: 'solar_wind',        group: 'space_weather', icon: '☀️', name: 'Solar Wind (NOAA SWPC)',           shortName: 'Solar Wind' },
+  { key: 'aurora',            group: 'space_weather', icon: '🌌', name: 'Aurora Visibility (Kp + lat)',     shortName: 'Aurora' },
+  { key: 'nlc',               group: 'atmospheric',   icon: '🌫️', name: 'Noctilucent Cloud (NLC)',         shortName: 'NLC' },
+  { key: 'meteor_shower',     group: 'astronomical',  icon: '☄️', name: 'Meteor Shower (IMO calendar)',     shortName: 'Meteor Shower' },
+  { key: 'moon',              group: 'astronomical',  icon: '🌕',  name: 'Moon Phase / Illumination',       shortName: 'Moon' },
 ];
 
 export const SOURCES_SHORT = SOURCES.map(({ key, icon, shortName }) => ({ key, icon, name: shortName }));

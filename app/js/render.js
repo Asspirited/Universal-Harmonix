@@ -1,7 +1,27 @@
 // Universal Harmonix — DOM rendering
 // Browser only: reads and writes DOM elements.
 
-import { tagFor, verdictClass, VERDICT_EMOJI, SOURCES, SOURCES_SHORT } from './format.js';
+import { tagFor, verdictClass, VERDICT_EMOJI, SOURCES, SOURCES_SHORT, SOURCE_GROUPS } from './format.js';
+
+function sourceCardHtml(key, icon, name, res) {
+  if (!res) return '';
+  const tag = tagFor(res.status);
+  let extra = '';
+  if (key === 'aircraft' && res.aircraft?.length) {
+    extra = `<div class="aircraft-list">${res.aircraft.slice(0, 5).map(a =>
+      `<span>${a.callsign} · ${a.altitudeM != null ? a.altitudeM + 'm' : '?m'} · ${a.speedMs != null ? a.speedMs + 'm/s' : '?'}</span>`
+    ).join('')}</div>`;
+  }
+  return `<div class="source-card">
+    <div class="source-icon">${icon}</div>
+    <div class="source-body">
+      <div class="source-name">${name}</div>
+      <div class="source-tag ${tag.cls}">${tag.label}</div>
+      <div class="source-detail">${res.detail || ''}</div>
+      ${extra}
+    </div>
+  </div>`;
+}
 
 export function renderVerificationPanel(v, verdictEl, sourcesEl) {
   const cls   = verdictClass(v.verdict);
@@ -9,24 +29,16 @@ export function renderVerificationPanel(v, verdictEl, sourcesEl) {
 
   verdictEl.innerHTML = `<div class="verdict-badge verdict-${cls}">${emoji} ${v.verdict}</div>`;
 
-  sourcesEl.innerHTML = SOURCES.map(({ key, icon, name }) => {
-    const res = v[key];
-    const tag = tagFor(res.status);
-    let extra = '';
-    if (key === 'aircraft' && res.aircraft?.length) {
-      extra = `<div class="aircraft-list">${res.aircraft.slice(0, 5).map(a =>
-        `<span>${a.callsign} · ${a.altitudeM != null ? a.altitudeM + 'm' : '?m'} · ${a.speedMs != null ? a.speedMs + 'm/s' : '?'}</span>`
-      ).join('')}</div>`;
-    }
-    return `<div class="source-card">
-      <div class="source-icon">${icon}</div>
-      <div class="source-body">
-        <div class="source-name">${name}</div>
-        <div class="source-tag ${tag.cls}">${tag.label}</div>
-        <div class="source-detail">${res.detail || ''}</div>
-        ${extra}
-      </div>
-    </div>`;
+  const byGroup = {};
+  for (const src of SOURCES) {
+    (byGroup[src.group] = byGroup[src.group] || []).push(src);
+  }
+
+  sourcesEl.innerHTML = SOURCE_GROUPS.map(({ id, label }) => {
+    const srcs = byGroup[id] || [];
+    const cards = srcs.map(({ key, icon, name }) => sourceCardHtml(key, icon, name, v[key])).join('');
+    if (!cards) return '';
+    return `<div class="source-group-label">${label}</div>${cards}`;
   }).join('');
 }
 

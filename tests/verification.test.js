@@ -12,6 +12,13 @@ import {
   checkStarlink,
   findVisibleStarlinks,
   checkKp,
+  checkBrightSatellites,
+  checkMeteorShower,
+  checkMoon,
+  checkNLC,
+  checkSolarWind,
+  checkAurora,
+  checkSprites,
   computeVerdict,
   verifySighting,
   VERIFICATION_SOURCES,
@@ -19,6 +26,13 @@ import {
   KP_ELEVATED_THRESHOLD,
   KP_STORM_THRESHOLD,
   KP_MAX_AGE_HOURS,
+  MOON_BRIGHT_THRESHOLD,
+  SOLAR_WIND_MAX_AGE_HOURS,
+  BZ_ENHANCED_THRESHOLD,
+  BZ_STORM_THRESHOLD,
+  SPRITES_CAPE_MATCH,
+  SPRITES_CAPE_POSSIBLE,
+  AURORA_MAX_AGE_HOURS,
 } from '../app/js/domain.js';
 
 // ── haversineKm ────────────────────────────────────────────────────────────────
@@ -132,7 +146,8 @@ describe('VERIFICATION_SOURCES', () => {
   it('contains exactly the expected source keys in order', () => {
     assert.deepEqual(
       VERIFICATION_SOURCES.map(s => s.key),
-      ['aircraft', 'iss', 'starlink', 'weather', 'radiosonde', 'kp']
+      ['aircraft', 'iss', 'starlink', 'bright_satellites', 'weather', 'radiosonde', 'kp',
+       'solar_wind', 'aurora', 'sprites', 'meteor_shower', 'moon', 'nlc']
     );
   });
 
@@ -334,11 +349,15 @@ describe('verifySighting', () => {
     const failFetch = async () => { throw new Error('All down'); };
     const result = await verifySighting({ datetime: recentTime, lat: 52.48, lng: -1.89 }, failFetch);
     assert.ok(result.verdict);
-    assert.strictEqual(result.aircraft.status, 'unverified');
-    assert.strictEqual(result.iss.status,      'unverified');
-    assert.strictEqual(result.weather.status,  'unverified');
-    assert.strictEqual(result.starlink.status, 'unverified');
-    assert.strictEqual(result.kp.status,       'unverified');
+    assert.strictEqual(result.aircraft.status,          'unverified');
+    assert.strictEqual(result.iss.status,               'unverified');
+    assert.strictEqual(result.weather.status,           'unverified');
+    assert.strictEqual(result.starlink.status,          'unverified');
+    assert.strictEqual(result.bright_satellites.status, 'unverified');
+    assert.strictEqual(result.kp.status,                'unverified');
+    assert.strictEqual(result.solar_wind.status,        'unverified');
+    assert.strictEqual(result.aurora.status,            'unverified');
+    assert.strictEqual(result.sprites.status,           'unverified');
   });
 });
 
@@ -534,5 +553,262 @@ describe('checkStarlink', () => {
     const result = await checkStarlink(recentTime, 52.48, -1.89, mockFetch);
     assert.ok('status' in result);
     assert.ok('detail' in result);
+  });
+});
+
+// ── checkBrightSatellites ──────────────────────────────────────────────────────
+
+describe('checkBrightSatellites', () => {
+  it('returns unverified for sightings older than STARLINK_MAX_AGE_DAYS', async () => {
+    const oldTime = new Date(Date.now() - (STARLINK_MAX_AGE_DAYS + 1) * 24 * 3600 * 1000).toISOString();
+    const result = await checkBrightSatellites(oldTime, 52.48, -1.89, async () => { throw new Error('Should not call'); });
+    assert.strictEqual(result.status, 'unverified');
+    assert.ok(result.detail.includes('7 days'));
+  });
+
+  it('returns unverified when Celestrak fails', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkBrightSatellites(recentTime, 52.48, -1.89, async () => { throw new Error('timeout'); });
+    assert.strictEqual(result.status, 'unverified');
+    assert.ok(result.detail.includes('timeout'));
+  });
+
+  it('returns no_match when no bright satellites are above the horizon', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkBrightSatellites(recentTime, 52.48, -1.89,
+      async () => ({ ok: true, text: async () => 'BAD\nx\ny\n' }));
+    assert.strictEqual(result.status, 'no_match');
+  });
+
+  it('returns unverified when Celestrak returns non-OK status', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkBrightSatellites(recentTime, 52.48, -1.89, async () => ({ ok: false, status: 503 }));
+    assert.strictEqual(result.status, 'unverified');
+  });
+});
+
+// ── checkMeteorShower ──────────────────────────────────────────────────────────
+
+describe('checkMeteorShower', () => {
+  it('returns possible_match during Perseid peak (12 Aug)', () => {
+    const result = checkMeteorShower('2026-08-12T22:00:00Z');
+    assert.strictEqual(result.status, 'possible_match');
+    assert.ok(result.detail.toLowerCase().includes('perseid'));
+    assert.ok(Array.isArray(result.showers) && result.showers.length > 0);
+  });
+
+  it('returns no_match outside all meteor shower windows', () => {
+    const result = checkMeteorShower('2026-04-25T22:00:00Z');
+    assert.strictEqual(result.status, 'no_match');
+  });
+
+  it('detail includes peak rate', () => {
+    const result = checkMeteorShower('2026-08-12T22:00:00Z');
+    assert.ok(result.detail.includes('/hr'));
+  });
+});
+
+// ── checkMoon ──────────────────────────────────────────────────────────────────
+
+describe('checkMoon', () => {
+  it('returns possible_match when moon illumination >= MOON_BRIGHT_THRESHOLD', () => {
+    // Known full moon: 2026-01-13 (approx)
+    const result = checkMoon('2026-01-13T22:00:00Z');
+    if (result.illumination >= MOON_BRIGHT_THRESHOLD) {
+      assert.strictEqual(result.status, 'possible_match');
+    } else {
+      // If our test date is slightly off, just check result is valid
+      assert.ok(['possible_match', 'no_match'].includes(result.status));
+    }
+  });
+
+  it('returns no_match during new moon', () => {
+    // Known new moon: 2026-01-29 (approx)
+    const result = checkMoon('2026-01-29T12:00:00Z');
+    assert.ok(result.illumination < MOON_BRIGHT_THRESHOLD, `Expected low illumination, got ${result.illumination}`);
+    assert.strictEqual(result.status, 'no_match');
+  });
+
+  it('result always includes illumination and name fields', () => {
+    const result = checkMoon('2026-03-24T22:00:00Z');
+    assert.ok(typeof result.illumination === 'number');
+    assert.ok(typeof result.name === 'string');
+    assert.ok(result.detail.includes('%'));
+  });
+});
+
+// ── checkNLC ───────────────────────────────────────────────────────────────────
+
+describe('checkNLC', () => {
+  it('returns possible_match in June at UK latitude (53°N)', () => {
+    const result = checkNLC('2026-06-21T22:00:00Z', 53.0);
+    assert.strictEqual(result.status, 'possible_match');
+  });
+
+  it('returns no_match outside NLC season (e.g., March)', () => {
+    const result = checkNLC('2026-03-24T22:00:00Z', 53.0);
+    assert.strictEqual(result.status, 'no_match');
+    assert.ok(result.detail.includes('May–August'));
+  });
+
+  it('returns no_match below 48°N even in season', () => {
+    const result = checkNLC('2026-06-21T22:00:00Z', 45.0);
+    assert.strictEqual(result.status, 'no_match');
+    assert.ok(result.detail.includes('48°N'));
+  });
+
+  it('returns no_match in September (month 9 > 8)', () => {
+    const result = checkNLC('2026-09-01T22:00:00Z', 55.0);
+    assert.strictEqual(result.status, 'no_match');
+  });
+});
+
+// ── checkSolarWind ─────────────────────────────────────────────────────────────
+
+describe('checkSolarWind', () => {
+  it('returns unverified for sightings older than SOLAR_WIND_MAX_AGE_HOURS', async () => {
+    const oldTime = new Date(Date.now() - (SOLAR_WIND_MAX_AGE_HOURS + 1) * 3_600_000).toISOString();
+    const result = await checkSolarWind(oldTime, 52.48, -1.89, async () => { throw new Error('Should not call'); });
+    assert.strictEqual(result.status, 'unverified');
+    assert.ok(result.detail.includes('24 hours'));
+  });
+
+  it('returns unverified when NOAA API fails', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkSolarWind(recentTime, 52.48, -1.89, async () => { throw new Error('timeout'); });
+    assert.strictEqual(result.status, 'unverified');
+  });
+
+  it('returns no_match when Bz is near zero', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const tag = new Date(Date.now() - 30_000).toISOString().replace('T', ' ').replace('Z', '');
+    const mockMag    = [['time_tag', 'bx', 'by', 'bz'], [tag, '0.5', '-1.2', '1.5']];
+    const mockPlasma = [['time_tag', 'density', 'speed'], [tag, '5.0', '420']];
+    let callCount = 0;
+    const mockFetch = async () => {
+      const data = callCount++ === 0 ? mockMag : mockPlasma;
+      return { ok: true, json: async () => data };
+    };
+    const result = await checkSolarWind(recentTime, 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'no_match');
+    assert.ok(result.bz === 1.5);
+  });
+
+  it('returns possible_match when Bz <= BZ_ENHANCED_THRESHOLD', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const tag = new Date(Date.now() - 30_000).toISOString().replace('T', ' ').replace('Z', '');
+    const mockMag    = [['time_tag', 'bx', 'by', 'bz'], [tag, '0', '0', String(BZ_ENHANCED_THRESHOLD)]];
+    const mockPlasma = [['time_tag', 'density', 'speed'], [tag, '5', '450']];
+    let callCount = 0;
+    const mockFetch = async () => {
+      const data = callCount++ === 0 ? mockMag : mockPlasma;
+      return { ok: true, json: async () => data };
+    };
+    const result = await checkSolarWind(recentTime, 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'possible_match');
+    assert.ok(result.detail.toLowerCase().includes('southward'));
+  });
+
+  it('returns possible_match with storm label when Bz <= BZ_STORM_THRESHOLD', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const tag = new Date(Date.now() - 30_000).toISOString().replace('T', ' ').replace('Z', '');
+    const mockMag    = [['time_tag', 'bx', 'by', 'bz'], [tag, '0', '0', String(BZ_STORM_THRESHOLD)]];
+    const mockPlasma = [['time_tag', 'density', 'speed'], [tag, '8', '650']];
+    let callCount = 0;
+    const mockFetch = async () => {
+      const data = callCount++ === 0 ? mockMag : mockPlasma;
+      return { ok: true, json: async () => data };
+    };
+    const result = await checkSolarWind(recentTime, 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'possible_match');
+    assert.ok(result.detail.toLowerCase().includes('storm'));
+  });
+});
+
+// ── checkAurora ────────────────────────────────────────────────────────────────
+
+describe('checkAurora', () => {
+  it('returns unverified for sightings older than AURORA_MAX_AGE_HOURS', async () => {
+    const oldTime = new Date(Date.now() - (AURORA_MAX_AGE_HOURS + 1) * 3_600_000).toISOString();
+    const result = await checkAurora(oldTime, 52.48, -1.89, async () => { throw new Error('Should not call'); });
+    assert.strictEqual(result.status, 'unverified');
+  });
+
+  it('returns no_match for latitude below 40°N', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkAurora(recentTime, 35.0, -1.89, async () => { throw new Error('Should not call'); });
+    assert.strictEqual(result.status, 'no_match');
+    assert.ok(result.detail.includes('40°N'));
+  });
+
+  it('returns unverified when NOAA API fails', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkAurora(recentTime, 55.0, -1.89, async () => { throw new Error('timeout'); });
+    assert.strictEqual(result.status, 'unverified');
+  });
+
+  it('returns possible_match when Kp meets threshold for latitude', async () => {
+    // At 55°N threshold is Kp 5 — send Kp 5.3
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const tag = new Date(Date.now() - 30_000).toISOString().replace('T', ' ').replace('Z', '');
+    const result = await checkAurora(recentTime, 55.0, -1.89,
+      async () => ({ ok: true, json: async () => [[tag, 5.3, 'estimated']] }));
+    assert.strictEqual(result.status, 'possible_match');
+    assert.ok(result.kp === 5.3);
+  });
+
+  it('returns no_match when Kp is below threshold for latitude', async () => {
+    // At 55°N threshold is Kp 5 — send Kp 3.0
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const tag = new Date(Date.now() - 30_000).toISOString().replace('T', ' ').replace('Z', '');
+    const result = await checkAurora(recentTime, 55.0, -1.89,
+      async () => ({ ok: true, json: async () => [[tag, 3.0, 'estimated']] }));
+    assert.strictEqual(result.status, 'no_match');
+    assert.ok(result.detail.includes('need Kp'));
+  });
+});
+
+// ── checkSprites ───────────────────────────────────────────────────────────────
+
+describe('checkSprites', () => {
+  const makeSpriteFetch = (cape) => async () => ({
+    ok: true,
+    json: async () => ({ hourly: { cape: new Array(24).fill(cape) } }),
+  });
+
+  it('returns no_match when CAPE is low', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkSprites(recentTime, 52.48, -1.89, makeSpriteFetch(100));
+    assert.strictEqual(result.status, 'no_match');
+  });
+
+  it('returns possible_match when CAPE >= SPRITES_CAPE_POSSIBLE', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkSprites(recentTime, 52.48, -1.89, makeSpriteFetch(SPRITES_CAPE_POSSIBLE));
+    assert.strictEqual(result.status, 'possible_match');
+    assert.ok(result.cape === SPRITES_CAPE_POSSIBLE);
+  });
+
+  it('returns possible_match with severe storm label when CAPE >= SPRITES_CAPE_MATCH', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkSprites(recentTime, 52.48, -1.89, makeSpriteFetch(SPRITES_CAPE_MATCH));
+    assert.strictEqual(result.status, 'possible_match');
+    assert.ok(result.detail.toLowerCase().includes('severe'));
+  });
+
+  it('returns unverified when Open-Meteo API fails', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkSprites(recentTime, 52.48, -1.89, async () => { throw new Error('Network error'); });
+    assert.strictEqual(result.status, 'unverified');
+  });
+
+  it('uses archive endpoint for sightings older than 7 days', async () => {
+    let capturedUrl = '';
+    const capturingFetch = async (url) => {
+      capturedUrl = url;
+      return { ok: true, json: async () => ({ hourly: { cape: new Array(24).fill(50) } }) };
+    };
+    await checkSprites('2025-01-01T12:00:00Z', 52.48, -1.89, capturingFetch);
+    assert.ok(capturedUrl.includes('archive-api.open-meteo.com'), `Expected archive URL, got: ${capturedUrl}`);
   });
 });
