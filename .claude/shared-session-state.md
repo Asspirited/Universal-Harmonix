@@ -1,6 +1,6 @@
 # Universal Harmonix — Shared Session State
 # Written by Claude Code at session close. Read by Claude.ai at session start.
-# Last updated: 2026-03-24 (Session 7)
+# Last updated: 2026-03-24 (Session 7 — extended closedown)
 
 ---
 
@@ -87,3 +87,11 @@ Ship UH-034 so James can run the core UH hypothesis test (do unexplained sightin
 
 - James needs to open the live app and test a real sighting (HDD-001 still unvalidated)
 - UH-034 needs Three Amigos before Gherkin (chart type, axes, export format)
+
+## Standards fixes (tail-end of session)
+
+- WL = Waste Log enforced universally in leanspirited-standards
+- `docs/watchlist.md` renamed → `docs/waste-log.md` (WL-UH-001–008 reformatted)
+- `backlog-format.md` — WL format definition added
+- `session-startup.md` + `session-closedown.md` — updated to reference waste-log.md
+- Both standards and UH repos committed and pushed
