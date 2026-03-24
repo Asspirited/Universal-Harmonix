@@ -1,7 +1,7 @@
 // Universal Harmonix — Photo processing
 // Browser only: requires FileReader, Image, Canvas.
 
-export const MAX_PHOTOS    = 3;
+export const MAX_PHOTOS    = 1;
 const MAX_DIMENSION = 800;
 const JPEG_QUALITY  = 0.7;
 

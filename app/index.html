@@ -977,13 +977,12 @@
       </div>
 
       <div class="form-group">
-        <label>Photos <span style="color:var(--text-muted);font-weight:400;">(optional — first photo becomes the sighting background)</span></label>
+        <label>Photo <span style="color:var(--text-muted);font-weight:400;">(optional — becomes the sighting background)</span></label>
         <label class="photo-zone" id="photo-zone">
-          <input type="file" id="photos" accept="image/*" multiple>
+          <input type="file" id="photos" accept="image/*">
           <span id="photo-label">📷 Tap to attach photo</span>
           <div class="photo-preview" id="photo-preview"></div>
         </label>
-        <div style="font-size:11px;color:var(--text-muted);margin-top:5px;">Storage tip: one photo per sighting keeps the app fast. Each photo uses ~150–200KB of device storage.</div>
       </div>
 
       <button type="submit" class="submit-btn" id="submit-btn">Log &amp; Verify</button>
@@ -1444,10 +1443,10 @@
     preview.innerHTML = '';
     pendingPhotos = [];
     const files = Array.from(e.target.files).slice(0, MAX_PHOTOS);
-    if (files.length === 0) { label.textContent = '📷 Tap to attach photos'; return; }
+    if (files.length === 0) { label.textContent = '📷 Tap to attach photo'; return; }
     label.textContent = 'Processing…';
     pendingPhotos = await Promise.all(files.map(resizeToBase64));
-    label.textContent = `${pendingPhotos.length} photo${pendingPhotos.length > 1 ? 's' : ''} attached`;
+    label.textContent = 'Photo attached';
     pendingPhotos.forEach(b64 => {
       const img = document.createElement('img');
       img.src = b64;
