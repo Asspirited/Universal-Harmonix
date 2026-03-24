@@ -47,18 +47,25 @@
 
     body {
       background-image: url('images/bg.jpg');
-      background-size: cover;
-      background-position: center top;
+      background-size: auto 100vh;
+      background-position: left top;
       background-attachment: fixed;
       background-repeat: no-repeat;
     }
 
-    /* Dark overlay so UI stays readable over the image */
+    /* Split overlay: left column stays light so saucer photo shows,
+       right column gets dark so form text is readable */
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: rgba(10, 12, 20, 0.82);
+      background: linear-gradient(
+        to right,
+        rgba(10, 12, 20, 0.25) 0%,
+        rgba(10, 12, 20, 0.45) 40%,
+        rgba(10, 12, 20, 0.90) 58%,
+        rgba(10, 12, 20, 0.97) 100%
+      );
       z-index: 0;
       pointer-events: none;
     }
@@ -116,6 +123,18 @@
       max-width: 680px;
       margin: 0 auto;
       padding: 24px 20px 48px;
+    }
+
+    /* Subtle dark backing card behind the form content only */
+    main::before {
+      content: '';
+      position: fixed;
+      top: 0; bottom: 0;
+      right: 0;
+      width: 50%;
+      background: rgba(10, 12, 20, 0.15);
+      z-index: 0;
+      pointer-events: none;
     }
     .panel { display: none; }
     .panel.active { display: block; }
@@ -493,6 +512,8 @@
         /* Room for bottom nav + iOS home bar */
         padding-bottom: calc(66px + env(safe-area-inset-bottom));
       }
+
+      main::before { display: none; }
 
       .location-row { grid-template-columns: 1fr; }
 
