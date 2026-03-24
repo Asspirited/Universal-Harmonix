@@ -78,8 +78,12 @@
       border-bottom: 1px solid var(--border);
     }
     .header-inner {
-      max-width: 680px;
+      max-width: 1200px;
       margin: 0 auto;
+      padding-left: calc(50% + 20px);
+    }
+    @media (max-width: 860px) {
+      .header-inner { padding-left: 0; }
     }
     .wordmark {
       font-size: 13px;
@@ -118,11 +122,21 @@
     }
     .tab:hover:not(.active) { color: var(--text); }
 
-    /* ── Main content ── */
+    /* ── Two-column layout ── */
+    /*
+     * On desktop: left half = image shows through (no content), right half = form panel.
+     * A pseudo-element on main provides the right-column dark backing card.
+     * On mobile: single column, full width.
+     */
     main {
-      max-width: 680px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 24px 20px 48px;
+      padding: 0 20px 48px;
+      /* Push all content into the right half */
+      padding-left: calc(50% + 20px);
+      /* Ensure min height so image is always visible in left column */
+      min-height: calc(100vh - 60px);
+      position: relative;
     }
 
     /* Subtle dark backing card behind the form content only */
@@ -136,7 +150,11 @@
       z-index: 0;
       pointer-events: none;
     }
-    .panel { display: none; }
+
+    /* All panels sit above the backing */
+    main > * { position: relative; z-index: 1; }
+
+    .panel { display: none; padding-top: 24px; }
     .panel.active { display: block; }
 
     /* ── Form ── */
@@ -202,9 +220,10 @@
     .gps-btn:hover { border-color: var(--accent); color: var(--accent); }
     .gps-btn.loading { color: var(--accent); opacity: 0.7; pointer-events: none; }
     .location-address {
+      margin-top: 8px;
       font-size: 13px;
       color: var(--accent);
-      margin-bottom: 4px;
+      min-height: 18px;
     }
     .location-address.error { color: var(--text-muted); }
     .location-coords {
@@ -495,25 +514,30 @@
     .bottom-nav { display: none; }
 
     /* ── Responsive ── */
-    @media (max-width: 600px) {
+    @media (max-width: 860px) {
       html, body { font-size: 16px; }
+
+      /* Collapse to single column */
+      main {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 0;
+        padding-bottom: calc(66px + env(safe-area-inset-bottom));
+        min-height: auto;
+      }
+
+      main::before { display: none; }
+
+      .header-inner { padding-left: 0; }
 
       /* Compact header on mobile */
       header { padding: 10px 16px 0; }
       .wordmark { font-size: 12px; }
       .tagline  { font-size: 10px; margin-bottom: 0; }
-      .header-inner .tabs { display: none; }  /* replaced by bottom nav */
+      .header-inner .tabs { display: none; }
 
       /* Safe area padding at top */
       header { padding-top: max(10px, env(safe-area-inset-top)); }
-
-      main {
-        padding: 16px 16px 0;
-        /* Room for bottom nav + iOS home bar */
-        padding-bottom: calc(66px + env(safe-area-inset-bottom));
-      }
-
-      main::before { display: none; }
 
       .location-row { grid-template-columns: 1fr; }
 
@@ -524,7 +548,7 @@
       input[type="text"],
       input[type="datetime-local"],
       input[type="number"],
-      select    { font-size: 16px; /* prevent iOS zoom */ padding: 13px 14px; min-height: 48px; }
+      select    { font-size: 16px; padding: 13px 14px; min-height: 48px; }
       #postcode { font-size: 16px; min-height: 48px; }
       textarea  { font-size: 16px; min-height: 100px; }
 
@@ -563,9 +587,262 @@
       .bottom-nav-item .nav-icon { font-size: 22px; line-height: 1; }
     }
 
-    @media (min-width: 601px) {
+    @media (min-width: 861px) {
       .bottom-nav { display: none !important; }
     }
+
+    /* ── My Records footer (backup/restore) ── */
+    .my-records-footer {
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .footer-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media (max-width: 860px) { .footer-row { grid-template-columns: 1fr; } }
+    .footer-btn {
+      display: inline-block;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-muted);
+      font-size: 13px;
+      padding: 9px 16px;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+      min-height: 38px;
+      font-family: var(--font);
+    }
+    .footer-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── UK Sighting Database ── */
+    .ukdb-header { margin-bottom: 24px; }
+    .ukdb-title {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .ukdb-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 560px;
+    }
+
+    /* Source tiles */
+    .source-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 860px) { .source-grid { grid-template-columns: 1fr; } }
+
+    .source-tile {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .source-tile-bufog { border-color: rgba(76,175,132,0.3); }
+    .source-tile-icon  { font-size: 20px; margin-bottom: 4px; }
+    .source-tile-name  { font-size: 14px; font-weight: 600; color: var(--text); }
+    .source-tile-count { font-size: 13px; color: var(--accent); }
+    .source-tile-range { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+    .source-tile-desc  { font-size: 12px; color: var(--text-muted); line-height: 1.5; margin-top: 4px; flex: 1; }
+    .source-tile-desc code { font-size: 11px; background: var(--surface-2); padding: 1px 4px; border-radius: 3px; }
+    .source-tile-btn {
+      margin-top: 12px;
+      align-self: flex-start;
+      background: var(--accent-dim);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      color: var(--accent);
+      font-size: 12px;
+      padding: 7px 14px;
+      cursor: pointer;
+      transition: opacity 0.15s;
+      font-family: var(--font);
+    }
+    .source-tile-btn:hover { opacity: 0.8; }
+    .source-tile-link {
+      margin-top: 12px;
+      align-self: flex-start;
+      font-size: 12px;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .source-tile-link:hover { color: var(--accent); }
+
+    .source-tile-status {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      align-self: flex-start;
+      margin-bottom: 2px;
+    }
+    .status-ready      { background: rgba(76,175,132,0.12); color: var(--green); }
+    .status-planned    { background: rgba(107,115,153,0.12); color: var(--text-muted); }
+    .status-discussion { background: rgba(240,160,64,0.12); color: var(--amber); }
+
+    /* Records table */
+    .ukdb-records-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .ukdb-records-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+    .ukdb-records-title { font-size: 13px; font-weight: 600; color: var(--text); }
+    .ukdb-records-count { font-size: 12px; color: var(--text-muted); }
+    .ukdb-taxonomy-link { font-size: 12px; color: var(--text-muted); text-decoration: none; }
+    .ukdb-taxonomy-link:hover { color: var(--accent); }
+
+    .ukdb-empty {
+      padding: 48px 20px;
+      text-align: center;
+    }
+    .ukdb-empty-icon { font-size: 32px; margin-bottom: 10px; }
+    .ukdb-empty-text { font-size: 15px; color: var(--text-muted); margin-bottom: 4px; }
+    .ukdb-empty-sub  { font-size: 13px; color: var(--text-muted); opacity: 0.6; }
+
+    .ukdb-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    .ukdb-table th {
+      text-align: left;
+      padding: 10px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .ukdb-table td {
+      padding: 9px 14px;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .ukdb-table tr:last-child td { border-bottom: none; }
+    .ukdb-table tr:hover td { background: var(--surface-2); }
+
+    .source-badge {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: rgba(107,115,153,0.15);
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .tag-empty {
+      font-size: 10px;
+      color: var(--text-muted);
+      opacity: 0.5;
+      font-style: italic;
+    }
+
+    .ukdb-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      padding: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .pg-btn {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-muted);
+      font-size: 13px;
+      padding: 6px 14px;
+      cursor: pointer;
+      font-family: var(--font);
+    }
+    .pg-btn:hover:not([disabled]) { border-color: var(--accent); color: var(--accent); }
+    .pg-btn[disabled] { opacity: 0.35; cursor: default; }
+    .pg-info { font-size: 13px; color: var(--text-muted); }
+
+    /* Taxonomy grid */
+    .ukdb-taxonomy-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .taxonomy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 16px;
+    }
+    @media (max-width: 860px) { .taxonomy-grid { grid-template-columns: 1fr; } }
+    .taxonomy-chip-group {
+      padding: 10px 12px;
+      border-radius: 6px;
+    }
+    .taxonomy-uh {
+      grid-column: 1 / -1;
+      background: rgba(156,108,247,0.06);
+      border: 1px solid rgba(156,108,247,0.15);
+    }
+    .taxonomy-group-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .taxonomy-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tchip {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .tchip-uh {
+      background: rgba(156,108,247,0.1);
+      border-color: rgba(156,108,247,0.25);
+      color: var(--purple);
+    }
+
   </style>
 </head>
 <body>
@@ -576,8 +853,8 @@
     <div class="tagline">UAP Investigation &amp; Verification · BUFOG</div>
     <nav class="tabs">
       <div class="tab active" data-tab="log">Log Sighting</div>
-      <div class="tab" data-tab="records">Records</div>
-      <div class="tab" data-tab="data">Data</div>
+      <div class="tab" data-tab="myrecords">My Records</div>
+      <div class="tab" data-tab="ukdb">UK Sighting Database</div>
     </nav>
   </div>
 </header>
@@ -675,40 +952,208 @@
 
   </div>
 
-  <!-- ── Records panel ── -->
-  <div class="panel" id="panel-records">
+  <!-- ── My Records panel ── -->
+  <div class="panel" id="panel-myrecords">
+
     <div id="records-container"></div>
+
+    <!-- Backup / Restore ── folded in at the bottom -->
+    <div class="my-records-footer">
+      <div class="footer-section-label">Backup &amp; Restore</div>
+
+      <div class="footer-row">
+        <div>
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">
+            Download all your sightings as a JSON file — includes photos.
+          </div>
+          <button type="button" id="backup-btn" class="footer-btn">↓ Download backup</button>
+        </div>
+        <div>
+          <div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">
+            Import a backup. Existing sightings are kept — duplicates skipped.
+          </div>
+          <label style="cursor:pointer;">
+            <input type="file" id="restore-input" accept=".json" style="display:none;">
+            <span class="footer-btn">↑ Restore from backup</span>
+          </label>
+          <div id="restore-status" style="margin-top:8px;font-size:13px;color:var(--green);display:none;"></div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-  <!-- ── Data panel ── -->
-  <div class="panel" id="panel-data">
-    <div style="max-width:480px;">
+  <!-- ── UK Sighting Database panel ── -->
+  <div class="panel" id="panel-ukdb">
 
-      <div style="margin-bottom:32px;">
-        <div style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Backup</div>
-        <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px;">
-          Download all your sightings as a JSON file. Keep it somewhere safe — it includes photos.
+    <div class="ukdb-header">
+      <h2 class="ukdb-title">UK Sighting Database</h2>
+      <p class="ukdb-subtitle">
+        Historical UAP reports from UK sources — MOD files, NUFORC, BUFOG &amp; FOI data.
+        Label and tag records to explore correlations with environmental and space weather data.
+      </p>
+    </div>
+
+    <!-- Source cards -->
+    <div class="source-grid">
+
+      <div class="source-tile">
+        <div class="source-tile-icon">🏛️</div>
+        <div class="source-tile-name">MOD / National Archives</div>
+        <div class="source-tile-count">~11,000 reports</div>
+        <div class="source-tile-range">1962 – 2009</div>
+        <div class="source-tile-status status-planned">Planned — OCR project</div>
+        <p class="source-tile-desc">
+          Over 200 declassified Ministry of Defence UFO files. Structured sighting reports
+          with location, shape, weather, distance, duration. Available as scanned PDFs at Kew.
         </p>
-        <button type="button" id="backup-btn" class="submit-btn" style="width:auto;padding:12px 24px;font-size:14px;">
-          ↓ Download backup
-        </button>
       </div>
 
-      <div style="margin-bottom:32px;">
-        <div style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Restore</div>
-        <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px;">
-          Import a backup file. Existing sightings are kept — duplicates are skipped.
+      <div class="source-tile">
+        <div class="source-tile-icon">🇬🇧</div>
+        <div class="source-tile-name">NUFORC (UK filtered)</div>
+        <div class="source-tile-count">~4,000 UK reports</div>
+        <div class="source-tile-range">1940s – 2014</div>
+        <div class="source-tile-status status-ready">Ready to import</div>
+        <p class="source-tile-desc">
+          NUFORC global dataset filtered to <code>country = gb</code>. Structured fields:
+          datetime, location, shape, duration, witness narrative. Available via Kaggle CSV.
         </p>
-        <label style="display:inline-block;cursor:pointer;">
-          <input type="file" id="restore-input" accept=".json" style="display:none;">
-          <span class="submit-btn" style="display:inline-block;width:auto;padding:12px 24px;font-size:14px;cursor:pointer;">
-            ↑ Restore from backup
-          </span>
-        </label>
-        <div id="restore-status" style="margin-top:10px;font-size:13px;color:var(--green);display:none;"></div>
+        <button class="source-tile-btn" onclick="handleImportNUFORC()">Import CSV…</button>
+      </div>
+
+      <div class="source-tile">
+        <div class="source-tile-icon">📡</div>
+        <div class="source-tile-name">UFO Identified</div>
+        <div class="source-tile-count">Active database</div>
+        <div class="source-tile-range">2021 – present</div>
+        <div class="source-tile-status status-planned">Planned — scrape / partnership</div>
+        <p class="source-tile-desc">
+          UK-focused sightings aggregated from multiple organisations, FOI requests and
+          direct reports. Updated weekly. Best source for current UK data.
+        </p>
+        <a class="source-tile-link" href="https://ufoidentified.co.uk" target="_blank" rel="noopener">Visit site ↗</a>
+      </div>
+
+      <div class="source-tile source-tile-bufog">
+        <div class="source-tile-icon">🔍</div>
+        <div class="source-tile-name">BUFOG Case Archive</div>
+        <div class="source-tile-count">Hundreds of cases</div>
+        <div class="source-tile-range">2007 – present</div>
+        <div class="source-tile-status status-discussion">In discussion with James &amp; Dave</div>
+        <p class="source-tile-desc">
+          Investigator-level case reports from Birmingham UFO Group. The richest
+          quality UK dataset — full witness interviews, physical effects, conclusions.
+          Would be unique data when tagged to UH schema.
+        </p>
       </div>
 
     </div>
+
+    <!-- Loaded records table (empty state for now) -->
+    <div class="ukdb-records-section">
+      <div class="ukdb-records-header">
+        <span class="ukdb-records-title">Loaded Records</span>
+        <span class="ukdb-records-count" id="ukdb-count">0 records</span>
+      </div>
+
+      <div class="ukdb-empty" id="ukdb-empty">
+        <div class="ukdb-empty-icon">🗄️</div>
+        <div class="ukdb-empty-text">No historical records loaded yet.</div>
+        <div class="ukdb-empty-sub">Import a NUFORC CSV above to get started.</div>
+      </div>
+
+      <div id="ukdb-table-wrap" style="display:none;">
+        <table class="ukdb-table" id="ukdb-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Location</th>
+              <th>Shape</th>
+              <th>Duration</th>
+              <th>Source</th>
+              <th>Tags</th>
+            </tr>
+          </thead>
+          <tbody id="ukdb-tbody"></tbody>
+        </table>
+        <div class="ukdb-pagination" id="ukdb-pagination"></div>
+      </div>
+    </div>
+
+    <!-- Taxonomy reference -->
+    <div class="ukdb-taxonomy-section">
+      <div class="ukdb-records-header">
+        <span class="ukdb-records-title">Labelling Taxonomy</span>
+        <a class="ukdb-taxonomy-link" href="https://github.com/Asspirited/Universal-Harmonix/blob/main/docs/data-taxonomy.md"
+           target="_blank" rel="noopener">View full taxonomy ↗</a>
+      </div>
+      <div class="taxonomy-grid">
+        <div class="taxonomy-chip-group">
+          <div class="taxonomy-group-label">A · Observation</div>
+          <div class="taxonomy-chips">
+            <span class="tchip">NL</span><span class="tchip">DD</span><span class="tchip">CE1–5</span>
+            <span class="tchip">USO</span><span class="tchip">Shape</span><span class="tchip">Colour</span>
+          </div>
+        </div>
+        <div class="taxonomy-chip-group">
+          <div class="taxonomy-group-label">B · Movement</div>
+          <div class="taxonomy-chips">
+            <span class="tchip">Motion type</span><span class="tchip">Speed</span>
+            <span class="tchip">Altitude</span><span class="tchip">Direction</span>
+          </div>
+        </div>
+        <div class="taxonomy-chip-group">
+          <div class="taxonomy-group-label">C · Sensory</div>
+          <div class="taxonomy-chips">
+            <span class="tchip">Sound</span><span class="tchip">Smell</span><span class="tchip">Physical sensation</span>
+          </div>
+        </div>
+        <div class="taxonomy-chip-group">
+          <div class="taxonomy-group-label">D · Physical effects</div>
+          <div class="taxonomy-chips">
+            <span class="tchip">Environment</span><span class="tchip">Equipment</span><span class="tchip">Witness health</span>
+          </div>
+        </div>
+        <div class="taxonomy-chip-group">
+          <div class="taxonomy-group-label">E · Context</div>
+          <div class="taxonomy-chips">
+            <span class="tchip">Time of day</span><span class="tchip">Sky</span>
+            <span class="tchip">Visibility</span><span class="tchip">Season</span>
+          </div>
+        </div>
+        <div class="taxonomy-chip-group">
+          <div class="taxonomy-group-label">F · Witness</div>
+          <div class="taxonomy-chips">
+            <span class="tchip">Count</span><span class="tchip">Type</span>
+            <span class="tchip">Experience</span><span class="tchip">Emotional state</span>
+          </div>
+        </div>
+        <div class="taxonomy-chip-group">
+          <div class="taxonomy-group-label">G · Location</div>
+          <div class="taxonomy-chips">
+            <span class="tchip">Terrain</span><span class="tchip">Infrastructure</span>
+            <span class="tchip">UK region</span><span class="tchip">Hotspot</span>
+          </div>
+        </div>
+        <div class="taxonomy-chip-group">
+          <div class="taxonomy-group-label">H · Investigation</div>
+          <div class="taxonomy-chips">
+            <span class="tchip">Source</span><span class="tchip">Corroboration</span>
+            <span class="tchip">Outcome</span><span class="tchip">IFO type</span>
+          </div>
+        </div>
+        <div class="taxonomy-chip-group taxonomy-uh">
+          <div class="taxonomy-group-label">I · Universal Harmonix</div>
+          <div class="taxonomy-chips">
+            <span class="tchip tchip-uh">Kp index</span><span class="tchip tchip-uh">Solar wind</span>
+            <span class="tchip tchip-uh">Bz</span><span class="tchip tchip-uh">Moon phase</span>
+            <span class="tchip tchip-uh">Atmos. electricity</span><span class="tchip tchip-uh">Witness state</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 </main>
@@ -718,13 +1163,13 @@
     <span class="nav-icon">✏️</span>
     <span>Log</span>
   </div>
-  <div class="bottom-nav-item" data-tab="records">
+  <div class="bottom-nav-item" data-tab="myrecords">
     <span class="nav-icon">📋</span>
-    <span>Records</span>
+    <span>My Records</span>
   </div>
-  <div class="bottom-nav-item" data-tab="data">
-    <span class="nav-icon">💾</span>
-    <span>Data</span>
+  <div class="bottom-nav-item" data-tab="ukdb">
+    <span class="nav-icon">🗄️</span>
+    <span>UK Database</span>
   </div>
 </nav>
 
@@ -744,7 +1189,8 @@
     });
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.getElementById(`panel-${name}`).classList.add('active');
-    if (name === 'records') renderRecords(loadSightings(), document.getElementById('records-container'));
+    if (name === 'myrecords') renderRecords(loadSightings(), document.getElementById('records-container'));
+    if (name === 'ukdb') renderUKDB();
   }
 
   document.querySelectorAll('.tab, .bottom-nav-item').forEach(el => {
@@ -781,62 +1227,7 @@
     }
   }
 
-  function requestGPS() {
-    if (!navigator.geolocation) {
-      gpsBtn.innerHTML = '<span>📍</span> GPS unavailable — enter postcode or coordinates';
-      setAddress('Enter a postcode or coordinates below.', true);
-      return;
-    }
-    gpsBtn.classList.add('loading');
-    gpsBtn.innerHTML = '<span>⏳</span> Locating…';
-    navigator.geolocation.getCurrentPosition(
-      async pos => {
-        gpsBtn.classList.remove('loading');
-        gpsBtn.innerHTML = '<span>✅</span> Location captured';
-        await fillCoordsAndAddress(pos.coords.latitude, pos.coords.longitude);
-      },
-      () => {
-        gpsBtn.classList.remove('loading');
-        gpsBtn.innerHTML = '<span>📍</span> Retry GPS';
-        setAddress('GPS unavailable — enter a postcode or coordinates below.', true);
-      },
-      { timeout: 10000, enableHighAccuracy: true }
-    );
-  }
-
-  // Auto-trigger GPS on load
-  requestGPS();
-
-  // Manual GPS retry button
-  gpsBtn.addEventListener('click', requestGPS);
-
-  // Postcode input: lookup on blur if looks like a postcode
-  postcodeEl.addEventListener('blur', async () => {
-    const val = postcodeEl.value.trim();
-    if (!val) return;
-    if (looksLikeUKPostcode(val)) {
-      setAddress('Looking up postcode…');
-      try {
-        const { lat, lng } = await lookupPostcode(val);
-        await fillCoordsAndAddress(lat, lng);
-        postcodeEl.value = '';
-      } catch {
-        setAddress('Postcode not found — try again or enter coordinates.', true);
-      }
-    }
-  });
-
-  // Lat/lng manual entry: reverse geocode on blur
-  async function onCoordBlur() {
-    const lat = parseFloat(latEl.value);
-    const lng = parseFloat(lngEl.value);
-    if (isNaN(lat) || isNaN(lng)) return;
-    await fillCoordsAndAddress(lat, lng);
-  }
-  latEl.addEventListener('blur', onCoordBlur);
-  lngEl.addEventListener('blur', onCoordBlur);
-
-  // ── Sky Context ────────────────────────────────────────────────────────────
+  // ── Sky Context ─────────────────────────────────────────────────────────────
   const MONTH_ABBR = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
   function loadSkyContext(lat, lng) {
@@ -929,6 +1320,61 @@
     body.hidden = !body.hidden;
     toggle.setAttribute('aria-expanded', String(!body.hidden));
   });
+
+  function requestGPS() {
+    if (!navigator.geolocation) {
+      gpsBtn.innerHTML = '<span>📍</span> GPS unavailable — enter postcode or coordinates';
+      setAddress('Enter a postcode or coordinates below.', true);
+      return;
+    }
+    gpsBtn.classList.add('loading');
+    gpsBtn.innerHTML = '<span>⏳</span> Locating…';
+    navigator.geolocation.getCurrentPosition(
+      async pos => {
+        gpsBtn.classList.remove('loading');
+        gpsBtn.innerHTML = '<span>✅</span> Location captured';
+        await fillCoordsAndAddress(pos.coords.latitude, pos.coords.longitude);
+      },
+      () => {
+        gpsBtn.classList.remove('loading');
+        gpsBtn.innerHTML = '<span>📍</span> Retry GPS';
+        setAddress('GPS unavailable — enter a postcode or coordinates below.', true);
+      },
+      { timeout: 10000, enableHighAccuracy: true }
+    );
+  }
+
+  // Auto-trigger GPS on load
+  requestGPS();
+
+  // Manual GPS retry button
+  gpsBtn.addEventListener('click', requestGPS);
+
+  // Postcode input: lookup on blur if looks like a postcode
+  postcodeEl.addEventListener('blur', async () => {
+    const val = postcodeEl.value.trim();
+    if (!val) return;
+    if (looksLikeUKPostcode(val)) {
+      setAddress('Looking up postcode…');
+      try {
+        const { lat, lng } = await lookupPostcode(val);
+        await fillCoordsAndAddress(lat, lng);
+        postcodeEl.value = '';
+      } catch {
+        setAddress('Postcode not found — try again or enter coordinates.', true);
+      }
+    }
+  });
+
+  // Lat/lng manual entry: reverse geocode on blur
+  async function onCoordBlur() {
+    const lat = parseFloat(latEl.value);
+    const lng = parseFloat(lngEl.value);
+    if (isNaN(lat) || isNaN(lng)) return;
+    await fillCoordsAndAddress(lat, lng);
+  }
+  latEl.addEventListener('blur', onCoordBlur);
+  lngEl.addEventListener('blur', onCoordBlur);
 
   // ── Photo handling ─────────────────────────────────────────────────────────
   let pendingPhotos = [];
@@ -1052,7 +1498,96 @@
     reader.readAsText(file);
   });
 
-  // ── Set default datetime to now ────────────────────────────────────────────
+  // ── UK Sighting Database ───────────────────────────────────────────────────
+  let ukdbRecords = JSON.parse(localStorage.getItem('uh_ukdb') || '[]');
+  const UKDB_PAGE_SIZE = 50;
+  let ukdbPage = 0;
+
+  function renderUKDB() {
+    const count = ukdbRecords.length;
+    document.getElementById('ukdb-count').textContent =
+      count ? `${count.toLocaleString()} records` : '0 records';
+    document.getElementById('ukdb-empty').style.display = count ? 'none' : 'block';
+    document.getElementById('ukdb-table-wrap').style.display = count ? 'block' : 'none';
+    if (count) renderUKDBPage(0);
+  }
+
+  function renderUKDBPage(page) {
+    ukdbPage = page;
+    const start = page * UKDB_PAGE_SIZE;
+    const slice = ukdbRecords.slice(start, start + UKDB_PAGE_SIZE);
+    const tbody = document.getElementById('ukdb-tbody');
+    tbody.innerHTML = slice.map(r => `
+      <tr>
+        <td>${r.datetime || r.date || '—'}</td>
+        <td>${r.city || r.location || '—'}</td>
+        <td>${r.shape || '—'}</td>
+        <td>${r.duration_hours_min || r.duration || '—'}</td>
+        <td><span class="source-badge">${r._source || 'NUFORC'}</span></td>
+        <td><span class="tag-empty">untagged</span></td>
+      </tr>`).join('');
+    // Pagination
+    const pages = Math.ceil(ukdbRecords.length / UKDB_PAGE_SIZE);
+    const pg = document.getElementById('ukdb-pagination');
+    if (pages <= 1) { pg.innerHTML = ''; return; }
+    pg.innerHTML = `
+      <button class="pg-btn" ${page === 0 ? 'disabled' : ''} onclick="window._ukdbPage(${page-1})">← Prev</button>
+      <span class="pg-info">Page ${page+1} of ${pages}</span>
+      <button class="pg-btn" ${page >= pages-1 ? 'disabled' : ''} onclick="window._ukdbPage(${page+1})">Next →</button>`;
+  }
+  window._ukdbPage = p => renderUKDBPage(p);
+
+  // NUFORC CSV import
+  window.handleImportNUFORC = function() {
+    const input = document.createElement('input');
+    input.type = 'file'; input.accept = '.csv';
+    input.onchange = e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = ev => {
+        try {
+          const rows = parseCSV(ev.target.result);
+          // Filter to UK records if country column present
+          const uk = rows.filter(r =>
+            !r.country || r.country.toLowerCase() === 'gb' ||
+            r.country.toLowerCase() === 'uk' ||
+            r.country.toLowerCase() === 'united kingdom'
+          ).map(r => ({ ...r, _source: 'NUFORC' }));
+          // Merge — skip exact datetime+city duplicates
+          const existing = new Set(ukdbRecords.map(r => `${r.datetime}|${r.city}`));
+          const fresh = uk.filter(r => !existing.has(`${r.datetime}|${r.city}`));
+          ukdbRecords = [...ukdbRecords, ...fresh];
+          localStorage.setItem('uh_ukdb', JSON.stringify(ukdbRecords));
+          renderUKDB();
+          alert(`✅ Imported ${fresh.length} UK records (${uk.length - fresh.length} duplicates skipped).`);
+        } catch(err) {
+          alert(`⚠️ Import failed: ${err.message}`);
+        }
+      };
+      reader.readAsText(file);
+    };
+    input.click();
+  };
+
+  function parseCSV(text) {
+    const lines = text.split('\n');
+    if (!lines.length) return [];
+    const headers = lines[0].split(',').map(h => h.replace(/"/g,'').trim().toLowerCase().replace(/ /g,'_'));
+    return lines.slice(1).filter(l => l.trim()).map(line => {
+      // Handle quoted fields
+      const vals = []; let cur = '', inQ = false;
+      for (const ch of line) {
+        if (ch === '"') { inQ = !inQ; }
+        else if (ch === ',' && !inQ) { vals.push(cur.trim()); cur = ''; }
+        else cur += ch;
+      }
+      vals.push(cur.trim());
+      return Object.fromEntries(headers.map((h, i) => [h, vals[i] || '']));
+    });
+  }
+
+  // ── Set default datetime ───────────────────────────────────────────────────
   const now = new Date();
   now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
   document.getElementById('datetime').value = now.toISOString().slice(0, 16);

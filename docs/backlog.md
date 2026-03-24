@@ -446,7 +446,8 @@ Feature: Sky Activity panel
 
 ## UH-015 — Extended verification suite (v0.2 — 14-point engine)
 
-**Status:** In Progress
+**Status:** Done
+**Closed:** 2026-03-24
 **Priority:** Critical
 **Loop:** HDD (directly validates HDD-001 — more checks = better signal-to-noise)
 **Raised:** 2026-03-24
@@ -514,7 +515,7 @@ Gherkin gate applies to all new code paths.
 
 ---
 
-## UH-015 — Photo as sighting background
+## UH-016 — Photo as sighting background
 
 **Status:** Open
 **Priority:** Medium
@@ -554,3 +555,173 @@ Feature: Photo as sighting background
 - Mobile: test on dark screen, avoid excessive brightness
 - Per-sighting: background is the first attached photo for that record
 - Source: idea-uh-photo-background-2026-03-24.md (Downloads)
+
+---
+
+## UH-017 — Three-tab restructure (Log Sighting / My Records / UK Sighting Database)
+
+**Status:** Open
+**Priority:** High
+**Loop:** BDD
+**Raised:** 2026-03-24
+
+### User Story
+As a UAP investigator,
+I want the app to have three clearly separated areas — logging, my records, and historical UK data,
+So that the personal investigation workflow and the research layer are distinct and each tab feels purposeful.
+
+### Acceptance Criteria
+
+```gherkin
+Feature: Three-tab navigation
+
+  Scenario: Investigator can access all three tabs
+    Given I am on any tab
+    When I tap Log Sighting
+    Then the log form is shown
+    When I tap My Records
+    Then my sighting records and backup/restore controls are shown
+    When I tap UK Sighting Database
+    Then the historical data panel is shown
+
+  Scenario: Log Sighting is the default tab on first load
+    Given I open the app for the first time
+    Then the Log Sighting tab is active
+```
+
+### Notes
+- Tab labels: Log Sighting · My Records · UK Sighting Database
+- My Records absorbs current Records tab + backup/restore (currently in Data tab)
+- UK Sighting Database is the new historical data panel (empty until UH-030 seeds data)
+- Bottom nav updates to match (3 icons)
+- Gherkin gate applies — write failing acceptance test before touching HTML
+
+---
+
+## UH-030 — Seed NUFORC UK dataset
+
+**Status:** Open
+**Priority:** High
+**Loop:** Data
+**Raised:** 2026-03-24
+
+### User Story
+As a UAP researcher,
+I want UK historical sighting records from NUFORC loaded into the app,
+So that I have a corpus to tag and correlate against environmental data.
+
+### Notes
+- Source: Kaggle NUFORC CSV filtered to `country == 'gb'` (~3,000–5,000 records)
+- Fields: datetime, city/county, shape, duration, comments, lat/lon
+- Commit to `/data/nuforc-uk.json` (processed, stripped of excessive free text)
+- See docs/data-taxonomy.md for full field mapping
+
+---
+
+## UH-031 — AI tagging pipeline: NUFORC comments → taxonomy tags
+
+**Status:** Open
+**Priority:** High
+**Loop:** Data
+**Raised:** 2026-03-24
+
+### Notes
+- Parse NUFORC `comments` field via Claude API
+- Auto-assign Category A–H tags from docs/data-taxonomy.md
+- Expected accuracy ~80–85% on shape/movement/sound; human review for F/H
+- Same pattern as Cusslab API calls (Anthropic API via Workers proxy)
+
+---
+
+## UH-032 — UK Sighting Database tab UI
+
+**Status:** Open
+**Priority:** High
+**Loop:** BDD
+**Raised:** 2026-03-24
+
+### User Story
+As a researcher,
+I want to browse and filter the UK historical sighting database within the app,
+So that I can explore patterns without leaving the tool.
+
+### Notes
+- Tab added in UH-017
+- Filter controls: date range, region, shape, Hynek type, IFO/unexplained
+- Record card: date · location · shape · Hynek type · verdict chips
+- Pagination or virtual scroll (dataset may be thousands of records)
+
+---
+
+## UH-033 — Enrich historical records with Category I (UH layer)
+
+**Status:** Open
+**Priority:** High
+**Loop:** Data
+**Raised:** 2026-03-24
+
+### Notes
+- For each tagged sighting auto-populate: NOAA Kp (historical, back to 1994), Open-Meteo weather, moon phase (calculated)
+- Same API pattern as verifySighting() — run against historical datetime + lat/lng
+- Store enriched data in `/data/nuforc-uk-enriched.json`
+
+---
+
+## UH-034 — Correlation explorer
+
+**Status:** Open
+**Priority:** Medium
+**Loop:** BDD
+**Raised:** 2026-03-24
+
+### User Story
+As a researcher,
+I want to cross-tab any two taxonomy tags against each other,
+So that I can test whether correlations exist (e.g. high Kp × unexplained verdict).
+
+### Notes
+- Core UH hypothesis test: do unexplained sightings cluster at Kp ≥ 4?
+- Simple pivot table or bar chart in-browser
+- Export as CSV for deeper analysis
+
+---
+
+## UH-035 — BUFOG archive export to UH schema
+
+**Status:** Open
+**Priority:** Medium
+**Loop:** Stakeholder
+**Raised:** 2026-03-24
+
+### Notes
+- Approach James + Dave re: structured export of investigated BUFOG cases
+- Even 50–100 fully-tagged cases would be the highest-quality UK investigator data available
+- Fields needed: all Category A–H + witness narrative
+
+---
+
+## UH-036 — UFO Identified data sharing
+
+**Status:** Open
+**Priority:** Low
+**Loop:** Stakeholder
+**Raised:** 2026-03-24
+
+### Notes
+- Contact ufoidentified.co.uk re: data sharing or API access
+- Covers 2021–present UK sightings; best active UK source
+
+---
+
+## UH-037 — MOD National Archives OCR project
+
+**Status:** Open
+**Priority:** Low
+**Loop:** Research
+**Raised:** 2026-03-24
+
+### Notes
+- 11,000 MOD sighting reports 1962–2009, public at nationalarchives.gov.uk (DEFE, AIR series)
+- Records are scanned PDFs — need OCR + structured extraction
+- Significant standalone project; estimate before committing
+- Would produce the definitive UK historical sighting dataset if completed
