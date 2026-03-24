@@ -2,7 +2,7 @@
 // Cache-first strategy for all static app assets.
 // Enables offline use after first visit.
 
-const CACHE = 'uh-v1';
+const CACHE = 'uh-v2';
 const PRECACHE = [
   './',
   './index.html',
@@ -13,6 +13,7 @@ const PRECACHE = [
   './js/render.js',
   './js/export.js',
   './manifest.json',
+  './images/bg.jpg',
 ];
 
 self.addEventListener('install', e => {

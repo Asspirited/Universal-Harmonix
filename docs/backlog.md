@@ -341,3 +341,100 @@ Feature: Mobile-responsive app
 - PWA manifest: name, icons, theme colour, standalone display
 - Service worker: cache-first for static assets (offline after first load)
 - Safe area insets for iOS notch and home indicator
+
+---
+
+## UH-013 — Enhanced location capture
+
+**Status:** Open
+**Priority:** High
+**Loop:** HDD (field use — James logs sightings at the moment of the event)
+**Raised:** 2026-03-24
+
+### User Story
+As a field investigator,
+I want my location to be captured instantly and resolved to a readable address,
+So that I can log a sighting quickly without manually entering coordinates,
+And also correct or override the location if needed.
+
+### Acceptance Criteria
+
+```gherkin
+Feature: Enhanced location capture
+
+  Scenario: Location auto-captured on page load
+    Given I open the app
+    Then my GPS coordinates are automatically populated
+    And the address (town, county) is shown alongside the coordinates
+
+  Scenario: Investigator updates location by postcode
+    Given my location is already set
+    When I type a UK postcode into the location field
+    Then the coordinates and address update to match that postcode
+
+  Scenario: Investigator pastes coordinates
+    Given my location is already set
+    When I paste or type lat/lng coordinates
+    Then the address resolves and updates automatically
+
+  Scenario: GPS unavailable
+    Given the device cannot provide GPS
+    Then the location field is empty and editable
+    And a clear prompt invites manual entry
+```
+
+### Notes
+- Auto-trigger GPS on page load (not just on button press)
+- Reverse geocode via free API (e.g. nominatim.openstreetmap.org) to show address
+- Postcode lookup: postcodes.io (free UK API, no auth)
+- Show: address string, lat, lng, elevation (if available)
+- "Update Location" button for manual override
+- Gherkin gate applies
+
+---
+
+## UH-014 — Sky Activity panel (pre-submission context)
+
+**Status:** Open
+**Priority:** High
+**Loop:** HDD (matches feature parity with James's sky-watch app)
+**Raised:** 2026-03-24
+
+### User Story
+As a field investigator,
+I want to see what is happening in the sky at my location right now,
+So that I can add precise context to my sighting report before submitting.
+
+### Acceptance Criteria
+
+```gherkin
+Feature: Sky Activity panel
+
+  Scenario: Sky conditions shown on log screen
+    Given I have a location set
+    Then I see current weather conditions (temp, humidity, visibility, wind)
+    And moon phase and illumination percentage
+    And time of day classification (day / twilight / night)
+
+  Scenario: Active sky objects shown
+    Given I have a location set
+    Then I see whether the ISS is currently visible overhead
+    And any Starlink satellites currently visible
+    And any active meteor showers at this time of year
+    And visible planets (Venus, Mars, Jupiter, Saturn)
+
+  Scenario: Aircraft in area shown pre-submission
+    Given I have a location set
+    Then I see a live list of aircraft currently in my area
+    So I can note them before submitting the report
+```
+
+### Notes
+- Moon phase: pure calculation, no API (same pattern as radiosonde logic)
+- Meteor showers: static annual calendar (Perseids, Lyrids, Leonids etc.)
+- Visible planets: astronomical calculation or free API
+- ISS/Starlink: reuse existing domain.js logic
+- Aircraft: reuse existing OpenSky call
+- Weather: reuse existing Open-Meteo call
+- Show as a collapsible "Sky Context" section on the Log tab, above the form
+- Gherkin gate applies

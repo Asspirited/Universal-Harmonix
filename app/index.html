@@ -45,6 +45,26 @@
       line-height: 1.5;
     }
 
+    body {
+      background-image: url('images/bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+    }
+
+    /* Dark overlay so UI stays readable over the image */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 12, 20, 0.82);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    header, main, .bottom-nav { position: relative; z-index: 1; }
+
     /* ── Header ── */
     header {
       padding: 16px 20px 0;
