@@ -1,6 +1,6 @@
 # Universal Harmonix — Backlog
 # Prefix: UH-
-# Last updated: 2026-03-24 (session 3)
+# Last updated: 2026-03-24 (session 4)
 
 ---
 
@@ -301,3 +301,42 @@ Feature: Geomagnetic Kp index check
 - Add to VERIFICATION_SOURCES and SOURCES
 - Add contract test for NOAA SWPC feed shape
 - Gherkin gate applies
+
+---
+
+## UH-012 — Mobile-first responsive design + PWA
+
+**Status:** Done
+**Priority:** High
+**Loop:** HDD (James uses this in the field on his phone)
+**Raised:** 2026-03-24
+**Closed:** 2026-03-24
+
+### User Story
+As a field investigator,
+I want the app to work on my phone as well as a desktop monitor,
+So that I can log sightings in the field and review them at my desk without switching tools.
+
+### Acceptance Criteria
+
+```gherkin
+Feature: Mobile-responsive app
+
+  Scenario: User opens app on mobile phone
+    Given I open the app on a mobile device
+    Then I see a bottom navigation bar with Log, Records, and Data tabs
+    And all tap targets are at least 44px tall
+    And the layout fills the screen without horizontal scroll
+
+  Scenario: User installs app to home screen
+    Given I open the app in a mobile browser
+    When I choose "Add to Home Screen"
+    Then the app installs with an icon and no browser chrome
+    And the app loads offline after first visit
+```
+
+### Notes
+- Bottom nav bar on ≤600px screens; top tabs remain on desktop
+- PWA manifest: name, icons, theme colour, standalone display
+- Service worker: cache-first for static assets (offline after first load)
+- Safe area insets for iOS notch and home indicator
