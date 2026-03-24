@@ -143,7 +143,11 @@ export async function checkWeather(isoDatetime, lat, lng, fetcher = fetch) {
   const dt = new Date(isoDatetime);
   const dateStr = dt.toISOString().split('T')[0];
   const hourIndex = dt.getUTCHours();
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lng}` +
+  const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+  const baseUrl = dt < sevenDaysAgo
+    ? 'https://archive-api.open-meteo.com/v1/archive'
+    : 'https://api.open-meteo.com/v1/forecast';
+  const url = `${baseUrl}?latitude=${lat}&longitude=${lng}` +
     `&hourly=cloud_cover,visibility,wind_speed_10m` +
     `&start_date=${dateStr}&end_date=${dateStr}&timezone=UTC`;
 

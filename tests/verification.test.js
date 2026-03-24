@@ -280,6 +280,27 @@ describe('checkWeather', () => {
     assert.ok(result.detail.includes('Visibility:'));
     assert.ok(result.detail.includes('Wind:'));
   });
+
+  it('uses archive endpoint for sightings older than 7 days', async () => {
+    let capturedUrl = '';
+    const capturingFetch = async (url) => {
+      capturedUrl = url;
+      return { ok: true, json: async () => ({ hourly: { cloud_cover: new Array(24).fill(10), visibility: new Array(24).fill(20000), wind_speed_10m: new Array(24).fill(5) } }) };
+    };
+    await checkWeather('2025-01-01T12:00:00Z', 52.48, -1.89, capturingFetch);
+    assert.ok(capturedUrl.includes('archive-api.open-meteo.com'), `Expected archive URL, got: ${capturedUrl}`);
+  });
+
+  it('uses forecast endpoint for recent sightings', async () => {
+    let capturedUrl = '';
+    const capturingFetch = async (url) => {
+      capturedUrl = url;
+      return { ok: true, json: async () => ({ hourly: { cloud_cover: new Array(24).fill(10), visibility: new Array(24).fill(20000), wind_speed_10m: new Array(24).fill(5) } }) };
+    };
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    await checkWeather(recentTime, 52.48, -1.89, capturingFetch);
+    assert.ok(capturedUrl.includes('api.open-meteo.com/v1/forecast'), `Expected forecast URL, got: ${capturedUrl}`);
+  });
 });
 
 // ── verifySighting ─────────────────────────────────────────────────────────────

@@ -69,14 +69,15 @@ input field in v0.1. This is an accepted gap — no action until a source emerge
 
 ## WL-006 — Open-Meteo historical data window
 
-**Status:** Open — monitor
+**Status:** Closed
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 **Severity:** Low
 
-Open-Meteo provides historical data via the archive endpoint (different URL from forecast).
-The current implementation uses the forecast endpoint, which may not return data for past dates.
-
-Action: Test with a past date. If data is missing, update checkWeather to use the archive endpoint.
+Resolved: `checkWeather` now selects the endpoint based on sighting age.
+Dates older than 7 days use `archive-api.open-meteo.com/v1/archive` (ERA5, covers 1940–present minus ~5 days).
+Recent dates (within 7 days) use `api.open-meteo.com/v1/forecast`.
+Both endpoints share identical response shape. Contract tests cover both paths.
 
 ---
 

@@ -131,6 +131,19 @@ describe('Feature: Sighting log and verification', () => {
     assert.notStrictEqual(result.verdict, 'LIKELY EXPLAINED', 'should not be LIKELY EXPLAINED with no matches');
   });
 
+  it('Scenario: Investigator submits a historical sighting — weather data is available', async () => {
+    // Given: a sighting dated well in the past (archive endpoint territory)
+    const sighting = { datetime: '2025-01-01T20:00:00Z', lat: 52.48, lng: -1.89 };
+
+    // When: verification runs (mock fetcher matches on 'open-meteo' — covers both endpoints)
+    const result = await verifySighting(sighting, cleanSkyFetcher);
+
+    // Then: weather result is not unverified — archive endpoint returned data
+    assert.notStrictEqual(result.weather.status, 'unverified',
+      'historical sighting must return weather data, not unverified');
+    assert.ok(result.weather.detail, 'weather result must include a detail string');
+  });
+
   it('Scenario: Geomagnetic storm detected — sighting returns PARTIAL MATCH', async () => {
     // Given: a recent sighting during a storm-level Kp event (Kp ≥ 5)
     const recentTime = new Date(Date.now() - 60_000).toISOString();
