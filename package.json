@@ -1,0 +1,23 @@
+{
+  "name": "universal-harmonix",
+  "version": "0.1.0",
+  "description": "UAP investigation and verification app — Universal Harmonix theory by James Brodie",
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/verification.test.js",
+    "test:acceptance": "node --test tests/acceptance/sighting-log.test.js",
+    "test:all": "node --test tests/verification.test.js tests/acceptance/sighting-log.test.js",
+    "test:coverage": "node --test --experimental-test-coverage tests/verification.test.js",
+    "pipeline": "bash scripts/pipeline-report.sh",
+    "check": "node --check app/js/domain.js app/js/storage.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Asspirited/Universal-Harmonix"
+  },
+  "author": "LeanSpirited (Rod)",
+  "license": "UNLICENSED"
+}

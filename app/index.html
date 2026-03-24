@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Universal Harmonix</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #0a0c14;
+      --surface:    #111420;
+      --surface-2:  #1a1f30;
+      --border:     #252b40;
+      --text:       #d4d8e8;
+      --text-muted: #6b7399;
+      --accent:     #4fc3f7;
+      --accent-dim: #1a3a4a;
+      --green:      #4caf84;
+      --amber:      #f0a040;
+      --red:        #e05555;
+      --purple:     #9c6cf7;
+      --radius:     8px;
+      --font:       system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+
+    html, body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.5;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 16px 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .wordmark {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      opacity: 0.9;
+    }
+    .tagline {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+      margin-bottom: 12px;
+    }
+
+    /* ── Tabs ── */
+    .tabs {
+      display: flex;
+      gap: 0;
+      margin-top: 4px;
+    }
+    .tab {
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+      user-select: none;
+    }
+    .tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    .tab:hover:not(.active) { color: var(--text); }
+
+    /* ── Main content ── */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 20px 48px;
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ── Form ── */
+    .form-group { margin-bottom: 20px; }
+    label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    input[type="text"],
+    input[type="datetime-local"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 15px;
+      padding: 11px 14px;
+      outline: none;
+      transition: border-color 0.15s;
+      -webkit-appearance: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--accent);
+    }
+    textarea { resize: vertical; min-height: 90px; }
+    select { cursor: pointer; }
+
+    /* Colour-scheme for date input calendar icon */
+    input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+      filter: invert(0.6);
+      cursor: pointer;
+    }
+
+    /* ── Location row ── */
+    .location-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .gps-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-muted);
+      font-size: 13px;
+      padding: 10px 14px;
+      cursor: pointer;
+      transition: border-color 0.15s, color 0.15s;
+      white-space: nowrap;
+      min-height: 44px;
+    }
+    .gps-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .gps-btn.loading { color: var(--accent); opacity: 0.7; pointer-events: none; }
+
+    /* ── Photo upload ── */
+    .photo-zone {
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.15s;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+    .photo-zone:hover { border-color: var(--accent); color: var(--accent); }
+    .photo-zone input { display: none; }
+    .photo-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .photo-preview img {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Submit button ── */
+    .submit-btn {
+      width: 100%;
+      background: var(--accent);
+      color: #0a0c14;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 14px 20px;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: opacity 0.15s, transform 0.1s;
+      letter-spacing: 0.02em;
+      min-height: 52px;
+    }
+    .submit-btn:hover { opacity: 0.9; }
+    .submit-btn:active { transform: scale(0.99); }
+    .submit-btn:disabled { opacity: 0.45; cursor: default; }
+
+    /* ── Verification panel ── */
+    .verifying-banner {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      margin-top: 24px;
+    }
+    .spinner {
+      display: inline-block;
+      width: 24px; height: 24px;
+      border: 2px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 10px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .verification-panel {
+      margin-top: 24px;
+      display: none;
+    }
+    .verification-panel.visible { display: block; }
+
+    .verdict-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 100px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+    }
+    .verdict-UNEXPLAINED    { background: rgba(156, 108, 247, 0.15); color: var(--purple); border: 1px solid rgba(156,108,247,0.3); }
+    .verdict-PARTIAL        { background: rgba(240, 160, 64, 0.12);  color: var(--amber);  border: 1px solid rgba(240,160,64,0.3); }
+    .verdict-EXPLAINED      { background: rgba(224, 85, 85, 0.12);   color: var(--red);    border: 1px solid rgba(224,85,85,0.3); }
+    .verdict-UNVERIFIED     { background: rgba(107, 115, 153, 0.12); color: var(--text-muted); border: 1px solid var(--border); }
+
+    .source-list { display: flex; flex-direction: column; gap: 10px; }
+    .source-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .source-icon { font-size: 20px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+    .source-body { flex: 1; min-width: 0; }
+    .source-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+    .source-detail { font-size: 13px; color: var(--text-muted); }
+    .source-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+      letter-spacing: 0.05em;
+    }
+    .tag-match     { background: rgba(224,85,85,0.15);    color: var(--red);   }
+    .tag-possible  { background: rgba(240,160,64,0.15);   color: var(--amber); }
+    .tag-no-match  { background: rgba(76,175,132,0.12);   color: var(--green); }
+    .tag-unverified{ background: rgba(107,115,153,0.12);  color: var(--text-muted); }
+
+    /* Aircraft sub-list */
+    .aircraft-list {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .aircraft-list span { display: block; }
+
+    /* ── Records tab ── */
+    .records-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+    .record-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .record-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .record-header:hover { background: var(--surface-2); }
+    .record-verdict-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .dot-UNEXPLAINED   { background: var(--purple); }
+    .dot-PARTIAL       { background: var(--amber); }
+    .dot-EXPLAINED     { background: var(--red); }
+    .dot-UNVERIFIED    { background: var(--text-muted); }
+    .record-meta {
+      flex: 1;
+      min-width: 0;
+    }
+    .record-title {
+      font-size: 14px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .record-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .record-chevron {
+      color: var(--text-muted);
+      font-size: 14px;
+      transition: transform 0.2s;
+    }
+    .record-body {
+      display: none;
+      padding: 0 16px 16px;
+      border-top: 1px solid var(--border);
+    }
+    .record-body.open { display: block; }
+    .record-description {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 12px 0;
+      font-style: italic;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .location-row { grid-template-columns: 1fr; }
+      main { padding: 20px 16px 48px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="wordmark">Universal Harmonix</div>
+    <div class="tagline">UAP Investigation &amp; Verification · BUFOG</div>
+    <nav class="tabs">
+      <div class="tab active" data-tab="log">Log Sighting</div>
+      <div class="tab" data-tab="records">Records</div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ── Log Sighting panel ── -->
+  <div class="panel active" id="panel-log">
+
+    <form id="sighting-form" novalidate>
+
+      <div class="form-group">
+        <label for="datetime">Date &amp; Time of sighting</label>
+        <input type="datetime-local" id="datetime" required>
+      </div>
+
+      <div class="form-group">
+        <label>Location</label>
+        <div class="location-row">
+          <input type="number" id="lat" placeholder="Latitude" step="any" required>
+          <input type="number" id="lng" placeholder="Longitude" step="any" required>
+        </div>
+        <div style="margin-top: 8px;">
+          <button type="button" class="gps-btn" id="gps-btn">
+            <span>📍</span> Use my location
+          </button>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="type">Phenomenon type</label>
+        <select id="type">
+          <option value="aerial">Aerial</option>
+          <option value="ground">Ground</option>
+          <option value="sea">Sea / Water</option>
+          <option value="other">Other / Unknown</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="duration">Duration (optional)</label>
+        <input type="text" id="duration" placeholder="e.g. 30 seconds, ~5 minutes">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" placeholder="What did you see? Colour, shape, movement, sound…" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Photos (optional — not persisted in v0.1)</label>
+        <label class="photo-zone" id="photo-zone">
+          <input type="file" id="photos" accept="image/*" multiple>
+          <span id="photo-label">📷 Tap to attach photos</span>
+          <div class="photo-preview" id="photo-preview"></div>
+        </label>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submit-btn">Log &amp; Verify</button>
+
+    </form>
+
+    <!-- Verifying spinner -->
+    <div class="verifying-banner" id="verifying-banner" style="display:none;">
+      <div class="spinner"></div>
+      <div style="font-size:14px; color:var(--text-muted);">Cross-checking against known phenomena…</div>
+    </div>
+
+    <!-- Verification panel -->
+    <div class="verification-panel" id="verification-panel">
+      <div id="verdict-badge"></div>
+      <div class="source-list" id="source-list"></div>
+      <div style="margin-top:20px; text-align:center;">
+        <button type="button" id="new-sighting-btn"
+          style="background:none; border:1px solid var(--border); border-radius:var(--radius);
+                 color:var(--text-muted); font-size:14px; padding:10px 20px; cursor:pointer;">
+          ← Log another sighting
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── Records panel ── -->
+  <div class="panel" id="panel-records">
+    <div id="records-container"></div>
+  </div>
+
+</main>
+
+<script type="module">
+  import { verifySighting } from './js/domain.js';
+  import { saveSighting, loadSightings } from './js/storage.js';
+
+  // ── Tab switching ──────────────────────────────────────────────────────────
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(`panel-${tab.dataset.tab}`).classList.add('active');
+      if (tab.dataset.tab === 'records') renderRecords();
+    });
+  });
+
+  // ── GPS ────────────────────────────────────────────────────────────────────
+  document.getElementById('gps-btn').addEventListener('click', () => {
+    const btn = document.getElementById('gps-btn');
+    if (!navigator.geolocation) {
+      alert('GPS is not available on this device or browser.');
+      return;
+    }
+    btn.classList.add('loading');
+    btn.textContent = '⏳ Locating…';
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        document.getElementById('lat').value = pos.coords.latitude.toFixed(6);
+        document.getElementById('lng').value = pos.coords.longitude.toFixed(6);
+        btn.classList.remove('loading');
+        btn.innerHTML = '<span>✅</span> Location captured';
+      },
+      () => {
+        btn.classList.remove('loading');
+        btn.innerHTML = '<span>📍</span> Use my location';
+        alert('Could not get your location. Please enter coordinates manually.');
+      },
+      { timeout: 10000, enableHighAccuracy: true }
+    );
+  });
+
+  // ── Photo preview ──────────────────────────────────────────────────────────
+  document.getElementById('photos').addEventListener('change', e => {
+    const preview = document.getElementById('photo-preview');
+    const label   = document.getElementById('photo-label');
+    preview.innerHTML = '';
+    const files = Array.from(e.target.files);
+    if (files.length === 0) {
+      label.textContent = '📷 Tap to attach photos';
+      return;
+    }
+    label.textContent = `${files.length} photo${files.length > 1 ? 's' : ''} selected (not persisted in v0.1)`;
+    files.forEach(file => {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      preview.appendChild(img);
+    });
+  });
+
+  // ── Form submit ────────────────────────────────────────────────────────────
+  const form        = document.getElementById('sighting-form');
+  const submitBtn   = document.getElementById('submit-btn');
+  const verifyBanner= document.getElementById('verifying-banner');
+  const verifyPanel = document.getElementById('verification-panel');
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+
+    const datetime    = document.getElementById('datetime').value;
+    const lat         = parseFloat(document.getElementById('lat').value);
+    const lng         = parseFloat(document.getElementById('lng').value);
+    const type        = document.getElementById('type').value;
+    const duration    = document.getElementById('duration').value;
+    const description = document.getElementById('description').value.trim();
+
+    if (!datetime || isNaN(lat) || isNaN(lng) || !description) {
+      alert('Please fill in date/time, location, and description.');
+      return;
+    }
+
+    // Show spinner
+    form.style.display = 'none';
+    verifyBanner.style.display = 'block';
+    verifyPanel.classList.remove('visible');
+    submitBtn.disabled = true;
+
+    let verification;
+    try {
+      verification = await verifySighting({ datetime, lat, lng });
+    } catch (err) {
+      verification = {
+        aircraft:   { status: 'unverified', detail: 'Check failed' },
+        iss:        { status: 'unverified', detail: 'Check failed' },
+        weather:    { status: 'unverified', detail: 'Check failed' },
+        radiosonde: { status: 'unverified', detail: 'Check failed' },
+        verdict:    'UNVERIFIED',
+      };
+    }
+
+    const sightingRecord = {
+      datetime, lat, lng, type, duration, description,
+      verification,
+      photoCount: document.getElementById('photos').files.length,
+    };
+
+    saveSighting(sightingRecord);
+
+    verifyBanner.style.display = 'none';
+    renderVerificationPanel(verification);
+    verifyPanel.classList.add('visible');
+    submitBtn.disabled = false;
+  });
+
+  document.getElementById('new-sighting-btn').addEventListener('click', () => {
+    form.reset();
+    form.style.display = 'block';
+    verifyPanel.classList.remove('visible');
+    document.getElementById('photo-preview').innerHTML = '';
+    document.getElementById('photo-label').textContent = '📷 Tap to attach photos';
+    document.getElementById('gps-btn').innerHTML = '<span>📍</span> Use my location';
+  });
+
+  // ── Verification panel renderer ────────────────────────────────────────────
+  function renderVerificationPanel(v) {
+    const verdictEl = document.getElementById('verdict-badge');
+    const sourcesEl = document.getElementById('source-list');
+
+    const verdictLabel = v.verdict;
+    const verdictClass = verdictLabel === 'LIKELY EXPLAINED' ? 'EXPLAINED'
+                       : verdictLabel === 'PARTIAL MATCH'    ? 'PARTIAL'
+                       : verdictLabel;
+
+    const verdictEmoji = {
+      UNEXPLAINED:      '🔵',
+      'PARTIAL MATCH':  '🟡',
+      'LIKELY EXPLAINED':'🔴',
+      UNVERIFIED:        '⚪',
+    }[verdictLabel] || '⚪';
+
+    verdictEl.innerHTML = `<div class="verdict-badge verdict-${verdictClass}">${verdictEmoji} ${verdictLabel}</div>`;
+
+    const sources = [
+      { key: 'aircraft',   icon: '✈️',  name: 'Aircraft (OpenSky ADS-B)' },
+      { key: 'iss',        icon: '🛰️', name: 'ISS Position' },
+      { key: 'weather',    icon: '☁️', name: 'Weather Conditions' },
+      { key: 'radiosonde', icon: '🎈', name: 'Weather Balloon (Radiosonde)' },
+    ];
+
+    sourcesEl.innerHTML = sources.map(({ key, icon, name }) => {
+      const res = v[key];
+      const tag = tagFor(res.status);
+      let extra = '';
+      if (key === 'aircraft' && res.aircraft?.length) {
+        extra = `<div class="aircraft-list">${res.aircraft.slice(0, 5).map(a =>
+          `<span>${a.callsign} · ${a.altitudeM != null ? a.altitudeM + 'm' : '?m'} · ${a.speedMs != null ? a.speedMs + 'm/s' : '?'}</span>`
+        ).join('')}</div>`;
+      }
+      return `<div class="source-card">
+        <div class="source-icon">${icon}</div>
+        <div class="source-body">
+          <div class="source-name">${name}</div>
+          <div class="source-tag ${tag.cls}">${tag.label}</div>
+          <div class="source-detail">${res.detail || ''}</div>
+          ${extra}
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function tagFor(status) {
+    return {
+      match:          { cls: 'tag-match',      label: 'MATCH' },
+      possible_match: { cls: 'tag-possible',   label: 'POSSIBLE MATCH' },
+      no_match:       { cls: 'tag-no-match',   label: 'NO MATCH' },
+      unverified:     { cls: 'tag-unverified', label: 'COULD NOT VERIFY' },
+    }[status] || { cls: 'tag-unverified', label: status };
+  }
+
+  // ── Records renderer ───────────────────────────────────────────────────────
+  function renderRecords() {
+    const container = document.getElementById('records-container');
+    const sightings = loadSightings();
+
+    if (sightings.length === 0) {
+      container.innerHTML = `<div class="records-empty">No sightings logged yet.<br>Use the Log Sighting tab to record your first observation.</div>`;
+      return;
+    }
+
+    container.innerHTML = sightings.map((s, i) => {
+      const v = s.verification;
+      const verdictClass = !v ? 'UNVERIFIED'
+                         : v.verdict === 'LIKELY EXPLAINED' ? 'EXPLAINED'
+                         : v.verdict === 'PARTIAL MATCH'    ? 'PARTIAL'
+                         : v.verdict || 'UNVERIFIED';
+      const dt = s.datetime ? new Date(s.datetime).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) : '—';
+      const short = s.description ? s.description.slice(0, 80) + (s.description.length > 80 ? '…' : '') : '';
+
+      let sourcesHtml = '';
+      if (v) {
+        const sources = [
+          { key: 'aircraft',   icon: '✈️',  name: 'Aircraft' },
+          { key: 'iss',        icon: '🛰️', name: 'ISS' },
+          { key: 'weather',    icon: '☁️', name: 'Weather' },
+          { key: 'radiosonde', icon: '🎈', name: 'Radiosonde' },
+        ];
+        sourcesHtml = `<div class="source-list" style="margin-top:8px;">` +
+          sources.map(({ key, icon, name }) => {
+            const res = v[key];
+            if (!res) return '';
+            const tag = tagFor(res.status);
+            return `<div class="source-card">
+              <div class="source-icon">${icon}</div>
+              <div class="source-body">
+                <div class="source-name">${name}</div>
+                <div class="source-tag ${tag.cls}">${tag.label}</div>
+                <div class="source-detail">${res.detail || ''}</div>
+              </div>
+            </div>`;
+          }).join('') + `</div>`;
+      }
+
+      return `<div class="record-card">
+        <div class="record-header" onclick="toggleRecord(${i})">
+          <div class="record-verdict-dot dot-${verdictClass}"></div>
+          <div class="record-meta">
+            <div class="record-title">${s.type ? s.type.charAt(0).toUpperCase() + s.type.slice(1) : 'Sighting'} · ${dt}</div>
+            <div class="record-sub">${s.lat?.toFixed(4) ?? '—'}, ${s.lng?.toFixed(4) ?? '—'} · ${v?.verdict || 'UNVERIFIED'}</div>
+          </div>
+          <div class="record-chevron" id="chevron-${i}">›</div>
+        </div>
+        <div class="record-body" id="record-body-${i}">
+          ${s.description ? `<div class="record-description">"${s.description}"</div>` : ''}
+          ${s.duration ? `<div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Duration: ${s.duration}</div>` : ''}
+          ${sourcesHtml}
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  window.toggleRecord = function(i) {
+    const body    = document.getElementById(`record-body-${i}`);
+    const chevron = document.getElementById(`chevron-${i}`);
+    const isOpen  = body.classList.toggle('open');
+    chevron.style.transform = isOpen ? 'rotate(90deg)' : '';
+  };
+
+  // ── Set default datetime to now ────────────────────────────────────────────
+  const now = new Date();
+  now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+  document.getElementById('datetime').value = now.toISOString().slice(0, 16);
+</script>
+
+</body>
+</html>

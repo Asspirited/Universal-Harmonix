@@ -1,0 +1,274 @@
+// Universal Harmonix — Unit tests: verification domain
+// Run: node --test tests/verification.test.js
+
+import { describe, it } from 'node:test';
+import assert from 'node:assert/strict';
+import {
+  haversineKm,
+  checkRadiosonde,
+  checkAircraft,
+  checkISS,
+  checkWeather,
+  computeVerdict,
+  verifySighting,
+} from '../app/js/domain.js';
+
+// ── haversineKm ────────────────────────────────────────────────────────────────
+
+describe('haversineKm', () => {
+  it('returns 0 for identical coordinates', () => {
+    assert.strictEqual(haversineKm(52.48, -1.89, 52.48, -1.89), 0);
+  });
+
+  it('returns approximately 165km between Birmingham and London', () => {
+    const km = haversineKm(52.48, -1.89, 51.51, -0.13);
+    assert.ok(km > 155 && km < 175, `Expected ~165km, got ${km.toFixed(1)}`);
+  });
+
+  it('returns a positive value for any two different points', () => {
+    const km = haversineKm(0, 0, 1, 1);
+    assert.ok(km > 0);
+  });
+});
+
+// ── checkRadiosonde ────────────────────────────────────────────────────────────
+
+describe('checkRadiosonde', () => {
+  it('returns possible_match near Watnall within midnight launch window', () => {
+    const result = checkRadiosonde('2026-03-24T00:30:00Z', 52.95, -1.25);
+    assert.strictEqual(result.status, 'possible_match');
+  });
+
+  it('returns possible_match near Camborne within noon launch window', () => {
+    const result = checkRadiosonde('2026-03-24T11:45:00Z', 50.218, -5.327);
+    assert.strictEqual(result.status, 'possible_match');
+  });
+
+  it('returns no_match six hours from any launch window', () => {
+    const result = checkRadiosonde('2026-03-24T06:00:00Z', 52.95, -1.25);
+    assert.strictEqual(result.status, 'no_match');
+  });
+
+  it('returns no_match when far from all UK sites at launch time', () => {
+    const result = checkRadiosonde('2026-03-24T00:00:00Z', 20.0, 0.0);
+    assert.strictEqual(result.status, 'no_match');
+  });
+
+  it('handles midnight wraparound (23:30 → 00:00 window)', () => {
+    const result = checkRadiosonde('2026-03-24T23:30:00Z', 52.95, -1.25);
+    assert.strictEqual(result.status, 'possible_match');
+  });
+});
+
+// ── computeVerdict ─────────────────────────────────────────────────────────────
+
+describe('computeVerdict', () => {
+  it('returns LIKELY EXPLAINED when any source is match', () => {
+    assert.strictEqual(computeVerdict({
+      aircraft:   { status: 'match' },
+      iss:        { status: 'no_match' },
+      weather:    { status: 'no_match' },
+      radiosonde: { status: 'no_match' },
+    }), 'LIKELY EXPLAINED');
+  });
+
+  it('returns PARTIAL MATCH when any source is possible_match and none is match', () => {
+    assert.strictEqual(computeVerdict({
+      aircraft:   { status: 'no_match' },
+      iss:        { status: 'possible_match' },
+      weather:    { status: 'no_match' },
+      radiosonde: { status: 'no_match' },
+    }), 'PARTIAL MATCH');
+  });
+
+  it('returns UNEXPLAINED when all are no_match', () => {
+    assert.strictEqual(computeVerdict({
+      aircraft:   { status: 'no_match' },
+      iss:        { status: 'no_match' },
+      weather:    { status: 'no_match' },
+      radiosonde: { status: 'no_match' },
+    }), 'UNEXPLAINED');
+  });
+
+  it('returns UNVERIFIED when all are unverified', () => {
+    assert.strictEqual(computeVerdict({
+      aircraft:   { status: 'unverified' },
+      iss:        { status: 'unverified' },
+      weather:    { status: 'unverified' },
+      radiosonde: { status: 'unverified' },
+    }), 'UNVERIFIED');
+  });
+
+  it('match takes priority over possible_match', () => {
+    assert.strictEqual(computeVerdict({
+      aircraft:   { status: 'match' },
+      iss:        { status: 'possible_match' },
+      weather:    { status: 'no_match' },
+      radiosonde: { status: 'no_match' },
+    }), 'LIKELY EXPLAINED');
+  });
+});
+
+// ── checkAircraft ──────────────────────────────────────────────────────────────
+
+describe('checkAircraft', () => {
+  it('returns unverified for sightings older than 1 hour', async () => {
+    const oldTime = new Date(Date.now() - 7200_000).toISOString(); // 2h ago
+    const neverCalledFetch = async () => { throw new Error('Should not be called'); };
+    const result = await checkAircraft(oldTime, 52.48, -1.89, neverCalledFetch);
+    assert.strictEqual(result.status, 'unverified');
+    assert.ok(result.detail.includes('historical'));
+  });
+
+  it('returns match when OpenSky returns aircraft states', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const mockFetch = async () => ({
+      ok: true,
+      json: async () => ({
+        states: [['abc123', 'BAW123  ', 'United Kingdom', 0, 0, -1.89, 52.48, 8000, false, 250, 90, null, null, null, 'ADSB', null, 0]],
+      }),
+    });
+    const result = await checkAircraft(recentTime, 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'match');
+    assert.ok(result.aircraft.length >= 1);
+    assert.strictEqual(result.aircraft[0].callsign, 'BAW123');
+  });
+
+  it('returns no_match when OpenSky returns empty states', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const mockFetch = async () => ({ ok: true, json: async () => ({ states: [] }) });
+    const result = await checkAircraft(recentTime, 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'no_match');
+  });
+
+  it('returns unverified when OpenSky API fails', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const mockFetch = async () => { throw new Error('Network error'); };
+    const result = await checkAircraft(recentTime, 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'unverified');
+    assert.ok(result.detail.includes('Network error'));
+  });
+
+  it('returns unverified when OpenSky returns non-OK response', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const mockFetch = async () => ({ ok: false, status: 429 });
+    const result = await checkAircraft(recentTime, 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'unverified');
+  });
+});
+
+// ── checkISS ───────────────────────────────────────────────────────────────────
+
+describe('checkISS', () => {
+  it('returns possible_match when ISS is within 500km', async () => {
+    const mockFetch = async () => ({
+      ok: true,
+      json: async () => ([{ latitude: 52.5, longitude: -1.9, altitude: 408, velocity: 7700 }]),
+    });
+    const result = await checkISS('2026-03-24T22:00:00Z', 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'possible_match');
+    assert.ok(result.distanceKm < 500);
+  });
+
+  it('returns no_match when ISS is far away', async () => {
+    const mockFetch = async () => ({
+      ok: true,
+      json: async () => ([{ latitude: -10.0, longitude: 45.0, altitude: 408, velocity: 7700 }]),
+    });
+    const result = await checkISS('2026-03-24T22:00:00Z', 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'no_match');
+    assert.ok(result.distanceKm >= 500);
+  });
+
+  it('returns unverified when API throws', async () => {
+    const mockFetch = async () => { throw new Error('Timeout'); };
+    const result = await checkISS('2026-03-24T22:00:00Z', 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'unverified');
+  });
+
+  it('returns unverified when API returns empty array', async () => {
+    const mockFetch = async () => ({ ok: true, json: async () => ([]) });
+    const result = await checkISS('2026-03-24T22:00:00Z', 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'unverified');
+  });
+});
+
+// ── checkWeather ───────────────────────────────────────────────────────────────
+
+describe('checkWeather', () => {
+  const makeWeatherFetch = (cloudCover, visibility = 20000, windSpeed = 10) => async () => ({
+    ok: true,
+    json: async () => ({
+      hourly: {
+        cloud_cover:    new Array(24).fill(cloudCover),
+        visibility:     new Array(24).fill(visibility),
+        wind_speed_10m: new Array(24).fill(windSpeed),
+      },
+    }),
+  });
+
+  it('returns possible_match when cloud cover exceeds 80%', async () => {
+    const result = await checkWeather('2026-03-24T22:00:00Z', 52.48, -1.89, makeWeatherFetch(90));
+    assert.strictEqual(result.status, 'possible_match');
+  });
+
+  it('returns possible_match when visibility is below 1000m', async () => {
+    const result = await checkWeather('2026-03-24T22:00:00Z', 52.48, -1.89, makeWeatherFetch(30, 500));
+    assert.strictEqual(result.status, 'possible_match');
+  });
+
+  it('returns no_match when conditions are clear', async () => {
+    const result = await checkWeather('2026-03-24T22:00:00Z', 52.48, -1.89, makeWeatherFetch(10, 30000, 5));
+    assert.strictEqual(result.status, 'no_match');
+  });
+
+  it('returns unverified when API throws', async () => {
+    const mockFetch = async () => { throw new Error('Timeout'); };
+    const result = await checkWeather('2026-03-24T22:00:00Z', 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'unverified');
+  });
+
+  it('includes cloud, visibility, and wind in detail string', async () => {
+    const result = await checkWeather('2026-03-24T22:00:00Z', 52.48, -1.89, makeWeatherFetch(20, 15000, 25));
+    assert.ok(result.detail.includes('Cloud:'));
+    assert.ok(result.detail.includes('Visibility:'));
+    assert.ok(result.detail.includes('Wind:'));
+  });
+});
+
+// ── verifySighting ─────────────────────────────────────────────────────────────
+
+describe('verifySighting', () => {
+  it('returns all four sources and a valid verdict', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const mockFetch = async (url) => ({
+      ok: true,
+      json: async () => {
+        if (url.includes('opensky'))      return { states: [] };
+        if (url.includes('wheretheiss')) return [{ latitude: 0, longitude: 0, altitude: 408 }];
+        if (url.includes('open-meteo'))  return { hourly: { cloud_cover: new Array(24).fill(5), visibility: new Array(24).fill(30000), wind_speed_10m: new Array(24).fill(3) } };
+        return {};
+      },
+    });
+
+    const result = await verifySighting({ datetime: recentTime, lat: 52.48, lng: -1.89 }, mockFetch);
+
+    assert.ok(result.aircraft,   'missing aircraft');
+    assert.ok(result.iss,        'missing iss');
+    assert.ok(result.weather,    'missing weather');
+    assert.ok(result.radiosonde, 'missing radiosonde');
+
+    const valid = ['UNEXPLAINED', 'PARTIAL MATCH', 'LIKELY EXPLAINED', 'UNVERIFIED'];
+    assert.ok(valid.includes(result.verdict), `Unexpected verdict: ${result.verdict}`);
+  });
+
+  it('still returns a verdict when all APIs fail', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const failFetch = async () => { throw new Error('All down'); };
+    const result = await verifySighting({ datetime: recentTime, lat: 52.48, lng: -1.89 }, failFetch);
+    assert.ok(result.verdict);
+    assert.strictEqual(result.aircraft.status, 'unverified');
+    assert.strictEqual(result.iss.status,      'unverified');
+    assert.strictEqual(result.weather.status,  'unverified');
+  });
+});
