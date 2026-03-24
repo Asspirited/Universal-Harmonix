@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "node --test tests/verification.test.js tests/format.test.js",
-    "test:contract": "node --test tests/contract/opensky.contract.test.js tests/contract/iss.contract.test.js tests/contract/weather.contract.test.js tests/contract/starlink.contract.test.js tests/contract/kp.contract.test.js",
-    "test:acceptance": "node --test tests/acceptance/sighting-log.test.js",
-    "test:all": "node --test tests/verification.test.js tests/format.test.js tests/acceptance/sighting-log.test.js",
+    "test:contract": "node --test tests/contract/opensky.contract.test.js tests/contract/iss.contract.test.js tests/contract/weather.contract.test.js tests/contract/starlink.contract.test.js tests/contract/kp.contract.test.js tests/contract/nominatim.contract.test.js tests/contract/postcodes.contract.test.js",
+    "test:acceptance": "node --test tests/acceptance/sighting-log.test.js tests/acceptance/location.test.js",
+    "test:all": "node --test tests/verification.test.js tests/format.test.js tests/acceptance/sighting-log.test.js tests/acceptance/location.test.js",
     "test:coverage": "node --test --experimental-test-coverage tests/verification.test.js tests/format.test.js",
     "pipeline": "bash scripts/pipeline-report.sh",
     "check": "node --check app/js/domain.js app/js/storage.js app/js/format.js"

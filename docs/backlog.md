@@ -1,6 +1,6 @@
 # Universal Harmonix — Backlog
 # Prefix: UH-
-# Last updated: 2026-03-24 (session 4)
+# Last updated: 2026-03-24 (session 5)
 
 ---
 
@@ -178,14 +178,15 @@ Add `UH-` row to prefix registry in `/home/rodent/leanspirited-standards/standar
 
 ## UH-008 — GitHub Pages deployment confirmed live
 
-**Status:** In Progress
+**Status:** Done
 **Priority:** Critical
 **Loop:** Process
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### Notes
 Pages configured (Source: GitHub Actions). Deploy workflow run #3 triggered via empty commit.
-Confirm live at https://asspirited.github.io/Universal-Harmonix/ before next session.
+Confirmed live: https://asspirited.github.io/Universal-Harmonix/ returns HTTP 200.
 
 ---
 
@@ -438,3 +439,46 @@ Feature: Sky Activity panel
 - Weather: reuse existing Open-Meteo call
 - Show as a collapsible "Sky Context" section on the Log tab, above the form
 - Gherkin gate applies
+
+---
+
+## UH-015 — Photo as sighting background
+
+**Status:** Open
+**Priority:** Medium
+**Loop:** BDD
+**Raised:** 2026-03-24
+
+### User Story
+As a UAP investigator,
+I want the photo I took at the time of my sighting to appear as the background of the verification panel,
+So that the evidence stays in context as I review what sources matched.
+
+### Acceptance Criteria
+
+```gherkin
+Feature: Photo as sighting background
+
+  Scenario: Sighting with photo shows photo as verification panel background
+    Given I have logged a sighting with a photo attached
+    When I view the verification panel for that sighting
+    Then the photo is shown as a full-bleed background
+    And the verification results are readable over the photo via a semi-transparent overlay
+
+  Scenario: Sighting without photo shows standard background
+    Given I have logged a sighting with no photo
+    When I view the verification panel
+    Then the standard dark background is shown
+
+  Scenario: Photo background is visible at night on mobile
+    Given I am viewing the verification panel with a photo background
+    Then the text overlay contrast is sufficient to read all source cards
+```
+
+### Notes
+- Depends on: UH-005 (photo persistence — Done)
+- Apply to Records tab expanded view and the immediate post-submit verification panel
+- Semi-transparent dark overlay (e.g. rgba(0,0,0,0.6)) to ensure readability
+- Mobile: test on dark screen, avoid excessive brightness
+- Per-sighting: background is the first attached photo for that record
+- Source: idea-uh-photo-background-2026-03-24.md (Downloads)

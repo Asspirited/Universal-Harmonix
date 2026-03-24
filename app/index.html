@@ -182,6 +182,13 @@
     }
     .gps-btn:hover { border-color: var(--accent); color: var(--accent); }
     .gps-btn.loading { color: var(--accent); opacity: 0.7; pointer-events: none; }
+    .location-address {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--accent);
+      min-height: 18px;
+    }
+    .location-address.error { color: var(--text-muted); }
 
     /* ── Photo upload ── */
     .photo-zone {
@@ -431,6 +438,7 @@
       input[type="datetime-local"],
       input[type="number"],
       select    { font-size: 16px; /* prevent iOS zoom */ padding: 13px 14px; min-height: 48px; }
+      #postcode { font-size: 16px; min-height: 48px; }
       textarea  { font-size: 16px; min-height: 100px; }
 
       /* Record cards */
@@ -501,14 +509,17 @@
 
       <div class="form-group">
         <label>Location</label>
-        <div class="location-row">
+        <button type="button" class="gps-btn" id="gps-btn">
+          <span>📍</span> Locating…
+        </button>
+        <div class="location-address" id="location-address"></div>
+        <div class="location-row" style="margin-top: 8px;">
           <input type="number" id="lat" placeholder="Latitude" step="any" required>
           <input type="number" id="lng" placeholder="Longitude" step="any" required>
         </div>
         <div style="margin-top: 8px;">
-          <button type="button" class="gps-btn" id="gps-btn">
-            <span>📍</span> Use my location
-          </button>
+          <input type="text" id="postcode" placeholder="Or enter a UK postcode…"
+                 autocomplete="off" style="font-size:14px;">
         </div>
       </div>
 
@@ -625,6 +636,7 @@
   import { resizeToBase64, MAX_PHOTOS }              from './js/photo.js';
   import { renderVerificationPanel, renderRecords }  from './js/render.js';
   import { triggerPdfExport, downloadSightingJson, downloadBackup } from './js/export.js';
+  import { reverseGeocode, lookupPostcode, looksLikeUKPostcode } from './js/location.js';
 
   // ── Tab switching ──────────────────────────────────────────────────────────
   function switchTab(name) {
@@ -645,30 +657,84 @@
     navigator.serviceWorker.register('./sw.js').catch(() => {/* offline installs not critical */});
   }
 
-  // ── GPS ────────────────────────────────────────────────────────────────────
-  document.getElementById('gps-btn').addEventListener('click', () => {
-    const btn = document.getElementById('gps-btn');
+  // ── Location helpers ───────────────────────────────────────────────────────
+  const gpsBtn      = document.getElementById('gps-btn');
+  const addrEl      = document.getElementById('location-address');
+  const latEl       = document.getElementById('lat');
+  const lngEl       = document.getElementById('lng');
+  const postcodeEl  = document.getElementById('postcode');
+
+  function setAddress(text, isError = false) {
+    addrEl.textContent = text;
+    addrEl.className = 'location-address' + (isError ? ' error' : '');
+  }
+
+  async function fillCoordsAndAddress(lat, lng) {
+    latEl.value = lat.toFixed(6);
+    lngEl.value = lng.toFixed(6);
+    setAddress('Resolving address…');
+    try {
+      const addr = await reverseGeocode(lat, lng);
+      setAddress(addr);
+    } catch {
+      setAddress(`${lat.toFixed(4)}, ${lng.toFixed(4)}`, true);
+    }
+  }
+
+  function requestGPS() {
     if (!navigator.geolocation) {
-      alert('GPS is not available on this device or browser.');
+      gpsBtn.innerHTML = '<span>📍</span> GPS unavailable — enter postcode or coordinates';
+      setAddress('Enter a postcode or coordinates below.', true);
       return;
     }
-    btn.classList.add('loading');
-    btn.textContent = '⏳ Locating…';
+    gpsBtn.classList.add('loading');
+    gpsBtn.innerHTML = '<span>⏳</span> Locating…';
     navigator.geolocation.getCurrentPosition(
-      pos => {
-        document.getElementById('lat').value = pos.coords.latitude.toFixed(6);
-        document.getElementById('lng').value = pos.coords.longitude.toFixed(6);
-        btn.classList.remove('loading');
-        btn.innerHTML = '<span>✅</span> Location captured';
+      async pos => {
+        gpsBtn.classList.remove('loading');
+        gpsBtn.innerHTML = '<span>✅</span> Location captured';
+        await fillCoordsAndAddress(pos.coords.latitude, pos.coords.longitude);
       },
       () => {
-        btn.classList.remove('loading');
-        btn.innerHTML = '<span>📍</span> Use my location';
-        alert('Could not get your location. Please enter coordinates manually.');
+        gpsBtn.classList.remove('loading');
+        gpsBtn.innerHTML = '<span>📍</span> Retry GPS';
+        setAddress('GPS unavailable — enter a postcode or coordinates below.', true);
       },
       { timeout: 10000, enableHighAccuracy: true }
     );
+  }
+
+  // Auto-trigger GPS on load
+  requestGPS();
+
+  // Manual GPS retry button
+  gpsBtn.addEventListener('click', requestGPS);
+
+  // Postcode input: lookup on blur if looks like a postcode
+  postcodeEl.addEventListener('blur', async () => {
+    const val = postcodeEl.value.trim();
+    if (!val) return;
+    if (looksLikeUKPostcode(val)) {
+      setAddress('Looking up postcode…');
+      try {
+        const { lat, lng } = await lookupPostcode(val);
+        await fillCoordsAndAddress(lat, lng);
+        postcodeEl.value = '';
+      } catch {
+        setAddress('Postcode not found — try again or enter coordinates.', true);
+      }
+    }
   });
+
+  // Lat/lng manual entry: reverse geocode on blur
+  async function onCoordBlur() {
+    const lat = parseFloat(latEl.value);
+    const lng = parseFloat(lngEl.value);
+    if (isNaN(lat) || isNaN(lng)) return;
+    await fillCoordsAndAddress(lat, lng);
+  }
+  latEl.addEventListener('blur', onCoordBlur);
+  lngEl.addEventListener('blur', onCoordBlur);
 
   // ── Photo handling ─────────────────────────────────────────────────────────
   let pendingPhotos = [];
@@ -743,7 +809,8 @@
     pendingPhotos = [];
     document.getElementById('photo-preview').innerHTML = '';
     document.getElementById('photo-label').textContent = '📷 Tap to attach photos';
-    document.getElementById('gps-btn').innerHTML = '<span>📍</span> Use my location';
+    addrEl.textContent = '';
+    requestGPS();
   });
 
   // ── Records — toggle expand and export (global for onclick in rendered HTML) ──

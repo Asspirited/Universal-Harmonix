@@ -89,7 +89,9 @@ CONTRACT_OUT=$(node --test \
   tests/contract/iss.contract.test.js \
   tests/contract/weather.contract.test.js \
   tests/contract/starlink.contract.test.js \
-  tests/contract/kp.contract.test.js 2>&1)
+  tests/contract/kp.contract.test.js \
+  tests/contract/nominatim.contract.test.js \
+  tests/contract/postcodes.contract.test.js 2>&1)
 CONTRACT_EXIT=$?
 CONTRACT_END=$(date +%s)
 CONTRACT_STATS=$(parse_test_stats "$CONTRACT_OUT")
@@ -109,7 +111,7 @@ fi
 separator
 echo "LAYER 3 — GHERKIN / BDD ACCEPTANCE"
 ACCEPT_START=$(date +%s)
-ACCEPT_OUT=$(node --test --experimental-test-coverage tests/acceptance/sighting-log.test.js 2>&1)
+ACCEPT_OUT=$(node --test --experimental-test-coverage tests/acceptance/sighting-log.test.js tests/acceptance/location.test.js 2>&1)
 ACCEPT_EXIT=$?
 ACCEPT_END=$(date +%s)
 ACCEPT_STATS=$(parse_test_stats "$ACCEPT_OUT")
@@ -166,6 +168,12 @@ ping_api "Celestrak (Starlink TLE)" \
   "200"
 ping_api "NOAA SWPC (Kp index)" \
   "https://services.swpc.noaa.gov/json/planetary_k_index_1m.json" \
+  "200"
+ping_api "Nominatim (reverse geocode)" \
+  "https://nominatim.openstreetmap.org/reverse?lat=52.48&lon=-1.89&format=json" \
+  "200"
+ping_api "postcodes.io (postcode lookup)" \
+  "https://api.postcodes.io/postcodes/B11BB" \
   "200"
 
 OAT_END=$(date +%s)
