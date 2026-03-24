@@ -602,10 +602,11 @@ Feature: Three-tab navigation
 
 ## UH-030 — Seed NUFORC UK dataset
 
-**Status:** Open
+**Status:** Done
 **Priority:** High
 **Loop:** Data
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### User Story
 As a UAP researcher,
