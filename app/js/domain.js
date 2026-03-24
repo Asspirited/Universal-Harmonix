@@ -184,21 +184,30 @@ export function computeVerdict(results) {
   return 'UNEXPLAINED';
 }
 
+// ── Source registry ────────────────────────────────────────────────────────────
+// Add new verification sources here. Each entry is { key, run }.
+// verifySighting runs all sources generically — no manual wiring needed.
+
+export const VERIFICATION_SOURCES = [
+  { key: 'aircraft',   run: (dt, lat, lng, f) => checkAircraft(dt, lat, lng, f) },
+  { key: 'iss',        run: (dt, lat, lng, f) => checkISS(dt, lat, lng, f) },
+  { key: 'weather',    run: (dt, lat, lng, f) => checkWeather(dt, lat, lng, f) },
+  { key: 'radiosonde', run: (dt, lat, lng)    => Promise.resolve(checkRadiosonde(dt, lat, lng)) },
+];
+
 // ── Main entry point ───────────────────────────────────────────────────────────
 
 export async function verifySighting({ datetime, lat, lng }, fetcher = fetch) {
-  const [aircraftResult, issResult, weatherResult] = await Promise.allSettled([
-    checkAircraft(datetime, lat, lng, fetcher),
-    checkISS(datetime, lat, lng, fetcher),
-    checkWeather(datetime, lat, lng, fetcher),
-  ]);
+  const settled = await Promise.allSettled(
+    VERIFICATION_SOURCES.map(src => src.run(datetime, lat, lng, fetcher))
+  );
 
-  const results = {
-    aircraft:   aircraftResult.status === 'fulfilled' ? aircraftResult.value : { status: 'unverified', detail: 'Check failed unexpectedly' },
-    iss:        issResult.status       === 'fulfilled' ? issResult.value      : { status: 'unverified', detail: 'Check failed unexpectedly' },
-    weather:    weatherResult.status   === 'fulfilled' ? weatherResult.value  : { status: 'unverified', detail: 'Check failed unexpectedly' },
-    radiosonde: checkRadiosonde(datetime, lat, lng),
-  };
+  const results = {};
+  VERIFICATION_SOURCES.forEach((src, i) => {
+    results[src.key] = settled[i].status === 'fulfilled'
+      ? settled[i].value
+      : { status: 'unverified', detail: 'Check failed unexpectedly' };
+  });
 
   return { ...results, verdict: computeVerdict(results) };
 }

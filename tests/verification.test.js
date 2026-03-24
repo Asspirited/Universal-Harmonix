@@ -11,6 +11,7 @@ import {
   checkWeather,
   computeVerdict,
   verifySighting,
+  VERIFICATION_SOURCES,
 } from '../app/js/domain.js';
 
 // ── haversineKm ────────────────────────────────────────────────────────────────
@@ -106,6 +107,44 @@ describe('computeVerdict', () => {
       weather:    { status: 'no_match' },
       radiosonde: { status: 'no_match' },
     }), 'LIKELY EXPLAINED');
+  });
+
+  it('returns UNEXPLAINED when mix of no_match and unverified (unverified does not suppress unexplained)', () => {
+    assert.strictEqual(computeVerdict({
+      aircraft:   { status: 'no_match' },
+      iss:        { status: 'unverified' },
+      weather:    { status: 'no_match' },
+      radiosonde: { status: 'no_match' },
+    }), 'UNEXPLAINED');
+  });
+});
+
+// ── VERIFICATION_SOURCES ───────────────────────────────────────────────────────
+
+describe('VERIFICATION_SOURCES', () => {
+  it('contains exactly the expected source keys in order', () => {
+    assert.deepEqual(
+      VERIFICATION_SOURCES.map(s => s.key),
+      ['aircraft', 'iss', 'weather', 'radiosonde']
+    );
+  });
+
+  it('each source has a string key and a callable run function', () => {
+    for (const src of VERIFICATION_SOURCES) {
+      assert.ok(typeof src.key === 'string',   `key should be a string: ${src.key}`);
+      assert.ok(typeof src.run === 'function', `run should be a function: ${src.key}`);
+    }
+  });
+
+  it('run functions return a promise for each source', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const silentFetch = async () => { throw new Error('offline'); };
+    for (const src of VERIFICATION_SOURCES) {
+      const result = src.run(recentTime, 52.48, -1.89, silentFetch);
+      assert.ok(result instanceof Promise, `${src.key}.run should return a Promise`);
+      const resolved = await result;
+      assert.ok(typeof resolved.status === 'string', `${src.key} result should have a status`);
+    }
   });
 });
 

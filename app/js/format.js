@@ -30,19 +30,16 @@ export const VERDICT_COLORS = {
   UNVERIFIED:         '#6b7399',
 };
 
+// Single source of truth for all display metadata.
+// Add new sources here — render.js, export.js, and the PDF report pick them up automatically.
 export const SOURCES = [
-  { key: 'aircraft',   icon: '✈️',  name: 'Aircraft (OpenSky ADS-B)' },
-  { key: 'iss',        icon: '🛰️', name: 'ISS Position' },
-  { key: 'weather',    icon: '☁️', name: 'Weather Conditions' },
-  { key: 'radiosonde', icon: '🎈', name: 'Weather Balloon (Radiosonde)' },
+  { key: 'aircraft',   icon: '✈️',  name: 'Aircraft (OpenSky ADS-B)',      shortName: 'Aircraft' },
+  { key: 'iss',        icon: '🛰️', name: 'ISS Position',                  shortName: 'ISS' },
+  { key: 'weather',    icon: '☁️', name: 'Weather Conditions',             shortName: 'Weather' },
+  { key: 'radiosonde', icon: '🎈', name: 'Weather Balloon (Radiosonde)',   shortName: 'Radiosonde' },
 ];
 
-export const SOURCES_SHORT = [
-  { key: 'aircraft',   icon: '✈️',  name: 'Aircraft' },
-  { key: 'iss',        icon: '🛰️', name: 'ISS' },
-  { key: 'weather',    icon: '☁️', name: 'Weather' },
-  { key: 'radiosonde', icon: '🎈', name: 'Radiosonde' },
-];
+export const SOURCES_SHORT = SOURCES.map(({ key, icon, shortName }) => ({ key, icon, name: shortName }));
 
 // HTML string for one row in the PDF report's source table
 export function reportSourceRow(icon, name, res) {
@@ -121,10 +118,7 @@ export function generateReportHtml(sighting) {
     <table>
       <thead><tr><th>Source</th><th>Result</th><th>Detail</th></tr></thead>
       <tbody>
-        ${reportSourceRow('✈', 'Aircraft (OpenSky ADS-B)', v.aircraft)}
-        ${reportSourceRow('🛰', 'ISS Position', v.iss)}
-        ${reportSourceRow('☁', 'Weather Conditions', v.weather)}
-        ${reportSourceRow('🎈', 'Weather Balloon (Radiosonde)', v.radiosonde)}
+        ${SOURCES.map(s => reportSourceRow(s.icon, s.name, v[s.key])).join('\n        ')}
       </tbody>
     </table>
 
