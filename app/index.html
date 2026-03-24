@@ -262,7 +262,7 @@
       margin-left: 4px;
     }
 
-    /* ── Sky Context panel ── */
+    /* ── Sky Activity panel ── */
     .sky-context {
       background: var(--surface);
       border: 1px solid var(--border);
@@ -892,10 +892,10 @@
   <!-- ── Log Sighting panel ── -->
   <div class="panel active" id="panel-log">
 
-    <!-- ── Sky Context ── -->
+    <!-- ── Sky Activity ── -->
     <div class="sky-context" id="sky-context" hidden>
       <button type="button" class="sky-toggle" id="sky-toggle" aria-expanded="false">
-        🌌 Sky Context
+        🌌 Sky Activity
         <span class="sky-chevron">›</span>
       </button>
       <div class="sky-body" id="sky-body" hidden>
@@ -1255,7 +1255,7 @@
     }
   }
 
-  // ── Sky Context ─────────────────────────────────────────────────────────────
+  // ── Sky Activity ─────────────────────────────────────────────────────────────
   const MONTH_ABBR = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 
   function loadSkyContext(lat, lng) {

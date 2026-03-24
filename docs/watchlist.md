@@ -95,3 +95,21 @@ Actions:
 1. Canary downgraded: wheretheiss.at is now WARN not RED (external free API — transient outage is acceptable).
 2. Identify a backup ISS position API (e.g. Open Notify: open-notify.org/ISS-Location-Now.html — no historical data; n2yo.com — requires key but already tracked in WL-003).
 3. Long term: consider n2yo.com as the ISS source since it requires the same key as WL-003 satellite data.
+
+---
+
+## WL-008 — Celestrak TLE endpoints blocked from Node.js/CI (403)
+
+**Status:** Open — monitor
+**Raised:** 2026-03-24
+**Severity:** Medium
+
+Celestrak TLE endpoints (Starlink group, visual group) return HTTP 403 from Node.js/WSL.
+Root page returns 200 — Cloudflare/bot-protection is blocking automated requests.
+Browser-based app likely unaffected (real browser UA + origin headers bypass the block).
+Contract tests updated to skip on 403 and 5xx — can only run meaningfully from a real browser.
+
+Actions:
+1. James to test live Starlink verification from browser — confirm it still works.
+2. If browser also blocked: investigate space-track.org (free account) or alternate Celestrak endpoints.
+3. Long term: Cloudflare Worker proxy for Celestrak TLE (same pattern as other CORS proxies).

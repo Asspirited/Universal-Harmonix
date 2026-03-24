@@ -560,10 +560,11 @@ Feature: Photo as sighting background
 
 ## UH-017 — Three-tab restructure (Log Sighting / My Records / UK Sighting Database)
 
-**Status:** Open
+**Status:** Done
 **Priority:** High
 **Loop:** BDD
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### User Story
 As a UAP investigator,
