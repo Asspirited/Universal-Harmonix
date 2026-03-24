@@ -1,0 +1,7448 @@
+[
+  {
+    "id": "nuforc-00001",
+    "datetime": "10/10/1955 17:00",
+    "city": "chester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 20,
+    "duration_text": "20 seconds",
+    "comments": "Green/Orange circular disc over Chester, England",
+    "date_posted": "1/21/2008",
+    "lat": 53.2,
+    "lon": -2.916667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [
+        "green",
+        "orange/amber"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00002",
+    "datetime": "10/10/1965 21:00",
+    "city": "penarth (uk/wales)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 180,
+    "duration_text": "about 3 mins",
+    "comments": "penarth uk  circle  3mins  stayed 30ft above me for 3 mins slowly moved of and then with the blink of the eye the speed was unreal",
+    "date_posted": "2/14/2006",
+    "lat": 51.434722,
+    "lon": -3.18,
+    "tags": {
+      "hynek": "CE1",
+      "shape": [],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering",
+        "straight-line",
+        "instant-acceleration"
+      ],
+      "speed": "variable",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [
+        "non-inertial-acceleration",
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00003",
+    "datetime": "10/10/1974 21:30",
+    "city": "cardiff (uk/wales)",
+    "county": "",
+    "country": "gb",
+    "shape": "disk",
+    "duration_seconds": 1200,
+    "duration_text": "20 minutes",
+    "comments": "back in 1974 I was 19 at the time and  lived in a suburb of Cardiff Wales UK called Ely, and in the distance there was a wood called Ca",
+    "date_posted": "2/1/2007",
+    "lat": 51.5,
+    "lon": -3.2,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00004",
+    "datetime": "10/10/1976 22:00",
+    "city": "stoke mandeville (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "cigar",
+    "duration_seconds": 3,
+    "duration_text": "3 seconds",
+    "comments": "White object over Buckinghamshire UK.",
+    "date_posted": "12/12/2009",
+    "lat": 51.783333,
+    "lon": -0.783333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00005",
+    "datetime": "10/10/1985 20:25",
+    "city": "leeds (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 600,
+    "duration_text": "10min",
+    "comments": "three light in the sky that led to a big black silent triangle shaped craft.",
+    "date_posted": "3/4/2003",
+    "lat": 53.8,
+    "lon": -1.583333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "black"
+      ],
+      "light": [
+        "luminous-trail"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00006",
+    "datetime": "10/10/2005 20:00",
+    "city": "newtown (uk/wales)",
+    "county": "",
+    "country": "gb",
+    "shape": "formation",
+    "duration_seconds": 360,
+    "duration_text": "5/6 minutes",
+    "comments": "red/orang lights dancing in the sky.",
+    "date_posted": "5/15/2006",
+    "lat": 52.516667,
+    "lon": -3.3,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "red",
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "erratic/darting"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00007",
+    "datetime": "10/10/2006 21:47",
+    "city": "plymouth (devonshire) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "formation",
+    "duration_seconds": 120,
+    "duration_text": "1-2 mins",
+    "comments": "they were right above me very small almost like minni stars and they were circling round sommothing and came closer and further away an",
+    "date_posted": "10/30/2006",
+    "lat": 50.396389,
+    "lon": -4.138611,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "star-like",
+        "orb"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [],
+      "motion": [
+        "curved-path"
+      ],
+      "speed": "variable",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00008",
+    "datetime": "10/10/2011 14:00",
+    "city": "epsom (surrey) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "oval",
+    "duration_seconds": 300,
+    "duration_text": "5 mins",
+    "comments": "Flying beer barrel shaped metallic object",
+    "date_posted": "12/12/2011",
+    "lat": 51.316667,
+    "lon": -0.266667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "colour": [
+        "silver/metallic"
+      ],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00009",
+    "datetime": "10/11/2000 19:30",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "diamond",
+    "duration_seconds": 3,
+    "duration_text": "3 seconds",
+    "comments": "Diamond shaped ufo seen pulsing for short time near London England",
+    "date_posted": "12/2/2000",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "diamond"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "pulsing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00010",
+    "datetime": "10/11/2000 22:09",
+    "city": "dolgellau (uk/wales)",
+    "county": "",
+    "country": "gb",
+    "shape": "changing",
+    "duration_seconds": 240,
+    "duration_text": "3 or 4 minutes",
+    "comments": "How two became one.",
+    "date_posted": "12/20/2000",
+    "lat": 52.75,
+    "lon": -3.883333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00011",
+    "datetime": "10/11/2005 00:00",
+    "city": "cannock (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "formation",
+    "duration_seconds": 180,
+    "duration_text": "3 minutes",
+    "comments": "Formation spotted",
+    "date_posted": "10/20/2005",
+    "lat": 52.683333,
+    "lon": -2.016667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "formation"
+      ],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00012",
+    "datetime": "10/11/2005 21:50",
+    "city": "rotherham (south yorkshire) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "oval",
+    "duration_seconds": 3600,
+    "duration_text": "1hr",
+    "comments": "A light it was a oval shape duration was 1hr",
+    "date_posted": "12/16/2005",
+    "lat": 53.433333,
+    "lon": -1.35,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "egg/oval"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00013",
+    "datetime": "10/11/2006 21:20",
+    "city": "kidlington (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "formation",
+    "duration_seconds": 5,
+    "duration_text": "5 sec",
+    "comments": "Shape of object wasn&#39t wisible. Light spots shine in triangular shape",
+    "date_posted": "10/30/2006",
+    "lat": 51.816667,
+    "lon": -1.283333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00014",
+    "datetime": "10/11/2007 23:00",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 300,
+    "duration_text": "5 minutes",
+    "comments": "Yellow lights in formation",
+    "date_posted": "3/4/2008",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "formation"
+      ],
+      "colour": [
+        "yellow"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00015",
+    "datetime": "10/1/1983 17:00",
+    "city": "birmingham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 97836000,
+    "duration_text": "31 years",
+    "comments": "Firstly, I was stunned and stared at the object for what seemed minutes, but probably was only seconds. My first inclination was to bec",
+    "date_posted": "4/12/2013",
+    "lat": 52.466667,
+    "lon": -1.916667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00016",
+    "datetime": "10/1/1995 21:00",
+    "city": "taunton (near) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 60,
+    "duration_text": "1 minute",
+    "comments": "The object was made up of a formation of small lights, plus one light moving independantly  around main formation",
+    "date_posted": "1/29/2002",
+    "lat": 51.021111,
+    "lon": -3.104722,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "formation"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "stationary/hovering",
+        "erratic/darting"
+      ],
+      "speed": "variable",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00017",
+    "datetime": "10/1/1998 21:00",
+    "city": "warrington (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 8,
+    "duration_text": "8 seconds",
+    "comments": "It was a clear night, the fireball was huge and you could almost hear a rumbling. It shot across the sky from left to right at an incre",
+    "date_posted": "7/26/2002",
+    "lat": 53.383333,
+    "lon": -2.6,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing",
+        "luminous-trail"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "W",
+      "unusual": [],
+      "sound": [
+        "roaring"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00018",
+    "datetime": "10/1/2000 20:00",
+    "city": "tillicoultry (central scotland) (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 60,
+    "duration_text": "1 min",
+    "comments": "Hovered, huge, flashing, silent, wierd.",
+    "date_posted": "5/24/2005",
+    "lat": 56.15,
+    "lon": -3.75,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "flashing/strobing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "impossible-hover"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00019",
+    "datetime": "10/1/2004 23:00",
+    "city": "dunstable (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 300,
+    "duration_text": "5 mins",
+    "comments": "Fireball burned me  ((NUFORC Note:  May not be a serious report.  PD))",
+    "date_posted": "10/27/2004",
+    "lat": 51.883333,
+    "lon": -0.516667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "burning",
+      "sensation": "heat"
+    }
+  },
+  {
+    "id": "nuforc-00020",
+    "datetime": "10/1/2005 21:35",
+    "city": "buxton (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 240,
+    "duration_text": "4 mins?",
+    "comments": "3 satellite looking objects moving close together",
+    "date_posted": "10/11/2005",
+    "lat": 52.75,
+    "lon": 1.3,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "sphere"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00021",
+    "datetime": "10/1/2013 23:00",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 30,
+    "duration_text": "30 seconds",
+    "comments": "Orange fireball seen hovering in London sky before vanishing.",
+    "date_posted": "10/3/2013",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering",
+        "disappeared-in-place"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00022",
+    "datetime": "10/12/1997 10:30",
+    "city": "poole (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 60,
+    "duration_text": "1 minute",
+    "comments": "UFO Sighted in Poole, Dorset England",
+    "date_posted": "3/19/2009",
+    "lat": 50.716667,
+    "lon": -2,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00023",
+    "datetime": "10/12/2001 20:30",
+    "city": "cannock (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 10,
+    "duration_text": "5-10 seconds",
+    "comments": "a triangular object moving in a southeasterly direction",
+    "date_posted": "11/20/2001",
+    "lat": 52.683333,
+    "lon": -2.016667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "SE",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00024",
+    "datetime": "10/12/2002 19:45",
+    "city": "rotherham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 120,
+    "duration_text": "2 minutes",
+    "comments": "Strange light in the sky",
+    "date_posted": "10/15/2002",
+    "lat": 53.433333,
+    "lon": -1.35,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00025",
+    "datetime": "10/12/2008 21:00",
+    "city": "stafford (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 60,
+    "duration_text": "1 minute",
+    "comments": "Another UFO, definately watching me and sending signals.",
+    "date_posted": "1/10/2009",
+    "lat": 52.833333,
+    "lon": -2,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00026",
+    "datetime": "10/12/2008 21:30",
+    "city": "buckinghamshire (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 0,
+    "duration_text": "",
+    "comments": "i saw a ufo",
+    "date_posted": "5/12/2009",
+    "lat": 51.75,
+    "lon": -0.75,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00027",
+    "datetime": "10/13/1999 04:28",
+    "city": "east kilbride (south lanarkshire) (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 3600,
+    "duration_text": "1 hour at least",
+    "comments": "It was from a high flat window, several miles away high, really high up in the sky. I was scepticle as the object never moved, I could",
+    "date_posted": "11/2/1999",
+    "lat": 55.766667,
+    "lon": -4.166667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "very-high (>10km)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00028",
+    "datetime": "10/13/2003 19:15",
+    "city": "runcorn (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 90,
+    "duration_text": "90 seconds",
+    "comments": "A group of lights.",
+    "date_posted": "1/17/2004",
+    "lat": 53.333333,
+    "lon": -2.75,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00029",
+    "datetime": "10/13/2004 07:19",
+    "city": "manchester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 30,
+    "duration_text": "30sec",
+    "comments": "loud sonic like bang, /two fire balls /comets  ((NUFORC Note:  Possible, though unconfirmed, daytime meteor??  PD))",
+    "date_posted": "10/27/2004",
+    "lat": 53.5,
+    "lon": -2.216667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "sphere",
+        "unknown"
+      ],
+      "colour": [
+        "orange/amber",
+        "red"
+      ],
+      "light": [
+        "luminous-trail",
+        "glowing"
+      ],
+      "motion": [
+        "falling",
+        "straight-line"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "descent",
+      "unusual": [],
+      "sound": [
+        "roaring"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00030",
+    "datetime": "10/13/2004 07:20",
+    "city": "manchester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 0,
+    "duration_text": "",
+    "comments": "Two lights in Sky",
+    "date_posted": "10/27/2004",
+    "lat": 53.5,
+    "lon": -2.216667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00031",
+    "datetime": "10/13/2005 19:10",
+    "city": "shropshire (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 1200,
+    "duration_text": "20 minutes",
+    "comments": "bright lights in England (shropshire)  near shrewsbury",
+    "date_posted": "10/20/2005",
+    "lat": 52.666667,
+    "lon": -2.75,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00032",
+    "datetime": "10/13/2007 22:30",
+    "city": "kirkcaldy (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 600,
+    "duration_text": "10 mins +",
+    "comments": "semi-transparent big wheel like object. spinning in a stationery possition for about 10 miutes",
+    "date_posted": "11/28/2007",
+    "lat": 56.116667,
+    "lon": -3.166667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "ring/torus"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering",
+        "rotating-in-place"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00033",
+    "datetime": "10/13/2011 19:47",
+    "city": "oldham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "oval",
+    "duration_seconds": 60,
+    "duration_text": "1 minute",
+    "comments": "Oval shape unlike anything I have seen before emitting bright lights",
+    "date_posted": "10/19/2011",
+    "lat": 53.55,
+    "lon": -2.116667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "egg/oval"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00034",
+    "datetime": "10/13/2012 20:30",
+    "city": "glasgow (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 300,
+    "duration_text": "5 minutes",
+    "comments": "Strange Orange Orb over Glasgow, Scotland, UK",
+    "date_posted": "10/30/2012",
+    "lat": 55.833333,
+    "lon": -4.25,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00035",
+    "datetime": "10/13/2012 22:30",
+    "city": "seaford (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 600,
+    "duration_text": "10 minutes",
+    "comments": "Unusual set of 3 lights captured on camera",
+    "date_posted": "10/30/2012",
+    "lat": 50.766667,
+    "lon": 0.1,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00036",
+    "datetime": "10/13/2012 22:30",
+    "city": "tonbridge (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 2,
+    "duration_text": "2 seconds",
+    "comments": "Laying on sofa ,noticed green ball very quickly descend into tree line.",
+    "date_posted": "10/30/2012",
+    "lat": 51.183333,
+    "lon": 0.283333,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "green"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "falling"
+      ],
+      "speed": "very-fast",
+      "altitude": "low (<300m)",
+      "direction": "descent",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00037",
+    "datetime": "10/14/2005 03:36",
+    "city": "llanelli (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 30,
+    "duration_text": "30seconds",
+    "comments": "triangle object flew over my house early morning blocking out all stars",
+    "date_posted": "10/20/2005",
+    "lat": 51.676111,
+    "lon": -4.156667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00038",
+    "datetime": "10/14/2010 22:30",
+    "city": "northwich (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 180,
+    "duration_text": "2-3 min&#39s",
+    "comments": "orange flare like sightings over Cheshire",
+    "date_posted": "11/21/2010",
+    "lat": 53.266667,
+    "lon": -2.5,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00039",
+    "datetime": "10/15/1967 16:00",
+    "city": "castleside (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "cigar",
+    "duration_seconds": 300,
+    "duration_text": "5 minutes",
+    "comments": "I saw a huge cigar shaped object, pulsating red then orange, like a heartbeat, my horse saw it first.",
+    "date_posted": "3/11/2006",
+    "lat": 54.833333,
+    "lon": -1.866667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "colour": [
+        "red",
+        "orange/amber"
+      ],
+      "light": [
+        "pulsing",
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00040",
+    "datetime": "10/15/1970 19:00",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 1800,
+    "duration_text": "30 minutes",
+    "comments": "Single bright cone shaped beam of light.",
+    "date_posted": "8/24/2010",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "steady",
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00041",
+    "datetime": "10/15/1988 19:30",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 240,
+    "duration_text": "4 minutes",
+    "comments": "Too big to be a balloon - i haven&#39t been able to completely forget it.  Would really like an explanation.",
+    "date_posted": "8/5/2001",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00042",
+    "datetime": "10/15/1999 02:00",
+    "city": "inverness (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "formation",
+    "duration_seconds": 180,
+    "duration_text": "3 minutes",
+    "comments": "Four bright white lights moving in a row",
+    "date_posted": "12/12/2009",
+    "lat": 57.466667,
+    "lon": -4.233333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "formation"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00043",
+    "datetime": "10/15/1999 24:00",
+    "city": "sheffield (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 120,
+    "duration_text": "only a few minutes",
+    "comments": "THE UFO",
+    "date_posted": "4/1/2001",
+    "lat": 53.366667,
+    "lon": -1.5,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00044",
+    "datetime": "10/15/2000 18:30",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 60,
+    "duration_text": "1 minute",
+    "comments": "A large very bright light&#33",
+    "date_posted": "12/2/2000",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "steady",
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00045",
+    "datetime": "10/15/2008 24:00",
+    "city": "hull (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "disk",
+    "duration_seconds": 420,
+    "duration_text": "7 mins",
+    "comments": "2 orangey red discs similar to other reports from the time.",
+    "date_posted": "3/19/2009",
+    "lat": 53.716667,
+    "lon": -0.333333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [
+        "orange/amber",
+        "red"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00046",
+    "datetime": "10/16/2002 15:00",
+    "city": "glasgow (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 300,
+    "duration_text": "5 minutes",
+    "comments": "I am a Buyer with Scottish Water working in Glasgow and after a meeting with a supplier on Wednesday 16th October I happened to glance",
+    "date_posted": "10/28/2002",
+    "lat": 55.833333,
+    "lon": -4.25,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00047",
+    "datetime": "10/16/2004 00:10",
+    "city": "northampton (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 1800,
+    "duration_text": "30 mins(approx)",
+    "comments": "Disco Lights over Northampton, UK.",
+    "date_posted": "4/27/2007",
+    "lat": 52.25,
+    "lon": -0.883333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [
+        "multicolour"
+      ],
+      "light": [
+        "flashing/strobing",
+        "rotating"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00048",
+    "datetime": "10/16/2007 19:55",
+    "city": "leeds (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 300,
+    "duration_text": "5 minutes",
+    "comments": "Golden light ball / craft in the sky",
+    "date_posted": "11/28/2007",
+    "lat": 53.8,
+    "lon": -1.583333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "yellow",
+        "orange/amber"
+      ],
+      "light": [
+        "glowing",
+        "luminous-trail"
+      ],
+      "motion": [
+        "stationary/hovering",
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00049",
+    "datetime": "10/16/2009 19:30",
+    "city": "selby (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "changing",
+    "duration_seconds": 240,
+    "duration_text": "4 minutes",
+    "comments": "A orange splatter shaped light hovering in one place for about 4 minutes, slightly moving around but staying in round about the same sp",
+    "date_posted": "12/12/2009",
+    "lat": 53.783333,
+    "lon": -1.066667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "irregular/amorphous"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00050",
+    "datetime": "10/16/2013 19:27",
+    "city": "derbyshire (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "oval",
+    "duration_seconds": 0,
+    "duration_text": "night",
+    "comments": "White low flying fast novel shaped craft.",
+    "date_posted": "10/23/2013",
+    "lat": 53.166667,
+    "lon": -1.583333,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "fast",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00051",
+    "datetime": "10/17/2007 20:15",
+    "city": "leeds (west yorkshire) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 15,
+    "duration_text": "about 15 seconds",
+    "comments": "((HOAX??))  i look up at the stars when i saw object moving looked like a star.but beined it was triangle shape object.",
+    "date_posted": "3/4/2008",
+    "lat": 53.8,
+    "lon": -1.583333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "triangle",
+        "star-like"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "very-high (>10km)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00052",
+    "datetime": "10/17/2008 22:00",
+    "city": "bracknell (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 5,
+    "duration_text": "5 seconds",
+    "comments": "blue/white light moving away quickly",
+    "date_posted": "1/10/2009",
+    "lat": 51.416667,
+    "lon": -0.75,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "blue",
+        "white"
+      ],
+      "light": [
+        "luminous-trail"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00053",
+    "datetime": "10/17/2009 00:00",
+    "city": "plymouth (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 6,
+    "duration_text": "00:06",
+    "comments": "7 bright orange lights flying over, some in formation and changing speeds then disapearing",
+    "date_posted": "12/12/2009",
+    "lat": 50.396389,
+    "lon": -4.138611,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb",
+        "formation"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "steady",
+        "glowing"
+      ],
+      "motion": [
+        "straight-line",
+        "disappeared-in-place"
+      ],
+      "speed": "variable",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00054",
+    "datetime": "10/17/2013 18:50",
+    "city": "wymondham (norfolk)(uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 60,
+    "duration_text": "1 minute",
+    "comments": "Stingray shaped with green/blue light each side of the craft being guided to base by 4/5 F15&#39s ?",
+    "date_posted": "10/23/2013",
+    "lat": 52.566667,
+    "lon": 1.116667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "diamond"
+      ],
+      "colour": [
+        "green",
+        "blue"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "slow (aircraft-like)",
+      "altitude": "high (3km–10km)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00055",
+    "datetime": "10/18/2002 20:35",
+    "city": "manchester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 5,
+    "duration_text": "5 seconds",
+    "comments": "Saw a triangular object at night with 3 red lights on the corners, flashing in a regular pattern. The lights appeared to be right up to",
+    "date_posted": "10/28/2002",
+    "lat": 53.5,
+    "lon": -2.216667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "red"
+      ],
+      "light": [
+        "flashing/strobing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00056",
+    "datetime": "10/18/2007 21:10",
+    "city": "gillingham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 180,
+    "duration_text": "3 mins",
+    "comments": "Large and Bright light with Steady Course Vanished",
+    "date_posted": "11/28/2007",
+    "lat": 51.4,
+    "lon": 0.566667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "straight-line",
+        "disappeared-in-place"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00057",
+    "datetime": "10/18/2007 23:45",
+    "city": "manchester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 60,
+    "duration_text": "1min",
+    "comments": "three silent white balls in a triangle formation floating through the sky.",
+    "date_posted": "11/28/2007",
+    "lat": 53.5,
+    "lon": -2.216667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "sphere",
+        "formation"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-slow",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00058",
+    "datetime": "10/18/2010 15:00",
+    "city": "ackworth (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "rectangle",
+    "duration_seconds": 120,
+    "duration_text": "2 minutes",
+    "comments": "silver shiny cube, stationary in sky, suns light reflecting off it. (near garden center above tree line Ackworth, England Winter 2010)",
+    "date_posted": "10/10/2011",
+    "lat": 53.65,
+    "lon": -1.333333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "rectangle"
+      ],
+      "colour": [
+        "silver/metallic"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "medium (300m–3km)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00059",
+    "datetime": "10/18/2012 05:50",
+    "city": "cardiff (south wales) (uk/wales)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 3600,
+    "duration_text": "1.00 hour",
+    "comments": "Bright light that hovers for a whike then disappears",
+    "date_posted": "10/30/2012",
+    "lat": 51.5,
+    "lon": -3.2,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "stationary/hovering",
+        "disappeared-in-place"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00060",
+    "datetime": "10/19/2003 19:00",
+    "city": "fareham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 1,
+    "duration_text": "second",
+    "comments": "Turquoise smoky light crossing the sky, duration:second",
+    "date_posted": "10/31/2003",
+    "lat": 50.85,
+    "lon": -1.183333,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "blue"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00061",
+    "datetime": "10/19/2005 01:30",
+    "city": "colwyn bay (uk/wales&#44 north country)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 18000,
+    "duration_text": "5 hrs",
+    "comments": "Aeroplane which turned into cigar light shape, then a circle of red/green light in North Wales UK",
+    "date_posted": "11/3/2005",
+    "lat": 53.3,
+    "lon": -3.75,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "colour": [
+        "red",
+        "green"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00062",
+    "datetime": "10/19/2006 11:50",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 180,
+    "duration_text": "3 minutes",
+    "comments": "19/10/06 - Wood Green, London, United Kingdom - Brilliant White pulsating object in the clouds",
+    "date_posted": "10/30/2006",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "pulsing",
+        "luminous-trail"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "medium (300m–3km)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00063",
+    "datetime": "10/19/2007 17:30",
+    "city": "leamington spa (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "diamond",
+    "duration_seconds": 1200,
+    "duration_text": "20 minutes",
+    "comments": "2 unexplained objects stationary in the sky for 20 minutes, took a photograph.",
+    "date_posted": "11/28/2007",
+    "lat": 52.3,
+    "lon": -1.533333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00064",
+    "datetime": "10/19/2012 06:20",
+    "city": "blandford forum (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 300,
+    "duration_text": "5 minutes",
+    "comments": "White dot moving in triangular pattern.",
+    "date_posted": "10/30/2012",
+    "lat": 50.866667,
+    "lon": -2.166667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "luminous-trail"
+      ],
+      "motion": [
+        "curved-path"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00065",
+    "datetime": "10/20/1968 19:30",
+    "city": "fleetwood (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "formation",
+    "duration_seconds": 1200,
+    "duration_text": "20 minutes",
+    "comments": "MOVING LIGHTS IN THE NIGHT SKY NORTHERN ENGLAND UK.",
+    "date_posted": "2/8/2005",
+    "lat": 53.916667,
+    "lon": -3,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "N",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00066",
+    "datetime": "10/20/1997 22:00",
+    "city": "grimsby (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "egg",
+    "duration_seconds": 120,
+    "duration_text": "2 minutes",
+    "comments": "Bright green egg shaped object hovering for some time then shot off in a nothern direction very fast",
+    "date_posted": "8/16/2002",
+    "lat": 53.533333,
+    "lon": -0.05,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "egg/oval"
+      ],
+      "colour": [
+        "green"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering",
+        "straight-line",
+        "instant-acceleration"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "N",
+      "unusual": [
+        "non-inertial-acceleration"
+      ],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00067",
+    "datetime": "10/20/2000 20:20",
+    "city": "scunthorpe (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 10,
+    "duration_text": "10 seconds",
+    "comments": "A silent triangular object around 60 feet corner to corner",
+    "date_posted": "12/2/2000",
+    "lat": 53.583333,
+    "lon": -0.65,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00068",
+    "datetime": "10/20/2000 23:00",
+    "city": "newport (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "diamond",
+    "duration_seconds": 3,
+    "duration_text": "3 seconds",
+    "comments": "Diamond, Transparent, destorting background stars.",
+    "date_posted": "12/9/2000",
+    "lat": 52.016667,
+    "lon": -4.833333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "diamond"
+      ],
+      "colour": [],
+      "light": [
+        "luminous-trail"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00069",
+    "datetime": "10/20/2004 06:30",
+    "city": "castleford (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 15,
+    "duration_text": "15 seconds",
+    "comments": "pulsing lights",
+    "date_posted": "10/27/2004",
+    "lat": 53.716667,
+    "lon": -1.35,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "pulsing"
+      ],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00070",
+    "datetime": "10/20/2005 20:51",
+    "city": "essex (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 120,
+    "duration_text": "few mins",
+    "comments": "30 orange star like objects hovering above the M25",
+    "date_posted": "11/3/2005",
+    "lat": 51.833333,
+    "lon": 0.583333,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "star-like"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00071",
+    "datetime": "10/21/1987 21:30",
+    "city": "swansea (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 1800,
+    "duration_text": "30 minutes",
+    "comments": "Triangular lights seen over Swansea and Port Talbot",
+    "date_posted": "5/15/2006",
+    "lat": 51.633333,
+    "lon": -3.966667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00072",
+    "datetime": "10/21/1987 21:30",
+    "city": "swansea (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 600,
+    "duration_text": "10 minutes",
+    "comments": "many witness slow moving huge triangular craft",
+    "date_posted": "12/16/2005",
+    "lat": 51.633333,
+    "lon": -3.966667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "very-slow",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00073",
+    "datetime": "10/21/2005 13:00",
+    "city": "bristol (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 900,
+    "duration_text": "15 min",
+    "comments": "it was changing colour , zig zag pattern, rapid upward travel.",
+    "date_posted": "11/3/2005",
+    "lat": 51.45,
+    "lon": -2.583333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "changing"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "ascending",
+        "zigzag"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "ascent",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00074",
+    "datetime": "10/21/2007 03:20",
+    "city": "hereford (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "disk",
+    "duration_seconds": 900,
+    "duration_text": "15 minutes",
+    "comments": "moving lights spotted above hereford in england",
+    "date_posted": "11/28/2007",
+    "lat": 52.05,
+    "lon": -2.716667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00075",
+    "datetime": "10/21/2012 03:20",
+    "city": "durham county (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 600,
+    "duration_text": "10 minutes",
+    "comments": "2 lights above Co. Durham U.K.",
+    "date_posted": "10/30/2012",
+    "lat": 54.766667,
+    "lon": -1.566667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00076",
+    "datetime": "10/2/2004 21:20",
+    "city": "bridlington (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "oval",
+    "duration_seconds": 900,
+    "duration_text": "15mins",
+    "comments": "This is real",
+    "date_posted": "10/27/2004",
+    "lat": 54.095,
+    "lon": -0.208056,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00077",
+    "datetime": "10/22/2000 20:50",
+    "city": "bridlington (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 30,
+    "duration_text": "30seconds",
+    "comments": "red light comming from south[hull]]clear night flow over bridlington south beech to flambough head as it passed over they was on sound",
+    "date_posted": "12/2/2000",
+    "lat": 54.095,
+    "lon": -0.208056,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "red"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "S",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00078",
+    "datetime": "10/22/2003 21:00",
+    "city": "cheltenham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 1800,
+    "duration_text": "30mins",
+    "comments": "Fireballs on garden",
+    "date_posted": "10/31/2003",
+    "lat": 51.9,
+    "lon": -2.083333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "orange/amber",
+        "red"
+      ],
+      "light": [
+        "glowing",
+        "luminous-trail"
+      ],
+      "motion": [
+        "falling"
+      ],
+      "speed": "unknown",
+      "altitude": "ground-level",
+      "direction": "descent",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00079",
+    "datetime": "10/22/2007 24:00",
+    "city": "dundee (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "teardrop",
+    "duration_seconds": 8,
+    "duration_text": "8 seconds",
+    "comments": "CRAFT WITH EMITTING FLAMES",
+    "date_posted": "11/28/2007",
+    "lat": 56.5,
+    "lon": -2.966667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "orange/amber",
+        "red"
+      ],
+      "light": [
+        "glowing",
+        "luminous-trail"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00080",
+    "datetime": "10/22/2008 19:25",
+    "city": "kirkby in ashfield (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 300,
+    "duration_text": "5 mins",
+    "comments": "orange ball seen over kirkby in ashfield nottinghamshire england",
+    "date_posted": "10/31/2008",
+    "lat": 53.083333,
+    "lon": -1.266667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00081",
+    "datetime": "10/23/2007 20:30",
+    "city": "burnley  (lancashire) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 180,
+    "duration_text": "3 mins",
+    "comments": "firey orange object  no sound",
+    "date_posted": "11/28/2007",
+    "lat": 53.8,
+    "lon": -2.233333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00082",
+    "datetime": "10/24/2002 11:00",
+    "city": "rotherham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 2400,
+    "duration_text": "40 minutes",
+    "comments": "Round whitish reflective ufo followed by military helicopter not long after sighting",
+    "date_posted": "11/20/2002",
+    "lat": 53.433333,
+    "lon": -1.35,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "white",
+        "silver/metallic"
+      ],
+      "light": [
+        "steady",
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00083",
+    "datetime": "10/24/2002 21:00",
+    "city": "cheltenham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 600,
+    "duration_text": "10 minutes",
+    "comments": "GREEN LIGHT BALLS CHASING  EACH OTHER",
+    "date_posted": "10/28/2002",
+    "lat": 51.9,
+    "lon": -2.083333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "green"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "erratic/darting"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00084",
+    "datetime": "10/24/2003 22:16",
+    "city": "lancaster (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 120,
+    "duration_text": "2 minutes",
+    "comments": "Bright metallic Spherical object chased by military aircraft.",
+    "date_posted": "11/26/2003",
+    "lat": 54.066667,
+    "lon": -2.833333,
+    "tags": {
+      "hynek": "CE2",
+      "shape": [
+        "sphere"
+      ],
+      "colour": [
+        "silver/metallic"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00085",
+    "datetime": "10/24/2005 22:00",
+    "city": "manchester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "formation",
+    "duration_seconds": 900,
+    "duration_text": "15 minutes",
+    "comments": "triangle shap pattern over my town of swinton manchester england.",
+    "date_posted": "11/3/2005",
+    "lat": 53.5,
+    "lon": -2.216667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00086",
+    "datetime": "10/24/2006 21:55",
+    "city": "hull (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 30,
+    "duration_text": "30 seconds",
+    "comments": "3 red lights flying fast in loose triangular formation, Hull, East Yorkshire, UK.",
+    "date_posted": "10/30/2006",
+    "lat": 53.716667,
+    "lon": -0.333333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "red"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00087",
+    "datetime": "10/24/2007 17:40",
+    "city": "stevenage (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "disk",
+    "duration_seconds": 120,
+    "duration_text": "2 minutes",
+    "comments": "Yellow disk over Stevenage.  ((NUFORC Note:  Student report.  PD))",
+    "date_posted": "11/28/2007",
+    "lat": 51.916667,
+    "lon": -0.216667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [
+        "yellow"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00088",
+    "datetime": "10/24/2007 18:03",
+    "city": "aldershot (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 60,
+    "duration_text": "1 min",
+    "comments": "pink/reddish Fireball or light floating motionless over nearby fields",
+    "date_posted": "11/28/2007",
+    "lat": 51.25,
+    "lon": -0.766667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "red",
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00089",
+    "datetime": "10/24/2008 24:00",
+    "city": "salford (manchester) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 60,
+    "duration_text": "1 min",
+    "comments": "Something weird in the sky.  ((NUFORC Note:  Water droplet on lens of camera.  PD))",
+    "date_posted": "10/31/2008",
+    "lat": 52.033333,
+    "lon": -0.633333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00090",
+    "datetime": "10/25/2001 23:00",
+    "city": "hamilton (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "cigar",
+    "duration_seconds": 120,
+    "duration_text": "2 mins.",
+    "comments": "hovering lights,silent, making cloud",
+    "date_posted": "9/2/2005",
+    "lat": 55.766667,
+    "lon": -4.033333,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "luminous-trail",
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00091",
+    "datetime": "10/25/2011 00:30",
+    "city": "bridgend (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 3600,
+    "duration_text": "ongoing more than an hour",
+    "comments": "several dancing light balls, floating around in concentric circles, sighted at 2 different places",
+    "date_posted": "10/25/2011",
+    "lat": 51.505833,
+    "lon": -3.577222,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "luminous-trail",
+        "glowing"
+      ],
+      "motion": [
+        "curved-path",
+        "rotating-in-place"
+      ],
+      "speed": "variable",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00092",
+    "datetime": "10/26/1999 21:15",
+    "city": "newport (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "oval",
+    "duration_seconds": 1295,
+    "duration_text": "21:35",
+    "comments": "oval, lit up brigthly with flashing lights at the bottom.",
+    "date_posted": "11/2/1999",
+    "lat": 52.016667,
+    "lon": -4.833333,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "egg/oval"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "flashing/strobing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00093",
+    "datetime": "10/26/2003 10:00",
+    "city": "birmingham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 10,
+    "duration_text": "10 seconds",
+    "comments": "playing golf, frosty morning no wind at ground level,completely blue sky,no cloud at all. looked up to see if buzzards about and the ob",
+    "date_posted": "10/31/2003",
+    "lat": 52.466667,
+    "lon": -1.916667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00094",
+    "datetime": "10/26/2003 21:30",
+    "city": "bristol (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 3,
+    "duration_text": "3 seconds",
+    "comments": "Okay, this is a new one on me, maybe someone else has seen these too. Towards the end of October 2003, around 9:30 pm with a clear sky,",
+    "date_posted": "12/19/2003",
+    "lat": 51.45,
+    "lon": -2.583333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00095",
+    "datetime": "10/26/2006 06:30",
+    "city": "stoke-on-trent (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 1500,
+    "duration_text": "25minutes",
+    "comments": "((HOAX??))  3 orbs 1 orange 2 white",
+    "date_posted": "10/30/2006",
+    "lat": 53,
+    "lon": -2.183333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber",
+        "white"
+      ],
+      "light": [
+        "luminous-trail"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00096",
+    "datetime": "10/26/2006 19:45",
+    "city": "northampton (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 40,
+    "duration_text": "40 seconds",
+    "comments": "bright white object travelling accross the sky and in a flash it was gone",
+    "date_posted": "10/30/2006",
+    "lat": 52.25,
+    "lon": -0.883333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [],
+      "motion": [
+        "straight-line",
+        "disappeared-in-place"
+      ],
+      "speed": "instantaneous",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00097",
+    "datetime": "10/26/2009 20:15",
+    "city": "manchester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "diamond",
+    "duration_seconds": 0,
+    "duration_text": "",
+    "comments": "Diamond shaped object seen over Miles Plattings Manchester at 20:15pm",
+    "date_posted": "12/12/2009",
+    "lat": 53.5,
+    "lon": -2.216667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "diamond"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00098",
+    "datetime": "10/27/1997 19:30",
+    "city": "stoke-on-trent (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "cylinder",
+    "duration_seconds": 30,
+    "duration_text": "30 seconds",
+    "comments": "TRANSLUCENT (V) FORMATION  OBJECTS AT CLOSE QUARTERS 1997",
+    "date_posted": "1/27/2005",
+    "lat": 53,
+    "lon": -2.183333,
+    "tags": {
+      "hynek": "CE1",
+      "shape": [
+        "formation"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "luminous-trail"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00099",
+    "datetime": "10/27/2000 11:45",
+    "city": "sunderland (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 0,
+    "duration_text": "",
+    "comments": "This report was made in my local newspaper &#39The Sunderland Echo&#39 on 27th October 2000 WEAR UFO IS SPOTTED WITHIN FEET OF A JET INVESTIG",
+    "date_posted": "12/2/2000",
+    "lat": 54.911944,
+    "lon": -1.383333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00100",
+    "datetime": "10/27/2002 17:00",
+    "city": "dundee (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "cigar",
+    "duration_seconds": 180,
+    "duration_text": "3 min",
+    "comments": "Whilst at work I looked out of the main door & saw what looked a cloud in the shape of a cigar which was white in colour. The object wa",
+    "date_posted": "10/28/2002",
+    "lat": 56.5,
+    "lon": -2.966667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00101",
+    "datetime": "10/28/2000 20:05",
+    "city": "brandon (county durham)(uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "teardrop",
+    "duration_seconds": 1080,
+    "duration_text": "18 mins",
+    "comments": "Slow moving horizontal tear shaped craft over Brandon, County Durham, no deviation or erratic movement",
+    "date_posted": "12/9/2003",
+    "lat": 52.366667,
+    "lon": -1.4,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "teardrop"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-slow",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00102",
+    "datetime": "10/28/2007 12:10",
+    "city": "glasgow (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 10,
+    "duration_text": "10 seconds",
+    "comments": "Egg rimer shaped object flew incredibly fast in cleasr sky making no sound.",
+    "date_posted": "11/28/2007",
+    "lat": 55.833333,
+    "lon": -4.25,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "egg/oval"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00103",
+    "datetime": "10/28/2010 19:25",
+    "city": "bedford (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "diamond",
+    "duration_seconds": 150,
+    "duration_text": "2.5 minutes +",
+    "comments": "28th October 2010  Bedford England  moving slowly over the town for 2.5 minutes + posted 29/10/10",
+    "date_posted": "11/21/2010",
+    "lat": 52.133333,
+    "lon": -0.45,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-slow",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00104",
+    "datetime": "10/29/2011 18:30",
+    "city": "herefordshire (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 10,
+    "duration_text": "10 secs",
+    "comments": "Green sphere viewed between the downs and Bromyard, Herefordshire.",
+    "date_posted": "12/12/2011",
+    "lat": 52.083333,
+    "lon": -2.75,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "sphere"
+      ],
+      "colour": [
+        "green"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00105",
+    "datetime": "10/30/2008 19:40",
+    "city": "aberdeen (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 300,
+    "duration_text": "5mins",
+    "comments": "3 stationary orange lights above city of Aberdeen",
+    "date_posted": "1/10/2009",
+    "lat": 57.166667,
+    "lon": -2.666667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00106",
+    "datetime": "10/30/2009 20:59",
+    "city": "heswall (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 60,
+    "duration_text": "1 min",
+    "comments": "Strange single light that moved slowly but erratically",
+    "date_posted": "12/12/2009",
+    "lat": 53.316667,
+    "lon": -3.1,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "erratic/darting"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00107",
+    "datetime": "10/30/2011 18:47",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 180,
+    "duration_text": "3mins",
+    "comments": "Huge white circular object with flashing light on base and possible red lights either side",
+    "date_posted": "12/12/2011",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [
+        "white",
+        "red"
+      ],
+      "light": [
+        "flashing/strobing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00108",
+    "datetime": "10/30/2011 20:00",
+    "city": "warrington (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 60,
+    "duration_text": "1 minute",
+    "comments": "((HOAX?  Date is flawed.))  Solid orange V shape flying past and over no lights just a solid radiating orange V",
+    "date_posted": "4/18/2012",
+    "lat": 53.383333,
+    "lon": -2.6,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "boomerang/chevron"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00109",
+    "datetime": "10/30/2013 01:14",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 0,
+    "duration_text": "5-on going",
+    "comments": "I saw a UFO fly through the sky with lots of lights on it performing abnormal move for a plane.",
+    "date_posted": "11/11/2013",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "erratic/darting"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00110",
+    "datetime": "10/31/2004 00:04",
+    "city": "manchester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 180,
+    "duration_text": "3 mins",
+    "comments": "unknown flying object saw by myself and 2 friends it fell from the sky with lights flickering green triangle shaped",
+    "date_posted": "11/2/2004",
+    "lat": 53.5,
+    "lon": -2.216667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "green"
+      ],
+      "light": [
+        "flashing/strobing"
+      ],
+      "motion": [
+        "falling"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "descent",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00111",
+    "datetime": "10/31/2005 17:00",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 0,
+    "duration_text": "still there",
+    "comments": "Strange sighting over heathrow airport uk",
+    "date_posted": "11/3/2005",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00112",
+    "datetime": "10/31/2006 21:59",
+    "city": "manchester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "diamond",
+    "duration_seconds": 600,
+    "duration_text": "10-mins",
+    "comments": "u.f.o grounds planes over manchester.",
+    "date_posted": "3/8/2007",
+    "lat": 53.5,
+    "lon": -2.216667,
+    "tags": {
+      "hynek": "GND",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "ground-level",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00113",
+    "datetime": "10/31/2007 21:30",
+    "city": "colchester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 600,
+    "duration_text": "10 mins",
+    "comments": "we were on our way out for the night and walking up brook st colchester essex engalnd  there was a strange light we thoughy it was a fa",
+    "date_posted": "1/21/2008",
+    "lat": 51.883333,
+    "lon": 0.9,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00114",
+    "datetime": "10/31/2008 09:25",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 30,
+    "duration_text": "30 seconds",
+    "comments": "The object was slowly moving across the Heathrow fight path over Richmond in Surrey.  It was a dark object but it was also changing sha",
+    "date_posted": "1/10/2009",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "irregular/amorphous",
+        "unknown"
+      ],
+      "colour": [
+        "black",
+        "changing"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-slow",
+      "altitude": "medium (300m–3km)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00115",
+    "datetime": "10/31/2008 21:50",
+    "city": "hereford (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 600,
+    "duration_text": "10 mins",
+    "comments": "5 orange objects over eastern horizon, viewed from SE Hereford in the UK",
+    "date_posted": "1/10/2009",
+    "lat": 52.05,
+    "lon": -2.716667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "E",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00116",
+    "datetime": "10/31/2009 23:00",
+    "city": "birmingham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 600,
+    "duration_text": "10 min",
+    "comments": "Orange glowing Spheres of light approaching from south-east at about three times the speed of a normal aircraft, slowing before turning",
+    "date_posted": "12/12/2009",
+    "lat": 52.466667,
+    "lon": -1.916667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line",
+        "curved-path",
+        "instant-acceleration"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "SE",
+      "unusual": [
+        "non-inertial-acceleration"
+      ],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00117",
+    "datetime": "10/3/2006 22:00",
+    "city": "glasgow (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 2,
+    "duration_text": "few seconds",
+    "comments": "Unusual Meteorite over Scottish Campsies?",
+    "date_posted": "10/30/2006",
+    "lat": 55.833333,
+    "lon": -4.25,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00118",
+    "datetime": "10/4/2001 09:45",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "disk",
+    "duration_seconds": 30,
+    "duration_text": "30 sec",
+    "comments": "Transparent disk leaves nuclear plant",
+    "date_posted": "10/12/2001",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [
+        "silver/metallic"
+      ],
+      "light": [
+        "luminous-trail"
+      ],
+      "motion": [
+        "ascending"
+      ],
+      "speed": "fast",
+      "altitude": "low (<300m)",
+      "direction": "ascent",
+      "unusual": [
+        "transmedium"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00119",
+    "datetime": "10/4/2002 07:20",
+    "city": "glasgow (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "diamond",
+    "duration_seconds": 10,
+    "duration_text": "<10 secs",
+    "comments": "Rolling white diamond above hills",
+    "date_posted": "12/23/2002",
+    "lat": 55.833333,
+    "lon": -4.25,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "diamond"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "medium (300m–3km)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00120",
+    "datetime": "10/4/2006 18:30",
+    "city": "sunderland (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 40,
+    "duration_text": "40 seconds",
+    "comments": "Strange orange object spotted and photographed over Durham, England",
+    "date_posted": "10/30/2006",
+    "lat": 54.911944,
+    "lon": -1.383333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00121",
+    "datetime": "10/4/2009 19:25",
+    "city": "grays (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 240,
+    "duration_text": "4 minutes",
+    "comments": "Was like an Orange ball of fire much larger than an aeroplane, that hovered for about 4 minutes and then flew very fast out of sight&#33",
+    "date_posted": "12/12/2009",
+    "lat": 51.483333,
+    "lon": 0.333333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00122",
+    "datetime": "10/4/2013 20:00",
+    "city": "ryde (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 7,
+    "duration_text": "7 seconds",
+    "comments": "Triangular, hazy outline with various low hues and 6-8 large white double spots running out along wings.",
+    "date_posted": "10/14/2013",
+    "lat": 50.716667,
+    "lon": -1.166667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00123",
+    "datetime": "10/5/1999 22:00",
+    "city": "newcastle (northumberland) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 90,
+    "duration_text": "about 1 min30 secs",
+    "comments": "TRIANGULAR,BRIGHT,INCREDIBLE SPEED,AMAZINGLY HIGH UP,OUT OF CHARICTER  TO ME.",
+    "date_posted": "3/17/2004",
+    "lat": 54.2,
+    "lon": -5.883333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [],
+      "light": [
+        "luminous-trail"
+      ],
+      "motion": [
+        "straight-line",
+        "instant-acceleration"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "non-inertial-acceleration"
+      ],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00124",
+    "datetime": "10/5/2008 18:24",
+    "city": "aberdeen (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 120,
+    "duration_text": "2 minutes",
+    "comments": "Bright orange round light moving over city",
+    "date_posted": "1/10/2009",
+    "lat": 57.166667,
+    "lon": -2.666667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "slow (aircraft-like)",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00125",
+    "datetime": "10/5/2013 22:00",
+    "city": "clogher (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 180,
+    "duration_text": "1-3 minutes",
+    "comments": "I was taking my father into town. we where driving out the lane when i noticed a ball of light going in a straight line to our left.",
+    "date_posted": "10/14/2013",
+    "lat": 54.416667,
+    "lon": -7.2,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "W",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00126",
+    "datetime": "10/6/1999 14:00",
+    "city": "birmingham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "oval",
+    "duration_seconds": 60,
+    "duration_text": "1 minute",
+    "comments": "small, oval object floating in the sky (not a balloon)",
+    "date_posted": "11/3/2005",
+    "lat": 52.466667,
+    "lon": -1.916667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "egg/oval"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00127",
+    "datetime": "10/6/2004 17:57",
+    "city": "ticknall (near derby) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "cone",
+    "duration_seconds": 40,
+    "duration_text": "40 secs",
+    "comments": "Cone shaped object with lights appearing to hover in the distance",
+    "date_posted": "11/9/2004",
+    "lat": 52.8,
+    "lon": -1.483333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00128",
+    "datetime": "10/6/2007 21:30",
+    "city": "uckfield (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 600,
+    "duration_text": "10 minutes",
+    "comments": "HOVERING ORB LIKE LIGHTS YELLOW/ORANGE UCKFIELD EAST SUSSEX",
+    "date_posted": "10/8/2007",
+    "lat": 50.966667,
+    "lon": 0.1,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "yellow",
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00129",
+    "datetime": "10/6/2007 22:00",
+    "city": "leamington spa (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 2,
+    "duration_text": "a few seconds",
+    "comments": "Silent red light, moving very fast, seen by three men",
+    "date_posted": "12/12/2011",
+    "lat": 52.3,
+    "lon": -1.533333,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "red"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00130",
+    "datetime": "10/6/2007 22:40",
+    "city": "worthing (west sussex) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 240,
+    "duration_text": "3-4 mins",
+    "comments": "Blue star shaped metal &#39machine&#39. 0-1 binary. 7ft star being",
+    "date_posted": "4/18/2012",
+    "lat": 50.8,
+    "lon": -0.366667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "star-like"
+      ],
+      "colour": [
+        "blue",
+        "silver/metallic"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00131",
+    "datetime": "10/7/1987 22:00",
+    "city": "liverpool (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 10,
+    "duration_text": "10 seconds",
+    "comments": "Orange, gliding ball of light shone into my bedroom window.",
+    "date_posted": "6/12/2008",
+    "lat": 53.416667,
+    "lon": -3,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "slow (aircraft-like)",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00132",
+    "datetime": "10/7/2002 16:53",
+    "city": "huddersfield (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 120,
+    "duration_text": "around 2 mins",
+    "comments": "Dark coloured round disc",
+    "date_posted": "10/15/2002",
+    "lat": 53.65,
+    "lon": -1.783333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [
+        "black"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00133",
+    "datetime": "10/7/2002 24:00",
+    "city": "doncaster (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 0,
+    "duration_text": "",
+    "comments": "fast moving red ball of light.",
+    "date_posted": "12/7/2006",
+    "lat": 53.533333,
+    "lon": -1.116667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "red"
+      ],
+      "light": [
+        "luminous-trail",
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00134",
+    "datetime": "10/7/2006 19:10",
+    "city": "derbyshire (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 300,
+    "duration_text": "3-5 mins",
+    "comments": "3 fireballs, 2 traveling in close formation, 1 some distance away, maybe 500 m. They suddenly veered away and out of sight.",
+    "date_posted": "10/30/2006",
+    "lat": 53.166667,
+    "lon": -1.583333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "sphere"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line",
+        "curved-path",
+        "instant-acceleration"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "non-inertial-acceleration"
+      ],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00135",
+    "datetime": "10/7/2008 19:15",
+    "city": "sheffield (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "disk",
+    "duration_seconds": 180,
+    "duration_text": "3 minutes",
+    "comments": "a small flat disked shape, orange coloured, with orange rays coming off, moved further in the sky at late evening.",
+    "date_posted": "10/31/2008",
+    "lat": 53.366667,
+    "lon": -1.5,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "slow (aircraft-like)",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00136",
+    "datetime": "10/8/2001 00:00",
+    "city": "wigan (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 180,
+    "duration_text": "3 mins",
+    "comments": "THERE WERE SEVEN CRAFTS FLYING IN FORMATION BUT ONE WAS SLIGHTLY OUT OF FORMATION TO THE RIGHT.THEY WERE THE COLOUR OF A HOT COAL ORANG",
+    "date_posted": "1/17/2004",
+    "lat": 53.533333,
+    "lon": -2.616667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "formation"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00137",
+    "datetime": "10/9/1995 02:00",
+    "city": "stirling (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 240,
+    "duration_text": "4 mins",
+    "comments": "Pyramids in Stirling - they just keep coming back &#33",
+    "date_posted": "2/18/2001",
+    "lat": 56.116667,
+    "lon": -3.95,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00138",
+    "datetime": "10/9/1998 19:30",
+    "city": "reading (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 120,
+    "duration_text": "2 minutes",
+    "comments": "luminous orange sphere as big as a house flying horizontally then at angle of about 45 degrees flew off into sky.",
+    "date_posted": "1/11/2002",
+    "lat": 51.433333,
+    "lon": -1,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "sphere"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line",
+        "ascending"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "ascent",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00139",
+    "datetime": "10/9/1998 21:00",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 7200,
+    "duration_text": "1-2hrs",
+    "comments": "White lights seen emitting other smaller lights, then a matchbox type shape flew above head and morphed into plane",
+    "date_posted": "10/28/2002",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "star-like",
+        "rectangle"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line",
+        "ascending"
+      ],
+      "speed": "unknown",
+      "altitude": "low (<300m)",
+      "direction": "ascent",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00140",
+    "datetime": "10/9/2002 19:30",
+    "city": "sunderland (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 0,
+    "duration_text": "nissan uk",
+    "comments": "THATS WHAT I SAW",
+    "date_posted": "10/15/2002",
+    "lat": 54.911944,
+    "lon": -1.383333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00141",
+    "datetime": "10/9/2006 20:30",
+    "city": "stoke-on-trent (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 7200,
+    "duration_text": "2 hours",
+    "comments": "i saw these&#39s craft more than once they moved fast and with no sound and orange collour.and again a week later&#33&#33 ((Possible hoax.  PD))",
+    "date_posted": "10/30/2006",
+    "lat": 53,
+    "lon": -2.183333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00142",
+    "datetime": "1/10/1971 21:00",
+    "city": "preston (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "disk",
+    "duration_seconds": 180,
+    "duration_text": "2 to 3 mins",
+    "comments": "about 60 ft long red and yellow lights a big spotlight hoverd overhead about 500yds to the north of us for about 2 to 3 minutes no nois",
+    "date_posted": "12/19/2003",
+    "lat": 50.783333,
+    "lon": -0.466667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "colour": [
+        "red",
+        "yellow"
+      ],
+      "light": [
+        "steady",
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "medium (300m–3km)",
+      "direction": "N",
+      "unusual": [],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00143",
+    "datetime": "1/10/1998 18:00",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 240,
+    "duration_text": "4 mins",
+    "comments": "Large orange ball of light over London late 1990&#39s",
+    "date_posted": "9/29/2004",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00144",
+    "datetime": "1/10/2002 17:25",
+    "city": "nottingham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 3,
+    "duration_text": "3 seconds",
+    "comments": "A blue/green round object that moved very fast but silently left to right from one cloud across a gap in sky to next cloud",
+    "date_posted": "1/29/2002",
+    "lat": 52.966667,
+    "lon": -1.166667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "blue",
+        "green"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "W",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00145",
+    "datetime": "1/10/2004 00:00",
+    "city": "dunstable (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "changing",
+    "duration_seconds": 1800,
+    "duration_text": "30 mins",
+    "comments": "Metallic craft went from saucer to teardrop shape",
+    "date_posted": "1/17/2004",
+    "lat": 51.883333,
+    "lon": -0.516667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "disc/saucer",
+        "teardrop"
+      ],
+      "colour": [
+        "silver/metallic"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00146",
+    "datetime": "1/10/2006 01:00",
+    "city": "exeter (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "teardrop",
+    "duration_seconds": 30,
+    "duration_text": "30 seconds",
+    "comments": "Four Craft Circle Above House - Devon UK  ((NUFORC Note:  Student report.  PD))",
+    "date_posted": "2/14/2006",
+    "lat": 50.7,
+    "lon": -3.533333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00147",
+    "datetime": "1/10/2009 19:00",
+    "city": "grimsby (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "changing",
+    "duration_seconds": 240,
+    "duration_text": "4 min",
+    "comments": "bright orange light like a fire in the sky took my camera to take picture it was low at first when i went to my backyard it had gain he",
+    "date_posted": "12/12/2009",
+    "lat": 53.533333,
+    "lon": -0.05,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "ascending"
+      ],
+      "speed": "unknown",
+      "altitude": "low (<300m)",
+      "direction": "ascent",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00148",
+    "datetime": "1/10/2009 22:00",
+    "city": "bath (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 2,
+    "duration_text": "seconds",
+    "comments": "Orange balls of light",
+    "date_posted": "1/10/2009",
+    "lat": 51.379444,
+    "lon": -2.365556,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00149",
+    "datetime": "1/10/2010 07:23",
+    "city": "kilmartin (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 720,
+    "duration_text": "12 mins",
+    "comments": "I was a traingle shaped craft from the hills and followed it till I couldn&#39t see it nomore.",
+    "date_posted": "2/14/2010",
+    "lat": 56.116667,
+    "lon": -5.483333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00150",
+    "datetime": "1/10/2011 11:10",
+    "city": "kent (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "disk",
+    "duration_seconds": 300,
+    "duration_text": "5 minutes",
+    "comments": "The area it went into a vertical climb was where the USAAF from Nebraska were stationed in WW2. A coincidence but true.",
+    "date_posted": "10/10/2011",
+    "lat": 51.25,
+    "lon": 0.75,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [
+        "ascending"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "ascent",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00151",
+    "datetime": "1/10/2011 19:30",
+    "city": "swansea (uk/wales)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 600,
+    "duration_text": "10 mins",
+    "comments": "Multiple red lights in the sky above swansea, uk",
+    "date_posted": "10/10/2011",
+    "lat": 51.633333,
+    "lon": -3.966667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "red"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00152",
+    "datetime": "11/10/1967 08:30",
+    "city": "liverpool (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "cylinder",
+    "duration_seconds": 300,
+    "duration_text": "5mins",
+    "comments": "the object just hovered very close to me with no sound silver and red like a plane with no wings",
+    "date_posted": "2/18/2001",
+    "lat": 53.416667,
+    "lon": -3,
+    "tags": {
+      "hynek": "CE1",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "colour": [
+        "silver/metallic",
+        "red"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00153",
+    "datetime": "11/11/1996 23:00",
+    "city": "york (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 300,
+    "duration_text": "5 minutes",
+    "comments": "Fast travelling, in formation, rapid change of trajectory.",
+    "date_posted": "9/2/2005",
+    "lat": 53.954115,
+    "lon": -1.064262,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "formation"
+      ],
+      "colour": [],
+      "light": [],
+      "motion": [
+        "straight-line",
+        "erratic/darting"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "non-inertial-acceleration"
+      ],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00154",
+    "datetime": "11/11/2001 23:30",
+    "city": "grimsby (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 1800,
+    "duration_text": "30min",
+    "comments": "my brother see;s it first bright light come down very fast in front of our house,about 3-4miles away hovering over ahouse",
+    "date_posted": "3/19/2002",
+    "lat": 53.533333,
+    "lon": -0.05,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "very-fast",
+      "altitude": "medium (300m–3km)",
+      "direction": "descent",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00155",
+    "datetime": "11/11/2002 18:40",
+    "city": "wolverhampton (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "formation",
+    "duration_seconds": 300,
+    "duration_text": "5mins",
+    "comments": "Formation Flight of two craft",
+    "date_posted": "11/16/2002",
+    "lat": 52.583333,
+    "lon": -2.133333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "formation"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00156",
+    "datetime": "11/11/2003 21:00",
+    "city": "chesterfield (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 20,
+    "duration_text": "20 seconds",
+    "comments": "it came from left to rite ,in a green fkesh going down,,",
+    "date_posted": "11/26/2003",
+    "lat": 53.25,
+    "lon": -1.416667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "green"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "falling"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "descent",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00157",
+    "datetime": "11/11/2004 18:25",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 0,
+    "duration_text": "is still continuing",
+    "comments": "18:25 on 11/11/04 several light formations seen circling sky underneath clouds.",
+    "date_posted": "12/3/2004",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "formation"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "curved-path"
+      ],
+      "speed": "unknown",
+      "altitude": "medium (300m–3km)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00158",
+    "datetime": "11/11/2005 23:33",
+    "city": "county durham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "egg",
+    "duration_seconds": 0,
+    "duration_text": "",
+    "comments": "Looking out my window at the sky, the sky was clear. me and my brother both witessed two exactley same size egg shape objects fly throu",
+    "date_posted": "12/16/2005",
+    "lat": 54.766667,
+    "lon": -1.566667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "egg/oval"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00159",
+    "datetime": "11/11/2007 18:40",
+    "city": "southport (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "formation",
+    "duration_seconds": 300,
+    "duration_text": "5 min",
+    "comments": "NINE  BRIGHT LIGHTS STATIONRY AND THENMOVED WITH PHENOMINAL SPEED AND DISAPEARED",
+    "date_posted": "11/28/2007",
+    "lat": 53.666667,
+    "lon": -3,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "stationary/hovering",
+        "instant-acceleration",
+        "disappeared-in-place"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "non-inertial-acceleration"
+      ],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00160",
+    "datetime": "11/11/2012 19:30",
+    "city": "macclesfield (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 60,
+    "duration_text": "60 seconds",
+    "comments": "Bright orange ball of light approaching fast from South toward Macclesfield, UK.",
+    "date_posted": "11/19/2012",
+    "lat": 53.25,
+    "lon": -2.116667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "S",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00161",
+    "datetime": "1/11/1974 03:00",
+    "city": "cambridge (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 900,
+    "duration_text": "15 minutes",
+    "comments": "Bright amber/orange spherical light moving erratically at night",
+    "date_posted": "2/18/2001",
+    "lat": 51.733333,
+    "lon": -2.366667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing",
+        "luminous-trail"
+      ],
+      "motion": [
+        "erratic/darting"
+      ],
+      "speed": "variable",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00162",
+    "datetime": "11/1/1986 03:00",
+    "city": "stoke-on-trent (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 900,
+    "duration_text": "15 min",
+    "comments": "Whilst working as a security officer about 20 years ago, I saw something, that has left me without any doubts of the exsistance of ufo,",
+    "date_posted": "10/30/2006",
+    "lat": 53,
+    "lon": -2.183333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00163",
+    "datetime": "1/11/1989 20:30",
+    "city": "shotts (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "rectangle",
+    "duration_seconds": 60,
+    "duration_text": "1 minute",
+    "comments": "Low flying object over a small town in Central Scotland.  Completely silent.",
+    "date_posted": "10/8/2007",
+    "lat": 55.833333,
+    "lon": -3.85,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00164",
+    "datetime": "1/11/1992 24:00",
+    "city": "newtown (uk/wales)",
+    "county": "",
+    "country": "gb",
+    "shape": "other",
+    "duration_seconds": 600,
+    "duration_text": "10 minutes",
+    "comments": "3 black silntly moving craft",
+    "date_posted": "1/17/2004",
+    "lat": 52.516667,
+    "lon": -3.3,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "black"
+      ],
+      "light": [
+        "none"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00165",
+    "datetime": "11/1/1993 20:00",
+    "city": "sandy (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "cigar",
+    "duration_seconds": 600,
+    "duration_text": "10 mins",
+    "comments": "Cigar shaped silent craft flies low over Sandy then disappears",
+    "date_posted": "2/18/2001",
+    "lat": 52.116667,
+    "lon": -0.283333,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line",
+        "disappeared-in-place"
+      ],
+      "speed": "fast",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00166",
+    "datetime": "11/1/2001 13:00",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "oval",
+    "duration_seconds": 600,
+    "duration_text": "10 minutes",
+    "comments": "In Kensal Green Cematary we saw a slow moving, shiny object with stump wings and no jet stream.",
+    "date_posted": "11/20/2001",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [
+        "silver/metallic"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-slow",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00167",
+    "datetime": "1/11/2001 18:00",
+    "city": "norwich (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "changing",
+    "duration_seconds": 360,
+    "duration_text": "6 minutes",
+    "comments": "Static oblong UFO which changed shape.",
+    "date_posted": "1/29/2002",
+    "lat": 52.633333,
+    "lon": 1.3,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "egg/oval",
+        "irregular/amorphous"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00168",
+    "datetime": "1/11/2001 20:45",
+    "city": "nottingham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 120,
+    "duration_text": "2 minutes",
+    "comments": "3 flashing  lights verticle formation in sky, 1 dissapears, some moments later other 2 dissapear.",
+    "date_posted": "2/18/2001",
+    "lat": 52.966667,
+    "lon": -1.166667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "flashing/strobing"
+      ],
+      "motion": [
+        "stationary/hovering",
+        "disappeared-in-place"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "split-into-multiple"
+      ],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00169",
+    "datetime": "11/1/2005 22:20",
+    "city": "leicester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 10,
+    "duration_text": "10 seconds",
+    "comments": "low flying, below cloud level,  large, very clearsighting, round, covered in lights no noise moving about the same speed as a plane",
+    "date_posted": "11/3/2005",
+    "lat": 52.664913,
+    "lon": -1.034894,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "sphere",
+        "disc/saucer"
+      ],
+      "colour": [
+        "multicolour"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "slow (aircraft-like)",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00170",
+    "datetime": "11/1/2006 20:00",
+    "city": "doncaster (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 0,
+    "duration_text": "",
+    "comments": "Balls of light, apearing zig zagging up and down, growing, shrinking and then disapearing.",
+    "date_posted": "12/7/2006",
+    "lat": 53.533333,
+    "lon": -1.116667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "zigzag",
+        "ascending"
+      ],
+      "speed": "variable",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00171",
+    "datetime": "11/1/2008 21:20",
+    "city": "glenrothes (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 240,
+    "duration_text": "4 minutes",
+    "comments": "UFO IN SCOTLAND, UK",
+    "date_posted": "1/10/2009",
+    "lat": 56.2,
+    "lon": -3.183333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00172",
+    "datetime": "1/11/2008 23:25",
+    "city": "london (southwest) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 120,
+    "duration_text": "2 minutes",
+    "comments": "Bright orange light moving from ENE to WSW visible through high cloud.  We are near London Heathrow and have constant aircraft sighting",
+    "date_posted": "1/10/2009",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "luminous-trail",
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "slow (aircraft-like)",
+      "altitude": "high (3km–10km)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00173",
+    "datetime": "11/1/2009 20:00",
+    "city": "cardiff (uk/wales)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 0,
+    "duration_text": "on going",
+    "comments": "Bright halo in centre of bright light in sky,Nov 2009",
+    "date_posted": "4/13/2010",
+    "lat": 51.5,
+    "lon": -3.2,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white",
+        "yellow"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00174",
+    "datetime": "1/11/2011 22:00",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 0,
+    "duration_text": "2 times",
+    "comments": "I was once again looking after my newphew, an that very moment, Something flashed before my eyes, I thought it would be a plane, seeing",
+    "date_posted": "1/31/2011",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "flashing/strobing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00175",
+    "datetime": "11/1/2012 22:10",
+    "city": "leighton buzzard (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 300,
+    "duration_text": "5 minutes",
+    "comments": "Two seperate fast moving orange spheres observed within 5 mins - Bedfordshire UK",
+    "date_posted": "11/19/2012",
+    "lat": 51.916667,
+    "lon": -0.65,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00176",
+    "datetime": "11/12/2000 17:00",
+    "city": "kent (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 600,
+    "duration_text": "10min",
+    "comments": "how it made me felt and were it was",
+    "date_posted": "12/2/2000",
+    "lat": 51.25,
+    "lon": 0.75,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00177",
+    "datetime": "11/12/2001 24:00",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 2,
+    "duration_text": "few seconds",
+    "comments": "Whilst watching the Live CNN Coverage of the unfortunate Plane Crash in New York today, 12th November 2001, I could clearly see helicop",
+    "date_posted": "11/20/2001",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00178",
+    "datetime": "11/12/2002 23:00",
+    "city": "lincolnshire (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 900,
+    "duration_text": "15 minutes",
+    "comments": "I saw a bright sec of light bobbing up and down in the night sky at around 11.00p.m",
+    "date_posted": "12/23/2002",
+    "lat": 53.166667,
+    "lon": -0.25,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "pendulum"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00179",
+    "datetime": "11/12/2004 02:00",
+    "city": "wiltshire (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "diamond",
+    "duration_seconds": 0,
+    "duration_text": "",
+    "comments": "shining diamond object above my friends heads(smaller than football ball). I had make three picture with 5.2 MP camra, object is moving",
+    "date_posted": "12/3/2004",
+    "lat": 51.25,
+    "lon": -1.916667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "diamond"
+      ],
+      "colour": [
+        "silver/metallic"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00180",
+    "datetime": "11/12/2005 24:00",
+    "city": "glasgow (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 300,
+    "duration_text": "5minutes",
+    "comments": "bright light hovering in sky,after a few minutes it dissappeared",
+    "date_posted": "12/16/2005",
+    "lat": 55.833333,
+    "lon": -4.25,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "steady",
+        "glowing"
+      ],
+      "motion": [
+        "stationary/hovering",
+        "disappeared-in-place"
+      ],
+      "speed": "stationary",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00181",
+    "datetime": "11/12/2006 20:20",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "cigar",
+    "duration_seconds": 0,
+    "duration_text": "30",
+    "comments": "5 cigar shaped objects dancing over the london area &#33",
+    "date_posted": "12/7/2006",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "erratic/darting"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00182",
+    "datetime": "11/12/2007 22:57",
+    "city": "solihull (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "formation",
+    "duration_seconds": 2,
+    "duration_text": "00:02",
+    "comments": "three lights making extreme noise but passed off by local authority as a hot air balloon",
+    "date_posted": "3/4/2008",
+    "lat": 52.416667,
+    "lon": -1.783333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "roaring"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00183",
+    "datetime": "11/12/2010 19:05",
+    "city": "tamworth (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 300,
+    "duration_text": "5 mins",
+    "comments": "Large in size,three or four cars in length...hovering just above house line with orange and other flashing light ... Sped off at hi",
+    "date_posted": "11/21/2010",
+    "lat": 52.616667,
+    "lon": -1.683333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "orange/amber",
+        "multicolour"
+      ],
+      "light": [
+        "flashing/strobing"
+      ],
+      "motion": [
+        "stationary/hovering",
+        "instant-acceleration"
+      ],
+      "speed": "variable",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00184",
+    "datetime": "11/12/2011 22:45",
+    "city": "alton (hampshire) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 20,
+    "duration_text": "15-20 seconds",
+    "comments": "Strange single brightish orange object/light flying slowly in the dark night sky in a straight line before passing out of sight.",
+    "date_posted": "12/12/2011",
+    "lat": 52.966667,
+    "lon": -1.883333,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-slow",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00185",
+    "datetime": "11/13/2010 19:50",
+    "city": "birmingham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 60,
+    "duration_text": "1 min",
+    "comments": "single intense orange light travelling over sutton coldfield, UK",
+    "date_posted": "11/21/2010",
+    "lat": 52.466667,
+    "lon": -1.916667,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "orange/amber"
+      ],
+      "light": [
+        "steady",
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00186",
+    "datetime": "11/13/2011 19:39",
+    "city": "birmingham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 159,
+    "duration_text": "2:39",
+    "comments": "((HOAX??))  orange-ish/yellow sphere travelling in a straight line over Birmgham UK",
+    "date_posted": "12/12/2011",
+    "lat": 52.466667,
+    "lon": -1.916667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "sphere",
+        "orb"
+      ],
+      "colour": [
+        "orange/amber",
+        "yellow"
+      ],
+      "light": [
+        "glowing"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00187",
+    "datetime": "11/14/2001 19:20",
+    "city": "burnley (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 8,
+    "duration_text": "6-8 secs",
+    "comments": "silent and fast",
+    "date_posted": "11/20/2001",
+    "lat": 53.8,
+    "lon": -2.233333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00188",
+    "datetime": "11/14/2003 18:00",
+    "city": "haslingden (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "rectangle",
+    "duration_seconds": 20,
+    "duration_text": "20 seconds",
+    "comments": "4 lights  square 1 red dot  traveling anti-clockwise",
+    "date_posted": "11/26/2003",
+    "lat": 53.7,
+    "lon": -2.333333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "formation"
+      ],
+      "colour": [
+        "red"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "curved-path",
+        "rotating-in-place"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00189",
+    "datetime": "11/14/2008 18:23",
+    "city": "warwickshire (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 30,
+    "duration_text": "20-30 secs",
+    "comments": "bright, blurry light fairly low in the sky with absolutely no sound, moving quite quickly in a straight line.",
+    "date_posted": "1/10/2009",
+    "lat": 52.333333,
+    "lon": -1.583333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "luminous-trail"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "none",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00190",
+    "datetime": "11/14/2008 20:00",
+    "city": "lincoln (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "sphere",
+    "duration_seconds": 2,
+    "duration_text": "<2 seconds",
+    "comments": "Brief view of fast object",
+    "date_posted": "1/10/2009",
+    "lat": 53.233333,
+    "lon": -0.533333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "colour": [],
+      "light": [],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "fast",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00191",
+    "datetime": "11/14/2008 22:00",
+    "city": "birmingham (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "circle",
+    "duration_seconds": 180,
+    "duration_text": "3 minutes",
+    "comments": "Was a circular shape with the lights goin acorss the centre of it flying over Birmingham, England",
+    "date_posted": "8/5/2009",
+    "lat": 52.466667,
+    "lon": -1.916667,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "rotating"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00192",
+    "datetime": "11/14/2009 23:00",
+    "city": "leicester (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "fireball",
+    "duration_seconds": 60,
+    "duration_text": "1 minute",
+    "comments": "3 red objects that were bright red, 2 were close together with the other following several minutes later",
+    "date_posted": "12/12/2009",
+    "lat": 52.664913,
+    "lon": -1.034894,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "red"
+      ],
+      "light": [],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00193",
+    "datetime": "11/15/1962 23:00",
+    "city": "cardiff (uk/wales)",
+    "county": "",
+    "country": "gb",
+    "shape": "disk",
+    "duration_seconds": 300,
+    "duration_text": "5 mins",
+    "comments": "This happened in november 1962. It was a large round saucer with revolving lights in the middle.",
+    "date_posted": "6/12/2008",
+    "lat": 51.5,
+    "lon": -3.2,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "rotating"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00194",
+    "datetime": "11/15/1997 19:00",
+    "city": "northampton (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "unknown",
+    "duration_seconds": 5,
+    "duration_text": "5 seconds",
+    "comments": "WINTER  97/98 BRIGHT LIGHT TRAVELLING AT HIGH SPEED IN DIFFERENT DIRECTIONS TOWARDS THE EAST LASTED ABOUT 5 SECONDS.",
+    "date_posted": "9/2/2005",
+    "lat": 52.25,
+    "lon": -0.883333,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "unknown"
+      ],
+      "colour": [
+        "white"
+      ],
+      "light": [
+        "luminous-trail"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-fast",
+      "altitude": "unknown",
+      "direction": "E",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00195",
+    "datetime": "11/15/1998 13:00",
+    "city": "london (eastham) (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "rectangle",
+    "duration_seconds": 240,
+    "duration_text": "4 minutes",
+    "comments": "black rectangular monolith travelling slowly, over london  (eastham) observed for about 4 minutes",
+    "date_posted": "1/11/2002",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "rectangle"
+      ],
+      "colour": [
+        "black"
+      ],
+      "light": [],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "very-slow",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00196",
+    "datetime": "11/15/1999 02:00",
+    "city": "elgin (uk/scotland)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 30,
+    "duration_text": "20-30 seconds",
+    "comments": "Two lights, both red floating about 50 feet above the ground. A clear night. Visibility excellent. Stars between the lights were obscur",
+    "date_posted": "2/18/2001",
+    "lat": 57.65,
+    "lon": -3.333333,
+    "tags": {
+      "hynek": "NL",
+      "shape": [
+        "orb"
+      ],
+      "colour": [
+        "red"
+      ],
+      "light": [
+        "steady"
+      ],
+      "motion": [
+        "stationary/hovering"
+      ],
+      "speed": "stationary",
+      "altitude": "low (<300m)",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "none"
+    }
+  },
+  {
+    "id": "nuforc-00197",
+    "datetime": "11/15/2000 23:48",
+    "city": "newmarket (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "diamond",
+    "duration_seconds": 1200,
+    "duration_text": "20 mins",
+    "comments": "Two craft,One small diamond,one large triangle moving silently and close together.",
+    "date_posted": "8/20/2001",
+    "lat": 53.3,
+    "lon": -3.383333,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "diamond",
+        "triangle"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "straight-line"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [
+        "silent-at-speed"
+      ],
+      "sound": [
+        "silent"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00198",
+    "datetime": "11/15/2001 01:15",
+    "city": "london (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "triangle",
+    "duration_seconds": 480,
+    "duration_text": "5-8 minutes",
+    "comments": "Flying Pyramid over London....",
+    "date_posted": "12/5/2001",
+    "lat": 51.514125,
+    "lon": -0.093689,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "colour": [
+        "unknown"
+      ],
+      "light": [
+        "unknown"
+      ],
+      "motion": [
+        "unknown"
+      ],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [
+        "unknown"
+      ],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00199",
+    "datetime": "11/15/2001 22:00",
+    "city": "bristol (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "rectangle",
+    "duration_seconds": 180,
+    "duration_text": "3 minutes",
+    "comments": "A slow moving black rectangular object with wavy edges.",
+    "date_posted": "11/20/2001",
+    "lat": 51.45,
+    "lon": -2.583333,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "rectangle",
+        "irregular/amorphous"
+      ],
+      "colour": [
+        "black"
+      ],
+      "light": [],
+      "motion": [],
+      "speed": "very-slow",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  },
+  {
+    "id": "nuforc-00200",
+    "datetime": "11/15/2001 22:00",
+    "city": "darlington (uk/england)",
+    "county": "",
+    "country": "gb",
+    "shape": "light",
+    "duration_seconds": 10,
+    "duration_text": "10 seconds",
+    "comments": "Myself and my sister saw a saucer shaped object in Norththern England",
+    "date_posted": "10/7/2003",
+    "lat": 50.45,
+    "lon": -3.716667,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "disc/saucer"
+      ],
+      "colour": [],
+      "light": [],
+      "motion": [],
+      "speed": "unknown",
+      "altitude": "unknown",
+      "direction": "unknown",
+      "unusual": [],
+      "sound": [],
+      "smell": "unknown",
+      "sensation": "unknown"
+    }
+  }
+]
