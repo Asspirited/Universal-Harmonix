@@ -413,7 +413,7 @@
       </div>
 
       <div class="form-group">
-        <label>Photos (optional — not persisted in v0.1)</label>
+        <label>Photos (optional — max 3)</label>
         <label class="photo-zone" id="photo-zone">
           <input type="file" id="photos" accept="image/*" multiple>
           <span id="photo-label">📷 Tap to attach photos</span>
@@ -493,20 +493,48 @@
     );
   });
 
-  // ── Photo preview ──────────────────────────────────────────────────────────
-  document.getElementById('photos').addEventListener('change', e => {
+  // ── Photo handling ─────────────────────────────────────────────────────────
+  let pendingPhotos = []; // base64 strings, max 3
+
+  function resizeToBase64(file) {
+    return new Promise(resolve => {
+      const reader = new FileReader();
+      reader.onload = ev => {
+        const image = new Image();
+        image.onload = () => {
+          const MAX = 800;
+          let { width, height } = image;
+          if (width > MAX || height > MAX) {
+            if (width > height) { height = Math.round(height * MAX / width); width = MAX; }
+            else                { width  = Math.round(width  * MAX / height); height = MAX; }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = width; canvas.height = height;
+          canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+          resolve(canvas.toDataURL('image/jpeg', 0.7));
+        };
+        image.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  document.getElementById('photos').addEventListener('change', async e => {
     const preview = document.getElementById('photo-preview');
     const label   = document.getElementById('photo-label');
     preview.innerHTML = '';
-    const files = Array.from(e.target.files);
+    pendingPhotos = [];
+    const files = Array.from(e.target.files).slice(0, 3);
     if (files.length === 0) {
       label.textContent = '📷 Tap to attach photos';
       return;
     }
-    label.textContent = `${files.length} photo${files.length > 1 ? 's' : ''} selected (not persisted in v0.1)`;
-    files.forEach(file => {
+    label.textContent = `Processing…`;
+    pendingPhotos = await Promise.all(files.map(resizeToBase64));
+    label.textContent = `${pendingPhotos.length} photo${pendingPhotos.length > 1 ? 's' : ''} attached`;
+    pendingPhotos.forEach(b64 => {
       const img = document.createElement('img');
-      img.src = URL.createObjectURL(file);
+      img.src = b64;
       preview.appendChild(img);
     });
   });
@@ -554,7 +582,7 @@
     const sightingRecord = {
       datetime, lat, lng, type, duration, description,
       verification,
-      photoCount: document.getElementById('photos').files.length,
+      photos: pendingPhotos,
     };
 
     saveSighting(sightingRecord);
@@ -569,6 +597,7 @@
     form.reset();
     form.style.display = 'block';
     verifyPanel.classList.remove('visible');
+    pendingPhotos = [];
     document.getElementById('photo-preview').innerHTML = '';
     document.getElementById('photo-label').textContent = '📷 Tap to attach photos';
     document.getElementById('gps-btn').innerHTML = '<span>📍</span> Use my location';
@@ -685,6 +714,7 @@
         <div class="record-body" id="record-body-${i}">
           ${s.description ? `<div class="record-description">"${s.description}"</div>` : ''}
           ${s.duration ? `<div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Duration: ${s.duration}</div>` : ''}
+          ${s.photos?.length ? `<div class="photo-preview" style="margin-bottom:12px;">${s.photos.map(b64 => `<img src="${b64}">`).join('')}</div>` : ''}
           ${sourcesHtml}
         </div>
       </div>`;
