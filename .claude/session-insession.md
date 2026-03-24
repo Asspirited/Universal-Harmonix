@@ -55,6 +55,21 @@ Offer to continue or stop. Do not silently bypass.
 
 ---
 
+## MANDATORY — Desktop + Mobile nav in lock step
+
+Any change to desktop tabs (`.tabs` in `<header>`) MUST be mirrored to mobile bottom nav (`.bottom-nav`) in the same commit.
+Any change to mobile bottom nav MUST be mirrored to desktop tabs in the same commit.
+
+Checklist (run before every nav-related commit):
+- [ ] Desktop tab labels match mobile bottom nav labels (allowing abbreviation for space — but same meaning)
+- [ ] `data-tab` values are identical in both
+- [ ] Tab count matches — no orphaned tabs on either surface
+- [ ] New tab visible and tappable on mobile (44px min-height, bottom-nav-item present)
+
+This is non-negotiable. Skipping it = waste log entry.
+
+---
+
 ## UH-specific UI/UX lens
 
 Who is using this, on what device, under what pressure?
