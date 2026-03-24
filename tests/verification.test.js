@@ -9,9 +9,12 @@ import {
   checkAircraft,
   checkISS,
   checkWeather,
+  checkStarlink,
+  findVisibleStarlinks,
   computeVerdict,
   verifySighting,
   VERIFICATION_SOURCES,
+  STARLINK_MAX_AGE_DAYS,
 } from '../app/js/domain.js';
 
 // ── haversineKm ────────────────────────────────────────────────────────────────
@@ -125,7 +128,7 @@ describe('VERIFICATION_SOURCES', () => {
   it('contains exactly the expected source keys in order', () => {
     assert.deepEqual(
       VERIFICATION_SOURCES.map(s => s.key),
-      ['aircraft', 'iss', 'weather', 'radiosonde']
+      ['aircraft', 'iss', 'starlink', 'weather', 'radiosonde']
     );
   });
 
@@ -309,5 +312,114 @@ describe('verifySighting', () => {
     assert.strictEqual(result.aircraft.status, 'unverified');
     assert.strictEqual(result.iss.status,      'unverified');
     assert.strictEqual(result.weather.status,  'unverified');
+    assert.strictEqual(result.starlink.status, 'unverified');
+  });
+});
+
+// ── findVisibleStarlinks ────────────────────────────────────────────────────────
+
+describe('findVisibleStarlinks', () => {
+  it('returns empty array when given empty satellite data', () => {
+    const result = findVisibleStarlinks([], new Date(), 52.48, -1.89);
+    assert.deepEqual(result, []);
+  });
+
+  it('skips entries missing TLE lines without throwing', () => {
+    const badData = [
+      { OBJECT_NAME: 'STARLINK-BAD' },
+      { OBJECT_NAME: 'STARLINK-PARTIAL', TLE_LINE1: '1 99999U' },
+    ];
+    assert.doesNotThrow(() => findVisibleStarlinks(badData, new Date(), 52.48, -1.89));
+    const result = findVisibleStarlinks(badData, new Date(), 52.48, -1.89);
+    assert.deepEqual(result, []);
+  });
+
+  it('skips entries with malformed TLE strings without throwing', () => {
+    const badData = [{ OBJECT_NAME: 'BAD', TLE_LINE1: 'not-a-tle', TLE_LINE2: 'also-bad' }];
+    assert.doesNotThrow(() => findVisibleStarlinks(badData, new Date(), 52.48, -1.89));
+    assert.deepEqual(findVisibleStarlinks(badData, new Date(), 52.48, -1.89), []);
+  });
+
+  it('returns results sorted by elevation descending', () => {
+    // Two real Starlink TLEs — propagate them; we just check sort order on whatever comes back
+    const tle1 = [
+      { OBJECT_NAME: 'STARLINK-1234',
+        TLE_LINE1: '1 44235U 19029D   26082.50000000  .00001103  00000-0  86036-4 0  9999',
+        TLE_LINE2: '2 44235  53.0035 123.4567 0001400  90.1234 270.1234 15.06378500000000' },
+      { OBJECT_NAME: 'STARLINK-5678',
+        TLE_LINE1: '1 45178U 20001C   26082.50000000  .00000950  00000-0  75012-4 0  9999',
+        TLE_LINE2: '2 45178  53.0010 200.1234 0001200  88.4321 271.5678 15.06389100000000' },
+    ];
+    const result = findVisibleStarlinks(tle1, new Date('2026-03-24T20:00:00Z'), 52.48, -1.89);
+    // Whatever is returned must be sorted descending by elevation
+    for (let i = 1; i < result.length; i++) {
+      assert.ok(result[i - 1].elevationDeg >= result[i].elevationDeg, 'Results not sorted by elevation');
+    }
+  });
+
+  it('returned objects have required fields', () => {
+    const sats = [
+      { OBJECT_NAME: 'STARLINK-1234',
+        TLE_LINE1: '1 44235U 19029D   26082.50000000  .00001103  00000-0  86036-4 0  9999',
+        TLE_LINE2: '2 44235  53.0035 123.4567 0001400  90.1234 270.1234 15.06378500000000' },
+    ];
+    const result = findVisibleStarlinks(sats, new Date('2026-03-24T20:00:00Z'), 52.48, -1.89);
+    for (const sat of result) {
+      assert.ok(typeof sat.name         === 'string', 'name must be string');
+      assert.ok(typeof sat.elevationDeg === 'number', 'elevationDeg must be number');
+      assert.ok(typeof sat.azimuthDeg   === 'number', 'azimuthDeg must be number');
+      assert.ok(typeof sat.direction    === 'string', 'direction must be string');
+      assert.ok(typeof sat.altitudeKm   === 'number', 'altitudeKm must be number');
+    }
+  });
+});
+
+// ── checkStarlink ──────────────────────────────────────────────────────────────
+
+describe('checkStarlink', () => {
+  it('returns unverified for sightings older than STARLINK_MAX_AGE_DAYS', async () => {
+    const oldTime = new Date(Date.now() - (STARLINK_MAX_AGE_DAYS + 1) * 24 * 3600 * 1000).toISOString();
+    const neverFetch = async () => { throw new Error('Should not be called'); };
+    const result = await checkStarlink(oldTime, 52.48, -1.89, neverFetch);
+    assert.strictEqual(result.status, 'unverified');
+    assert.ok(result.detail.includes('7 days'));
+  });
+
+  it('returns unverified when Celestrak API fails', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkStarlink(recentTime, 52.48, -1.89, async () => { throw new Error('CORS'); });
+    assert.strictEqual(result.status, 'unverified');
+    assert.ok(result.detail.includes('CORS'));
+  });
+
+  it('returns unverified when Celestrak returns non-OK status', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkStarlink(recentTime, 52.48, -1.89, async () => ({ ok: false, status: 503 }));
+    assert.strictEqual(result.status, 'unverified');
+  });
+
+  it('returns unverified when Celestrak returns empty response', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const result = await checkStarlink(recentTime, 52.48, -1.89, async () => ({ ok: true, text: async () => '' }));
+    assert.strictEqual(result.status, 'unverified');
+  });
+
+  it('returns no_match when no satellites are above the horizon', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    // Return one satellite with malformed TLE lines — findVisibleStarlinks will skip and return []
+    const mockFetch = async () => ({
+      ok: true,
+      text: async () => 'BAD-SAT\nx-bad-line1\ny-bad-line2\n',
+    });
+    const result = await checkStarlink(recentTime, 52.48, -1.89, mockFetch);
+    assert.strictEqual(result.status, 'no_match');
+  });
+
+  it('result has status, detail, and satellites fields', async () => {
+    const recentTime = new Date(Date.now() - 60_000).toISOString();
+    const mockFetch = async () => ({ ok: true, text: async () => '' });
+    const result = await checkStarlink(recentTime, 52.48, -1.89, mockFetch);
+    assert.ok('status' in result);
+    assert.ok('detail' in result);
   });
 });

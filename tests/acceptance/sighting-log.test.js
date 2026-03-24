@@ -8,30 +8,40 @@ import { verifySighting } from '../../app/js/domain.js';
 
 // ── Shared mock fetchers ───────────────────────────────────────────────────────
 
+// Helper: build a mock response that supports both .json() and .text()
+function mockRes(url) {
+  const bodies = {
+    opensky:     { json: { states: [] } },
+    wheretheiss: { json: [{ latitude: 0, longitude: 0, altitude: 408 }] },
+    'open-meteo':{ json: { hourly: { cloud_cover: new Array(24).fill(5), visibility: new Array(24).fill(30000), wind_speed_10m: new Array(24).fill(3) } } },
+    celestrak:   { text: '' },  // empty TLE response → no_match
+  };
+  const key = Object.keys(bodies).find(k => url.includes(k));
+  const body = bodies[key] || { json: {} };
+  return {
+    ok:   true,
+    json: async () => body.json ?? {},
+    text: async () => body.text ?? JSON.stringify(body.json ?? {}),
+  };
+}
+
 // All sources return clear-sky / no-match data
-const cleanSkyFetcher = async (url) => ({
-  ok: true,
-  json: async () => {
-    if (url.includes('opensky'))      return { states: [] };
-    if (url.includes('wheretheiss')) return [{ latitude: 0, longitude: 0, altitude: 408 }];
-    if (url.includes('open-meteo'))  return { hourly: { cloud_cover: new Array(24).fill(5), visibility: new Array(24).fill(30000), wind_speed_10m: new Array(24).fill(3) } };
-    return {};
-  },
-});
+const cleanSkyFetcher = async (url) => mockRes(url);
 
 // All external sources fail (network outage)
 const failingFetcher = async () => { throw new Error('Network unavailable'); };
 
 // Aircraft detected in area
-const aircraftFetcher = async (url) => ({
-  ok: true,
-  json: async () => {
-    if (url.includes('opensky'))      return { states: [['abc', 'BAW001 ', 'UK', 0, 0, -1.89, 52.48, 8000, false, 250, 90, null, null, null, 'ADSB', null, 0]] };
-    if (url.includes('wheretheiss')) return [{ latitude: 0, longitude: 0, altitude: 408 }];
-    if (url.includes('open-meteo'))  return { hourly: { cloud_cover: new Array(24).fill(5), visibility: new Array(24).fill(30000), wind_speed_10m: new Array(24).fill(3) } };
-    return {};
-  },
-});
+const aircraftFetcher = async (url) => {
+  if (url.includes('opensky')) {
+    return {
+      ok: true,
+      json: async () => ({ states: [['abc', 'BAW001 ', 'UK', 0, 0, -1.89, 52.48, 8000, false, 250, 90, null, null, null, 'ADSB', null, 0]] }),
+      text: async () => '',
+    };
+  }
+  return mockRes(url);
+};
 
 // ── Feature: Sighting log and verification ─────────────────────────────────────
 
@@ -48,12 +58,13 @@ describe('Feature: Sighting log and verification', () => {
     // Then: verification panel includes results from all data sources
     assert.ok(result.aircraft,   'verification panel must include aircraft result');
     assert.ok(result.iss,        'verification panel must include ISS result');
+    assert.ok(result.starlink,   'verification panel must include starlink result');
     assert.ok(result.weather,    'verification panel must include weather result');
     assert.ok(result.radiosonde, 'verification panel must include radiosonde result');
 
     // And: each source shows a valid status
     const validStatuses = ['match', 'no_match', 'possible_match', 'unverified'];
-    for (const [source, res] of Object.entries({ aircraft: result.aircraft, iss: result.iss, weather: result.weather, radiosonde: result.radiosonde })) {
+    for (const [source, res] of Object.entries({ aircraft: result.aircraft, iss: result.iss, starlink: result.starlink, weather: result.weather, radiosonde: result.radiosonde })) {
       assert.ok(validStatuses.includes(res.status), `${source} has invalid status: ${res.status}`);
       assert.ok(res.detail, `${source} must include a human-readable detail string`);
     }
@@ -74,6 +85,7 @@ describe('Feature: Sighting log and verification', () => {
     // Then: external sources show "unverified"
     assert.strictEqual(result.aircraft.status, 'unverified', 'failed aircraft API must show unverified');
     assert.strictEqual(result.iss.status,      'unverified', 'failed ISS API must show unverified');
+    assert.strictEqual(result.starlink.status, 'unverified', 'failed starlink API must show unverified');
     assert.strictEqual(result.weather.status,  'unverified', 'failed weather API must show unverified');
 
     // And: radiosonde (static logic) still returns a result

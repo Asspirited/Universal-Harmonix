@@ -2,6 +2,11 @@
 // Pure ESM. No DOM. No globals except fetch (injectable for testing).
 // Importable by: browser (app/index.html), Node tests (tests/).
 
+import { twoline2satrec, propagate, gstime, eciToEcf, ecfToLookAngles, eciToGeodetic } from 'satellite.js';
+
+export const STARLINK_MIN_ELEVATION_DEG = 10;   // satellite must be above this to be visible
+export const STARLINK_MAX_AGE_DAYS      = 7;    // TLE accuracy degrades beyond 7 days
+
 export const RADIOSONDE_SITES = [
   { name: 'Lerwick',      lat: 60.139, lng: -1.185 },
   { name: 'Watnall',      lat: 52.950, lng: -1.250 },
@@ -174,6 +179,109 @@ export async function checkWeather(isoDatetime, lat, lng, fetcher = fetch) {
   }
 }
 
+// ── Starlink train detection (Celestrak TLE + satellite.js SGP4) ──────────────
+
+const COMPASS = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
+function azimuthToDirection(azDeg) {
+  return COMPASS[Math.round((((azDeg % 360) + 360) % 360) / 45) % 8];
+}
+
+// Pure: given Celestrak JSON satellite data, a Date, and observer lat/lng,
+// returns all Starlinks above STARLINK_MIN_ELEVATION_DEG, sorted by elevation desc.
+export function findVisibleStarlinks(satData, date, latDeg, lngDeg) {
+  const gmst = gstime(date);
+  const observerGd = {
+    latitude:  latDeg * Math.PI / 180,
+    longitude: lngDeg * Math.PI / 180,
+    height: 0,
+  };
+
+  const visible = [];
+
+  for (const sat of satData) {
+    if (!sat.TLE_LINE1 || !sat.TLE_LINE2) continue;
+    try {
+      const satrec = twoline2satrec(sat.TLE_LINE1, sat.TLE_LINE2);
+      const posVel  = propagate(satrec, date);
+      if (!posVel.position || typeof posVel.position !== 'object') continue;
+
+      const posEcf    = eciToEcf(posVel.position, gmst);
+      const angles    = ecfToLookAngles(observerGd, posEcf);
+      const elevDeg   = angles.elevation * 180 / Math.PI;
+      if (isNaN(elevDeg) || elevDeg < STARLINK_MIN_ELEVATION_DEG) continue;
+
+      const azDeg  = ((angles.azimuth * 180 / Math.PI) + 360) % 360;
+      const posGd  = eciToGeodetic(posVel.position, gmst);
+
+      visible.push({
+        name:         (sat.OBJECT_NAME || sat.SATNAME || 'Unknown').trim(),
+        elevationDeg: Math.round(elevDeg),
+        azimuthDeg:   Math.round(azDeg),
+        direction:    azimuthToDirection(azDeg),
+        altitudeKm:   Math.round(posGd.height),
+      });
+    } catch {
+      // skip satellites with TLE parse or propagation errors
+    }
+  }
+
+  return visible.sort((a, b) => b.elevationDeg - a.elevationDeg);
+}
+
+export async function checkStarlink(isoDatetime, lat, lng, fetcher = fetch) {
+  const dt    = new Date(isoDatetime);
+  const ageMs = Date.now() - dt.getTime();
+
+  if (ageMs > STARLINK_MAX_AGE_DAYS * 24 * 3600 * 1000) {
+    return {
+      status: 'unverified',
+      detail: 'Sighting >7 days ago — TLE accuracy insufficient for historical Starlink verification',
+    };
+  }
+
+  const url = 'https://celestrak.org/NORAD/elements/gp.php?GROUP=starlink&FORMAT=TLE';
+
+  try {
+    const res = await fetcher(url, { signal: AbortSignal.timeout(10000) });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const text = await res.text();
+
+    // Parse 3-line TLE groups: name / line1 / line2
+    const lines   = text.trim().split('\n').map(l => l.trim()).filter(Boolean);
+    const satData = [];
+    for (let i = 0; i + 2 < lines.length; i += 3) {
+      satData.push({ OBJECT_NAME: lines[i], TLE_LINE1: lines[i + 1], TLE_LINE2: lines[i + 2] });
+    }
+
+    if (satData.length === 0) {
+      return { status: 'unverified', detail: 'No Starlink TLE data returned from Celestrak' };
+    }
+
+    const visible = findVisibleStarlinks(satData, dt, lat, lng);
+
+    if (visible.length === 0) {
+      return {
+        status: 'no_match',
+        detail: 'No Starlink satellites above horizon at sighting time and location',
+        satellites: [],
+      };
+    }
+
+    const isTrain = visible.length >= 3;
+    const top     = visible[0];
+    return {
+      status: 'match',
+      detail: isTrain
+        ? `Starlink train likely: ${visible.length} satellites visible. Highest at ${top.elevationDeg}° elevation, direction ${top.direction}`
+        : `${visible.length} Starlink satellite${visible.length > 1 ? 's' : ''} visible at ${top.elevationDeg}° elevation, direction ${top.direction}`,
+      satellites: visible.slice(0, 5),
+      isTrain,
+    };
+  } catch (err) {
+    return { status: 'unverified', detail: `Starlink check unavailable: ${err.message}` };
+  }
+}
+
 // ── Verdict ────────────────────────────────────────────────────────────────────
 
 export function computeVerdict(results) {
@@ -191,6 +299,7 @@ export function computeVerdict(results) {
 export const VERIFICATION_SOURCES = [
   { key: 'aircraft',   run: (dt, lat, lng, f) => checkAircraft(dt, lat, lng, f) },
   { key: 'iss',        run: (dt, lat, lng, f) => checkISS(dt, lat, lng, f) },
+  { key: 'starlink',   run: (dt, lat, lng, f) => checkStarlink(dt, lat, lng, f) },
   { key: 'weather',    run: (dt, lat, lng, f) => checkWeather(dt, lat, lng, f) },
   { key: 'radiosonde', run: (dt, lat, lng)    => Promise.resolve(checkRadiosonde(dt, lat, lng)) },
 ];

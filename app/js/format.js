@@ -35,6 +35,7 @@ export const VERDICT_COLORS = {
 export const SOURCES = [
   { key: 'aircraft',   icon: '✈️',  name: 'Aircraft (OpenSky ADS-B)',      shortName: 'Aircraft' },
   { key: 'iss',        icon: '🛰️', name: 'ISS Position',                  shortName: 'ISS' },
+  { key: 'starlink',   icon: '🔗',  name: 'Starlink Train (Celestrak)',    shortName: 'Starlink' },
   { key: 'weather',    icon: '☁️', name: 'Weather Conditions',             shortName: 'Weather' },
   { key: 'radiosonde', icon: '🎈', name: 'Weather Balloon (Radiosonde)',   shortName: 'Radiosonde' },
 ];

@@ -1,6 +1,6 @@
 # Universal Harmonix — Backlog
 # Prefix: UH-
-# Last updated: 2026-03-24 (session 2)
+# Last updated: 2026-03-24 (session 3)
 
 ---
 
@@ -186,3 +186,118 @@ Add `UH-` row to prefix registry in `/home/rodent/leanspirited-standards/standar
 ### Notes
 Pages configured (Source: GitHub Actions). Deploy workflow run #3 triggered via empty commit.
 Confirm live at https://asspirited.github.io/Universal-Harmonix/ before next session.
+
+---
+
+## UH-009 — Architecture: clean separation, contract tests, SOLID hardening
+
+**Status:** Done
+**Priority:** High
+**Loop:** Process
+**Raised:** 2026-03-24
+**Closed:** 2026-03-24
+
+### Notes
+- App JS split: format.js (pure), photo.js (browser), render.js (browser), export.js (browser)
+- index.html reduced to event wiring only
+- Layer 2 activated: consumer contract tests for OpenSky, ISS, Open-Meteo
+- VERIFICATION_SOURCES registry: new sources added in one place, verifySighting is generic
+- SOURCES.shortName: SOURCES_SHORT derived, no duplication
+- generateReportHtml loops SOURCES: new sources auto-appear in PDF reports
+- Branch coverage: 80.88% → 84.51%
+- WL-007 raised: wheretheiss.at outage downgraded to WARN
+
+---
+
+## UH-010 — Starlink train detection
+
+**Status:** Done
+**Priority:** Critical
+**Loop:** HDD (validates HDD-001 — closes the single biggest IFO gap)
+**Raised:** 2026-03-24
+**Closed:** 2026-03-24
+
+### User Story
+As a UAP investigator,
+I want to know whether a Starlink train was visible at my sighting location and time,
+So that I can rule out or confirm the most common post-2019 UAP misidentification.
+
+### Acceptance Criteria
+
+```gherkin
+Feature: Starlink train verification
+
+  Scenario: Starlink train was visible at sighting location and time
+    Given I submit a sighting at a location and time when a Starlink train was passing
+    Then the verification panel shows a Starlink source card
+    And the card status is MATCH
+    And the detail includes the train name, pass elevation, and direction
+
+  Scenario: No Starlink train visible at sighting time
+    Given I submit a sighting when no Starlink train was passing overhead
+    Then the Starlink card status is NO MATCH
+    And the detail confirms no train was visible
+
+  Scenario: Starlink data unavailable
+    Given the Celestrak TLE feed is unreachable
+    Then the Starlink card status is COULD NOT VERIFY
+    And the overall verdict reflects available sources only
+```
+
+### Notes
+- Source: Celestrak TLE data (free, no auth): https://celestrak.org/SOCRATES/
+- Propagation: satellite.js SGP4 — npm install satellite.js (or CDN for browser)
+- Return: train name, pass time, max elevation (degrees), direction (azimuth), approximate magnitude
+- Add to VERIFICATION_SOURCES registry and SOURCES display array
+- Gherkin gate applies: new code path requires new scenarios
+
+---
+
+## UH-011 — Geomagnetic Kp index check
+
+**Status:** Open
+**Priority:** Critical
+**Loop:** HDD (directly relevant to Universal Harmonix frequency hypothesis)
+**Raised:** 2026-03-24
+
+### User Story
+As a UAP investigator using the Universal Harmonix framework,
+I want to know the geomagnetic Kp index at the time of my sighting,
+So that I can assess whether elevated geomagnetic activity correlates with the sighting.
+
+### Acceptance Criteria
+
+```gherkin
+Feature: Geomagnetic Kp index check
+
+  Scenario: Kp index is elevated at sighting time
+    Given I submit a sighting during a period of elevated geomagnetic activity (Kp ≥ 4)
+    Then the verification panel shows a Geomagnetic source card
+    And the card status is POSSIBLE MATCH
+    And the detail includes the Kp value and flags it as elevated
+
+  Scenario: Kp index is storm-level at sighting time
+    Given I submit a sighting during a geomagnetic storm (Kp ≥ 5)
+    Then the Geomagnetic card status is POSSIBLE MATCH
+    And the detail flags it as storm-level
+
+  Scenario: Kp index is normal at sighting time
+    Given I submit a sighting when Kp < 4
+    Then the Geomagnetic card status is NO MATCH
+    And the detail shows the Kp value
+
+  Scenario: NOAA SWPC feed unavailable
+    Given the NOAA SWPC feed is unreachable
+    Then the Geomagnetic card status is COULD NOT VERIFY
+```
+
+### Notes
+- Source: NOAA SWPC free JSON: https://services.swpc.noaa.gov/json/planetary_k_index_1m.json
+- Returns 1-minute resolution Kp data — match to sighting timestamp
+- Thresholds: Kp ≥ 4 = elevated (POSSIBLE MATCH), Kp ≥ 5 = storm (POSSIBLE MATCH, stronger flag)
+- Kp < 4 = NO MATCH
+- UH theory: geomagnetic storms are one of the few environmental conditions scientifically linked
+  to both UAP clustering and anomalous perception — this is the UH hypothesis validation path
+- Add to VERIFICATION_SOURCES and SOURCES
+- Add contract test for NOAA SWPC feed shape
+- Gherkin gate applies
