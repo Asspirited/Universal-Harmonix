@@ -865,6 +865,78 @@
     .pg-btn[disabled] { opacity: 0.35; cursor: default; }
     .pg-info { font-size: 13px; color: var(--text-muted); }
 
+    /* ── UKDB filter bar ── */
+    .ukdb-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      align-items: center;
+    }
+    .ukdb-filter-select, .ukdb-filter-input {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 13px;
+      padding: 6px 10px;
+      min-height: 34px;
+    }
+    .ukdb-filter-select:focus, .ukdb-filter-input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .ukdb-filter-year { display: flex; align-items: center; gap: 4px; }
+    .ukdb-filter-input { width: 90px; }
+    .ukdb-filter-sep { color: var(--text-muted); font-size: 13px; }
+    .ukdb-filter-reset {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text-muted);
+      font-family: var(--font);
+      font-size: 12px;
+      padding: 6px 12px;
+      cursor: pointer;
+      min-height: 34px;
+    }
+    .ukdb-filter-reset:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── Hynek badges ── */
+    .hynek-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      background: var(--surface-2);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .hynek-badge.hynek-NL  { background: rgba(79,195,247,0.12); color: var(--accent); border-color: rgba(79,195,247,0.3); }
+    .hynek-badge.hynek-DD  { background: rgba(240,160,64,0.12);  color: var(--amber);  border-color: rgba(240,160,64,0.3); }
+    .hynek-badge.hynek-CE1,.hynek-badge.hynek-CE2,.hynek-badge.hynek-CE3,
+    .hynek-badge.hynek-CE4,.hynek-badge.hynek-CE5
+                           { background: rgba(156,108,247,0.12); color: var(--purple); border-color: rgba(156,108,247,0.3); }
+    .hynek-badge.hynek-RV  { background: rgba(76,175,132,0.12);  color: var(--green);  border-color: rgba(76,175,132,0.3); }
+
+    .shape-tag {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: var(--surface-2);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      text-transform: capitalize;
+    }
+
+    /* status-loaded tile variant */
+    .status-loaded { background: rgba(76,175,132,0.15); color: var(--green); border: 1px solid rgba(76,175,132,0.3); }
+
     /* Taxonomy grid */
     .ukdb-taxonomy-section {
       background: var(--surface);
@@ -1085,12 +1157,11 @@
         <div class="source-tile-name">NUFORC (UK filtered)</div>
         <div class="source-tile-count">~4,000 UK reports</div>
         <div class="source-tile-range">1940s – 2014</div>
-        <div class="source-tile-status status-ready">Ready to import</div>
+        <div class="source-tile-status status-loaded">2,050 records loaded · A/B/C tagged</div>
         <p class="source-tile-desc">
-          NUFORC global dataset filtered to <code>country = gb</code>. Structured fields:
-          datetime, location, shape, duration, witness narrative. Available via Kaggle CSV.
+          NUFORC global dataset filtered to <code>country = gb</code>. 2,050 UK records,
+          AI-tagged with shape, colour, motion, sound and Hynek classification (Categories A–C).
         </p>
-        <button class="source-tile-btn" onclick="handleImportNUFORC()">Import CSV…</button>
       </div>
 
       <div class="source-tile">
@@ -1121,17 +1192,45 @@
 
     </div>
 
-    <!-- Loaded records table (empty state for now) -->
+    <!-- Filters -->
+    <div class="ukdb-filters" id="ukdb-filters">
+      <select id="ukdb-filter-shape" class="ukdb-filter-select">
+        <option value="">All shapes</option>
+        <option>orb</option><option>sphere</option><option>triangle</option>
+        <option>disc/saucer</option><option>cigar/cylinder</option><option>star-like</option>
+        <option>formation</option><option>egg/oval</option><option>diamond</option>
+        <option>rectangle</option><option>ring/torus</option><option>teardrop</option>
+        <option>boomerang/chevron</option><option>irregular/amorphous</option>
+      </select>
+      <select id="ukdb-filter-hynek" class="ukdb-filter-select">
+        <option value="">All Hynek types</option>
+        <option value="NL">NL — Nocturnal Light</option>
+        <option value="DD">DD — Daylight Disc</option>
+        <option value="RV">RV — Radar-Visual</option>
+        <option value="CE1">CE1</option><option value="CE2">CE2</option>
+        <option value="CE3">CE3</option><option value="CE4">CE4</option>
+        <option value="CE5">CE5</option>
+        <option value="USO">USO</option><option value="GND">GND</option>
+      </select>
+      <div class="ukdb-filter-year">
+        <input type="number" id="ukdb-filter-year-from" class="ukdb-filter-input" placeholder="From year" min="1900" max="2030">
+        <span class="ukdb-filter-sep">–</span>
+        <input type="number" id="ukdb-filter-year-to"   class="ukdb-filter-input" placeholder="To year"   min="1900" max="2030">
+      </div>
+      <button class="ukdb-filter-reset" id="ukdb-filter-reset">Reset</button>
+    </div>
+
+    <!-- Records table -->
     <div class="ukdb-records-section">
       <div class="ukdb-records-header">
-        <span class="ukdb-records-title">Loaded Records</span>
-        <span class="ukdb-records-count" id="ukdb-count">0 records</span>
+        <span class="ukdb-records-title">NUFORC UK Records</span>
+        <span class="ukdb-records-count" id="ukdb-count">Loading…</span>
       </div>
 
-      <div class="ukdb-empty" id="ukdb-empty">
-        <div class="ukdb-empty-icon">🗄️</div>
-        <div class="ukdb-empty-text">No historical records loaded yet.</div>
-        <div class="ukdb-empty-sub">Import a NUFORC CSV above to get started.</div>
+      <div class="ukdb-empty" id="ukdb-empty" style="display:none;">
+        <div class="ukdb-empty-icon">🔍</div>
+        <div class="ukdb-empty-text">No records match these filters.</div>
+        <div class="ukdb-empty-sub">Try adjusting the shape, Hynek type, or year range.</div>
       </div>
 
       <div id="ukdb-table-wrap" style="display:none;">
@@ -1139,11 +1238,9 @@
           <thead>
             <tr>
               <th>Date</th>
-              <th>Location</th>
+              <th>City</th>
               <th>Shape</th>
-              <th>Duration</th>
-              <th>Source</th>
-              <th>Tags</th>
+              <th>Hynek</th>
             </tr>
           </thead>
           <tbody id="ukdb-tbody"></tbody>
@@ -1252,6 +1349,7 @@
   import { triggerPdfExport, downloadSightingJson, downloadBackup } from './js/export.js';
   import { reverseGeocode, lookupPostcode, looksLikeUKPostcode } from './js/location.js';
   import { moonPhase, timeOfDay, activeMeteorShowers } from './js/sky.js';
+  import { filterRecords, paginateRecords } from './js/ukdb.js';
 
   // ── Tab switching ──────────────────────────────────────────────────────────
   function switchTab(name) {
@@ -1261,7 +1359,7 @@
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.getElementById(`panel-${name}`).classList.add('active');
     if (name === 'myrecords') renderRecords(loadSightings(), document.getElementById('records-container'));
-    if (name === 'ukdb') renderUKDB();
+    if (name === 'ukdb') loadUKDB();
   }
 
   document.querySelectorAll('.tab, .bottom-nav-item').forEach(el => {
@@ -1578,93 +1676,101 @@
   });
 
   // ── UK Sighting Database ───────────────────────────────────────────────────
-  let ukdbRecords = JSON.parse(localStorage.getItem('uh_ukdb') || '[]');
-  const UKDB_PAGE_SIZE = 50;
-  let ukdbPage = 0;
+  let ukdbAllRecords = null;
+  let ukdbFilters   = {};
+  let ukdbCurrentPage = 1;
+
+  async function loadUKDB() {
+    if (ukdbAllRecords) { renderUKDB(); return; }
+    document.getElementById('ukdb-count').textContent = 'Loading…';
+    try {
+      const res  = await fetch('./data/nuforc-uk-tagged.json');
+      ukdbAllRecords = await res.json();
+    } catch {
+      document.getElementById('ukdb-count').textContent = 'Failed to load data';
+      return;
+    }
+    renderUKDB();
+  }
 
   function renderUKDB() {
-    const count = ukdbRecords.length;
+    if (!ukdbAllRecords) return;
+    const filtered = filterRecords(ukdbAllRecords, ukdbFilters);
+    const { items, totalCount, totalPages, currentPage } =
+      paginateRecords(filtered, ukdbCurrentPage, 50);
+
     document.getElementById('ukdb-count').textContent =
-      count ? `${count.toLocaleString()} records` : '0 records';
-    document.getElementById('ukdb-empty').style.display = count ? 'none' : 'block';
-    document.getElementById('ukdb-table-wrap').style.display = count ? 'block' : 'none';
-    if (count) renderUKDBPage(0);
-  }
+      `${totalCount.toLocaleString()} record${totalCount !== 1 ? 's' : ''}`;
+    document.getElementById('ukdb-empty').style.display      = totalCount ? 'none'  : 'block';
+    document.getElementById('ukdb-table-wrap').style.display = totalCount ? 'block' : 'none';
 
-  function renderUKDBPage(page) {
-    ukdbPage = page;
-    const start = page * UKDB_PAGE_SIZE;
-    const slice = ukdbRecords.slice(start, start + UKDB_PAGE_SIZE);
+    if (!totalCount) return;
+
+    const hynekClass = h =>
+      (h && h !== 'unknown') ? `hynek-badge hynek-${h}` : 'hynek-badge';
+
     const tbody = document.getElementById('ukdb-tbody');
-    tbody.innerHTML = slice.map(r => `
-      <tr>
-        <td>${r.datetime || r.date || '—'}</td>
-        <td>${r.city || r.location || '—'}</td>
-        <td>${r.shape || '—'}</td>
-        <td>${r.duration_hours_min || r.duration || '—'}</td>
-        <td><span class="source-badge">${r._source || 'NUFORC'}</span></td>
-        <td><span class="tag-empty">untagged</span></td>
-      </tr>`).join('');
-    // Pagination
-    const pages = Math.ceil(ukdbRecords.length / UKDB_PAGE_SIZE);
+    tbody.innerHTML = items.map(r => {
+      const date   = r.datetime ? r.datetime.slice(0, 10) : '—';
+      const city   = r.city    || '—';
+      const shapes = (r.tags?.shape || []).filter(s => s && s !== 'unknown');
+      const shapeTags = shapes.length
+        ? shapes.map(s => `<span class="shape-tag">${s}</span>`).join(' ')
+        : '<span class="tag-empty">—</span>';
+      const hynek  = r.tags?.hynek || '—';
+      const hClass = hynekClass(r.tags?.hynek);
+      return `<tr>
+        <td>${date}</td>
+        <td>${city}</td>
+        <td>${shapeTags}</td>
+        <td><span class="${hClass}">${hynek}</span></td>
+      </tr>`;
+    }).join('');
+
     const pg = document.getElementById('ukdb-pagination');
-    if (pages <= 1) { pg.innerHTML = ''; return; }
+    if (totalPages <= 1) { pg.innerHTML = ''; return; }
     pg.innerHTML = `
-      <button class="pg-btn" ${page === 0 ? 'disabled' : ''} onclick="window._ukdbPage(${page-1})">← Prev</button>
-      <span class="pg-info">Page ${page+1} of ${pages}</span>
-      <button class="pg-btn" ${page >= pages-1 ? 'disabled' : ''} onclick="window._ukdbPage(${page+1})">Next →</button>`;
+      <button class="pg-btn" ${currentPage <= 1 ? 'disabled' : ''}
+        onclick="window._ukdbPage(${currentPage - 1})">← Prev</button>
+      <span class="pg-info">Page ${currentPage} of ${totalPages}</span>
+      <button class="pg-btn" ${currentPage >= totalPages ? 'disabled' : ''}
+        onclick="window._ukdbPage(${currentPage + 1})">Next →</button>`;
   }
-  window._ukdbPage = p => renderUKDBPage(p);
 
-  // NUFORC CSV import
-  window.handleImportNUFORC = function() {
-    const input = document.createElement('input');
-    input.type = 'file'; input.accept = '.csv';
-    input.onchange = e => {
-      const file = e.target.files[0];
-      if (!file) return;
-      const reader = new FileReader();
-      reader.onload = ev => {
-        try {
-          const rows = parseCSV(ev.target.result);
-          // Filter to UK records if country column present
-          const uk = rows.filter(r =>
-            !r.country || r.country.toLowerCase() === 'gb' ||
-            r.country.toLowerCase() === 'uk' ||
-            r.country.toLowerCase() === 'united kingdom'
-          ).map(r => ({ ...r, _source: 'NUFORC' }));
-          // Merge — skip exact datetime+city duplicates
-          const existing = new Set(ukdbRecords.map(r => `${r.datetime}|${r.city}`));
-          const fresh = uk.filter(r => !existing.has(`${r.datetime}|${r.city}`));
-          ukdbRecords = [...ukdbRecords, ...fresh];
-          localStorage.setItem('uh_ukdb', JSON.stringify(ukdbRecords));
-          renderUKDB();
-          alert(`✅ Imported ${fresh.length} UK records (${uk.length - fresh.length} duplicates skipped).`);
-        } catch(err) {
-          alert(`⚠️ Import failed: ${err.message}`);
-        }
+  window._ukdbPage = p => { ukdbCurrentPage = p; renderUKDB(); };
+
+  // Filter event wiring
+  (() => {
+    const shapeEl   = document.getElementById('ukdb-filter-shape');
+    const hynekEl   = document.getElementById('ukdb-filter-hynek');
+    const yearFrom  = document.getElementById('ukdb-filter-year-from');
+    const yearTo    = document.getElementById('ukdb-filter-year-to');
+    const resetBtn  = document.getElementById('ukdb-filter-reset');
+
+    function applyFilters() {
+      ukdbFilters = {
+        shape:    shapeEl.value   || undefined,
+        hynek:    hynekEl.value   || undefined,
+        yearFrom: yearFrom.value  ? parseInt(yearFrom.value,  10) : undefined,
+        yearTo:   yearTo.value    ? parseInt(yearTo.value,    10) : undefined,
       };
-      reader.readAsText(file);
-    };
-    input.click();
-  };
+      ukdbCurrentPage = 1;
+      renderUKDB();
+    }
 
-  function parseCSV(text) {
-    const lines = text.split('\n');
-    if (!lines.length) return [];
-    const headers = lines[0].split(',').map(h => h.replace(/"/g,'').trim().toLowerCase().replace(/ /g,'_'));
-    return lines.slice(1).filter(l => l.trim()).map(line => {
-      // Handle quoted fields
-      const vals = []; let cur = '', inQ = false;
-      for (const ch of line) {
-        if (ch === '"') { inQ = !inQ; }
-        else if (ch === ',' && !inQ) { vals.push(cur.trim()); cur = ''; }
-        else cur += ch;
-      }
-      vals.push(cur.trim());
-      return Object.fromEntries(headers.map((h, i) => [h, vals[i] || '']));
+    let yearDebounce;
+    shapeEl.addEventListener('change', applyFilters);
+    hynekEl.addEventListener('change', applyFilters);
+    yearFrom.addEventListener('input', () => { clearTimeout(yearDebounce); yearDebounce = setTimeout(applyFilters, 400); });
+    yearTo.addEventListener('input',   () => { clearTimeout(yearDebounce); yearDebounce = setTimeout(applyFilters, 400); });
+
+    resetBtn.addEventListener('click', () => {
+      shapeEl.value = ''; hynekEl.value = '';
+      yearFrom.value = ''; yearTo.value = '';
+      ukdbFilters = {}; ukdbCurrentPage = 1;
+      renderUKDB();
     });
-  }
+  })();
 
   // ── Set default datetime ───────────────────────────────────────────────────
   const now = new Date();
