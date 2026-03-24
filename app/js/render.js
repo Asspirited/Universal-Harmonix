@@ -81,7 +81,7 @@ export function recordCardHtml(s, i) {
       </div>
       <div class="record-chevron" id="chevron-${i}">›</div>
     </div>
-    <div class="record-body" id="record-body-${i}">
+    <div class="record-body${s.photos?.length ? ' has-photo-bg' : ''}" id="record-body-${i}"${s.photos?.length ? ` style="background-image:url('${s.photos[0]}')"` : ''}>
       ${s.description ? `<div class="record-description">"${s.description}"</div>` : ''}
       ${s.duration ? `<div style="font-size:13px;color:var(--text-muted);margin-bottom:8px;">Duration: ${s.duration}</div>` : ''}
       ${s.photos?.length ? `<div class="photo-preview" style="margin-bottom:12px;">${s.photos.map(b64 => `<img src="${b64}">`).join('')}</div>` : ''}

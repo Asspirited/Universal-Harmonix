@@ -374,8 +374,22 @@
     .verification-panel {
       margin-top: 24px;
       display: none;
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
     }
     .verification-panel.visible { display: block; }
+    .verification-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 12, 20, 0.82);
+      pointer-events: none;
+      z-index: 0;
+      display: none;
+    }
+    .verification-panel[style*="background-image"]::before { display: block; }
+    .verification-panel[style*="background-image"] > * { position: relative; z-index: 1; }
 
     .verdict-badge {
       display: inline-flex;
@@ -507,6 +521,22 @@
       border-top: 1px solid var(--border);
     }
     .record-body.open { display: block; }
+
+    /* ── Photo background on record body ── */
+    .record-body.has-photo-bg {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .record-body.has-photo-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 12, 20, 0.82);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .record-body.has-photo-bg > * { position: relative; z-index: 1; }
     .record-description {
       font-size: 14px;
       color: var(--text-muted);
@@ -1466,6 +1496,13 @@
 
     verifyBanner.style.display = 'none';
     renderVerificationPanel(verification, document.getElementById('verdict-badge'), document.getElementById('source-list'));
+    if (pendingPhotos.length) {
+      verifyPanel.style.backgroundImage = `url('${pendingPhotos[0]}')`;
+      verifyPanel.style.backgroundSize     = 'cover';
+      verifyPanel.style.backgroundPosition = 'center';
+    } else {
+      verifyPanel.style.backgroundImage = '';
+    }
     verifyPanel.classList.add('visible');
     submitBtn.disabled = false;
   });
@@ -1474,6 +1511,7 @@
     form.reset();
     form.style.display = 'block';
     verifyPanel.classList.remove('visible');
+    verifyPanel.style.backgroundImage = '';
     pendingPhotos = [];
     document.getElementById('photo-preview').innerHTML = '';
     document.getElementById('photo-label').textContent = '📷 Tap to attach photos';

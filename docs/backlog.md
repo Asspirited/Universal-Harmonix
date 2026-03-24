@@ -517,10 +517,11 @@ Gherkin gate applies to all new code paths.
 
 ## UH-016 — Photo as sighting background
 
-**Status:** Open
+**Status:** Done
 **Priority:** Medium
 **Loop:** BDD
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### User Story
 As a UAP investigator,
