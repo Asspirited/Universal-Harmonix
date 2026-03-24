@@ -977,12 +977,13 @@
       </div>
 
       <div class="form-group">
-        <label>Photos (optional — max 3)</label>
+        <label>Photos <span style="color:var(--text-muted);font-weight:400;">(optional — first photo becomes the sighting background)</span></label>
         <label class="photo-zone" id="photo-zone">
           <input type="file" id="photos" accept="image/*" multiple>
-          <span id="photo-label">📷 Tap to attach photos</span>
+          <span id="photo-label">📷 Tap to attach photo</span>
           <div class="photo-preview" id="photo-preview"></div>
         </label>
+        <div style="font-size:11px;color:var(--text-muted);margin-top:5px;">Storage tip: one photo per sighting keeps the app fast. Each photo uses ~150–200KB of device storage.</div>
       </div>
 
       <button type="submit" class="submit-btn" id="submit-btn">Log &amp; Verify</button>
