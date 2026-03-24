@@ -582,6 +582,19 @@
 
       main::before { display: none; }
 
+      /* Image right, content on dark left — matches desktop intent in portrait */
+      body {
+        background-position: right top;
+      }
+      body::before {
+        background: linear-gradient(
+          to right,
+          rgba(10, 12, 20, 0.97) 0%,
+          rgba(10, 12, 20, 0.90) 55%,
+          rgba(10, 12, 20, 0.40) 100%
+        );
+      }
+
       .header-inner { padding-left: 0; }
 
       /* Compact header on mobile */

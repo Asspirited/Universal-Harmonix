@@ -745,3 +745,18 @@ So that I can test whether correlations exist (e.g. high Kp × unexplained verdi
 - F and H likely need human review pass after AI tagging — accuracy expected lower than A/B/C
 - E can be partially auto-populated from structured fields (datetime → E1/E5, lat/lng → G3) without Claude API
 - Raise Three Amigos before implementing — scope each category separately
+
+---
+
+## UH-039 — Mobile: background image right-aligned, wordmark on dark background
+
+**Status:** In Progress
+**Priority:** High
+**Loop:** BDD
+**Raised:** 2026-03-24
+
+### Notes
+- Desktop: image left, content right (dark) — wordmark is readable
+- Mobile: image currently left-positioned behind all content — wordmark sits against the photo
+- Fix: on mobile, position image to right, reverse gradient overlay (dark left → light right)
+- Wordmark and content sit on the dark left; image peeks out on the right edge
