@@ -622,10 +622,11 @@ So that I have a corpus to tag and correlate against environmental data.
 
 ## UH-031 — AI tagging pipeline: NUFORC comments → taxonomy tags
 
-**Status:** Open
+**Status:** Done
 **Priority:** High
 **Loop:** Data
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### Notes
 - Parse NUFORC `comments` field via Claude API
@@ -727,3 +728,19 @@ So that I can test whether correlations exist (e.g. high Kp × unexplained verdi
 - Records are scanned PDFs — need OCR + structured extraction
 - Significant standalone project; estimate before committing
 - Would produce the definitive UK historical sighting dataset if completed
+
+---
+
+## UH-038 — AI tagging pipeline v2: extend to Categories D–H
+
+**Status:** Open
+**Priority:** Low
+**Loop:** Data
+**Raised:** 2026-03-24
+
+### Notes
+- Follows UH-031 (v1 covers A/B/C only)
+- Categories D (physical effects), E (observation context), F (witness profile), G (location), H (investigation status)
+- F and H likely need human review pass after AI tagging — accuracy expected lower than A/B/C
+- E can be partially auto-populated from structured fields (datetime → E1/E5, lat/lng → G3) without Claude API
+- Raise Three Amigos before implementing — scope each category separately
