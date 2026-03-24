@@ -363,6 +363,7 @@
     <nav class="tabs">
       <div class="tab active" data-tab="log">Log Sighting</div>
       <div class="tab" data-tab="records">Records</div>
+      <div class="tab" data-tab="data">Data</div>
     </nav>
   </div>
 </header>
@@ -451,11 +452,42 @@
     <div id="records-container"></div>
   </div>
 
+  <!-- ── Data panel ── -->
+  <div class="panel" id="panel-data">
+    <div style="max-width:480px;">
+
+      <div style="margin-bottom:32px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Backup</div>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px;">
+          Download all your sightings as a JSON file. Keep it somewhere safe — it includes photos.
+        </p>
+        <button type="button" id="backup-btn" class="submit-btn" style="width:auto;padding:12px 24px;font-size:14px;">
+          ↓ Download backup
+        </button>
+      </div>
+
+      <div style="margin-bottom:32px;">
+        <div style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Restore</div>
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:14px;">
+          Import a backup file. Existing sightings are kept — duplicates are skipped.
+        </p>
+        <label style="display:inline-block;cursor:pointer;">
+          <input type="file" id="restore-input" accept=".json" style="display:none;">
+          <span class="submit-btn" style="display:inline-block;width:auto;padding:12px 24px;font-size:14px;cursor:pointer;">
+            ↑ Restore from backup
+          </span>
+        </label>
+        <div id="restore-status" style="margin-top:10px;font-size:13px;color:var(--green);display:none;"></div>
+      </div>
+
+    </div>
+  </div>
+
 </main>
 
 <script type="module">
   import { verifySighting } from './js/domain.js';
-  import { saveSighting, loadSightings } from './js/storage.js';
+  import { saveSighting, loadSightings, mergeSightings } from './js/storage.js';
 
   // ── Tab switching ──────────────────────────────────────────────────────────
   document.querySelectorAll('.tab').forEach(tab => {
@@ -739,6 +771,39 @@
     const isOpen  = body.classList.toggle('open');
     chevron.style.transform = isOpen ? 'rotate(90deg)' : '';
   };
+
+  // ── Data tab — backup / restore ────────────────────────────────────────────
+  document.getElementById('backup-btn').addEventListener('click', () => {
+    const sightings = loadSightings();
+    const blob = new Blob([JSON.stringify(sightings, null, 2)], { type: 'application/json' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `uh-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+
+  document.getElementById('restore-input').addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const status = document.getElementById('restore-status');
+      try {
+        const incoming = JSON.parse(ev.target.result);
+        if (!Array.isArray(incoming)) throw new Error('Not a valid backup file.');
+        const total = mergeSightings(incoming);
+        status.textContent = `✅ Done — ${total} sightings now in your records.`;
+        status.style.color = 'var(--green)';
+      } catch (err) {
+        status.textContent = `⚠️ Import failed: ${err.message}`;
+        status.style.color = 'var(--amber)';
+      }
+      status.style.display = 'block';
+      e.target.value = '';
+    };
+    reader.readAsText(file);
+  });
 
   // ── Export helpers ─────────────────────────────────────────────────────────
 
