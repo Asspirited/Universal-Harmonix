@@ -9,6 +9,9 @@
   <meta name="theme-color" content="#0a0c14">
   <link rel="manifest" href="manifest.json">
   <title>Universal Harmonix</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   <script type="importmap">
   {
     "imports": {
@@ -86,18 +89,39 @@
       .header-inner { padding-left: 0; }
     }
     .wordmark {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .wordmark-sup {
+      display: block;
+      font-family: 'Orbitron', var(--font);
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.55em;
       text-transform: uppercase;
       color: var(--accent);
-      opacity: 0.9;
+      opacity: 0.6;
+      margin-bottom: 3px;
+    }
+    .wordmark-main {
+      display: block;
+      font-family: 'Orbitron', var(--font);
+      font-size: 30px;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-shadow:
+        0 0 18px rgba(79, 195, 247, 0.55),
+        0 0 40px rgba(79, 195, 247, 0.20);
+      line-height: 1;
     }
     .tagline {
       font-size: 11px;
       color: var(--text-muted);
-      margin-top: 2px;
+      margin-top: 6px;
       margin-bottom: 12px;
+      letter-spacing: 0.04em;
     }
 
     /* ── Tabs ── */
@@ -532,8 +556,9 @@
 
       /* Compact header on mobile */
       header { padding: 10px 16px 0; }
-      .wordmark { font-size: 12px; }
-      .tagline  { font-size: 10px; margin-bottom: 0; }
+      .wordmark-sup  { font-size: 8px; letter-spacing: 0.45em; }
+      .wordmark-main { font-size: 20px; }
+      .tagline       { font-size: 10px; margin-bottom: 0; margin-top: 4px; }
       .header-inner .tabs { display: none; }
 
       /* Safe area padding at top */
@@ -849,7 +874,10 @@
 
 <header>
   <div class="header-inner">
-    <div class="wordmark">Universal Harmonix</div>
+    <div class="wordmark">
+      <span class="wordmark-sup">Universal</span>
+      <span class="wordmark-main">Harmonix</span>
+    </div>
     <div class="tagline">UAP Investigation &amp; Verification · BUFOG</div>
     <nav class="tabs">
       <div class="tab active" data-tab="log">Log Sighting</div>
