@@ -639,10 +639,11 @@ So that I have a corpus to tag and correlate against environmental data.
 
 ## UH-032 — UK Sighting Database tab UI
 
-**Status:** Open
+**Status:** Done
 **Priority:** High
 **Loop:** BDD
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### User Story
 As a researcher,
