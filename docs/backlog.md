@@ -347,10 +347,11 @@ Feature: Mobile-responsive app
 
 ## UH-013 — Enhanced location capture
 
-**Status:** Open
+**Status:** Done
 **Priority:** High
 **Loop:** HDD (field use — James logs sightings at the moment of the event)
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### User Story
 As a field investigator,
@@ -396,10 +397,11 @@ Feature: Enhanced location capture
 
 ## UH-014 — Sky Activity panel (pre-submission context)
 
-**Status:** Open
+**Status:** Done
 **Priority:** High
 **Loop:** HDD (matches feature parity with James's sky-watch app)
 **Raised:** 2026-03-24
+**Closed:** 2026-03-24
 
 ### User Story
 As a field investigator,

@@ -59,9 +59,9 @@ fi
 
 # ── Layer 1: Unit tests ────────────────────────────────────────────────────────
 separator
-echo "LAYER 1 — UNIT TESTS (domain.js + format.js)"
+echo "LAYER 1 — UNIT TESTS (domain.js + format.js + sky.js)"
 UNIT_START=$(date +%s)
-UNIT_OUT=$(node --test --experimental-test-coverage tests/verification.test.js tests/format.test.js 2>&1)
+UNIT_OUT=$(node --test --experimental-test-coverage tests/verification.test.js tests/format.test.js tests/sky.test.js 2>&1)
 UNIT_EXIT=$?
 UNIT_END=$(date +%s)
 UNIT_STATS=$(parse_test_stats "$UNIT_OUT")
@@ -111,7 +111,7 @@ fi
 separator
 echo "LAYER 3 — GHERKIN / BDD ACCEPTANCE"
 ACCEPT_START=$(date +%s)
-ACCEPT_OUT=$(node --test --experimental-test-coverage tests/acceptance/sighting-log.test.js tests/acceptance/location.test.js 2>&1)
+ACCEPT_OUT=$(node --test --experimental-test-coverage tests/acceptance/sighting-log.test.js tests/acceptance/location.test.js tests/acceptance/sky-activity.test.js 2>&1)
 ACCEPT_EXIT=$?
 ACCEPT_END=$(date +%s)
 ACCEPT_STATS=$(parse_test_stats "$ACCEPT_OUT")

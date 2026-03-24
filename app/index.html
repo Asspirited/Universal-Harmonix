@@ -183,12 +183,65 @@
     .gps-btn:hover { border-color: var(--accent); color: var(--accent); }
     .gps-btn.loading { color: var(--accent); opacity: 0.7; pointer-events: none; }
     .location-address {
-      margin-top: 8px;
       font-size: 13px;
       color: var(--accent);
-      min-height: 18px;
+      margin-bottom: 4px;
     }
     .location-address.error { color: var(--text-muted); }
+    .location-coords {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-variant-numeric: tabular-nums;
+    }
+    .location-status {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-left: 4px;
+    }
+
+    /* ── Sky Context panel ── */
+    .sky-context {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+    }
+    .sky-toggle {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 14px;
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: left;
+      font-family: var(--font);
+      transition: color 0.15s;
+    }
+    .sky-toggle:hover { color: var(--text); }
+    .sky-chevron { margin-left: auto; font-size: 14px; transition: transform 0.2s; }
+    .sky-toggle[aria-expanded="true"] .sky-chevron { transform: rotate(90deg); }
+    .sky-body { padding: 0 14px 12px; border-top: 1px solid var(--border); }
+    .sky-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(37,43,64,0.6);
+      font-size: 13px;
+    }
+    .sky-row:last-child { border-bottom: none; }
+    .sky-icon  { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+    .sky-label { font-weight: 500; color: var(--text); }
+    .sky-detail { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+    .sky-loading { font-style: italic; }
 
     /* ── Photo upload ── */
     .photo-zone {
@@ -500,6 +553,17 @@
   <!-- ── Log Sighting panel ── -->
   <div class="panel active" id="panel-log">
 
+    <!-- ── Sky Context ── -->
+    <div class="sky-context" id="sky-context" hidden>
+      <button type="button" class="sky-toggle" id="sky-toggle" aria-expanded="false">
+        🌌 Sky Context
+        <span class="sky-chevron">›</span>
+      </button>
+      <div class="sky-body" id="sky-body" hidden>
+        <div id="sky-rows"></div>
+      </div>
+    </div>
+
     <form id="sighting-form" novalidate>
 
       <div class="form-group">
@@ -631,12 +695,13 @@
 </nav>
 
 <script type="module">
-  import { verifySighting }                          from './js/domain.js';
+  import { verifySighting, checkWeather, checkISS, checkStarlink, checkAircraft } from './js/domain.js';
   import { saveSighting, loadSightings, mergeSightings } from './js/storage.js';
   import { resizeToBase64, MAX_PHOTOS }              from './js/photo.js';
   import { renderVerificationPanel, renderRecords }  from './js/render.js';
   import { triggerPdfExport, downloadSightingJson, downloadBackup } from './js/export.js';
   import { reverseGeocode, lookupPostcode, looksLikeUKPostcode } from './js/location.js';
+  import { moonPhase, timeOfDay, activeMeteorShowers } from './js/sky.js';
 
   // ── Tab switching ──────────────────────────────────────────────────────────
   function switchTab(name) {
@@ -673,6 +738,7 @@
     latEl.value = lat.toFixed(6);
     lngEl.value = lng.toFixed(6);
     setAddress('Resolving address…');
+    loadSkyContext(lat, lng);
     try {
       const addr = await reverseGeocode(lat, lng);
       setAddress(addr);
@@ -735,6 +801,100 @@
   }
   latEl.addEventListener('blur', onCoordBlur);
   lngEl.addEventListener('blur', onCoordBlur);
+
+  // ── Sky Context ────────────────────────────────────────────────────────────
+  const MONTH_ABBR = ['','Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  function loadSkyContext(lat, lng) {
+    const skyCtx    = document.getElementById('sky-context');
+    const skyBody   = document.getElementById('sky-body');
+    const skyToggle = document.getElementById('sky-toggle');
+    const skyRows   = document.getElementById('sky-rows');
+
+    const now     = new Date();
+    const moon    = moonPhase(now);
+    const tod     = timeOfDay(now, lat, lng);
+    const showers = activeMeteorShowers(now);
+
+    const todIcon  = { day: '☀️', twilight: '🌅', night: '🌙' }[tod] || '🌌';
+    const todLabel = { day: 'Daytime', twilight: 'Twilight', night: 'Night-time' }[tod] || tod;
+
+    let html = `
+      <div class="sky-row">
+        <span class="sky-icon">${todIcon}</span>
+        <div><div class="sky-label">${todLabel}</div></div>
+      </div>
+      <div class="sky-row">
+        <span class="sky-icon">🌙</span>
+        <div>
+          <div class="sky-label">${moon.name}</div>
+          <div class="sky-detail">${moon.illumination}% illumination</div>
+        </div>
+      </div>`;
+
+    if (showers.length > 0) {
+      const s = showers[0];
+      html += `
+      <div class="sky-row">
+        <span class="sky-icon">🌠</span>
+        <div>
+          <div class="sky-label">${s.name} active</div>
+          <div class="sky-detail">Peak ~${s.rate}/hr · ${s.peakDay} ${MONTH_ABBR[s.peakMonth]}</div>
+        </div>
+      </div>`;
+    }
+
+    html += `
+      <div class="sky-row" id="sky-weather-row">
+        <span class="sky-icon">🌦️</span>
+        <div><div class="sky-label sky-loading" id="sky-weather-text">Weather…</div></div>
+      </div>
+      <div class="sky-row" id="sky-iss-row">
+        <span class="sky-icon">🛸</span>
+        <div><div class="sky-label sky-loading" id="sky-iss-text">ISS…</div></div>
+      </div>
+      <div class="sky-row" id="sky-starlink-row">
+        <span class="sky-icon">⭐</span>
+        <div><div class="sky-label sky-loading" id="sky-starlink-text">Starlink…</div></div>
+      </div>
+      <div class="sky-row" id="sky-aircraft-row">
+        <span class="sky-icon">✈️</span>
+        <div><div class="sky-label sky-loading" id="sky-aircraft-text">Aircraft…</div></div>
+      </div>`;
+
+    skyRows.innerHTML = html;
+    skyCtx.hidden = false;
+    skyBody.hidden = false;
+    skyToggle.setAttribute('aria-expanded', 'true');
+
+    const isoNow = now.toISOString();
+    Promise.allSettled([
+      checkWeather(isoNow, lat, lng),
+      checkISS(isoNow, lat, lng),
+      checkStarlink(isoNow, lat, lng),
+      checkAircraft(isoNow, lat, lng),
+    ]).then(([w, iss, sl, ac]) => {
+      setSkyText('sky-weather-text',  w.value?.detail  ?? 'Unavailable');
+      setSkyText('sky-iss-text',      iss.value?.detail ?? 'Unavailable');
+      setSkyText('sky-starlink-text', sl.value?.detail ?? 'Unavailable');
+      const acDetail = ac.value?.aircraft?.length
+        ? `${ac.value.aircraft.length} in area — ${ac.value.aircraft.slice(0, 3).map(a => a.callsign).join(', ')}`
+        : (ac.value?.detail ?? 'Unavailable');
+      setSkyText('sky-aircraft-text', acDetail);
+    });
+  }
+
+  function setSkyText(id, text) {
+    const el = document.getElementById(id);
+    if (el) { el.textContent = text; el.classList.remove('sky-loading'); }
+  }
+
+  document.getElementById('sky-toggle').addEventListener('click', () => {
+    const body   = document.getElementById('sky-body');
+    const toggle = document.getElementById('sky-toggle');
+    body.hidden = !body.hidden;
+    toggle.setAttribute('aria-expanded', String(!body.hidden));
+  });
 
   // ── Photo handling ─────────────────────────────────────────────────────────
   let pendingPhotos = [];
