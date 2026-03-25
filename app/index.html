@@ -1349,6 +1349,26 @@
     }
     @keyframes lcars-pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
 
+    /* ── Dashboard full-width override ── */
+    body.dash-full main {
+      padding-left: 20px;
+    }
+    body.dash-full .header-inner {
+      padding-left: 0;
+    }
+    body.dash-full main::before {
+      display: none;
+    }
+    .lcars-left-col { transition: all 0.2s ease; }
+    .lcars-left-col.collapsed { width: 0; overflow: hidden; opacity: 0; padding: 0; min-width: 0; }
+    .lcars-collapse-btn {
+      background: none; border: 1px solid #252b40; border-radius: 6px;
+      color: #6b7399; font-size: 9px; font-family: 'Orbitron', var(--font);
+      letter-spacing: 1px; padding: 4px 8px; cursor: pointer;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .lcars-collapse-btn:hover { color: var(--accent); border-color: var(--accent); }
+
   </style>
 </head>
 <body>
@@ -1852,6 +1872,7 @@
     });
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.getElementById(`panel-${name}`).classList.add('active');
+    document.body.classList.toggle('dash-full', name === 'dashboard');
     if (name === 'dashboard') loadDashboardTab();
     if (name === 'myrecords') renderRecords(loadSightings(), document.getElementById('records-container'));
     if (name === 'ukdb') loadUKDB();
@@ -2653,7 +2674,12 @@
 
       <div class="lcars-grid">
 
-        <div class="lcars-col">
+        <div class="lcars-col lcars-left-col" id="lcars-left-col">
+          <button class="lcars-collapse-btn" onclick="
+            const c = document.getElementById('lcars-left-col');
+            c.classList.toggle('collapsed');
+            this.textContent = c.classList.contains('collapsed') ? '▶ Sensors' : '◀ Collapse';
+          ">◀ Collapse</button>
           <div class="lcars-panel">
             <div class="lcars-ph blue">Atmospheric Sensor Array</div>
             <div class="lcars-pb">
@@ -2795,7 +2821,8 @@
       </div>`;
   }
 
-  // Load dashboard on startup
+  // Load dashboard on startup (full-width mode)
+  document.body.classList.add('dash-full');
   loadDashboardTab();
 </script>
 
