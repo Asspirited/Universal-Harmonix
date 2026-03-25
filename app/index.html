@@ -1189,6 +1189,166 @@
     .map-popup-search { font-size: 11px; color: #6b7399; text-decoration: none; }
     .map-popup-search:hover { color: #4fc3f7; }
 
+    /* ── LCARS Dashboard ── */
+    .lcars-dash {
+      font-family: 'Orbitron', var(--font);
+      padding: 0;
+    }
+    .lcars-top-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: #1e2438;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .lcars-sky-cell {
+      background: #111420;
+      padding: 12px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .lcars-sky-label {
+      font-size: 7px;
+      color: #6b7399;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .lcars-sky-val {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+    .lcars-sky-val.am { color: var(--amber); }
+    .lcars-sky-val.gn { color: var(--green); }
+    .lcars-sky-val.pu { color: var(--purple); }
+    .lcars-sky-sub {
+      font-size: 8px;
+      color: #6b7399;
+      text-align: center;
+    }
+    .lcars-grid {
+      display: grid;
+      grid-template-columns: 180px 1fr 180px;
+      gap: 14px;
+    }
+    @media (max-width: 860px) {
+      .lcars-grid { grid-template-columns: 1fr; }
+      .lcars-top-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+    .lcars-col { display: flex; flex-direction: column; gap: 10px; }
+    .lcars-panel { background: #111420; border-radius: 8px; overflow: hidden; }
+    .lcars-ph {
+      border-left: 3px solid var(--amber);
+      background: linear-gradient(90deg, rgba(240,160,64,0.18) 0%, rgba(240,160,64,0.04) 100%);
+      color: var(--amber);
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+    }
+    .lcars-ph.blue {
+      border-left-color: var(--accent);
+      background: linear-gradient(90deg, rgba(79,195,247,0.18) 0%, rgba(79,195,247,0.04) 100%);
+      color: var(--accent);
+    }
+    .lcars-ph.purple {
+      border-left-color: var(--purple);
+      background: linear-gradient(90deg, rgba(156,108,247,0.18) 0%, rgba(156,108,247,0.04) 100%);
+      color: var(--purple);
+    }
+    .lcars-pb { padding: 10px; }
+    .lcars-stat {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #1e2438;
+    }
+    .lcars-stat:last-child { border: none; margin: 0; padding: 0; }
+    .lcars-stat-label {
+      font-size: 7.5px;
+      color: #6b7399;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .lcars-stat-val { font-size: 16px; font-weight: 700; color: var(--accent); }
+    .lcars-stat-val.am { color: var(--amber); }
+    .lcars-stat-val.gn { color: var(--green); }
+    .lcars-stat-val.rd { color: var(--red); }
+    .lcars-stat-val.mu { color: #6b7399; font-size: 11px; }
+    .lcars-stat-val.sm { font-size: 11px; }
+    .lcars-stat-sub { font-size: 8px; color: #6b7399; margin-top: 2px; }
+    .lcars-bar { height: 4px; background: #1e2438; border-radius: 2px; margin-top: 5px; overflow: hidden; }
+    .lcars-bar-f { height: 100%; border-radius: 2px; background: var(--accent); }
+    .lcars-feed-item {
+      display: flex;
+      gap: 10px;
+      padding: 8px 10px;
+      border-bottom: 1px solid #1e2438;
+      align-items: flex-start;
+    }
+    .lcars-feed-item:last-child { border: none; }
+    .lcars-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); margin-top: 4px; flex-shrink: 0;
+    }
+    .lcars-dot.am { background: var(--amber); }
+    .lcars-dot.pu { background: var(--purple); }
+    .lcars-dot.gn { background: var(--green); }
+    .lcars-dot.mu { background: #6b7399; }
+    .lcars-feed-title { font-size: 9.5px; color: var(--text); margin-bottom: 2px; }
+    .lcars-feed-meta { font-size: 8px; color: #6b7399; }
+    .lcars-badge {
+      font-size: 7.5px; padding: 2px 7px; border-radius: 10px;
+      background: #1a1f30; color: var(--accent);
+      border: 1px solid rgba(79,195,247,0.2);
+      flex-shrink: 0; align-self: center;
+    }
+    .lcars-badge.am { color: var(--amber); border-color: rgba(240,160,64,0.2); }
+    .lcars-badge.pu { color: var(--purple); border-color: rgba(156,108,247,0.2); }
+    .lcars-badge.gn { color: var(--green); border-color: rgba(76,175,132,0.2); }
+    .lcars-badge.mu { color: #6b7399; border-color: rgba(107,115,153,0.2); }
+    .lcars-log-btn {
+      background: var(--accent); color: #0a0c14; border: none; border-radius: 8px;
+      padding: 12px 20px; font-family: 'Orbitron', var(--font);
+      font-size: 10px; font-weight: 700; letter-spacing: 2px;
+      cursor: pointer; width: 100%; text-transform: uppercase;
+    }
+    .lcars-log-btn:hover { background: #81d4fa; }
+    .lcars-db-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: #1e2438;
+    }
+    .lcars-db-cell { background: #111420; padding: 9px 8px; }
+    .lcars-db-label { font-size: 7px; color: #6b7399; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 3px; }
+    .lcars-db-count { font-size: 14px; font-weight: 700; color: var(--accent); }
+    .lcars-db-count.am { color: var(--amber); }
+    .lcars-db-count.mu { color: #6b7399; }
+    .lcars-db-status { font-size: 7.5px; color: var(--green); margin-top: 1px; }
+    .lcars-db-status.pl { color: #6b7399; }
+    .lcars-db-status.am { color: var(--amber); }
+    .lcars-next-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 7px 10px; border-bottom: 1px solid #1e2438; font-size: 8.5px;
+    }
+    .lcars-next-row:last-child { border: none; }
+    .lcars-next-label { color: #6b7399; letter-spacing: 1px; text-transform: uppercase; }
+    .lcars-next-val.op { color: var(--amber); font-weight: 700; }
+    .lcars-next-val.pe { color: var(--purple); font-weight: 700; }
+    .lcars-dec { display: flex; flex-direction: column; gap: 4px; }
+    .lcars-dec-b { border-radius: 6px; }
+    .lcars-pulse {
+      display: inline-block; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--green); animation: lcars-pulse 2s infinite;
+      margin-right: 4px; vertical-align: middle;
+    }
+    @keyframes lcars-pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
   </style>
 </head>
 <body>
@@ -1201,7 +1361,8 @@
     </div>
     <div class="tagline">UAP Investigation &amp; Verification · BUFOG</div>
     <nav class="tabs">
-      <div class="tab active" data-tab="log">Log Sighting</div>
+      <div class="tab active" data-tab="dashboard">Dashboard</div>
+      <div class="tab" data-tab="log">Log Sighting</div>
       <div class="tab" data-tab="myrecords">My Records</div>
       <div class="tab" data-tab="ukdb">UK Sighting Database</div>
       <div class="tab" data-tab="map">Sightings Map</div>
@@ -1213,7 +1374,7 @@
 <main>
 
   <!-- ── Log Sighting panel ── -->
-  <div class="panel active" id="panel-log">
+  <div class="panel" id="panel-log">
 
     <!-- ── Sky Activity ── -->
     <div class="sky-context" id="sky-context" hidden>
@@ -1633,10 +1794,21 @@
 
   </div>
 
+  <!-- ── Dashboard panel ── -->
+  <div class="panel active" id="panel-dashboard">
+    <div class="lcars-dash" id="lcars-dash">
+      <!-- populated by loadDashboardTab() -->
+    </div>
+  </div>
+
 </main>
 
 <nav class="bottom-nav" id="bottom-nav">
-  <div class="bottom-nav-item active" data-tab="log">
+  <div class="bottom-nav-item active" data-tab="dashboard">
+    <span class="nav-icon">🛸</span>
+    <span>Dashboard</span>
+  </div>
+  <div class="bottom-nav-item" data-tab="log">
     <span class="nav-icon">✏️</span>
     <span>Log</span>
   </div>
@@ -1680,11 +1852,13 @@
     });
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     document.getElementById(`panel-${name}`).classList.add('active');
+    if (name === 'dashboard') loadDashboardTab();
     if (name === 'myrecords') renderRecords(loadSightings(), document.getElementById('records-container'));
     if (name === 'ukdb') loadUKDB();
     if (name === 'map')     loadMapTab();
     if (name === 'explore') loadExploreTab();
   }
+  window.switchTab = switchTab;
 
   document.querySelectorAll('.tab, .bottom-nav-item').forEach(el => {
     el.addEventListener('click', () => switchTab(el.dataset.tab));
@@ -1732,6 +1906,8 @@
     const now     = new Date();
     const moon    = moonPhase(now);
     const tod     = timeOfDay(now, lat, lng);
+    window._skyData = window._skyData || {};
+    window._skyData.moonPhase = moon.name + ' · ' + moon.illumination + '%';
     const showers = activeMeteorShowers(now);
 
     const todIcon  = { day: '☀️', twilight: '🌅', night: '🌙' }[tod] || '🌌';
@@ -1799,6 +1975,9 @@
         ? `${ac.value.aircraft.length} in area — ${ac.value.aircraft.slice(0, 3).map(a => a.callsign).join(', ')}`
         : (ac.value?.detail ?? 'Unavailable');
       setSkyText('sky-aircraft-text', acDetail);
+      window._skyData = window._skyData || {};
+      window._skyData.cloud   = w.value?.cloud   ?? null;
+      window._skyData.issPass = iss.value?.detail ?? null;
     });
   }
 
@@ -2417,6 +2596,207 @@
   const now = new Date();
   now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
   document.getElementById('datetime').value = now.toISOString().slice(0, 16);
+
+  // ── Dashboard (LCARS) ──────────────────────────────────────────────────────
+  function loadDashboardTab() {
+    const dash = document.getElementById('lcars-dash');
+    if (dash.dataset.loaded) return;
+    dash.dataset.loaded = '1';
+
+    const sky      = window._skyData || {};
+    const kp       = sky.kp       != null ? sky.kp.toFixed(1)              : '—';
+    const kpPct    = sky.kp       != null ? Math.min(sky.kp/9*100,100).toFixed(0) : 0;
+    const kpClass  = sky.kp       != null ? (sky.kp >= 5 ? 'rd' : sky.kp >= 3 ? 'am' : 'gn') : '';
+    const aurora   = sky.aurora   != null ? sky.aurora + '%'               : '—';
+    const auroraPct= sky.aurora   != null ? Math.min(sky.aurora, 100)      : 0;
+    const moon     = sky.moonPhase || '—';
+    const wind     = sky.solarWind != null ? sky.solarWind + ' km/s'       : '—';
+    const bz       = sky.bz       != null ? sky.bz.toFixed(1) + ' nT'      : '—';
+    const cloud    = sky.cloud    != null ? sky.cloud + '%'                : '—';
+    const iss      = sky.issPass  || '—';
+
+    const records   = loadSightings();
+    const recCount  = records.length;
+    const recentFeed = records.slice(-3).reverse().map(r => `
+      <div class="lcars-feed-item">
+        <div class="lcars-dot"></div>
+        <div style="flex:1">
+          <div class="lcars-feed-title">${r.type || 'Unknown'} · ${r.location || 'Location not recorded'}</div>
+          <div class="lcars-feed-meta">${r.datetime ? r.datetime.slice(0,10) : '—'} · ${r.description ? r.description.slice(0,60) + '…' : 'No description'}</div>
+        </div>
+        <div class="lcars-badge">Personal</div>
+      </div>`).join('');
+
+    dash.innerHTML = `
+      <div class="lcars-top-strip">
+        <div class="lcars-sky-cell">
+          <div class="lcars-sky-label">Geomagnetic<br>Activity</div>
+          <div class="lcars-sky-val ${kpClass}">Kp ${kp}</div>
+          <div class="lcars-sky-sub">${sky.kp != null ? (sky.kp < 3 ? 'Nominal · quiet' : sky.kp < 5 ? 'Active · watch' : 'Storm · alert') : 'Awaiting data'}</div>
+        </div>
+        <div class="lcars-sky-cell">
+          <div class="lcars-sky-label">Cloud Cover<br>Surface</div>
+          <div class="lcars-sky-val">${cloud}</div>
+          <div class="lcars-sky-sub">Visual acquisition</div>
+        </div>
+        <div class="lcars-sky-cell">
+          <div class="lcars-sky-label">Aurora<br>Probability</div>
+          <div class="lcars-sky-val">${aurora}</div>
+          <div class="lcars-sky-sub">UK latitudes</div>
+        </div>
+        <div class="lcars-sky-cell">
+          <div class="lcars-sky-label">ISS Orbital<br>Intercept</div>
+          <div class="lcars-sky-val pu">${iss}</div>
+          <div class="lcars-sky-sub">Next visible pass</div>
+        </div>
+      </div>
+
+      <div class="lcars-grid">
+
+        <div class="lcars-col">
+          <div class="lcars-panel">
+            <div class="lcars-ph blue">Atmospheric Sensor Array</div>
+            <div class="lcars-pb">
+              <div class="lcars-stat">
+                <div class="lcars-stat-label">Geomagnetic Index · Kp</div>
+                <div class="lcars-stat-val ${kpClass}">${kp}</div>
+                <div class="lcars-bar"><div class="lcars-bar-f" style="width:${kpPct}%;${sky.kp>=3?'background:var(--amber)':''}"></div></div>
+                <div class="lcars-stat-sub">${sky.kp != null ? (sky.kp < 3 ? 'Class-G quiet' : sky.kp < 5 ? 'Active conditions' : 'Geomagnetic storm') : 'No data'}</div>
+              </div>
+              <div class="lcars-stat">
+                <div class="lcars-stat-label">Aurora Probability · UK Lat.</div>
+                <div class="lcars-stat-val">${aurora}</div>
+                <div class="lcars-bar"><div class="lcars-bar-f" style="width:${auroraPct}%"></div></div>
+                <div class="lcars-stat-sub">Visual threshold ~30%</div>
+              </div>
+              <div class="lcars-stat">
+                <div class="lcars-stat-label">Lunar Phase</div>
+                <div class="lcars-stat-val gn" style="font-size:12px">${moon}</div>
+              </div>
+              <div class="lcars-stat">
+                <div class="lcars-stat-label">Solar Wind · Bz</div>
+                <div class="lcars-stat-val">${wind}</div>
+                <div class="lcars-stat-sub">Bz component: ${bz}</div>
+              </div>
+            </div>
+          </div>
+          <div class="lcars-dec">
+            <div class="lcars-dec-b" style="height:9px;background:rgba(240,160,64,0.45)"></div>
+            <div class="lcars-dec-b" style="height:9px;background:rgba(79,195,247,0.45)"></div>
+            <div class="lcars-dec-b" style="height:9px;background:rgba(156,108,247,0.3)"></div>
+            <div class="lcars-dec-b" style="height:5px;background:rgba(240,160,64,0.25)"></div>
+          </div>
+        </div>
+
+        <div class="lcars-col">
+          <div class="lcars-panel">
+            <div class="lcars-ph blue">Sighting Activity Log · Recent Encounters <span class="lcars-pulse"></span></div>
+            ${recCount > 0 ? recentFeed : `
+            <div class="lcars-feed-item">
+              <div class="lcars-dot mu"></div>
+              <div style="flex:1">
+                <div class="lcars-feed-title">BUFOG Case 0017 · Birmingham · Triangular Formation</div>
+                <div class="lcars-feed-meta">1974 · CE1 · Hynek review pending · investigator classification required</div>
+              </div>
+              <div class="lcars-badge pu">BUFOG</div>
+            </div>
+            <div class="lcars-feed-item">
+              <div class="lcars-dot am"></div>
+              <div style="flex:1">
+                <div class="lcars-feed-title">NUFORC UK · Yorkshire · Nocturnal Light · NL-class</div>
+                <div class="lcars-feed-meta">2009 · Kp 3.2 at time of event · no conventional explanation logged</div>
+              </div>
+              <div class="lcars-badge am">NUFORC</div>
+            </div>
+            <div class="lcars-feed-item">
+              <div class="lcars-dot gn"></div>
+              <div style="flex:1">
+                <div class="lcars-feed-title">Correlation Signal · CE* uplift at Kp ≥ 4 confirmed · 23%</div>
+                <div class="lcars-feed-meta">2,050 records processed · Correlation Explorer · hypothesis partial</div>
+              </div>
+              <div class="lcars-badge gn">Finding</div>
+            </div>
+            <div class="lcars-feed-item">
+              <div class="lcars-dot mu"></div>
+              <div style="flex:1">
+                <div class="lcars-feed-title">No personal sightings on record · awaiting field submission</div>
+                <div class="lcars-feed-meta">Use Log Sighting tab to submit your first report</div>
+              </div>
+              <div class="lcars-badge mu">Pending</div>
+            </div>`}
+          </div>
+
+          <button class="lcars-log-btn" onclick="window.switchTab('log')">Initiate Sighting Log · New Entry</button>
+
+          <div class="lcars-panel">
+            <div class="lcars-ph">Data Archive · Retrieval Status</div>
+            <div class="lcars-db-grid">
+              <div class="lcars-db-cell">
+                <div class="lcars-db-label">NUFORC · UK</div>
+                <div class="lcars-db-count">2,050</div>
+                <div class="lcars-db-status">Loaded · tagged</div>
+              </div>
+              <div class="lcars-db-cell">
+                <div class="lcars-db-label">BUFOG Cases</div>
+                <div class="lcars-db-count am">38</div>
+                <div class="lcars-db-status am">Loaded · review open</div>
+              </div>
+              <div class="lcars-db-cell">
+                <div class="lcars-db-label">MOD Archives</div>
+                <div class="lcars-db-count mu">11,000</div>
+                <div class="lcars-db-status pl">OCR · planned</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lcars-col">
+          <div class="lcars-panel">
+            <div class="lcars-ph purple">Investigation Subsystem · HDD-001</div>
+            <div class="lcars-pb">
+              <div class="lcars-stat">
+                <div class="lcars-stat-label">Primary Hypothesis</div>
+                <div class="lcars-stat-val am sm">Unvalidated</div>
+                <div class="lcars-stat-sub">Kp ≥ 4 toggle test pending</div>
+              </div>
+              <div class="lcars-stat">
+                <div class="lcars-stat-label">BUFOG · Unexplained</div>
+                <div class="lcars-stat-val rd">17</div>
+                <div class="lcars-bar"><div class="lcars-bar-f" style="width:45%;background:var(--red)"></div></div>
+                <div class="lcars-stat-sub">of 38 total · 45%</div>
+              </div>
+              <div class="lcars-stat">
+                <div class="lcars-stat-label">Hynek Review</div>
+                <div class="lcars-stat-val am sm">Pending</div>
+                <div class="lcars-stat-sub">18–24 records · Brodie</div>
+              </div>
+              <div class="lcars-stat">
+                <div class="lcars-stat-label">Personal Sightings</div>
+                <div class="lcars-stat-val mu">${recCount} logged</div>
+                <div class="lcars-stat-sub">${recCount === 0 ? 'No field data received' : recCount + ' record' + (recCount !== 1 ? 's' : '') + ' on file'}</div>
+              </div>
+            </div>
+          </div>
+          <div class="lcars-panel">
+            <div class="lcars-ph purple">Next Required Actions</div>
+            <div class="lcars-next-row"><span class="lcars-next-label">Kp ≥ 4 Map Test</span><span class="lcars-next-val op">Brodie</span></div>
+            <div class="lcars-next-row"><span class="lcars-next-label">Correlations Review</span><span class="lcars-next-val op">Brodie</span></div>
+            <div class="lcars-next-row"><span class="lcars-next-label">Submit Real Sighting</span><span class="lcars-next-val op">Brodie</span></div>
+            <div class="lcars-next-row"><span class="lcars-next-label">BUFOG → Map UH-041</span><span class="lcars-next-val pe">In Progress</span></div>
+            <div class="lcars-next-row"><span class="lcars-next-label">Hynek · 18–24 Records</span><span class="lcars-next-val pe">Awaiting</span></div>
+          </div>
+          <div class="lcars-dec">
+            <div class="lcars-dec-b" style="height:9px;background:rgba(156,108,247,0.35)"></div>
+            <div class="lcars-dec-b" style="height:5px;background:rgba(240,160,64,0.3)"></div>
+            <div class="lcars-dec-b" style="height:9px;background:rgba(79,195,247,0.3)"></div>
+          </div>
+        </div>
+
+      </div>`;
+  }
+
+  // Load dashboard on startup
+  loadDashboardTab();
 </script>
 
 </body>

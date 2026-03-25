@@ -2,7 +2,7 @@
 // HTML (index.html): network-first — always gets fresh markup on a normal load.
 // Static assets (JS, images, manifest): cache-first — fast repeat loads, offline support.
 
-const CACHE = 'uh-v5';
+const CACHE = 'uh-v6';
 const PRECACHE = [
   './js/domain.js',
   './js/storage.js',
