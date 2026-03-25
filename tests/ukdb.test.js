@@ -57,6 +57,36 @@ describe('filterRecords', () => {
     assert.strictEqual(result.length, 0);
   });
 
+  it('filters by source — BUFOG only', () => {
+    const mixed = [
+      ...RECORDS,
+      { id: 'b1', datetime: '2015-06-01', city: 'leeds', source: 'BUFOG', tags: { shape: ['orb'], hynek: 'CE1' } },
+      { id: 'b2', datetime: '2016-07-10', city: 'hull',  source: 'BUFOG', tags: { shape: ['disc/saucer'], hynek: 'CE2' } },
+    ];
+    const result = filterRecords(mixed, { source: 'BUFOG' });
+    assert.strictEqual(result.length, 2);
+    assert.ok(result.every(r => r.source === 'BUFOG'));
+  });
+
+  it('filters by source — NUFORC only (explicit source field)', () => {
+    const mixed = [
+      { id: 'n1', datetime: '2000-01-01', city: 'bath', source: 'NUFORC', tags: { shape: ['orb'], hynek: 'NL' } },
+      { id: 'b1', datetime: '2015-06-01', city: 'leeds', source: 'BUFOG', tags: { shape: ['orb'], hynek: 'CE1' } },
+    ];
+    const result = filterRecords(mixed, { source: 'NUFORC' });
+    assert.strictEqual(result.length, 1);
+    assert.strictEqual(result[0].id, 'n1');
+  });
+
+  it('returns all records when source filter is "all"', () => {
+    const mixed = [
+      { id: 'n1', datetime: '2000-01-01', city: 'bath',  source: 'NUFORC', tags: { shape: ['orb'], hynek: 'NL' } },
+      { id: 'b1', datetime: '2015-06-01', city: 'leeds', source: 'BUFOG',  tags: { shape: ['orb'], hynek: 'CE1' } },
+    ];
+    assert.strictEqual(filterRecords(mixed, { source: 'all' }).length, 2);
+    assert.strictEqual(filterRecords(mixed, {}).length, 2);
+  });
+
 });
 
 describe('paginateRecords', () => {

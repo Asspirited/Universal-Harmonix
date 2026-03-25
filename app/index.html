@@ -1189,6 +1189,30 @@
     .map-popup-search { font-size: 11px; color: #6b7399; text-decoration: none; }
     .map-popup-search:hover { color: #4fc3f7; }
 
+    /* Source + outcome badges */
+    .source-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      padding: 1px 5px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    .source-badge-bufog { background: rgba(76,175,132,0.15); color: #4caf84; border: 1px solid rgba(76,175,132,0.3); }
+    .outcome-chip {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .outcome-unexplained { background: rgba(156,108,247,0.15); color: #9c6cf7; }
+    .outcome-inconclusive { background: rgba(240,160,64,0.12); color: #f0a040; }
+    .outcome-explained    { background: rgba(76,175,132,0.12);  color: #4caf84; }
+
     /* ── LCARS Dashboard ── */
     .lcars-dash {
       font-family: 'Orbitron', var(--font);
@@ -1583,6 +1607,11 @@
 
     <!-- Filters -->
     <div class="ukdb-filters" id="ukdb-filters">
+      <select id="ukdb-filter-source" class="ukdb-filter-select">
+        <option value="">All sources</option>
+        <option value="NUFORC">NUFORC only</option>
+        <option value="BUFOG">BUFOG only</option>
+      </select>
       <select id="ukdb-filter-shape" class="ukdb-filter-select">
         <option value="">All shapes</option>
         <option>orb</option><option>sphere</option><option>triangle</option>
@@ -1612,7 +1641,7 @@
     <!-- Records table -->
     <div class="ukdb-records-section">
       <div class="ukdb-records-header">
-        <span class="ukdb-records-title">NUFORC UK Records</span>
+        <span class="ukdb-records-title">UK Sighting Records</span>
         <span class="ukdb-records-count" id="ukdb-count">Loading…</span>
       </div>
 
@@ -1630,6 +1659,7 @@
               <th>City</th>
               <th>Shape</th>
               <th>Hynek</th>
+              <th>Source</th>
             </tr>
           </thead>
           <tbody id="ukdb-tbody"></tbody>
@@ -1719,13 +1749,18 @@
     <div class="ukdb-header">
       <h2 class="ukdb-title">Sightings Map</h2>
       <p class="ukdb-subtitle">
-        2,050 UK sightings plotted geographically, coloured by Hynek classification.
-        Filter by shape, type or year — enable <strong>Kp ≥ 4</strong> to test the Universal Harmonix hypothesis visually.
+        UK sightings from NUFORC and BUFOG plotted geographically, coloured by Hynek classification.
+        Filter by source, shape, type or year — enable <strong>Kp ≥ 4</strong> to test the Universal Harmonix hypothesis visually.
       </p>
     </div>
 
     <!-- Filter bar -->
     <div class="ukdb-filters" id="map-filter-bar">
+      <select id="map-filter-source" class="ukdb-filter-select">
+        <option value="">All sources</option>
+        <option value="NUFORC">NUFORC only</option>
+        <option value="BUFOG">BUFOG only</option>
+      </select>
       <select id="map-filter-shape" class="ukdb-filter-select">
         <option value="">All shapes</option>
         <option>orb</option><option>sphere</option><option>triangle</option>
@@ -2204,12 +2239,23 @@
   let ukdbFilters   = {};
   let ukdbCurrentPage = 1;
 
+  async function ensureDataLoaded() {
+    if (ukdbAllRecords) return;
+    const [nuforcRes, bufogRes] = await Promise.all([
+      fetch('./data/nuforc-uk-enriched.json'),
+      fetch('./data/bufog-cases-clean.json'),
+    ]);
+    const nuforc = await nuforcRes.json();
+    const bufog  = await bufogRes.json();
+    nuforc.forEach(r => { r.source = 'NUFORC'; });
+    ukdbAllRecords = [...nuforc, ...bufog];
+  }
+
   async function loadUKDB() {
     if (ukdbAllRecords) { renderUKDB(); return; }
     document.getElementById('ukdb-count').textContent = 'Loading…';
     try {
-      const res  = await fetch('./data/nuforc-uk-enriched.json');
-      ukdbAllRecords = await res.json();
+      await ensureDataLoaded();
     } catch {
       document.getElementById('ukdb-count').textContent = 'Failed to load data';
       return;
@@ -2243,11 +2289,15 @@
         : '<span class="tag-empty">—</span>';
       const hynek  = r.tags?.hynek || '—';
       const hClass = hynekClass(r.tags?.hynek);
+      const srcBadge = r.source === 'BUFOG'
+        ? `<span class="source-badge source-badge-bufog">BUFOG</span>`
+        : '';
       return `<tr>
         <td>${date}</td>
         <td>${city}</td>
         <td>${shapeTags}</td>
         <td><span class="${hClass}">${hynek}</span></td>
+        <td>${srcBadge}</td>
       </tr>`;
     }).join('');
 
@@ -2265,6 +2315,7 @@
 
   // Filter event wiring
   (() => {
+    const sourceEl  = document.getElementById('ukdb-filter-source');
     const shapeEl   = document.getElementById('ukdb-filter-shape');
     const hynekEl   = document.getElementById('ukdb-filter-hynek');
     const yearFrom  = document.getElementById('ukdb-filter-year-from');
@@ -2273,6 +2324,7 @@
 
     function applyFilters() {
       ukdbFilters = {
+        source:   sourceEl.value  || undefined,
         shape:    shapeEl.value   || undefined,
         hynek:    hynekEl.value   || undefined,
         yearFrom: yearFrom.value  ? parseInt(yearFrom.value,  10) : undefined,
@@ -2283,13 +2335,14 @@
     }
 
     let yearDebounce;
+    sourceEl.addEventListener('change', applyFilters);
     shapeEl.addEventListener('change', applyFilters);
     hynekEl.addEventListener('change', applyFilters);
     yearFrom.addEventListener('input', () => { clearTimeout(yearDebounce); yearDebounce = setTimeout(applyFilters, 400); });
     yearTo.addEventListener('input',   () => { clearTimeout(yearDebounce); yearDebounce = setTimeout(applyFilters, 400); });
 
     resetBtn.addEventListener('click', () => {
-      shapeEl.value = ''; hynekEl.value = '';
+      sourceEl.value = ''; shapeEl.value = ''; hynekEl.value = '';
       yearFrom.value = ''; yearTo.value = '';
       ukdbFilters = {}; ukdbCurrentPage = 1;
       renderUKDB();
@@ -2355,12 +2408,25 @@
     const searchQuery = encodeURIComponent(`UFO sighting ${r.city || ''} ${year || ''} UK`);
     const searchLink  = `<a class="map-popup-search" href="https://www.google.com/search?q=${searchQuery}" target="_blank" rel="noopener">Search online ↗</a>`;
 
+    const sourceBadge = r.source === 'BUFOG'
+      ? `<span class="source-badge source-badge-bufog">BUFOG</span>`
+      : '';
+    const outcome = r.tags?.outcome;
+    const outcomeClass = outcome === 'unexplained' ? 'outcome-unexplained'
+                       : outcome === 'inconclusive' ? 'outcome-inconclusive'
+                       : outcome === 'explained'    ? 'outcome-explained'
+                       : '';
+    const outcomeChip = outcome
+      ? `<span class="outcome-chip ${outcomeClass}">${outcome}</span>`
+      : '';
+
     return `<div class="map-popup">
-      <div class="map-popup-date">${date}</div>
+      <div class="map-popup-date">${date}${sourceBadge ? ' ' + sourceBadge : ''}</div>
       <div class="map-popup-location">${loc}</div>
       <div class="map-popup-tags">
         <span class="${hClass}">${hynek}</span>
         ${sigLabel}
+        ${outcomeChip}
         ${shapeTags}
       </div>
       ${desc ? `<div class="map-popup-desc">${desc}</div>` : ''}
@@ -2414,8 +2480,7 @@
     if (!ukdbAllRecords) {
       document.getElementById('map-stats').textContent = 'Loading sighting data…';
       try {
-        const res = await fetch('./data/nuforc-uk-enriched.json');
-        ukdbAllRecords = await res.json();
+        await ensureDataLoaded();
       } catch {
         document.getElementById('map-stats').textContent = 'Failed to load sighting data.';
         return;
@@ -2427,6 +2492,7 @@
 
   // Map filter wiring
   (() => {
+    const sourceEl = document.getElementById('map-filter-source');
     const shapeEl  = document.getElementById('map-filter-shape');
     const hynekEl  = document.getElementById('map-filter-hynek');
     const yearFrom = document.getElementById('map-filter-year-from');
@@ -2437,6 +2503,7 @@
 
     function applyMapFilters() {
       mapFilters = {
+        source:     sourceEl.value || undefined,
         shape:      shapeEl.value  || undefined,
         hynek:      hynekEl.value  || undefined,
         yearFrom:   yearFrom.value ? parseInt(yearFrom.value, 10) : undefined,
@@ -2447,6 +2514,7 @@
       renderMapMarkers();
     }
 
+    sourceEl.addEventListener('change', applyMapFilters);
     shapeEl.addEventListener('change', applyMapFilters);
     hynekEl.addEventListener('change', applyMapFilters);
     kpEl.addEventListener('change', applyMapFilters);
@@ -2454,7 +2522,7 @@
     yearTo.addEventListener('input',   () => { clearTimeout(mapYearDebounce); mapYearDebounce = setTimeout(applyMapFilters, 400); });
 
     resetBtn.addEventListener('click', () => {
-      shapeEl.value = ''; hynekEl.value = '';
+      sourceEl.value = ''; shapeEl.value = ''; hynekEl.value = '';
       yearFrom.value = ''; yearTo.value = '';
       kpEl.checked = false;
       kpLabel.classList.remove('kp-active');
@@ -2581,8 +2649,7 @@
     if (exploreLoaded) return;
     if (!ukdbAllRecords) {
       try {
-        const res = await fetch('./data/nuforc-uk-enriched.json');
-        ukdbAllRecords = await res.json();
+        await ensureDataLoaded();
       } catch {
         document.getElementById('corr-crosstab-wrap').textContent = 'Failed to load data.';
         return;

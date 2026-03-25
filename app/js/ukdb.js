@@ -1,8 +1,11 @@
 // Universal Harmonix — UK Sighting Database filter + pagination
 // Pure functions — no DOM, no I/O.
 
-export function filterRecords(records, { shape, hynek, yearFrom, yearTo } = {}) {
+export function filterRecords(records, { shape, hynek, yearFrom, yearTo, source } = {}) {
   return records.filter(r => {
+    if (source && source !== 'all') {
+      if ((r.source || 'NUFORC') !== source) return false;
+    }
     if (shape && shape !== 'all') {
       if (!r.tags?.shape?.includes(shape)) return false;
     }
