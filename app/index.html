@@ -11,7 +11,7 @@
   <title>Universal Harmonix</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Special+Elite&family=Exo+2:wght@900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" crossorigin="">
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" crossorigin="">
@@ -97,21 +97,23 @@
     }
     .wordmark-sup {
       display: block;
-      font-family: 'Orbitron', var(--font);
-      font-size: 10px;
+      font-family: 'Special Elite', cursive;
+      font-size: 16px;
       font-weight: 400;
-      letter-spacing: 0.55em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--accent);
-      opacity: 0.6;
-      margin-bottom: 3px;
+      opacity: 0.75;
+      margin-bottom: 2px;
+      transform: scaleX(0.82);
+      transform-origin: left;
     }
     .wordmark-main {
       display: block;
-      font-family: 'Orbitron', var(--font);
+      font-family: 'Exo 2', var(--font);
       font-size: 30px;
       font-weight: 900;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
       text-shadow:
@@ -602,7 +604,7 @@
 
       /* Compact header on mobile */
       header { padding: 10px 16px 0; }
-      .wordmark-sup  { font-size: 8px; letter-spacing: 0.45em; }
+      .wordmark-sup  { font-size: 11px; letter-spacing: 0.1em; }
       .wordmark-main { font-size: 20px; }
       .tagline       { font-size: 10px; margin-bottom: 0; margin-top: 4px; }
       .header-inner .tabs { display: none; }

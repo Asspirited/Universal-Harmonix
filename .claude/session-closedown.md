@@ -48,6 +48,16 @@ Write `.claude/shared-session-state.md`:
 - Open questions updated
 - Top 3 for next session
 
+### Step 8b: Update session-ref.md (Claude.ai handoff)
+Update `.claude/session-ref.md` with current project state.
+Also write `uh-status-[date].md` to `/mnt/c/Users/roden/Downloads/` as a ready-to-upload copy.
+
+**Claude.ai cannot read files automatically — Rod must upload manually.**
+The mechanism is Claude.ai Project Knowledge:
+- Rod drags `uh-status-[date].md` into the UH Claude.ai Project Knowledge after closedown
+- It then persists across all Claude.ai conversations in that project
+- Without this step, Claude.ai has no project context next session
+
 ### Step 9: Commit reminder
 Files to commit:
 - `app/index.html` (if changed)
