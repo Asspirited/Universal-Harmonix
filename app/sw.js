@@ -2,7 +2,7 @@
 // Cache-first strategy for all static app assets.
 // Enables offline use after first visit.
 
-const CACHE = 'uh-v2';
+const CACHE = 'uh-v3';
 const PRECACHE = [
   './',
   './index.html',
