@@ -25,6 +25,9 @@ jobs:
 
       - uses: actions/configure-pages@v5
 
+      - name: Bundle data into app
+        run: cp -r data app/data
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: app

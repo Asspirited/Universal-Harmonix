@@ -674,12 +674,71 @@ So that I can explore patterns without leaving the tool.
 
 ---
 
+## UH-040 — Sightings Map tab
+
+**Status:** Done
+**Priority:** High
+**Loop:** BDD
+**Raised:** 2026-03-25
+**Closed:** 2026-03-25
+
+### User Story
+As a researcher,
+I want to see all UK sightings plotted on an interactive map,
+So that I can explore geographical patterns and compare sightings visually.
+
+### Acceptance Criteria
+
+```gherkin
+Feature: Sightings Map
+
+  Scenario: Map tab loads all sightings
+    Given I tap the Sightings Map tab
+    Then a map centred on the UK is shown
+    And all sightings with coordinates are plotted as colour-coded markers
+    And markers are clustered at zoom-out and expand on zoom-in
+
+  Scenario: Markers are coloured by Hynek type
+    Given the map is loaded
+    Then CE* sightings show purple markers with a glow
+    And DD sightings show amber markers
+    And NL sightings show blue markers
+    And RV sightings show green markers
+
+  Scenario: Popup shows enriched context
+    Given I click a marker
+    Then I see: date, location, Hynek type, shape, brief description
+    And Kp index (highlighted if elevated), moon phase, cloud cover
+    And a "Search online" link for the sighting
+
+  Scenario: Kp ≥ 4 filter isolates geomagnetic events
+    Given I enable "Kp ≥ 4 only"
+    Then only sightings recorded during elevated geomagnetic activity remain
+    And the stats bar updates to reflect the filtered count
+
+  Scenario: Near Me centres the map on user location
+    Given I tap Near Me
+    Then the map pans and zooms to my GPS coordinates
+```
+
+### Notes
+- Data: nuforc-uk-enriched.json (context fields needed for popup)
+- Leaflet.js + Leaflet.markercluster via CDN
+- Dark tile layer: CartoDB Dark Matter
+- Significance label in popup (CE = Close Encounter, DD/RV = Physical Observation, NL = Nocturnal Light)
+- "Search online" Google link per sighting (city + year + UK)
+- Kp ≥ 4 toggle tests UH hypothesis visually
+- Deployment fix: pages.yml now copies data/ → app/data before artifact upload (was broken)
+
+---
+
 ## UH-034 — Correlation explorer
 
-**Status:** Open
+**Status:** Done
 **Priority:** Medium
 **Loop:** BDD
 **Raised:** 2026-03-24
+**Closed:** 2026-03-25
 
 ### User Story
 As a researcher,

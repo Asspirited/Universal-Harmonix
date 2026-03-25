@@ -12,6 +12,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" crossorigin="">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" crossorigin="">
   <script type="importmap">
   {
     "imports": {
@@ -983,6 +986,207 @@
       color: var(--purple);
     }
 
+    /* ── Correlation Explorer ── */
+    .corr-charts-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 860px) { .corr-charts-grid { grid-template-columns: 1fr; } }
+
+    .corr-chart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+    .corr-chart-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .corr-chart-subtitle {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.4;
+    }
+
+    .corr-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      display: block;
+      overflow-x: auto;
+    }
+    .corr-table th {
+      text-align: right;
+      padding: 8px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .corr-table th:first-child { text-align: left; }
+    .corr-table td {
+      text-align: right;
+      padding: 8px 14px;
+      color: var(--text);
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .corr-table td:first-child { text-align: left; font-weight: 600; color: var(--text-muted); }
+    .corr-table tr:last-child td { border-bottom: none; }
+    .corr-table tr:hover td { background: var(--surface-2); }
+    .corr-table .row-active     td:first-child { color: var(--amber); }
+    .corr-table .row-minor-storm td:first-child { color: var(--purple); }
+    .corr-table .row-major-storm td:first-child { color: var(--purple); }
+    .corr-table .col-ce { color: var(--purple); }
+    .corr-table .col-total { color: var(--text-muted); font-weight: 600; }
+    .corr-table .col-pct { font-size: 11px; color: var(--text-muted); }
+
+    .corr-export-row {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 14px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Sightings Map panel ── */
+    #sightings-map {
+      height: 560px;
+      width: 100%;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    @media (max-width: 600px) { #sightings-map { height: 380px; } }
+
+    .map-container { position: relative; margin-bottom: 16px; }
+
+    .map-near-me-btn {
+      position: absolute;
+      bottom: 20px;
+      right: 12px;
+      z-index: 1000;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 8px 14px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .map-near-me-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .map-stats {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      min-height: 20px;
+    }
+    .map-stats strong { color: var(--text); }
+
+    .map-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      padding: 12px 0 4px;
+    }
+    .map-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .map-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .map-kp-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 6px 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      min-height: 34px;
+      user-select: none;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .map-kp-toggle.kp-active { border-color: var(--amber); color: var(--amber); }
+    .map-kp-toggle input { display: none; }
+
+    /* Leaflet dark theme overrides */
+    .leaflet-popup-content-wrapper {
+      background: #1a1f30 !important;
+      border: 1px solid #252b40 !important;
+      color: #d4d8e8 !important;
+      border-radius: 8px !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6) !important;
+    }
+    .leaflet-popup-tip { background: #1a1f30 !important; }
+    .leaflet-popup-close-button {
+      color: #6b7399 !important;
+      top: 8px !important;
+      right: 10px !important;
+    }
+    .leaflet-popup-close-button:hover { color: #d4d8e8 !important; background: none !important; }
+    .leaflet-bar a {
+      background: #1a1f30 !important;
+      color: #d4d8e8 !important;
+      border-color: #252b40 !important;
+    }
+    .leaflet-bar a:hover { background: #111420 !important; }
+
+    /* Map popup card */
+    .map-popup { min-width: 190px; max-width: 250px; }
+    .map-popup-date { font-size: 11px; color: #6b7399; margin-bottom: 4px; }
+    .map-popup-location { font-size: 14px; font-weight: 600; color: #d4d8e8; margin-bottom: 8px; line-height: 1.3; }
+    .map-popup-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+    .map-popup-significance {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 2px 6px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    .sig-ce  { background: rgba(156,108,247,0.15); color: #9c6cf7; }
+    .sig-phys { background: rgba(240,160,64,0.12);  color: #f0a040; }
+    .sig-nl  { background: rgba(79,195,247,0.10);   color: #4fc3f7; }
+    .sig-unk { background: rgba(107,115,153,0.12);  color: #6b7399; }
+    .map-popup-desc { font-size: 12px; color: #9099b7; line-height: 1.4; margin-bottom: 8px; }
+    .map-popup-context { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+    .map-popup-ctx-item {
+      font-size: 11px;
+      color: #6b7399;
+      background: #0f1320;
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid #252b40;
+    }
+    .map-popup-ctx-item.kp-elevated { color: #f0a040; border-color: rgba(240,160,64,0.35); background: rgba(240,160,64,0.06); }
+    .map-popup-ctx-item.kp-storm    { color: #9c6cf7; border-color: rgba(156,108,247,0.35); background: rgba(156,108,247,0.06); }
+    .map-popup-search { font-size: 11px; color: #6b7399; text-decoration: none; }
+    .map-popup-search:hover { color: #4fc3f7; }
+
   </style>
 </head>
 <body>
@@ -998,6 +1202,8 @@
       <div class="tab active" data-tab="log">Log Sighting</div>
       <div class="tab" data-tab="myrecords">My Records</div>
       <div class="tab" data-tab="ukdb">UK Sighting Database</div>
+      <div class="tab" data-tab="map">Sightings Map</div>
+      <div class="tab" data-tab="explore">Correlations</div>
     </nav>
   </div>
 </header>
@@ -1324,6 +1530,107 @@
 
   </div>
 
+  <!-- ── Sightings Map panel ── -->
+  <div class="panel" id="panel-map">
+
+    <div class="ukdb-header">
+      <h2 class="ukdb-title">Sightings Map</h2>
+      <p class="ukdb-subtitle">
+        2,050 UK sightings plotted geographically, coloured by Hynek classification.
+        Filter by shape, type or year — enable <strong>Kp ≥ 4</strong> to test the Universal Harmonix hypothesis visually.
+      </p>
+    </div>
+
+    <!-- Filter bar -->
+    <div class="ukdb-filters" id="map-filter-bar">
+      <select id="map-filter-shape" class="ukdb-filter-select">
+        <option value="">All shapes</option>
+        <option>orb</option><option>sphere</option><option>triangle</option>
+        <option>disc/saucer</option><option>cigar/cylinder</option><option>star-like</option>
+        <option>formation</option><option>egg/oval</option><option>diamond</option>
+        <option>rectangle</option><option>ring/torus</option><option>teardrop</option>
+        <option>boomerang/chevron</option><option>irregular/amorphous</option>
+      </select>
+      <select id="map-filter-hynek" class="ukdb-filter-select">
+        <option value="">All Hynek types</option>
+        <option value="NL">NL — Nocturnal Light</option>
+        <option value="DD">DD — Daylight Disc</option>
+        <option value="RV">RV — Radar-Visual</option>
+        <option value="CE1">CE1</option><option value="CE2">CE2</option>
+        <option value="CE3">CE3</option><option value="CE4">CE4</option>
+        <option value="CE5">CE5</option>
+      </select>
+      <div class="ukdb-filter-year">
+        <input type="number" id="map-filter-year-from" class="ukdb-filter-input" placeholder="From year" min="1900" max="2030">
+        <span class="ukdb-filter-sep">–</span>
+        <input type="number" id="map-filter-year-to" class="ukdb-filter-input" placeholder="To year" min="1900" max="2030">
+      </div>
+      <label class="map-kp-toggle" id="map-kp-label">
+        <input type="checkbox" id="map-filter-kp">
+        Kp ≥ 4 only
+      </label>
+      <button class="ukdb-filter-reset" id="map-filter-reset">Reset</button>
+    </div>
+
+    <!-- Stats -->
+    <div class="map-stats" id="map-stats"></div>
+
+    <!-- Map -->
+    <div class="map-container">
+      <div id="sightings-map"></div>
+      <button class="map-near-me-btn" id="map-near-me">Near Me</button>
+    </div>
+
+    <!-- Legend -->
+    <div class="map-legend">
+      <div class="map-legend-item"><span class="map-legend-dot" style="background:#9c6cf7;box-shadow:0 0 5px #9c6cf799"></span> CE — Close Encounter</div>
+      <div class="map-legend-item"><span class="map-legend-dot" style="background:#f0a040"></span> DD — Daylight Disc</div>
+      <div class="map-legend-item"><span class="map-legend-dot" style="background:#4fc3f7"></span> NL — Nocturnal Light</div>
+      <div class="map-legend-item"><span class="map-legend-dot" style="background:#4caf84"></span> RV — Radar-Visual</div>
+      <div class="map-legend-item"><span class="map-legend-dot" style="background:#6b7399"></span> Other / Unknown</div>
+    </div>
+
+  </div>
+
+  <!-- ── Correlation Explorer panel ── -->
+  <div class="panel" id="panel-explore">
+
+    <div class="ukdb-header">
+      <h2 class="ukdb-title">Correlation Explorer</h2>
+      <p class="ukdb-subtitle">
+        Cross-tab the enriched UK sighting dataset to test hypotheses.
+        <strong>Core test:</strong> do CE* (close encounter) sightings cluster during elevated geomagnetic activity (Kp ≥ 4)?
+      </p>
+    </div>
+
+    <!-- Charts -->
+    <div class="corr-charts-grid">
+      <div class="corr-chart-card">
+        <div class="corr-chart-title">Kp Level × Hynek Type</div>
+        <div class="corr-chart-subtitle">Sighting counts by geomagnetic activity level — watch for CE* growth at elevated Kp</div>
+        <canvas id="chart-kp-hynek"></canvas>
+      </div>
+      <div class="corr-chart-card">
+        <div class="corr-chart-title">Hynek Distribution</div>
+        <div class="corr-chart-subtitle">Overall classification breakdown across all 2,050 records</div>
+        <canvas id="chart-hynek-dist"></canvas>
+      </div>
+    </div>
+
+    <!-- Cross-tab table -->
+    <div class="ukdb-records-section">
+      <div class="ukdb-records-header">
+        <span class="ukdb-records-title">Kp × Hynek Cross-tab</span>
+        <span class="ukdb-records-count" id="corr-subtitle">Raw counts · click Export CSV for analysis</span>
+      </div>
+      <div id="corr-crosstab-wrap"></div>
+      <div class="corr-export-row">
+        <button class="source-tile-btn" id="corr-export-csv">Export CSV</button>
+      </div>
+    </div>
+
+  </div>
+
 </main>
 
 <nav class="bottom-nav" id="bottom-nav">
@@ -1339,7 +1646,19 @@
     <span class="nav-icon">🗄️</span>
     <span>UK Sightings</span>
   </div>
+  <div class="bottom-nav-item" data-tab="map">
+    <span class="nav-icon">🗺️</span>
+    <span>Map</span>
+  </div>
+  <div class="bottom-nav-item" data-tab="explore">
+    <span class="nav-icon">📊</span>
+    <span>Explore</span>
+  </div>
 </nav>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" crossorigin=""></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
 
 <script type="module">
   import { verifySighting, checkWeather, checkISS, checkStarlink, checkAircraft } from './js/domain.js';
@@ -1350,6 +1669,7 @@
   import { reverseGeocode, lookupPostcode, looksLikeUKPostcode } from './js/location.js';
   import { moonPhase, timeOfDay, activeMeteorShowers } from './js/sky.js';
   import { filterRecords, paginateRecords } from './js/ukdb.js';
+  import { buildKpHynekCrossTab, crossTabToRows, buildHynekDistribution, crossTabToCsv, CROSSTAB_COLS, KP_ORDER } from './js/correlations.js';
 
   // ── Tab switching ──────────────────────────────────────────────────────────
   function switchTab(name) {
@@ -1360,6 +1680,8 @@
     document.getElementById(`panel-${name}`).classList.add('active');
     if (name === 'myrecords') renderRecords(loadSightings(), document.getElementById('records-container'));
     if (name === 'ukdb') loadUKDB();
+    if (name === 'map')     loadMapTab();
+    if (name === 'explore') loadExploreTab();
   }
 
   document.querySelectorAll('.tab, .bottom-nav-item').forEach(el => {
@@ -1684,7 +2006,7 @@
     if (ukdbAllRecords) { renderUKDB(); return; }
     document.getElementById('ukdb-count').textContent = 'Loading…';
     try {
-      const res  = await fetch('./data/nuforc-uk-tagged.json');
+      const res  = await fetch('./data/nuforc-uk-enriched.json');
       ukdbAllRecords = await res.json();
     } catch {
       document.getElementById('ukdb-count').textContent = 'Failed to load data';
@@ -1771,6 +2093,323 @@
       renderUKDB();
     });
   })();
+
+  // ── Sightings Map ──────────────────────────────────────────────────────────
+
+  let mapInstance      = null;
+  let mapMarkerLayer   = null;
+  let mapFilters       = {};
+  let mapYearDebounce;
+
+  const HYNEK_COLORS = {
+    NL: '#4fc3f7',
+    DD: '#f0a040',
+    RV: '#4caf84',
+    CE1: '#9c6cf7', CE2: '#9c6cf7', CE3: '#9c6cf7', CE4: '#9c6cf7', CE5: '#9c6cf7',
+  };
+
+  function hynekDotIcon(hynek) {
+    const color  = HYNEK_COLORS[hynek] || '#6b7399';
+    const isCE   = hynek && hynek.startsWith('CE');
+    const size   = isCE ? 12 : 9;
+    const glow   = isCE ? `box-shadow:0 0 6px ${color}99;` : '';
+    return L.divIcon({
+      className: '',
+      html: `<div style="width:${size}px;height:${size}px;border-radius:50%;background:${color};border:1.5px solid rgba(255,255,255,0.2);${glow}"></div>`,
+      iconSize:   [size, size],
+      iconAnchor: [size / 2, size / 2],
+      popupAnchor: [0, -(size / 2 + 4)],
+    });
+  }
+
+  function mapPopupHtml(r) {
+    const date  = r.datetime ? r.datetime.split(' ')[0] : '—';
+    const year  = r.datetime ? r.datetime.split('/')[2]?.split(' ')[0] : null;
+    const loc   = [r.city, r.county].filter(Boolean).join(', ') || '—';
+    const hynek = r.tags?.hynek || '—';
+    const hClass = (hynek && hynek !== '—') ? `hynek-badge hynek-${hynek}` : 'hynek-badge';
+
+    const shapes = (r.tags?.shape || []).filter(s => s && s !== 'unknown');
+    const shapeTags = shapes.slice(0, 2).map(s => `<span class="shape-tag">${s}</span>`).join(' ');
+
+    const sigLabel = hynek.startsWith('CE') ? '<span class="map-popup-significance sig-ce">Close Encounter</span>'
+                   : (hynek === 'DD' || hynek === 'RV') ? '<span class="map-popup-significance sig-phys">Physical Observation</span>'
+                   : hynek === 'NL' ? '<span class="map-popup-significance sig-nl">Nocturnal Light</span>'
+                   : '';
+
+    const desc = r.comments ? r.comments.slice(0, 120) + (r.comments.length > 120 ? '…' : '') : '';
+
+    const kp    = r.context?.kp_index;
+    const moon  = r.context?.moon_phase || '';
+    const cloud = r.context?.cloud_cover_pct;
+    const kpClass = kp >= 5 ? 'map-popup-ctx-item kp-storm'
+                  : kp >= 4 ? 'map-popup-ctx-item kp-elevated'
+                  : 'map-popup-ctx-item';
+    const ctxItems = [];
+    if (kp != null) ctxItems.push(`<span class="${kpClass}">Kp ${kp} · ${r.context.kp_level}</span>`);
+    if (moon)       ctxItems.push(`<span class="map-popup-ctx-item">${moon}</span>`);
+    if (cloud != null) ctxItems.push(`<span class="map-popup-ctx-item">Cloud ${cloud}%</span>`);
+
+    const searchQuery = encodeURIComponent(`UFO sighting ${r.city || ''} ${year || ''} UK`);
+    const searchLink  = `<a class="map-popup-search" href="https://www.google.com/search?q=${searchQuery}" target="_blank" rel="noopener">Search online ↗</a>`;
+
+    return `<div class="map-popup">
+      <div class="map-popup-date">${date}</div>
+      <div class="map-popup-location">${loc}</div>
+      <div class="map-popup-tags">
+        <span class="${hClass}">${hynek}</span>
+        ${sigLabel}
+        ${shapeTags}
+      </div>
+      ${desc ? `<div class="map-popup-desc">${desc}</div>` : ''}
+      ${ctxItems.length ? `<div class="map-popup-context">${ctxItems.join('')}</div>` : ''}
+      ${searchLink}
+    </div>`;
+  }
+
+  function initMapIfNeeded() {
+    if (mapInstance) return;
+    mapInstance = L.map('sightings-map', { center: [54.5, -2.5], zoom: 6 });
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19,
+    }).addTo(mapInstance);
+    mapMarkerLayer = L.markerClusterGroup({
+      maxClusterRadius: 40,
+      showCoverageOnHover: false,
+      chunkedLoading: true,
+    });
+    mapInstance.addLayer(mapMarkerLayer);
+  }
+
+  function renderMapMarkers() {
+    if (!ukdbAllRecords || !mapInstance) return;
+
+    let filtered = filterRecords(ukdbAllRecords, mapFilters);
+    if (mapFilters.kpElevated) {
+      filtered = filtered.filter(r => r.context?.kp_index >= 4);
+    }
+    const withCoords = filtered.filter(r => r.lat && r.lon);
+
+    const statsEl = document.getElementById('map-stats');
+    const kpCount = withCoords.filter(r => r.context?.kp_index >= 4).length;
+    const kpNote  = mapFilters.kpElevated
+      ? ''
+      : ` — <strong>${kpCount}</strong> during elevated Kp (≥4)`;
+    statsEl.innerHTML = `<strong>${withCoords.length.toLocaleString()}</strong> sightings plotted${kpNote}`;
+
+    mapMarkerLayer.clearLayers();
+    const markers = withCoords.map(r => {
+      const m = L.marker([r.lat, r.lon], { icon: hynekDotIcon(r.tags?.hynek) });
+      m.bindPopup(mapPopupHtml(r), { maxWidth: 280 });
+      return m;
+    });
+    mapMarkerLayer.addLayers(markers);
+  }
+
+  async function loadMapTab() {
+    if (!ukdbAllRecords) {
+      document.getElementById('map-stats').textContent = 'Loading sighting data…';
+      try {
+        const res = await fetch('./data/nuforc-uk-enriched.json');
+        ukdbAllRecords = await res.json();
+      } catch {
+        document.getElementById('map-stats').textContent = 'Failed to load sighting data.';
+        return;
+      }
+    }
+    initMapIfNeeded();
+    renderMapMarkers();
+  }
+
+  // Map filter wiring
+  (() => {
+    const shapeEl  = document.getElementById('map-filter-shape');
+    const hynekEl  = document.getElementById('map-filter-hynek');
+    const yearFrom = document.getElementById('map-filter-year-from');
+    const yearTo   = document.getElementById('map-filter-year-to');
+    const kpEl     = document.getElementById('map-filter-kp');
+    const kpLabel  = document.getElementById('map-kp-label');
+    const resetBtn = document.getElementById('map-filter-reset');
+
+    function applyMapFilters() {
+      mapFilters = {
+        shape:      shapeEl.value  || undefined,
+        hynek:      hynekEl.value  || undefined,
+        yearFrom:   yearFrom.value ? parseInt(yearFrom.value, 10) : undefined,
+        yearTo:     yearTo.value   ? parseInt(yearTo.value,   10) : undefined,
+        kpElevated: kpEl.checked,
+      };
+      kpLabel.classList.toggle('kp-active', kpEl.checked);
+      renderMapMarkers();
+    }
+
+    shapeEl.addEventListener('change', applyMapFilters);
+    hynekEl.addEventListener('change', applyMapFilters);
+    kpEl.addEventListener('change', applyMapFilters);
+    yearFrom.addEventListener('input', () => { clearTimeout(mapYearDebounce); mapYearDebounce = setTimeout(applyMapFilters, 400); });
+    yearTo.addEventListener('input',   () => { clearTimeout(mapYearDebounce); mapYearDebounce = setTimeout(applyMapFilters, 400); });
+
+    resetBtn.addEventListener('click', () => {
+      shapeEl.value = ''; hynekEl.value = '';
+      yearFrom.value = ''; yearTo.value = '';
+      kpEl.checked = false;
+      kpLabel.classList.remove('kp-active');
+      mapFilters = {};
+      renderMapMarkers();
+    });
+
+    document.getElementById('map-near-me').addEventListener('click', () => {
+      if (!mapInstance) return;
+      navigator.geolocation.getCurrentPosition(
+        pos => mapInstance.setView([pos.coords.latitude, pos.coords.longitude], 10),
+        ()  => alert('Location unavailable.')
+      );
+    });
+  })();
+
+  // ── Correlation Explorer ───────────────────────────────────────────────────
+
+  let exploreLoaded = false;
+  let chartKpHynek  = null;
+  let chartHynekDist = null;
+
+  const HYNEK_CHART_COLORS = {
+    'NL':    '#4fc3f7',
+    'DD':    '#f0a040',
+    'CE*':   '#9c6cf7',
+    'RV':    '#4caf84',
+    'Other': '#6b7399',
+  };
+
+  const KP_LABEL_MAP = {
+    'quiet':       'Quiet (0–2)',
+    'unsettled':   'Unsettled (3)',
+    'active':      'Active (4–5)',
+    'minor storm': 'Minor Storm (5–6)',
+    'major storm': 'Major Storm (7+)',
+    'unknown':     'Unknown',
+  };
+
+  function buildKpHynekChart(crossTab) {
+    const labels   = KP_ORDER.filter(k => crossTab[k]).map(k => KP_LABEL_MAP[k] || k);
+    const datasets = CROSSTAB_COLS.map(col => ({
+      label: col,
+      data: KP_ORDER.filter(k => crossTab[k]).map(k => crossTab[k][col] || 0),
+      backgroundColor: HYNEK_CHART_COLORS[col] + 'cc',
+      borderColor:     HYNEK_CHART_COLORS[col],
+      borderWidth: 1,
+    }));
+
+    if (chartKpHynek) chartKpHynek.destroy();
+    chartKpHynek = new Chart(document.getElementById('chart-kp-hynek'), {
+      type: 'bar',
+      data: { labels, datasets },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { labels: { color: '#9099b7', font: { size: 12 } } },
+          tooltip: { backgroundColor: '#1a1f30', titleColor: '#d4d8e8', bodyColor: '#9099b7', borderColor: '#252b40', borderWidth: 1 },
+        },
+        scales: {
+          x: {
+            stacked: true,
+            ticks: { color: '#9099b7', font: { size: 11 } },
+            grid: { color: '#252b40' },
+          },
+          y: {
+            stacked: true,
+            ticks: { color: '#9099b7', font: { size: 11 } },
+            grid: { color: '#252b40' },
+          },
+        },
+      },
+    });
+  }
+
+  function buildHynekDistChart(dist) {
+    const cols   = CROSSTAB_COLS.filter(c => dist[c]);
+    const data   = cols.map(c => dist[c]);
+    const colors = cols.map(c => HYNEK_CHART_COLORS[c]);
+
+    if (chartHynekDist) chartHynekDist.destroy();
+    chartHynekDist = new Chart(document.getElementById('chart-hynek-dist'), {
+      type: 'doughnut',
+      data: {
+        labels: cols,
+        datasets: [{ data, backgroundColor: colors.map(c => c + 'cc'), borderColor: colors, borderWidth: 2 }],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom', labels: { color: '#9099b7', font: { size: 12 }, padding: 12 } },
+          tooltip: { backgroundColor: '#1a1f30', titleColor: '#d4d8e8', bodyColor: '#9099b7', borderColor: '#252b40', borderWidth: 1 },
+        },
+      },
+    });
+  }
+
+  function renderCrossTabTable(crossTab) {
+    const rows = crossTabToRows(crossTab);
+    const kpRowClass = k => k === 'active' ? 'row-active' : k === 'minor storm' ? 'row-minor-storm' : k === 'major storm' ? 'row-major-storm' : '';
+
+    const thead = `<thead><tr>
+      <th>Kp Level</th>
+      ${CROSSTAB_COLS.map(c => `<th>${c}</th>`).join('')}
+      <th>Total</th>
+    </tr></thead>`;
+
+    const tbody = `<tbody>${rows.map(r => `<tr class="${kpRowClass(r.kpLevel)}">
+      <td>${KP_LABEL_MAP[r.kpLevel] || r.kpLevel}</td>
+      ${CROSSTAB_COLS.map(c => {
+        const n = r.counts[c] || 0;
+        const pct = r.total ? Math.round(n / r.total * 100) : 0;
+        const cls = c === 'CE*' ? ' class="col-ce"' : '';
+        return `<td${cls}>${n} <span class="col-pct">(${pct}%)</span></td>`;
+      }).join('')}
+      <td class="col-total">${r.total}</td>
+    </tr>`).join('')}</tbody>`;
+
+    document.getElementById('corr-crosstab-wrap').innerHTML =
+      `<table class="corr-table">${thead}${tbody}</table>`;
+  }
+
+  async function loadExploreTab() {
+    if (exploreLoaded) return;
+    if (!ukdbAllRecords) {
+      try {
+        const res = await fetch('./data/nuforc-uk-enriched.json');
+        ukdbAllRecords = await res.json();
+      } catch {
+        document.getElementById('corr-crosstab-wrap').textContent = 'Failed to load data.';
+        return;
+      }
+    }
+
+    Chart.defaults.color       = '#9099b7';
+    Chart.defaults.borderColor = '#252b40';
+
+    const crossTab = buildKpHynekCrossTab(ukdbAllRecords);
+    const dist     = buildHynekDistribution(ukdbAllRecords);
+
+    buildKpHynekChart(crossTab);
+    buildHynekDistChart(dist);
+    renderCrossTabTable(crossTab);
+
+    document.getElementById('corr-export-csv').addEventListener('click', () => {
+      const csv  = crossTabToCsv(buildKpHynekCrossTab(ukdbAllRecords));
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const a    = Object.assign(document.createElement('a'), {
+        href: URL.createObjectURL(blob),
+        download: 'uh-kp-hynek-crosstab.csv',
+      });
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+
+    exploreLoaded = true;
+  }
 
   // ── Set default datetime ───────────────────────────────────────────────────
   const now = new Date();
