@@ -1,11 +1,9 @@
 // Universal Harmonix — Service Worker
-// Cache-first strategy for all static app assets.
-// Enables offline use after first visit.
+// HTML (index.html): network-first — always gets fresh markup on a normal load.
+// Static assets (JS, images, manifest): cache-first — fast repeat loads, offline support.
 
-const CACHE = 'uh-v4';
+const CACHE = 'uh-v5';
 const PRECACHE = [
-  './',
-  './index.html',
   './js/domain.js',
   './js/storage.js',
   './js/format.js',
@@ -31,21 +29,32 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  // Only intercept same-origin requests and the satellite.js CDN
   const url = new URL(e.request.url);
   const isSameOrigin = url.origin === self.location.origin;
   const isCdnAsset   = url.hostname === 'cdn.jsdelivr.net';
 
-  if (!isSameOrigin && !isCdnAsset) return; // let external API calls (OpenSky, ISS, etc.) pass through
+  if (!isSameOrigin && !isCdnAsset) return;
 
+  // Network-first for HTML — hard refresh always gets fresh markup
+  const isHTML = url.pathname.endsWith('.html') || url.pathname.endsWith('/');
+  if (isHTML) {
+    e.respondWith(
+      fetch(e.request)
+        .then(res => {
+          if (res.ok) caches.open(CACHE).then(c => c.put(e.request, res.clone()));
+          return res;
+        })
+        .catch(() => caches.match(e.request))
+    );
+    return;
+  }
+
+  // Cache-first for everything else
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;
       return fetch(e.request).then(res => {
-        if (res.ok) {
-          const clone = res.clone();
-          caches.open(CACHE).then(c => c.put(e.request, clone));
-        }
+        if (res.ok) caches.open(CACHE).then(c => c.put(e.request, res.clone()));
         return res;
       });
     })
