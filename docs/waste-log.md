@@ -111,6 +111,21 @@
 
 ---
 
+## WL-UH-009 — Service worker cache version not bumped on new deployments
+
+**Status:** Open
+**Category:** Process (recurring waste risk)
+**Severity:** High
+**Raised:** 2026-03-25
+
+**Observation:** When new tabs and JS files were deployed (UH-040 map, UH-034 correlations), the service worker cache name (`uh-v2`) was not updated. Mobile users received the old cached `index.html` regardless of hard refresh or browser data deletion, because the SW intercepts requests before the HTTP cache layer. The only reliable fix from our side is bumping the cache version in `sw.js`.
+
+**Waste impact:** Users (including James) saw a broken app with missing tabs. Caused confusion, distrust, and unnecessary debugging time. Hard refresh — the user's instinctive fix — does not work against a stale SW.
+
+**Action:** Cache version MUST be bumped in `sw.js` as part of any commit that changes `index.html` or adds new JS files. Add to session-insession.md checklist. Current version: `uh-v3`.
+
+---
+
 ## WL-UH-008 — Celestrak TLE endpoints return 403 from Node.js / CI
 
 **Status:** Open

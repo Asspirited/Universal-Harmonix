@@ -55,6 +55,20 @@ Offer to continue or stop. Do not silently bypass.
 
 ---
 
+## MANDATORY — Service worker cache version on every HTML/JS change
+
+Any commit that modifies `index.html` or adds/changes files in `app/js/` MUST bump the cache version in `app/sw.js`:
+- Current: `uh-v3`
+- Format: `uh-v{N+1}`
+
+**Why:** The SW intercepts all same-origin requests. Users (including on mobile) will receive the old cached `index.html` regardless of hard refresh until the SW detects a byte change in `sw.js` itself. See WL-UH-009.
+
+Checklist (run before every such commit):
+- [ ] `const CACHE = 'uh-vN'` incremented in `app/sw.js`
+- [ ] New version noted in WL-UH-009
+
+---
+
 ## MANDATORY — Desktop + Mobile nav in lock step
 
 Any change to desktop tabs (`.tabs` in `<header>`) MUST be mirrored to mobile bottom nav (`.bottom-nav`) in the same commit.

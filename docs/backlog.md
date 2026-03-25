@@ -752,6 +752,51 @@ So that I can test whether correlations exist (e.g. high Kp × unexplained verdi
 
 ---
 
+## UH-041 — Load BUFOG cases into UKDB tab and Sightings Map
+
+**Status:** Open
+**Priority:** High
+**Loop:** BDD
+**Raised:** 2026-03-25
+
+### User Story
+As a researcher,
+I want to see BUFOG investigated cases alongside NUFORC records in the UK Sightings Database and on the Sightings Map,
+So that investigator-level cases are visually distinct from self-reported data.
+
+### Acceptance Criteria
+
+```gherkin
+Feature: BUFOG cases in UKDB and Map
+
+  Scenario: BUFOG cases appear in the UK Sighting Database tab
+    Given BUFOG cases are loaded from bufog-cases-clean.json
+    Then they appear in the records table alongside NUFORC records
+    And a BUFOG source badge distinguishes them from NUFORC records
+    And filters (shape, Hynek, year) apply to BUFOG records too
+
+  Scenario: BUFOG cases appear on the Sightings Map
+    Given BUFOG cases are geocoded
+    Then they are plotted on the Sightings Map
+    And the popup shows outcome (unexplained / inconclusive / explained)
+    And the popup shows witness count, witness type, and physical effects
+
+  Scenario: Source filter lets user show NUFORC-only or BUFOG-only
+    Given both datasets are loaded
+    When I select "BUFOG only" in a source filter
+    Then only BUFOG records are shown in the table and on the map
+```
+
+### Notes
+- Depends on James reviewing 18 unknown Hynek records (UH-035)
+- BUFOG cases use same schema as NUFORC enriched — should load cleanly
+- Add source filter to UKDB filter bar and map filter bar
+- BUFOG badge colour: green (matching source-tile-bufog border)
+- Map popup: add outcome chip (unexplained = purple, inconclusive = amber, explained = green)
+- Three Amigos before implementation — confirm source filter UX with Rod
+
+---
+
 ## UH-035 — BUFOG archive export to UH schema
 
 **Status:** Partial — 38 published cases scraped, James review pending
