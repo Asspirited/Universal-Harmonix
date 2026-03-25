@@ -122,7 +122,23 @@
 
 **Waste impact:** Users (including James) saw a broken app with missing tabs. Caused confusion, distrust, and unnecessary debugging time. Hard refresh — the user's instinctive fix — does not work against a stale SW.
 
-**Action:** Cache version MUST be bumped in `sw.js` as part of any commit that changes `index.html` or adds new JS files. Add to session-insession.md checklist. Current version: `uh-v3`.
+**Action:** Cache version MUST be bumped in `sw.js` as part of any commit that changes `index.html` or adds new JS files. Add to session-insession.md checklist. Current version: `uh-v5`.
+
+---
+
+## WL-UH-010 — SW cache-first on index.html caused repeated forced cache clears
+
+**Status:** Fixed
+**Category:** Defect (wrong SW strategy)
+**Severity:** High
+**Raised:** 2026-03-25
+**Closed:** 2026-03-25
+
+**Observation:** SW used cache-first for all assets including `index.html`. Hard refresh bypasses HTTP cache but not the SW. Every deploy required users to manually unregister the SW or clear site data to see changes. Kept recurring despite WL-UH-009 SW bump rule because the root cause (wrong strategy) was never fixed.
+
+**Waste impact:** Multiple sessions lost time diagnosing stale UI. Users (including James on mobile) saw broken/old app after deploys.
+
+**Action:** Fixed in b3f94b5. SW now uses network-first for HTML (always fetches fresh markup on normal load, falls back to cache offline), cache-first for JS/images/manifest. SW version bump is still required on each deploy but manual cache clears are no longer needed.
 
 ---
 
