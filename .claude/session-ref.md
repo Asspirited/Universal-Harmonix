@@ -1,6 +1,6 @@
 # Universal Harmonix — Session Reference (for Claude.ai)
 # Written at session closedown by Claude Code. Upload to Claude.ai Project Knowledge.
-# Last updated: 2026-03-25 (Session 9)
+# Last updated: 2026-03-25 (Session 10)
 
 ---
 
@@ -15,25 +15,25 @@
 
 ---
 
-## Current state (end of Session 9, 2026-03-25)
+## Current state (end of Session 10, 2026-03-25)
 
 ### Built and live
 - 6-tab app: **Dashboard** (default) / Log Sighting / My Records / UK Sighting Database / Sightings Map / Correlations
-- Dashboard: LCARS mission control, full-width, collapsible left sensor panel. Top strip: Kp/Cloud/Aurora/ISS. Three-column grid.
+- Dashboard: LCARS mission control, full-width, collapsible left sensor panel. Top strip: Kp/Cloud/Aurora/ISS (Kp/Aurora show `—` until wired to NOAA — UH-043).
 - Wordmark: Special Elite (Universal) + Exo 2 900 (Harmonix)
 - 14-point verification engine
-- 2,050 NUFORC UK sightings, enriched (Kp + weather + moon)
-- Sightings Map (Leaflet, Hynek colour-coded, Kp ≥ 4 toggle)
+- **2,088 combined sightings**: 2,050 NUFORC UK enriched + 38 BUFOG cases — both loaded and merged
+- UKDB tab: source filter (All / NUFORC / BUFOG), BUFOG badge in table
+- Sightings Map: BUFOG cases plotted with Hynek colours, popups show source badge + outcome chip
 - Correlation Explorer (Kp × Hynek cross-tab, Chart.js, CSV export)
-- BUFOG scrape: 38 cases in data/bufog-cases-clean.json (partial — 18–24 unknowns need James Hynek classification)
-- SW: uh-v7 — **network-first for HTML** (hard refresh now works; no more forced DevTools cache clears)
-- Tests: 190 unit + 43 acceptance, all green
+- SW: uh-v8 — network-first for HTML
+- Tests: 193 unit + 19 acceptance + 43 contract — all GREEN (Celestrak OAT pre-existing WL-UH-008)
 
 ### James message
-Drafted with Hynek review table. **NOT YET SENT** — Rod to send.
+Drafted with 24-record Hynek review table. **NOT YET SENT** — Rod to send.
 
 ### Dashboard sky cells
-Kp/Aurora/Solar Wind show `—` on load — not yet wired to NOAA. Cloud + ISS populate once GPS fires.
+Kp/Aurora show `—` on load — not yet wired to NOAA (UH-043). Cloud + ISS populate once GPS fires.
 
 ---
 
@@ -41,7 +41,7 @@ Kp/Aurora/Solar Wind show `—` on load — not yet wired to NOAA. Cloud + ISS p
 
 | # | Item | Priority |
 |---|------|----------|
-| UH-041 | Load BUFOG cases into UKDB + Map | High |
+| UH-043 | Dashboard: wire Kp/aurora/cloud from NOAA on tab open | Medium |
 | UH-035 | James to classify 18–24 unknown Hynek records | Medium |
 | UH-036 | UFO Identified data sharing | Low |
 | UH-037 | MOD Archives OCR | Low |
@@ -49,13 +49,13 @@ Kp/Aurora/Solar Wind show `—` on load — not yet wired to NOAA. Cloud + ISS p
 
 ---
 
-## Session 10 goal
+## Session 11 goal
 
-Get BUFOG cases visible on the Sightings Map alongside NUFORC data (UH-041).
+Wire Dashboard sky-data cells (Kp, Aurora, Cloud Cover) so they show live values on landing, not `—`.
 
 ---
 
 ## HDD-001: OPEN
 
-James has not yet submitted a real sighting or run the Kp hypothesis test.
-Next: James opens live app → Kp ≥ 4 toggle on map → Correlations tab → submit real sighting.
+James has not yet submitted a real sighting.
+Next: Rod sends James message → James classifies 18 unknowns → James opens app and submits real sighting.

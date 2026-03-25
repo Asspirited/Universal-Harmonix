@@ -754,7 +754,8 @@ So that I can test whether correlations exist (e.g. high Kp × unexplained verdi
 
 ## UH-041 — Load BUFOG cases into UKDB tab and Sightings Map
 
-**Status:** Open
+**Status:** Done
+**Closed:** 2026-03-25
 **Priority:** High
 **Loop:** BDD
 **Raised:** 2026-03-25
@@ -892,3 +893,26 @@ Feature: BUFOG cases in UKDB and Map
 - Mobile: image currently left-positioned behind all content — wordmark sits against the photo
 - Fix: on mobile, position image to right, reverse gradient overlay (dark left → light right)
 - Wordmark and content sit on the dark left; image peeks out on the right edge
+
+---
+
+## UH-043 — Dashboard: wire live Kp / Aurora / Cloud Cover from NOAA
+
+**Status:** Open
+**Priority:** Medium
+**Loop:** HDD (Dashboard currently shows `—` for all sky-data cells until GPS fires — NOAA call needed)
+**Raised:** 2026-03-25
+
+### User Story
+As an investigator opening the Dashboard,
+I want to see live Kp index, aurora probability, and cloud cover without having to navigate away,
+So that I have immediate environmental context on landing.
+
+### Notes
+- Kp: NOAA SWPC `/json/planetary_k_index_1m.json` — same source as checkKp() in domain.js
+- Aurora probability: NOAA `/products/noaa-planetary-k-index.json` or derived from Kp + latitude
+- Cloud cover: Open-Meteo current conditions (reuse checkWeather() logic)
+- Top strip currently populated from `window._skyData` on GPS fire — this is fine for ISS/Starlink
+- Kp and cloud don't require GPS precision; can fire on a coarse location or on tab open
+- No Gherkin needed if wired entirely through existing `_skyData` population path (data-only)
+- If a new JS code path is added: Gherkin gate applies
