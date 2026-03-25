@@ -122,7 +122,7 @@
 
 **Waste impact:** Users (including James) saw a broken app with missing tabs. Caused confusion, distrust, and unnecessary debugging time. Hard refresh — the user's instinctive fix — does not work against a stale SW.
 
-**Action:** Cache version MUST be bumped in `sw.js` as part of any commit that changes `index.html` or adds new JS files. Add to session-insession.md checklist. Current version: `uh-v5`.
+**Action:** Cache version MUST be bumped in `sw.js` as part of any commit that changes `index.html` or adds new JS files. Add to session-insession.md checklist. Current version: `uh-v7`.
 
 ---
 

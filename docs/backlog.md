@@ -859,6 +859,26 @@ Feature: BUFOG cases in UKDB and Map
 
 ---
 
+## UH-042 — LCARS Dashboard as default landing tab
+
+**Status:** Done
+**Priority:** High
+**Loop:** BDD
+**Raised:** 2026-03-25
+**Closed:** 2026-03-25
+
+### Notes
+- New default tab: Dashboard (LCARS mission control layout)
+- Full-width layout when dashboard active (dash-full body class) — image column removed
+- Three-column LCARS grid: Atmospheric Sensor Array (collapsible) / Activity Feed + CTA + Data Archive / HDD-001 status + Next Actions
+- Top strip: Kp, Cloud Cover, Aurora Probability, ISS — populated from window._skyData when GPS fires
+- Sighting feed: shows real records from loadSightings() or placeholder entries when empty
+- Left column collapse toggle
+- Fonts: Special Elite (wordmark-sup) + Exo 2 900 (wordmark-main) added
+- SW: uh-v7 (network-first HTML fix also in this session)
+
+---
+
 ## UH-039 — Mobile: background image right-aligned, wordmark on dark background
 
 **Status:** Done
