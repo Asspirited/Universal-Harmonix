@@ -1,0 +1,1100 @@
+[
+  {
+    "id": "bufog_001",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2010/01/29012010-letterkenny-northern-ireland.html",
+    "datetime": "2010-01-29",
+    "city": "letterkenny",
+    "county": "County Donegal",
+    "country": "gb",
+    "shape": "Flattened disc",
+    "duration_text": "Approximately 35 minutes",
+    "comments": "A self-luminescent object described as 'a round hole of daylight punched through the night sky' approximately 10 metres in diameter, glowing white. The craft moved against wind direction, hovered motionless, flashed brilliantly, and projected downward beams of yellow-white light onto clouds multiple times over 15-20 minutes, repeating the same sequence 5-6 times.",
+    "lat": 54.9558,
+    "lon": -7.7342,
+    "tags": {
+      "hynek": "CE2",
+      "shape": [
+        "disc/saucer"
+      ],
+      "outcome": "unexplained",
+      "explanation": null,
+      "witness_count": 4,
+      "witness_type": "Hospital employees (hospital staff on break/shift change)",
+      "physical_effects": "Object projected downward beams of yellow-white light; demonstrated controlled flight at estimated 70-80 mph and intelligent maneuvering",
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_002",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2010/01/17012010-chelmsley-wood-birmingham.html",
+    "datetime": "2010-01-17",
+    "city": "chelmsley wood",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Orb/spherical light",
+    "duration_text": "Approximately 6 seconds",
+    "comments": "Two glowing orange-yellow objects appeared in the sky at approximately 45 degrees elevation, appearing star-like due to their high altitude. They moved extremely rapidly, approaching the witnesses' location, passing overhead, and disappearing into the distance within approximately 6 seconds.",
+    "lat": 52.4799114,
+    "lon": -1.7392473,
+    "tags": {
+      "hynek": "CE1",
+      "shape": [
+        "orb"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Investigator rejected Chinese lanterns citing extreme speed and synchronised manoeuvres; concluded 'genuine sighting of two advanced craft moving at an incredible speed'.",
+      "witness_count": 3,
+      "witness_type": "Civilian observers (man and girlfriend, plus brother)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_003",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2010/01/06012010-quinton-ufo-formation-sighting.html",
+    "datetime": "2010-01-06",
+    "city": "quinton",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Roundish-square (formation of multiple objects)",
+    "duration_text": "1.5-2 seconds",
+    "comments": "A formation of faint grey roundish-square objects travelled southward overhead in triangular patterns, briefly shifting formation before disappearing. After the main sighting, faint twinkling lights resembling a sparkler effect remained momentarily visible. Observed during freezing conditions (-5\u00b0C) with snow on ground.",
+    "lat": 52.4626405,
+    "lon": -2.0128137,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "formation"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Possibly migrating birds, but extreme speed, high altitude, and sub-zero conditions make this unlikely. Investigator classified as 'intriguing sighting' with speculation.",
+      "witness_count": 1,
+      "witness_type": "Civilian (Craig Lowe, BUFOG President)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_004",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2010/06/29052010-bletchley-orange-orbs-sighting.html",
+    "datetime": "2010-05-29",
+    "city": "bletchley",
+    "county": "Buckinghamshire (Milton Keynes)",
+    "country": "gb",
+    "shape": "Circular/ring-like orbs",
+    "duration_text": "Several minutes",
+    "comments": "Witness observed six orange orbs arranged initially in a straight line then reformatted into triangular formations. They appeared as deep orange rings with a darker centre, estimated 1500-2000 feet altitude. The group moved eastward at an estimated 750 mph, made a right-angle turn, and rose vertically into clouds.",
+    "lat": 51.9943694,
+    "lon": -0.7325655,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "ring/torus"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Most likely Chinese lanterns caught in unusual wind conditions, though the symmetrical formations and coordinated movements remained unexplained.",
+      "witness_count": 4,
+      "witness_type": "Civilian motorists (driver plus two other vehicles stopped at lay-by)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_005",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2010/01/06042010-oldbury-orange-diamond-ufo.html",
+    "datetime": "2010-04-06",
+    "city": "oldbury",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Diamond",
+    "duration_text": "Several minutes",
+    "comments": "A glowing orange-red diamond-shaped object with clearly visible straight edges approached the witness, became stationary, then appeared to duplicate into two objects vertically within seconds. One object massively accelerated across the sky towards West Bromwich while the other descended behind trees.",
+    "lat": 52.5039074,
+    "lon": -2.0163917,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "diamond"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Chinese lanterns, remote-controlled models, and meteorites were all explicitly ruled out. Investigator concluded 'objects were under intelligent control'.",
+      "witness_count": 1,
+      "witness_type": "Civilian (man walking home)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_006",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2007/01/august-1974-castle-vale-solihull.html",
+    "datetime": "1974-08-01",
+    "city": "castle vale / campden green / liverpool",
+    "county": "West Midlands / Merseyside",
+    "country": "gb",
+    "shape": "Oval/egg-shaped",
+    "duration_text": "2-3 seconds (Castle Vale) to 5-6 minutes (Solihull)",
+    "comments": "Multiple witness groups across England observed formations of oval/egg-shaped self-illuminated pearlescent silvery-white objects with a silvery-yellow/green corona. The objects followed a commercial aircraft's approach to Birmingham Airport. Formation integrity and intelligent maneuvering were observed.",
+    "lat": 52.504,
+    "lon": -1.8345,
+    "tags": {
+      "hynek": "CE5",
+      "shape": [
+        "egg/oval"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Official explanations of meteorite, space debris, Venus, and marsh gas were rejected by investigators due to formation integrity and intelligent maneuvering. UFOSIS investigation inconclusive.",
+      "witness_count": 30,
+      "witness_type": "Civilians including residents, athletics group members, football team",
+      "physical_effects": "No propulsion systems or trails visible",
+      "investigator": "BUFOG / UFOSIS",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_007",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2010/01/1978-to-01012010-northfield-ufo-close.html",
+    "datetime": "1985-01-01",
+    "city": "northfield",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Cigar",
+    "duration_text": "Several seconds (direct observation) plus approximately one minute of sensory phenomena",
+    "comments": "Witness observed a large cigar-shaped object with rounded corners, matt grey/silver in colour, at least 30 feet in length, with equally-spaced round dark portholes along its centre and a fin-shaped protrusion at the rear. The object was tilted upward at a shallow angle, slowly increasing altitude at 15-20 mph.",
+    "lat": 52.4082951,
+    "lon": -1.9651246,
+    "tags": {
+      "hynek": "CE2",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "outcome": "unexplained",
+      "explanation": null,
+      "witness_count": 1,
+      "witness_type": "Civilian with prior military experience and aircraft recognition knowledge",
+      "physical_effects": "Witness reported 'pin pricks against his skin' and neck hairs standing up; a 'strange pulsing sound' was heard",
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_008",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2010/01/may-1992-to-2010-cannock-chase-ufo.html",
+    "datetime": "1992-05-01",
+    "city": "huntington / cannock chase",
+    "county": "Staffordshire",
+    "country": "gb",
+    "shape": "Cigar (main craft); spherical orbs (secondary objects)",
+    "duration_text": "Nightly observations over months; approximately 1 hour in 2010 sighting",
+    "comments": "Nightly observations over summer 1992 of a bright white light above the Chase that moved erratically and emitted searchlight beams. A cigar-shaped craft with illuminated square windows was later identified. Red glowing orbs accompanied the main object. A 2-hour missing time incident occurred during a vehicle journey near Welshpool/Mallwyd, Wales.",
+    "lat": 52.7051077,
+    "lon": -2.0192689,
+    "tags": {
+      "hynek": "CE2",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Helicopter hypothesis rejected due to impossible light pattern combinations, red trail phenomenon, repeated consistent behaviour across multiple witnesses, and close-range observation confirming solid structured craft with windows.",
+      "witness_count": 6,
+      "witness_type": "Civilian family (couple, two teenage children, 5-year-old, neighbours, exchange student)",
+      "physical_effects": "Bright searchlight beams downward; red trail in sky; vehicle engine performance degradation; missing time of approximately 2 hours",
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_009",
+    "source": "BUFOG",
+    "source_url": "https://www.bufog.com/post/march-2008-halesowen-glowing-orange-discs-sighting",
+    "datetime": "2008-03-01",
+    "city": "halesowen",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Disc",
+    "duration_text": null,
+    "comments": "Five large glowing orange disc-shaped objects were observed at quite high altitude from outside The Royal Oak pub on Manor Lane. One object appeared to be leading the other four, which were in a rectangular formation.",
+    "lat": 52.4492074,
+    "lon": -2.0514646,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "disc/saucer"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Sky lanterns considered but noted as unlikely because distant sky lanterns 'do not tend to look circular or disc-shaped, they look more like glowing orbs of orange light'.",
+      "witness_count": null,
+      "witness_type": "Civilian (pub patron Simon and bystanders)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_010",
+    "source": "BUFOG",
+    "source_url": "https://www.bufog.com/post/27-07-2010-castle-vale-orange-oval-ufo-sighting",
+    "datetime": "2010-07-27",
+    "city": "castle vale",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Oval",
+    "duration_text": "30 seconds",
+    "comments": "Witness observed an object glowing an extremely bright orange, oval-shaped, almost like the body of a plane without the wings or tail. The object showed no flickering over the 30-second observation, distinguishing it from Chinese lanterns. Witness said it appeared considerably larger than a lantern.",
+    "lat": 52.5212593,
+    "lon": -1.7845494,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "egg/oval"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Chinese lanterns or LED balloons were considered; the non-flickering behaviour and unusual shape were noted as distinguishing factors. No firm conclusion reached.",
+      "witness_count": 1,
+      "witness_type": "Civilian (Marcus Sharp, out walking in neighbourhood)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_011",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2011/04/16042011-cardiff-orange-orbs-sighting.html",
+    "datetime": "2011-04-16",
+    "city": "cardiff",
+    "county": "South Glamorgan",
+    "country": "gb",
+    "shape": "Orb/sphere",
+    "duration_text": "Approximately 15 minutes total",
+    "comments": "Five identical orange glowing orbs observed in sequence, each moving in a southerly direction from approximately 300 feet altitude, then gradually turning southwest while increasing altitude to approximately 1000 feet before fading from view.",
+    "lat": 51.4816546,
+    "lon": -3.1791934,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "orb"
+      ],
+      "outcome": "explained",
+      "explanation": "Chinese lanterns launched from a nearby celebration. All aspects (appearance, movement, altitude increase, gradual fade-out) were consistent with this explanation.",
+      "witness_count": 2,
+      "witness_type": "Civilian couple (Marc and Karen, pseudonyms, from bedroom window)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_012",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2011/04/23032011-wexford-ireland-flash-of-light.html",
+    "datetime": "2011-03-23",
+    "city": "wexford",
+    "county": "County Wexford",
+    "country": "gb",
+    "shape": "Oval (flash)",
+    "duration_text": "Split second",
+    "comments": "A strange oval-shaped flash of white light observed while walking between house and studio on remote farmland, 15 miles from nearest town. The phenomenon lasted only a split second, visible out of corner of eye. Clear night, no light pollution, stars fully visible, no moon.",
+    "lat": 52.3272238,
+    "lon": -6.4758657,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "egg/oval"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Meteorite, ISS, searchlight, laser, and sheet lightning ruled out. Possible space debris caught in sunlight or unusual atmospheric phenomenon, though neither fully satisfied the investigator. 'We cannot rule out the possibility that it was caused by a UFO.'",
+      "witness_count": 1,
+      "witness_type": "Civilian observer (Mark Murphy, rural location)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_013",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2011/05/10th-may-2011-french-alps-mountain.html",
+    "datetime": "2011-05-10",
+    "city": "french alps",
+    "county": null,
+    "country": "gb",
+    "shape": "Cigar with tail fin and short wings",
+    "duration_text": "Approximately 20 seconds",
+    "comments": "A cigar-shaped white object with a low tail, short fin-like wings, and a black smoke vapour trail at the rear was observed ascending rapidly from below the aircraft, approximately 500-1000 metres away. It veered left toward the aircraft then accelerated away.",
+    "lat": 45.8919657,
+    "lon": 6.7119853,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "outcome": "explained",
+      "explanation": "Most likely an unmanned military drone undergoing test operations. White colouring, rear-mounted wings, and vapour trail consistent with military drone characteristics.",
+      "witness_count": 1,
+      "witness_type": "Commercial airline passenger (Matthew, on flight BHX 525 from Birmingham International)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_014",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2011/07/03062011-droitwich-ufo-sighting.html",
+    "datetime": "2011-06-03",
+    "city": "droitwich",
+    "county": "Worcestershire",
+    "country": "gb",
+    "shape": "Rounded triangular cluster (multiple curved segments)",
+    "duration_text": "Not specified",
+    "comments": "A grey coloured dot observed at high altitude travelling slowly westward across a clear blue sky. Upon magnification of photographs, the object revealed a rounded triangular structure with pinkish-white colouration, appearing as multiple curved objects clustered together.",
+    "lat": 52.26851,
+    "lon": -2.1486075,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "outcome": "explained",
+      "explanation": "Investigator concluded it was 'probably a clump of balloons drifting across the early evening sky', noting similarities to the 2010 Manhattan balloon incident.",
+      "witness_count": 3,
+      "witness_type": "Civilian family (Richard Haller, wife, and daughter)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_015",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2011/07/27052011-wiltshire-orange-triangular.html",
+    "datetime": "2011-05-27",
+    "city": "wiltshire (exact location unknown)",
+    "county": "Wiltshire",
+    "country": "gb",
+    "shape": "Triangular",
+    "duration_text": "Approximately 30 minutes",
+    "comments": "Triangular-shaped objects glowing fiery yellow observed in the southern sky. One appeared approximately 20 feet across, moving quickly. Multiple identical objects eventually formed a triangular formation, all travelling in the same direction.",
+    "lat": 51.3492,
+    "lon": -1.9927,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "outcome": "explained",
+      "explanation": "Investigator Dave Hodrien concluded these were 'multiple triangular-shaped Chinese lanterns'. Intense glow, colour variation, and formation patterns consistent with lantern launches at celebrations.",
+      "witness_count": 1,
+      "witness_type": "Civilian observer (Steve Watts)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_016",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2012/01/19012012-wolverhampton-flying-triangle.html",
+    "datetime": "2012-01-19",
+    "city": "wolverhampton",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Flying Triangle",
+    "duration_text": "Approximately 3 minutes",
+    "comments": "A black triangular shaped object with bright white lights around its edge hovering approximately 200 feet in the air. Described as larger than a house in size, about 20 foot in depth, and similar in shape to a quarter cut sandwich. Remained completely motionless and silent for about three minutes before vanishing within ten seconds.",
+    "lat": 52.5847651,
+    "lon": -2.127567,
+    "tags": {
+      "hynek": "CE1",
+      "shape": [
+        "triangle"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Construction site lighting and conventional aircraft ruled out. Rapid disappearance suggests swift departure or invisibility, making large drifting inflatables unlikely.",
+      "witness_count": 1,
+      "witness_type": "Civilian observer (James)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_017",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2012/02/11022012-halesowen-metallic-ufos.html",
+    "datetime": "2012-02-11",
+    "city": "halesowen",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Flattened/metallic (shape uncertain due to distance)",
+    "duration_text": "Approximately 5 minutes",
+    "comments": "Two identical flattened metallic-coloured objects observed at distance of at least one mile. Approximately car-sized. Exhibited a rotating motion causing sunlight reflections, slight wobbling, and slowly ascended vertically despite a breeze blowing.",
+    "lat": 52.4492074,
+    "lon": -2.0514646,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "disc/saucer"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Three possibilities considered: helium-filled balloons (unlikely due to vertical ascent against wind), localised wind conditions, or 'genuine advanced craft' under powered flight. Insufficient data for definitive conclusion.",
+      "witness_count": 2,
+      "witness_type": "Civilian couple (Daniel and Julie, pseudonyms)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_018",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2012/06/19052012-joliet-illinois-yellow-sphere.html",
+    "datetime": "2012-05-19",
+    "city": "joliet",
+    "county": "Illinois",
+    "country": "gb",
+    "shape": "Sphere (with possible fan-shaped front)",
+    "duration_text": "Not specified",
+    "comments": "A yellow/amber coloured light moving from the south at approximately 1500-2000 feet altitude, travelling at roughly 70 mph on a straight course with occasional small wobbles. Constantly bright, not flickering or flashing, completely silent. One witness perceived it as spherical; the other noted the front appeared to fan out like a solid headlight.",
+    "lat": 41.5263603,
+    "lon": -88.0840212,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "sphere"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Chinese lantern considered but rejected due to witness familiarity with lanterns and the object's characteristics.",
+      "witness_count": 2,
+      "witness_type": "Civilian couple (Gavin and Sarah, pseudonyms) observing from residential property",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_019",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2012/07/04072012-rockingham-flying-triangle.html",
+    "datetime": "2012-07-04",
+    "city": "rockingham",
+    "county": "Northamptonshire",
+    "country": "gb",
+    "shape": "Flying Triangle / wedge",
+    "duration_text": "Approximately 5-10 minutes",
+    "comments": "A bright white light with a dark elongated wedge/triangular shape moving slowly at low altitude. Upon stopping to observe, the craft was seen more clearly as it turned. Estimated 80-120 feet in length, 12-15 feet depth, completely silent, moving at approximately 20-30 mph. Descended gradually until obscured by trees and appeared to land in nearby fields.",
+    "lat": 52.514092,
+    "lon": -0.7245646,
+    "tags": {
+      "hynek": "CE1",
+      "shape": [
+        "triangle"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Electronically-lit inflatable not entirely ruled out, but investigator concluded likely a Flying Triangle craft based on characteristics inconsistent with conventional aircraft.",
+      "witness_count": 2,
+      "witness_type": "Civilian observers (David and Tim, male; one experienced in UFO investigation)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_020",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2012/08/20082012-21082012-cannock-blue-lights.html",
+    "datetime": "2012-08-20",
+    "city": "cannock",
+    "county": "Staffordshire",
+    "country": "gb",
+    "shape": "Linear/diagonal line (night 1); flash phenomena (night 2)",
+    "duration_text": "2-3 seconds (night 1); flashes over approximately 5+ minutes (night 2)",
+    "comments": "Two consecutive nights: Night 1 - a diagonal dark blue glowing line in the sky with a brighter trail at one end, moving downward then levelling out. Night 2 - multiple blue flashes resembling camera flashes from the northeast, with a circular darker centre noted in the final occurrence. Events were silent and intermittent.",
+    "lat": 52.688227,
+    "lon": -2.0324197,
+    "tags": {
+      "hynek": "CE1",
+      "shape": [
+        "formation"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Laser beam, sheet lightning, and aircraft strobe all dismissed. Investigator suggests possible connection between incidents based on matching blue colouration.",
+      "witness_count": 4,
+      "witness_type": "Civilian dog walkers (Daniel Gannon and friends Simon, Harry, Ben)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_021",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2012/10/10102012-fradley-flying-triangle.html",
+    "datetime": "2012-10-10",
+    "city": "fradley",
+    "county": "Staffordshire",
+    "country": "gb",
+    "shape": "Flying Triangle / delta",
+    "duration_text": "Approximately 1 minute",
+    "comments": "A delta-shaped craft with squared off points to the rear, appearing black against the darkening sky. Three white round dimly-lit lights in a row towards the centre underside. Approximately 40 feet across, at 500-1000 feet altitude, roughly a quarter mile away. Moved southerly parallel to the road, then banked and turned southeast before disappearing behind trees. Completely silent.",
+    "lat": 52.7189241,
+    "lon": -1.7649747,
+    "tags": {
+      "hynek": "CE2",
+      "shape": [
+        "triangle"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Investigator noted: 'It is not possible to say at present whether or not this object was some kind of secret military aircraft or a genuine Flying Triangle of extra-terrestrial origin.'",
+      "witness_count": 1,
+      "witness_type": "Civilian motorist (Simon, pseudonym)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_022",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2013/09/29082013-kingswinford-colour-changing.html",
+    "datetime": "2013-08-29",
+    "city": "kingswinford",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Lights (shape indeterminate)",
+    "duration_text": "Several minutes",
+    "comments": "Two purple-coloured lights observed moving slowly in the eastern sky, appearing to circle each other. One light descended, changed to green, then ascended back to purple while the other continued moving in a shaky circle. Objects vanished when witness attempted to focus binoculars.",
+    "lat": 52.4967692,
+    "lon": -2.1661721,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "star-like"
+      ],
+      "outcome": "explained",
+      "explanation": "Most likely two colour-changing LED balloons launched from a celebration and drifting into the sky. Movement patterns showed no manoeuvres indicating direct control or intelligence.",
+      "witness_count": 2,
+      "witness_type": "Civilian couple (Dan and partner)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_023",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2013/09/07092013-west-heath-birmingham-circle.html",
+    "datetime": "2013-09-07",
+    "city": "west heath",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Circular arrangement of lights",
+    "duration_text": "Over 1 hour",
+    "comments": "A rotating circle of glowing white round lights emerged from a cloud layer, appearing as though a large rounded object with lights in its base was concealed within the cloud. Lights vanished suddenly without trace after over an hour of observation.",
+    "lat": 52.397718,
+    "lon": -1.9601801,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "formation"
+      ],
+      "outcome": "explained",
+      "explanation": "Spotlight projection from a nearby event using searchlights, creating the illusion of a hidden object by bouncing off cloud bases during nighttime conditions.",
+      "witness_count": 2,
+      "witness_type": "Civilian mother and young son (Rachel, pseudonym)",
+      "physical_effects": "Child became upset and cried",
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_024",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2013/07/07072013-peterborough-black-ufos.html",
+    "datetime": "2013-07-07",
+    "city": "peterborough",
+    "county": "Cambridgeshire",
+    "country": "gb",
+    "shape": "Indeterminate (rotating, black/silver flashing)",
+    "duration_text": "Several minutes",
+    "comments": "Multiple objects appearing black in colour, flashing silver and giving the impression of rotating with sunlight reflecting off them. One object moved diagonally right, another moved upward, and a third later appeared and also moved upward. Observed during pleasant sunny weather with patchy clouds.",
+    "lat": 52.5725769,
+    "lon": -0.2427336,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "outcome": "inconclusive",
+      "explanation": "Could well have been balloons/inflatables drifting and caught on air currents.",
+      "witness_count": 2,
+      "witness_type": "Civilian couple (Lucy and Paul, pseudonyms)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_025",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2013/11/12112013-banbury-curved-rectangular-ufo.html",
+    "datetime": "2013-11-12",
+    "city": "banbury",
+    "county": "Oxfordshire",
+    "country": "gb",
+    "shape": "Curved rectangular with triangular protrusion",
+    "duration_text": "Several minutes",
+    "comments": "A curved rectangular shaped object with a large shark fin-shaped triangular protrusion on one side, metallic silver with bright orange aura. Estimated 2-3 times larger than a commercial airliner with an orange trail approximately twice the object's length. Moved parallel to the M40 motorway, suddenly accelerated, executed S-shaped manoeuvres, and disappeared.",
+    "lat": 52.0601807,
+    "lon": -1.3402795,
+    "tags": {
+      "hynek": "CE1",
+      "shape": [
+        "triangle"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Chinese lanterns, inflatables, hang gliders, and hot air balloons all ruled out by investigator.",
+      "witness_count": 1,
+      "witness_type": "Civilian observer (Benjamin)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_026",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2013/12/19122014-sedgley-grey-coloured-ufo.html",
+    "datetime": "2013-12-19",
+    "city": "sedgley",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Wing-shaped",
+    "duration_text": "Brief (exact duration not specified)",
+    "comments": "A grey wing-shaped object moving fast in a straight line across the sky directly overhead. Silent and without any lights. Travelled from the Tipton direction.",
+    "lat": 52.5417011,
+    "lon": -2.121096,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "boomerang/chevron"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Main possibility is a stealth aircraft, but known stealth designs such as the B-2 Spirit do not match the observed profile. Investigator concluded it 'should be recorded as an unknown'.",
+      "witness_count": 1,
+      "witness_type": "Civilian (Andrew, author and paranormal investigator, ASSAP member)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_027",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2014/02/17022014-risr-norway-white-cigar-shaped.html",
+    "datetime": "2014-02-17",
+    "city": "ris\u00f8r",
+    "county": null,
+    "country": "gb",
+    "shape": "Cigar",
+    "duration_text": "60-90 seconds",
+    "comments": "A brightly glowing white cigar-shaped object observed from an office window, at least 2 km away and at high altitude. Moving to the left across the sky on a level course at roughly helicopter speed. Four photographs captured on iPad before the object vanished behind the Ris\u00f8r Peninsula.",
+    "lat": 58.6768312,
+    "lon": 9.3108313,
+    "tags": {
+      "hynek": "DD",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Most logical explanation suggested is an aircraft reflecting sunlight, though witness noted differences from a comparison photograph of an airplane taken from the same location.",
+      "witness_count": 2,
+      "witness_type": "Office workers (Julia, primary witness; David, colleague)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_028",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2014/12/05122014-wellington-telford-flying.html",
+    "datetime": "2014-12-05",
+    "city": "wellington",
+    "county": "Shropshire",
+    "country": "gb",
+    "shape": "Flying Triangle",
+    "duration_text": "Approximately 2 minutes",
+    "comments": "A massive black triangular object with white flashing lights at each corner observed hovering then slowly rotating and descending behind tree lines. Emma first noticed the triangular light formation before recognising the solid black shape darker than surrounding hazy clouds.",
+    "lat": 52.9861732,
+    "lon": -2.6061726,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "triangle"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Investigator found 'no doubt that Darren and Emma witnessed what they said they did'. Classified as likely a Flying Triangle, possibly of extra-terrestrial origin.",
+      "witness_count": 2,
+      "witness_type": "Civilian couple (Darren, a contactee with prior UFO experiences, and his wife Emma)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_029",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2016/08/28082016-quinton-silver-sphere-sighting.html",
+    "datetime": "2016-08-28",
+    "city": "quinton",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Silver sphere",
+    "duration_text": "Approximately 10 minutes",
+    "comments": "A metallic reflective spherical object moving slowly across the sky at an estimated 500-1000 feet altitude on a straight and level course, stopping twice during observation. Occasionally blended into the cloudy sky. Video captured on Samsung mobile phone.",
+    "lat": 52.4626405,
+    "lon": -2.0128137,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "sphere"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Most probable mundane explanation suggested was a 'novelty silver-coloured inflatable', with temporary stops possibly resulting from drifting on air currents rather than intelligent control.",
+      "witness_count": 5,
+      "witness_type": "Civilian family (Alan, Bernadette, Luna, Nath, and children; Luna and Nath have meteorological interests)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_030",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2017/02/02012017-yardley-wood-cylindrical-ufo.html",
+    "datetime": "2017-01-02",
+    "city": "yardley wood",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Cylindrical/tubular with illuminated square panels",
+    "duration_text": "10-15 seconds",
+    "comments": "A large tubular object moving rapidly across the sky with 6-8 square-shaped panels or windows along one side, emitting a dull orange/reddish glow. Object moved across the full sky in approximately 10-15 seconds.",
+    "lat": 52.421023,
+    "lon": -1.8545598,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Chinese lanterns rejected by witness and investigator; solar airships also considered unlikely due to nighttime and absence of characteristic design features. Investigator concluded 'a genuine sighting of an advanced craft, one that appeared to be under intelligent control'.",
+      "witness_count": 1,
+      "witness_type": "Civilian observer (Nigel)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_031",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2017/12/28112017-rednal-birmingham-orange-orb.html",
+    "datetime": "2017-11-28",
+    "city": "rednal",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Orb/sphere",
+    "duration_text": "Approximately 20 minutes stationary, then 5 seconds moving",
+    "comments": "A glowing orange orb of light hovering motionless for approximately 20 minutes in the northeast sky. Upon the witness attempting to retrieve his phone, the object began moving eastward at high velocity, covering considerable distance in approximately 5 seconds before disappearing.",
+    "lat": 52.392037,
+    "lon": -2.0030725,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "orb"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Aircraft, stars, helicopters, Chinese lanterns, and drones all ruled out based on behavioural characteristics.",
+      "witness_count": 1,
+      "witness_type": "Civilian observer (James, male)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_032",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2017/12/28112017-stafford-white-orb-sighting.html",
+    "datetime": "2017-11-28",
+    "city": "stafford",
+    "county": "Staffordshire",
+    "country": "gb",
+    "shape": "Orb/spherical light",
+    "duration_text": "4-5 seconds of movement (initial stationary observation duration unspecified)",
+    "comments": "A brightly glowing white light initially resembling a star, stationary then ascending vertically before accelerating silently at a speed much greater than a plane would travel at. Object traversed the sky in 4-5 seconds, travelling northwest toward Doxey/Seighford.",
+    "lat": 52.8072987,
+    "lon": -2.1172518,
+    "tags": {
+      "hynek": "CE1",
+      "shape": [
+        "orb"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Balloon, satellite, meteorite, aircraft, helicopter, and drone all ruled out. Analyst suggested 'a distant advanced craft' under controlled flight.",
+      "witness_count": 1,
+      "witness_type": "Civilian (Darren Westwood, standing in back garden)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_033",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2017/11/25112017-rugby-green-tinted-glowing-orb.html",
+    "datetime": "2017-11-25",
+    "city": "rugby",
+    "county": "Warwickshire",
+    "country": "gb",
+    "shape": "Orb/sphere",
+    "duration_text": "Approximately 5 seconds",
+    "comments": "A bright glowing orb with a greenish tint appearing from the east and travelling at high speed on a descending westerly trajectory. Silent with no visible trail or markings. Estimated at approximately 1000 feet altitude and 300 feet distant. Moved behind trees and roofline, then abruptly changed course to the southwest before vanishing.",
+    "lat": 52.3726682,
+    "lon": -1.2620038,
+    "tags": {
+      "hynek": "CE1",
+      "shape": [
+        "orb"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Initial meteorite hypothesis dismissed due to absence of tail/trail, no sound, and directional change inconsistent with meteor behaviour.",
+      "witness_count": 1,
+      "witness_type": "Civilian observer (Paul Crowther, early morning from residential bedroom)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_034",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2019/01/23122018-pontefract-disc-ufo-sighting.html",
+    "datetime": "2018-12-23",
+    "city": "pontefract",
+    "county": "West Yorkshire",
+    "country": "gb",
+    "shape": "Disc (appearing circular/sphere-like due to rotation)",
+    "duration_text": "Approximately 3 minutes",
+    "comments": "Three witnesses observed an object initially mistaken for birds, which appeared metallic and rotating smoothly on two axes, moving with controlled directional flight. Video footage captured on a Nokia 8110 phone confirming an object's presence though insufficient for detailed analysis.",
+    "lat": 53.6917422,
+    "lon": -1.3105722,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "disc/saucer"
+      ],
+      "outcome": "unexplained",
+      "explanation": "Conventional aircraft, helicopters, drones, meteorites, and inflatable balloons ruled out based on smooth continuous rotation and directional control.",
+      "witness_count": 3,
+      "witness_type": "Civilians (Michael with Royal Marine service background, Trish, Barbara)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_035",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2019/02/27012019-hodge-hill-white-arc-of-lights.html",
+    "datetime": "2019-01-27",
+    "city": "hodge hill",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "Arc formation of multiple lights plus single strobing point",
+    "duration_text": "Several minutes (plus possible recurrence 40 minutes later)",
+    "comments": "Witness observed a brief flash of white lights in a curved arc formation in the southwestern sky. After 90-120 seconds, the lights reappeared showing about 7 very bright white glowing points of light in a gradual curve formation, followed immediately by a single brighter point that flashed on approximately 4-second intervals. Possible reappearance approximately 40 minutes later.",
+    "lat": 52.4444489,
+    "lon": -2.104619,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "formation"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "High-altitude helicopter or drone cannot be entirely ruled out, though erratic movement pattern and initial arc formation appear inconsistent with conventional aircraft or known technology.",
+      "witness_count": 2,
+      "witness_type": "Civilian couple (Rob, ex-military aviation enthusiast with aircraft/helicopter knowledge and drone experience, and his wife)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_036",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2015/10/20102015-henley-in-arden-joined-tubular.html",
+    "datetime": "2015-10-20",
+    "city": "henley-in-arden",
+    "county": "Warwickshire",
+    "country": "gb",
+    "shape": "Joined tubular/cylindrical construction",
+    "duration_text": "10-15 seconds",
+    "comments": "A witness working in his garden heard a loud whooshing noise and observed an unusual craft between 8-10 feet in length, either silver or white, made up of cylindrical tubes. Bright white lights flashing randomly on the underside. Travelled eastward at approximately 40-50 mph at a height of 150-200 feet.",
+    "lat": 52.290713,
+    "lon": -1.780685,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "cigar/cylinder"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Inflatable, solar airship, or radio-controlled model considered but each had inconsistencies. Civil Aviation Authority could provide no explanation. No definitive explanation reached.",
+      "witness_count": 1,
+      "witness_type": "Civilian (Neil, in garden)",
+      "physical_effects": "Loud whooshing noise heard",
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "single-witness-uncorroborated"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_037",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2014/06/june-2014-quinton-birmingham.html",
+    "datetime": "2014-06-01",
+    "city": "quinton",
+    "county": "West Midlands",
+    "country": "gb",
+    "shape": "White/metallic (specific shape not detailed)",
+    "duration_text": "Not specified",
+    "comments": "Two witnesses observed an object following a commercial airliner over Hagley Road, maintaining a straight flight path and quickly closing up to the left side of the plane. Notably the anomalous object left no contrail, unlike the aircraft. No noise was heard from either plane or object.",
+    "lat": 52.4626405,
+    "lon": -2.0128137,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [],
+      "outcome": "inconclusive",
+      "explanation": "Insufficient detail to reach any formal conclusion. Investigators noted it 'highly unusual for traffic control to allow two aircraft to fly so close together'.",
+      "witness_count": 2,
+      "witness_type": "Civilian couple (man and wife, from kitchen window)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  },
+  {
+    "id": "bufog_038",
+    "source": "BUFOG",
+    "source_url": "http://reported-sightings.blogspot.com/2014/04/04032014-09032014-dumbarton-scotland.html",
+    "datetime": "2014-03-04",
+    "city": "dumbarton",
+    "county": "West Dunbartonshire",
+    "country": "gb",
+    "shape": "Triangular light formation (sighting 1); rectangular with three lights (sighting 2)",
+    "duration_text": "Several seconds (sighting 1); approximately 10 seconds (sighting 2)",
+    "comments": "Two separate sightings over five days: (1) Three bright white lights in a triangular formation moving slowly over Dumbarton near the M8, one light vanishing and reappearing before lights dropped rapidly behind a hill; (2) A single white light on top of a quarry flashing randomly in an SOS-like pattern, then revealing a large rectangular object with three white lights that slowly passed from view.",
+    "lat": 55.9432443,
+    "lon": -4.5708479,
+    "tags": {
+      "hynek": "unknown",
+      "shape": [
+        "formation"
+      ],
+      "outcome": "inconclusive",
+      "explanation": "Likely same object observed twice within five days. Helicopters and conventional aircraft ruled out due to movement characteristics. Investigation incomplete as neither witness provided follow-up information.",
+      "witness_count": 4,
+      "witness_type": "Civilian motorists (Grant and two companions; Ian separately)",
+      "physical_effects": null,
+      "investigator": "Dave Hodrien / BUFOG",
+      "h5_tier": "published-case-report",
+      "h2_corroboration": "multiple-independent-witnesses"
+    },
+    "context": {}
+  }
+]

@@ -754,15 +754,19 @@ So that I can test whether correlations exist (e.g. high Kp × unexplained verdi
 
 ## UH-035 — BUFOG archive export to UH schema
 
-**Status:** Open
+**Status:** Partial — 38 published cases scraped, James review pending
 **Priority:** Medium
 **Loop:** Stakeholder
 **Raised:** 2026-03-24
 
 ### Notes
-- Approach James + Dave re: structured export of investigated BUFOG cases
-- Even 50–100 fully-tagged cases would be the highest-quality UK investigator data available
-- Fields needed: all Category A–H + witness narrative
+- 38 published BUFOG case reports scraped from reported-sightings.blogspot.com
+- Saved to `data/bufog-cases-clean.json` — geocoded (38/38), shapes normalised to taxonomy
+- Outcomes: 17 unexplained, 15 inconclusive, 6 explained
+- Hynek: CE1 (7), CE2 (4), DD (2), CE5 (1), unknown (18) — 18 need manual classification by James
+- Modern cases (2020–present) on Wix site are not scrapeable without headless browser
+- Next: send James the data + ask him to (a) validate/correct, (b) add Hynek for the 18 unknowns, (c) export additional cases from his archive
+- See UH-041 for app integration (load BUFOG tab in UKDB, add to map)
 
 ---
 
